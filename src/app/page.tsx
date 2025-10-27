@@ -52,6 +52,21 @@ export default function Home() {
   // Set client flag after hydration to prevent SSR mismatch
   useEffect(() => {
     setIsClient(true);
+
+    // Load saved navigation state from localStorage
+    const savedDifficulty = localStorage.getItem('currentDifficulty');
+    const savedFastTier = localStorage.getItem('currentFastTier');
+
+    if (savedDifficulty && DIFFICULTY_TIERS.some(t => t.value === savedDifficulty)) {
+      setCurrentDifficulty(savedDifficulty as DifficultyTier);
+    }
+
+    if (savedFastTier) {
+      const tierValue = parseInt(savedFastTier, 10);
+      if (tierValue >= 1 && tierValue <= 11) {
+        setCurrentFastTier(tierValue as FastTierCompletion);
+      }
+    }
   }, []);
 
   // Load sorted heroes from progress data
@@ -66,20 +81,34 @@ export default function Home() {
   // Navigate difficulty tiers
   const navigateDifficulty = (direction: 'prev' | 'next') => {
     const currentIndex = DIFFICULTY_TIERS.findIndex(t => t.value === currentDifficulty);
+    let newDifficulty: DifficultyTier | null = null;
+
     if (direction === 'prev' && currentIndex > 0) {
-      setCurrentDifficulty(DIFFICULTY_TIERS[currentIndex - 1].value);
+      newDifficulty = DIFFICULTY_TIERS[currentIndex - 1].value;
     } else if (direction === 'next' && currentIndex < DIFFICULTY_TIERS.length - 1) {
-      setCurrentDifficulty(DIFFICULTY_TIERS[currentIndex + 1].value);
+      newDifficulty = DIFFICULTY_TIERS[currentIndex + 1].value;
+    }
+
+    if (newDifficulty) {
+      setCurrentDifficulty(newDifficulty);
+      localStorage.setItem('currentDifficulty', newDifficulty);
     }
   };
 
   // Navigate fast tiers
   const navigateFastTier = (direction: 'prev' | 'next') => {
     const currentIndex = FAST_TIERS.findIndex(t => t.value === currentFastTier);
+    let newFastTier: FastTierCompletion | null = null;
+
     if (direction === 'prev' && currentIndex > 0) {
-      setCurrentFastTier(FAST_TIERS[currentIndex - 1].value);
+      newFastTier = FAST_TIERS[currentIndex - 1].value;
     } else if (direction === 'next' && currentIndex < FAST_TIERS.length - 1) {
-      setCurrentFastTier(FAST_TIERS[currentIndex + 1].value);
+      newFastTier = FAST_TIERS[currentIndex + 1].value;
+    }
+
+    if (newFastTier) {
+      setCurrentFastTier(newFastTier);
+      localStorage.setItem('currentFastTier', newFastTier.toString());
     }
   };
 
@@ -216,7 +245,7 @@ export default function Home() {
               {/* Left Arrow */}
               {currentDifficulty !== 'base' && (
                 <button
-                  className="group absolute left-8 h-8 w-8"
+                  className="group absolute left-8 h-8 w-8 select-none"
                   onClick={() => navigateDifficulty('prev')}
                 >
                   <Image
@@ -236,14 +265,14 @@ export default function Home() {
                 </button>
               )}
 
-              <h1 className="text-center font-pixel text-4xl tracking-widest">
+              <h1 className="select-none text-center font-pixel text-4xl tracking-widest">
                 {currentDifficultyLabel}
               </h1>
 
               {/* Right Arrow */}
               {currentDifficulty !== 'ng-plus-9' && (
                 <button
-                  className="group absolute right-8 h-8 w-8"
+                  className="group absolute right-8 h-8 w-8 select-none"
                   onClick={() => navigateDifficulty('next')}
                 >
                   <Image
@@ -277,7 +306,7 @@ export default function Home() {
               {/* Left Arrow */}
               {currentFastTier !== 1 && (
                 <button
-                  className="group absolute left-8 h-8 w-8"
+                  className="group absolute left-8 h-8 w-8 select-none"
                   onClick={() => navigateFastTier('prev')}
                 >
                   <Image
@@ -297,14 +326,14 @@ export default function Home() {
                 </button>
               )}
 
-              <h1 className="text-center font-pixel text-4xl tracking-widest">
+              <h1 className="select-none text-center font-pixel text-4xl tracking-widest">
                 {currentFastTierLabel}
               </h1>
 
               {/* Right Arrow */}
               {currentFastTier !== 11 && (
                 <button
-                  className="group absolute right-8 h-8 w-8"
+                  className="group absolute right-8 h-8 w-8 select-none"
                   onClick={() => navigateFastTier('next')}
                 >
                   <Image
@@ -334,7 +363,7 @@ export default function Home() {
                 alt="Level Base"
                 width={800}
                 height={600}
-                className="h-auto w-full"
+                className="h-auto w-full select-none"
               />
             </div>
             <div>
@@ -344,7 +373,7 @@ export default function Home() {
                   alt="Level Base"
                   width={800}
                   height={600}
-                  className="h-auto w-full"
+                  className="h-auto w-full select-none"
                 />
                 <div className="absolute left-1/2 top-4 -translate-x-1/2">
                   <div className="group relative h-14">
@@ -358,7 +387,7 @@ export default function Home() {
                         imageRendering: 'pixelated',
                       }}
                     />
-                    <h2 className="relative flex h-full items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+                    <h2 className="relative flex h-full select-none items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
                       THE BONE <span className="align-top text-2xl">&nbsp;x&nbsp;</span> YARD
                     </h2>
                   </div>
@@ -421,7 +450,7 @@ export default function Home() {
                   alt="Level Base"
                   width={800}
                   height={600}
-                  className="h-auto w-full"
+                  className="h-auto w-full select-none"
                 />
                 <div className="absolute left-1/2 top-4 -translate-x-1/2">
                   <div className="group relative h-14">
@@ -435,7 +464,7 @@ export default function Home() {
                         imageRendering: 'pixelated',
                       }}
                     />
-                    <h2 className="relative flex h-full items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+                    <h2 className="relative flex h-full select-none items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
                       THE SNOWY <span className="align-top text-2xl">&nbsp;x&nbsp;</span> SHORES
                     </h2>
                   </div>
@@ -498,7 +527,7 @@ export default function Home() {
                   alt="Level Base"
                   width={800}
                   height={600}
-                  className="h-auto w-full"
+                  className="h-auto w-full select-none"
                 />
                 <div className="absolute left-1/2 top-4 -translate-x-1/2">
                   <div className="group relative h-14">
@@ -512,7 +541,7 @@ export default function Home() {
                         imageRendering: 'pixelated',
                       }}
                     />
-                    <h2 className="relative flex h-full items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+                    <h2 className="relative flex h-full select-none items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
                       THE LIMINAL <span className="align-top text-2xl">&nbsp;x&nbsp;</span> DESERT
                     </h2>
                   </div>
@@ -571,7 +600,7 @@ export default function Home() {
                   alt="Level Base"
                   width={800}
                   height={600}
-                  className="h-auto w-full"
+                  className="h-auto w-full select-none"
                 />
                 <div className="absolute left-1/2 top-4 -translate-x-1/2">
                   <div className="group relative h-14">
@@ -585,7 +614,7 @@ export default function Home() {
                         imageRendering: 'pixelated',
                       }}
                     />
-                    <h2 className="relative flex h-full items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+                    <h2 className="relative flex h-full select-none items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
                       THE FUNGAL <span className="align-top text-2xl">&nbsp;x&nbsp;</span> FOREST
                     </h2>
                   </div>
@@ -644,7 +673,7 @@ export default function Home() {
                   alt="Level Base"
                   width={800}
                   height={600}
-                  className="h-auto w-full"
+                  className="h-auto w-full select-none"
                 />
                 <div className="absolute left-1/2 top-4 -translate-x-1/2">
                   <div className="group relative h-14">
@@ -658,7 +687,7 @@ export default function Home() {
                         imageRendering: 'pixelated',
                       }}
                     />
-                    <h2 className="relative flex h-full items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+                    <h2 className="relative flex h-full select-none items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
                       THE GORY <span className="align-top text-2xl">&nbsp;x&nbsp;</span> GRASSLANDS
                     </h2>
                   </div>
@@ -717,7 +746,7 @@ export default function Home() {
                   alt="Level Base"
                   width={800}
                   height={600}
-                  className="h-auto w-full"
+                  className="h-auto w-full select-none"
                 />
                 <div className="absolute left-1/2 top-4 -translate-x-1/2">
                   <div className="group relative h-14">
@@ -731,7 +760,7 @@ export default function Home() {
                         imageRendering: 'pixelated',
                       }}
                     />
-                    <h2 className="relative flex h-full items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+                    <h2 className="relative flex h-full select-none items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
                       THE SMOLDERING <span className="align-top text-2xl">&nbsp;x&nbsp;</span>{' '}
                       DEPTHS
                     </h2>
@@ -791,7 +820,7 @@ export default function Home() {
                   alt="Level Base"
                   width={800}
                   height={600}
-                  className="h-auto w-full"
+                  className="h-auto w-full select-none"
                 />
                 <div className="absolute left-1/2 top-4 -translate-x-1/2">
                   <div className="group relative h-14">
@@ -805,7 +834,7 @@ export default function Home() {
                         imageRendering: 'pixelated',
                       }}
                     />
-                    <h2 className="relative flex h-full items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+                    <h2 className="relative flex h-full select-none items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
                       THE HEAVENLY <span className="align-top text-2xl">&nbsp;x&nbsp;</span> GATES
                     </h2>
                   </div>
@@ -864,7 +893,7 @@ export default function Home() {
                   alt="Level Base"
                   width={800}
                   height={600}
-                  className="h-auto w-full"
+                  className="h-auto w-full select-none"
                 />
                 <div className="absolute left-1/2 top-4 -translate-x-1/2">
                   <div className="group relative h-14">
@@ -878,7 +907,7 @@ export default function Home() {
                         imageRendering: 'pixelated',
                       }}
                     />
-                    <h2 className="relative flex h-full items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+                    <h2 className="relative flex h-full select-none items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
                       THE VAST <span className="align-top text-2xl">&nbsp;x&nbsp;</span> VOID
                     </h2>
                   </div>

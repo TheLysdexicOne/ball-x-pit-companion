@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Background from '@/components/Background';
 import { getImagePath } from '@/utils/basePath';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+
+// Prevent Font Awesome from adding its CSS since we did it manually above
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: 'Ball X Pit Companion',
