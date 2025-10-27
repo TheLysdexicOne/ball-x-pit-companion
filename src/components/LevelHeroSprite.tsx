@@ -24,6 +24,7 @@ export default function LevelHeroSprite({
     <div
       className="relative cursor-pointer transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
       onClick={() => onToggle(hero.id, levelId)}
+      title={hero.name}
     >
       <HeroSprite hero={hero} type="small" scale={3} />
       {isClient && isComplete && (

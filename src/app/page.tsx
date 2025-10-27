@@ -132,11 +132,13 @@ export default function Home() {
   const toggleHeroCompletion = (heroId: string, levelId: number) => {
     const isComplete = isHeroLevelComplete(heroId, levelId);
 
-    // If already complete at this tier, set to 0 (uncomplete)
+    // If already complete at this tier, downgrade to previous tier (currentFastTier - 1)
     // If not complete, set to current fast tier (which auto-completes lower tiers)
+    const newFastTier = isComplete ? Math.max(0, currentFastTier - 1) : currentFastTier;
+
     updateLevelCompletion(heroId, levelId, {
       difficulty: currentDifficulty,
-      fastTier: isComplete ? 0 : currentFastTier,
+      fastTier: newFastTier as FastTierCompletion,
     });
   };
 
@@ -420,7 +422,7 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(4, 8)].map(hero => (
                             <LevelHeroSprite
                               key={hero.id}
                               hero={hero}
@@ -432,7 +434,7 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                          {[...sortedHeroes.slice(8, 12), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
                               <LevelHeroSprite
                                 key={hero.id}
@@ -501,7 +503,7 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(4, 8)].map(hero => (
                             <LevelHeroSprite
                               key={hero.id}
                               hero={hero}
@@ -513,7 +515,7 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                          {[...sortedHeroes.slice(8, 12), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
                               <LevelHeroSprite
                                 key={hero.id}
@@ -582,7 +584,7 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(4, 8)].map(hero => (
                             <LevelHeroSprite
                               key={hero.id}
                               hero={hero}
@@ -594,7 +596,7 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                          {[...sortedHeroes.slice(8, 12), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
                               <LevelHeroSprite
                                 key={hero.id}
@@ -663,7 +665,7 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(4, 8)].map(hero => (
                             <LevelHeroSprite
                               key={hero.id}
                               hero={hero}
@@ -675,7 +677,7 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                          {[...sortedHeroes.slice(8, 12), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
                               <LevelHeroSprite
                                 key={hero.id}
@@ -745,7 +747,7 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(4, 8)].map(hero => (
                             <LevelHeroSprite
                               key={hero.id}
                               hero={hero}
@@ -757,7 +759,7 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                          {[...sortedHeroes.slice(8, 12), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
                               <LevelHeroSprite
                                 key={hero.id}
@@ -827,7 +829,7 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(4, 8)].map(hero => (
                             <LevelHeroSprite
                               key={hero.id}
                               hero={hero}
@@ -839,7 +841,7 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                          {[...sortedHeroes.slice(8, 12), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
                               <LevelHeroSprite
                                 key={hero.id}
@@ -908,7 +910,7 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(4, 8)].map(hero => (
                             <LevelHeroSprite
                               key={hero.id}
                               hero={hero}
@@ -920,7 +922,7 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                          {[...sortedHeroes.slice(8, 12), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
                               <LevelHeroSprite
                                 key={hero.id}
@@ -989,7 +991,7 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(4, 8)].map(hero => (
                             <LevelHeroSprite
                               key={hero.id}
                               hero={hero}
@@ -1001,7 +1003,7 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                          {[...sortedHeroes.slice(8, 12), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
                               <LevelHeroSprite
                                 key={hero.id}
