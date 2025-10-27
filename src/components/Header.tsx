@@ -20,7 +20,7 @@ interface NavButtonProps {
 function NavButton({ icon, label, href }: NavButtonProps) {
   return (
     <Link href={href}>
-      <button className="group relative mx-8 h-24 w-24" title={label}>
+      <button className="group relative mx-4 h-24 w-24" title={label}>
         <Image
           src={getImagePath('/images/ui/btn1.png')}
           alt=""
@@ -43,9 +43,9 @@ function NavButton({ icon, label, href }: NavButtonProps) {
 
 export default function Header() {
   return (
-    <div className="mb-12 mt-8">
+    <div className="mx-auto mb-12 mt-8">
       {/* Navigation and Logo Container */}
-      <div className="flex items-center justify-center gap-8">
+      <div className="flex items-center justify-center gap-2">
         {/* Left Navigation Buttons */}
         <NavButton icon={faDungeon} label="Heroes" href="/" />
         <NavButton icon={faHouseChimney} label="Homestead" href="/town" />
@@ -56,7 +56,7 @@ export default function Header() {
           alt="Ball X Pit Logo"
           width={500}
           height={200}
-          className="mx-12 h-32 w-auto"
+          className="mx-12 h-auto w-72"
         />
 
         {/* Right Navigation Buttons */}

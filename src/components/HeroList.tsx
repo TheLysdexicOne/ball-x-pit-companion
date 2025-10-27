@@ -8,9 +8,6 @@ import { getImagePath } from '@/utils/basePath';
 
 type SpriteType = 'portrait' | 'small';
 
-// Fixed sizes for consistent overlay dimensions
-const PORTRAIT_SIZE = 192; // Larger portrait size for 4-column layout
-
 // Define fixed scales for each sprite type
 const SPRITE_SCALES = {
   portrait: 1.2,
@@ -84,8 +81,11 @@ export default function HeroList() {
   return (
     <div>
       {/* Sprite Type Toggle */}
-      <div className="mb-8 flex justify-center gap-4">
-        <button onClick={() => setSpriteType('portrait')} className="group relative h-20 w-64">
+      <div className="mb-4 flex flex-col justify-center gap-2 sm:mb-8 sm:flex-row sm:gap-4">
+        <button
+          onClick={() => setSpriteType('portrait')}
+          className="group relative h-16 w-full sm:h-20 sm:w-64"
+        >
           <div
             className={`absolute inset-0 transition-opacity ${spriteType === 'portrait' ? '' : 'group-hover:opacity-0'}`}
             style={{
@@ -108,11 +108,14 @@ export default function HeroList() {
               }}
             />
           )}
-          <span className="absolute inset-0 flex items-center justify-center font-pixel text-4xl tracking-widest">
+          <span className="absolute inset-0 flex items-center justify-center font-pixel text-2xl tracking-widest sm:text-4xl">
             PORTRAIT
           </span>
         </button>
-        <button onClick={() => setSpriteType('small')} className="group relative h-20 w-64">
+        <button
+          onClick={() => setSpriteType('small')}
+          className="group relative h-16 w-full sm:h-20 sm:w-64"
+        >
           <div
             className={`absolute inset-0 transition-opacity ${spriteType === 'small' ? '' : 'group-hover:opacity-0'}`}
             style={{
@@ -135,14 +138,14 @@ export default function HeroList() {
               }}
             />
           )}
-          <span className="absolute inset-0 flex items-center justify-center font-pixel text-4xl tracking-widest">
+          <span className="absolute inset-0 flex items-center justify-center font-pixel text-2xl tracking-widest sm:text-4xl">
             SMALL
           </span>
         </button>
       </div>
 
-      {/* Hero Grid - 4 columns, matching game layout */}
-      <div className="grid grid-cols-4 gap-4">
+      {/* Hero Grid - 4 columns, responsive sizing */}
+      <div className="grid grid-cols-3 gap-3 md:grid-cols-4 md:gap-4">
         {heroes.map((hero, index) => (
           <div
             key={hero.id}
@@ -151,13 +154,9 @@ export default function HeroList() {
             onDragLeave={handleDragLeave}
             onDrop={handleDrop(index)}
           >
-            {/* Portrait with background */}
+            {/* Portrait with background - responsive sizing */}
             <div
-              className="group relative cursor-grab active:cursor-grabbing"
-              style={{
-                width: PORTRAIT_SIZE,
-                height: PORTRAIT_SIZE,
-              }}
+              className="group relative aspect-square w-full cursor-grab active:cursor-grabbing"
               draggable
               onDragStart={handleDragStart(hero.id)}
               title={hero.name}
@@ -167,9 +166,9 @@ export default function HeroList() {
                 className="absolute inset-0 transition-opacity group-hover:opacity-0"
                 style={{
                   borderImageSource: `url(${getImagePath('/images/ui/portrait-bg-1.png')})`,
-                  borderImageSlice: '20 fill',
+                  borderImageSlice: '8 fill',
                   borderImageRepeat: 'repeat',
-                  borderImageWidth: '100px',
+                  borderImageWidth: '32px',
                   imageRendering: 'pixelated',
                 }}
               />
@@ -178,9 +177,9 @@ export default function HeroList() {
                 className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
                 style={{
                   borderImageSource: `url(${getImagePath('/images/ui/portrait-bg-2.png')})`,
-                  borderImageSlice: '20 fill',
+                  borderImageSlice: '8 fill',
                   borderImageRepeat: 'repeat',
-                  borderImageWidth: '100px',
+                  borderImageWidth: '32px',
                   imageRendering: 'pixelated',
                 }}
               />
