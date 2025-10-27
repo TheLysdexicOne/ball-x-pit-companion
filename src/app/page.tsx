@@ -583,23 +583,27 @@ export default function Home() {
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
-                            <div
+                            <LevelHeroSprite
                               key={hero.id}
-                              className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                            >
-                              <HeroSprite hero={hero} type="small" scale={3} />
-                            </div>
+                              hero={hero}
+                              levelId={3}
+                              isComplete={isHeroLevelComplete(hero.id, 3)}
+                              onToggle={toggleHeroCompletion}
+                              isClient={isClient}
+                            />
                           ))}
                         </div>
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
-                              <div
+                              <LevelHeroSprite
                                 key={hero.id}
-                                className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                              >
-                                <HeroSprite hero={hero} type="small" scale={3} />
-                              </div>
+                                hero={hero}
+                                levelId={3}
+                                isComplete={isHeroLevelComplete(hero.id, 3)}
+                                onToggle={toggleHeroCompletion}
+                                isClient={isClient}
+                              />
                             )
                           )}
                         </div>
@@ -660,23 +664,27 @@ export default function Home() {
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
-                            <div
+                            <LevelHeroSprite
                               key={hero.id}
-                              className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                            >
-                              <HeroSprite hero={hero} type="small" scale={3} />
-                            </div>
+                              hero={hero}
+                              levelId={4}
+                              isComplete={isHeroLevelComplete(hero.id, 4)}
+                              onToggle={toggleHeroCompletion}
+                              isClient={isClient}
+                            />
                           ))}
                         </div>
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
-                              <div
+                              <LevelHeroSprite
                                 key={hero.id}
-                                className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                              >
-                                <HeroSprite hero={hero} type="small" scale={3} />
-                              </div>
+                                hero={hero}
+                                levelId={4}
+                                isComplete={isHeroLevelComplete(hero.id, 4)}
+                                onToggle={toggleHeroCompletion}
+                                isClient={isClient}
+                              />
                             )
                           )}
                         </div>
@@ -738,23 +746,27 @@ export default function Home() {
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
-                            <div
+                            <LevelHeroSprite
                               key={hero.id}
-                              className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                            >
-                              <HeroSprite hero={hero} type="small" scale={3} />
-                            </div>
+                              hero={hero}
+                              levelId={5}
+                              isComplete={isHeroLevelComplete(hero.id, 5)}
+                              onToggle={toggleHeroCompletion}
+                              isClient={isClient}
+                            />
                           ))}
                         </div>
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
-                              <div
+                              <LevelHeroSprite
                                 key={hero.id}
-                                className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                              >
-                                <HeroSprite hero={hero} type="small" scale={3} />
-                              </div>
+                                hero={hero}
+                                levelId={5}
+                                isComplete={isHeroLevelComplete(hero.id, 5)}
+                                onToggle={toggleHeroCompletion}
+                                isClient={isClient}
+                              />
                             )
                           )}
                         </div>
@@ -816,23 +828,27 @@ export default function Home() {
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
-                            <div
+                            <LevelHeroSprite
                               key={hero.id}
-                              className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                            >
-                              <HeroSprite hero={hero} type="small" scale={3} />
-                            </div>
+                              hero={hero}
+                              levelId={6}
+                              isComplete={isHeroLevelComplete(hero.id, 6)}
+                              onToggle={toggleHeroCompletion}
+                              isClient={isClient}
+                            />
                           ))}
                         </div>
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
-                              <div
+                              <LevelHeroSprite
                                 key={hero.id}
-                                className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                              >
-                                <HeroSprite hero={hero} type="small" scale={3} />
-                              </div>
+                                hero={hero}
+                                levelId={6}
+                                isComplete={isHeroLevelComplete(hero.id, 6)}
+                                onToggle={toggleHeroCompletion}
+                                isClient={isClient}
+                              />
                             )
                           )}
                         </div>
@@ -892,24 +908,30 @@ export default function Home() {
                       {/* Sprite grid */}
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
-                          {sortedHeroes.slice(0, 8).map(hero => (
-                            <div
+                          {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
+                            <LevelHeroSprite
                               key={hero.id}
-                              className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                            >
-                              <HeroSprite hero={hero} type="small" scale={3} />
-                            </div>
+                              hero={hero}
+                              levelId={7}
+                              isComplete={isHeroLevelComplete(hero.id, 7)}
+                              onToggle={toggleHeroCompletion}
+                              isClient={isClient}
+                            />
                           ))}
                         </div>
                         <div className="flex gap-2">
-                          {sortedHeroes.slice(8, 16).map(hero => (
-                            <div
-                              key={hero.id}
-                              className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                            >
-                              <HeroSprite hero={hero} type="small" scale={3} />
-                            </div>
-                          ))}
+                          {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
+                            hero => (
+                              <LevelHeroSprite
+                                key={hero.id}
+                                hero={hero}
+                                levelId={7}
+                                isComplete={isHeroLevelComplete(hero.id, 7)}
+                                onToggle={toggleHeroCompletion}
+                                isClient={isClient}
+                              />
+                            )
+                          )}
                         </div>
                       </div>
                     </div>
@@ -968,23 +990,27 @@ export default function Home() {
                       <div className="relative flex flex-col gap-2 p-2">
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(0, 4), ...sortedHeroes.slice(8, 12)].map(hero => (
-                            <div
+                            <LevelHeroSprite
                               key={hero.id}
-                              className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                            >
-                              <HeroSprite hero={hero} type="small" scale={3} />
-                            </div>
+                              hero={hero}
+                              levelId={8}
+                              isComplete={isHeroLevelComplete(hero.id, 8)}
+                              onToggle={toggleHeroCompletion}
+                              isClient={isClient}
+                            />
                           ))}
                         </div>
                         <div className="flex gap-2">
                           {[...sortedHeroes.slice(4, 8), ...sortedHeroes.slice(12, 16)].map(
                             hero => (
-                              <div
+                              <LevelHeroSprite
                                 key={hero.id}
-                                className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                              >
-                                <HeroSprite hero={hero} type="small" scale={3} />
-                              </div>
+                                hero={hero}
+                                levelId={8}
+                                isComplete={isHeroLevelComplete(hero.id, 8)}
+                                onToggle={toggleHeroCompletion}
+                                isClient={isClient}
+                              />
                             )
                           )}
                         </div>
