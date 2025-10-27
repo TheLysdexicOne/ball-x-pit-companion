@@ -6,6 +6,7 @@ import { Hero, getSpritePosition, SPRITE_CONFIG } from '@/data/heroes';
 interface HeroSpriteProps {
   hero: Hero;
   type: 'portrait' | 'small';
+  scale?: 0.75 | 1 | 1.2 | 2 | 3 | 4 | 5 | 8 | 12 | 16;
   className?: string;
   onClick?: () => void;
   onDragStart?: (e: React.DragEvent) => void;
@@ -18,6 +19,7 @@ interface HeroSpriteProps {
 export default function HeroSprite({
   hero,
   type,
+  scale = 1,
   className = '',
   onClick,
   onDragStart,
@@ -28,9 +30,6 @@ export default function HeroSprite({
 }: HeroSpriteProps) {
   const config = SPRITE_CONFIG[type];
   const position = getSpritePosition(hero.gridX, hero.gridY, type);
-
-  // Quadruple the size for small sprites in display
-  const scale = type === 'small' ? 4 : 1;
   const displaySize = config.spriteSize * scale;
 
   const highlightStyle = highlighted

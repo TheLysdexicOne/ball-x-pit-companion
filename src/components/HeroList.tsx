@@ -1,16 +1,43 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Hero, HEROES } from '@/data/heroes';
 import HeroSprite from './HeroSprite';
+import { useProgressData } from '@/hooks/useProgressData';
 
 type SpriteType = 'portrait' | 'small';
 
+// Fixed sizes for consistent overlay dimensions
+const PORTRAIT_SIZE = 192; // Larger portrait size for 4-column layout
+
+// Define fixed scales for each sprite type
+const SPRITE_SCALES = {
+  portrait: 1.2,
+  small: 5,
+} as const;
+
 export default function HeroList() {
-  const [heroes, setHeroes] = useState<Hero[]>(HEROES);
+  const { getSortedHeroes, updateHeroOrders } = useProgressData();
+  const [heroes, setHeroes] = useState<Hero[]>([]);
   const [spriteType, setSpriteType] = useState<SpriteType>('portrait');
   const [draggedHeroId, setDraggedHeroId] = useState<string | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  // Load heroes from progress data on mount and when data changes externally
+  useEffect(() => {
+    // Skip reloading if we're in the middle of updating (prevents overwriting our own changes)
+    if (isUpdating) {
+      setIsUpdating(false);
+      return;
+    }
+
+    const sortedProgress = getSortedHeroes();
+    const sortedHeroes = sortedProgress
+      .map(progress => HEROES.find(h => h.id === progress.heroId))
+      .filter((h): h is Hero => h !== undefined);
+    setHeroes(sortedHeroes);
+  }, [getSortedHeroes, isUpdating]);
 
   const handleDragStart = (heroId: string) => (e: React.DragEvent) => {
     setDraggedHeroId(heroId);
@@ -38,7 +65,17 @@ export default function HeroList() {
     const [draggedHero] = newHeroes.splice(dragIndex, 1);
     newHeroes.splice(dropIndex, 0, draggedHero);
 
+    // Mark that we're updating to prevent reload race condition
+    setIsUpdating(true);
     setHeroes(newHeroes);
+
+    // Save the new order to localStorage
+    const updates = newHeroes.map((hero, index) => ({
+      heroId: hero.id,
+      customIndex: index,
+    }));
+    updateHeroOrders(updates);
+
     setDraggedHeroId(null);
     setHoveredIndex(null);
   };
@@ -46,72 +83,123 @@ export default function HeroList() {
   return (
     <div>
       {/* Sprite Type Toggle */}
-      <div className="mb-4 flex justify-center gap-4">
-        <button
-          onClick={() => setSpriteType('portrait')}
-          className={`rounded px-4 py-2 font-pixel ${
-            spriteType === 'portrait' ? 'bg-blue-500 text-white' : 'bg-gray-300'
-          }`}
-        >
-          Portrait
+      <div className="mb-8 flex justify-center gap-4">
+        <button onClick={() => setSpriteType('portrait')} className="group relative h-20 w-64">
+          <div
+            className={`absolute inset-0 transition-opacity ${spriteType === 'portrait' ? '' : 'group-hover:opacity-0'}`}
+            style={{
+              borderImageSource: `url(/images/ui/${spriteType === 'portrait' ? 'btn4' : 'btn3'}.png)`,
+              borderImageSlice: '16 fill',
+              borderImageRepeat: 'repeat',
+              borderImageWidth: '64px',
+              imageRendering: 'pixelated',
+            }}
+          />
+          {spriteType !== 'portrait' && (
+            <div
+              className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
+              style={{
+                borderImageSource: 'url(/images/ui/btn4.png)',
+                borderImageSlice: '16 fill',
+                borderImageRepeat: 'repeat',
+                borderImageWidth: '64px',
+                imageRendering: 'pixelated',
+              }}
+            />
+          )}
+          <span className="absolute inset-0 flex items-center justify-center font-pixel text-4xl tracking-widest">
+            PORTRAIT
+          </span>
         </button>
-        <button
-          onClick={() => setSpriteType('small')}
-          className={`rounded px-4 py-2 font-pixel ${
-            spriteType === 'small' ? 'bg-blue-500 text-white' : 'bg-gray-300'
-          }`}
-        >
-          Small
+        <button onClick={() => setSpriteType('small')} className="group relative h-20 w-64">
+          <div
+            className={`absolute inset-0 transition-opacity ${spriteType === 'small' ? '' : 'group-hover:opacity-0'}`}
+            style={{
+              borderImageSource: `url(/images/ui/${spriteType === 'small' ? 'btn4' : 'btn3'}.png)`,
+              borderImageSlice: '16 fill',
+              borderImageRepeat: 'repeat',
+              borderImageWidth: '64px',
+              imageRendering: 'pixelated',
+            }}
+          />
+          {spriteType !== 'small' && (
+            <div
+              className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
+              style={{
+                borderImageSource: 'url(/images/ui/btn4.png)',
+                borderImageSlice: '16 fill',
+                borderImageRepeat: 'repeat',
+                borderImageWidth: '64px',
+                imageRendering: 'pixelated',
+              }}
+            />
+          )}
+          <span className="absolute inset-0 flex items-center justify-center font-pixel text-4xl tracking-widest">
+            SMALL
+          </span>
         </button>
       </div>
 
-      {/* Hero Grid - 2 rows of 8 */}
-      <div className="flex flex-col items-center gap-4">
-        {/* First row - 8 heroes */}
-        <div className="flex justify-center gap-4">
-          {heroes.slice(0, 8).map((hero, index) => (
+      {/* Hero Grid - 4 columns, matching game layout */}
+      <div className="grid grid-cols-4 gap-4">
+        {heroes.map((hero, index) => (
+          <div
+            key={hero.id}
+            className={`flex items-center justify-center transition-all ${hoveredIndex === index ? 'scale-110' : ''}`}
+            onDragOver={handleDragOver(index)}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop(index)}
+          >
+            {/* Portrait with background */}
             <div
-              key={hero.id}
-              className={`transition-all ${hoveredIndex === index ? 'scale-110' : ''}`}
-              onDragOver={handleDragOver(index)}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop(index)}
+              className="group relative cursor-grab active:cursor-grabbing"
+              style={{
+                width: PORTRAIT_SIZE,
+                height: PORTRAIT_SIZE,
+              }}
+              draggable
+              onDragStart={handleDragStart(hero.id)}
+              title={hero.name}
             >
-              <HeroSprite
-                hero={hero}
-                type={spriteType}
-                draggable
-                highlighted={hoveredIndex === index}
-                onDragStart={handleDragStart(hero.id)}
-                className="transition-transform hover:scale-105"
+              {/* Background layer - default */}
+              <div
+                className="absolute inset-0 transition-opacity group-hover:opacity-0"
+                style={{
+                  borderImageSource: 'url(/images/ui/portrait-bg-1.png)',
+                  borderImageSlice: '20 fill',
+                  borderImageRepeat: 'repeat',
+                  borderImageWidth: '100px',
+                  imageRendering: 'pixelated',
+                }}
               />
-              <p className="mt-2 text-center font-pixel text-sm">{hero.name}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Second row - 8 heroes */}
-        <div className="flex justify-center gap-4">
-          {heroes.slice(8, 16).map((hero, index) => (
-            <div
-              key={hero.id}
-              className={`transition-all ${hoveredIndex === index + 8 ? 'scale-110' : ''}`}
-              onDragOver={handleDragOver(index + 8)}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop(index + 8)}
-            >
-              <HeroSprite
-                hero={hero}
-                type={spriteType}
-                draggable
-                highlighted={hoveredIndex === index + 8}
-                onDragStart={handleDragStart(hero.id)}
-                className="transition-transform hover:scale-105"
+              {/* Background layer - hover */}
+              <div
+                className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
+                style={{
+                  borderImageSource: 'url(/images/ui/portrait-bg-2.png)',
+                  borderImageSlice: '20 fill',
+                  borderImageRepeat: 'repeat',
+                  borderImageWidth: '100px',
+                  imageRendering: 'pixelated',
+                }}
               />
-              <p className="mt-2 text-center font-pixel text-sm">{hero.name}</p>
+              {/* Sprite centered */}
+              <div
+                className="absolute inset-0 flex items-center justify-center"
+                style={{
+                  marginTop: spriteType === 'portrait' ? '-12px' : '0',
+                }}
+              >
+                <HeroSprite
+                  hero={hero}
+                  type={spriteType}
+                  scale={SPRITE_SCALES[spriteType]}
+                  highlighted={hoveredIndex === index}
+                />
+              </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
