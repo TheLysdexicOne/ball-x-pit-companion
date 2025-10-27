@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Hero, HEROES } from '@/data/heroes';
 import HeroSprite from './HeroSprite';
 import { useProgressData } from '@/hooks/useProgressData';
+import { getImagePath } from '@/utils/basePath';
 
 type SpriteType = 'portrait' | 'small';
 
@@ -88,7 +89,7 @@ export default function HeroList() {
           <div
             className={`absolute inset-0 transition-opacity ${spriteType === 'portrait' ? '' : 'group-hover:opacity-0'}`}
             style={{
-              borderImageSource: `url(/images/ui/${spriteType === 'portrait' ? 'btn4' : 'btn3'}.png)`,
+              borderImageSource: `url(${getImagePath('/images/ui/' + (spriteType === 'portrait' ? 'btn4' : 'btn3') + '.png')})`,
               borderImageSlice: '16 fill',
               borderImageRepeat: 'repeat',
               borderImageWidth: '64px',
@@ -99,7 +100,7 @@ export default function HeroList() {
             <div
               className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
               style={{
-                borderImageSource: 'url(/images/ui/btn4.png)',
+                borderImageSource: `url(${getImagePath('/images/ui/btn4.png')})`,
                 borderImageSlice: '16 fill',
                 borderImageRepeat: 'repeat',
                 borderImageWidth: '64px',
@@ -115,7 +116,7 @@ export default function HeroList() {
           <div
             className={`absolute inset-0 transition-opacity ${spriteType === 'small' ? '' : 'group-hover:opacity-0'}`}
             style={{
-              borderImageSource: `url(/images/ui/${spriteType === 'small' ? 'btn4' : 'btn3'}.png)`,
+              borderImageSource: `url(${getImagePath('/images/ui/' + (spriteType === 'small' ? 'btn4' : 'btn3') + '.png')})`,
               borderImageSlice: '16 fill',
               borderImageRepeat: 'repeat',
               borderImageWidth: '64px',
@@ -126,7 +127,7 @@ export default function HeroList() {
             <div
               className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
               style={{
-                borderImageSource: 'url(/images/ui/btn4.png)',
+                borderImageSource: `url(${getImagePath('/images/ui/btn4.png')})`,
                 borderImageSlice: '16 fill',
                 borderImageRepeat: 'repeat',
                 borderImageWidth: '64px',
@@ -165,7 +166,7 @@ export default function HeroList() {
               <div
                 className="absolute inset-0 transition-opacity group-hover:opacity-0"
                 style={{
-                  borderImageSource: 'url(/images/ui/portrait-bg-1.png)',
+                  borderImageSource: `url(${getImagePath('/images/ui/portrait-bg-1.png')})`,
                   borderImageSlice: '20 fill',
                   borderImageRepeat: 'repeat',
                   borderImageWidth: '100px',
@@ -176,7 +177,7 @@ export default function HeroList() {
               <div
                 className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
                 style={{
-                  borderImageSource: 'url(/images/ui/portrait-bg-2.png)',
+                  borderImageSource: `url(${getImagePath('/images/ui/portrait-bg-2.png')})`,
                   borderImageSlice: '20 fill',
                   borderImageRepeat: 'repeat',
                   borderImageWidth: '100px',

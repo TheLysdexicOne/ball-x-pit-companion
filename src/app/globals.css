@@ -2,13 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'TimesNewPixel';
-  src: url('/fonts/TimesNewPixel.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+/* Font will be loaded via layout.tsx to handle basePath correctly */
 
 @layer base {
   /* Set default text colors */

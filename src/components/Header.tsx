@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { getImagePath } from '@/utils/basePath';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faDungeon,
@@ -21,13 +22,13 @@ function NavButton({ icon, label, href }: NavButtonProps) {
     <Link href={href}>
       <button className="group relative mx-8 h-24 w-24" title={label}>
         <Image
-          src="/images/ui/btn1.png"
+          src={getImagePath('/images/ui/btn1.png')}
           alt=""
           fill
           className="object-contain transition-opacity group-hover:opacity-0"
         />
         <Image
-          src="/images/ui/btn2.png"
+          src={getImagePath('/images/ui/btn2.png')}
           alt=""
           fill
           className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
@@ -51,7 +52,7 @@ export default function Header() {
 
         {/* Logo */}
         <Image
-          src="/images/logo/logo.png"
+          src={getImagePath('/images/logo/logo.png')}
           alt="Ball X Pit Logo"
           width={500}
           height={200}

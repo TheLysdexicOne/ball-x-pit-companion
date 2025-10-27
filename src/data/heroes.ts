@@ -1,5 +1,7 @@
 // Hero data structure and utilities
 
+import { getImagePath } from '@/utils/basePath';
+
 export interface Hero {
   id: string;
   name: string;
@@ -30,13 +32,13 @@ export const HEROES: Hero[] = [
 
 export const SPRITE_CONFIG = {
   portrait: {
-    spriteSheet: '/images/heroes/heroes-portrait.png',
+    spriteSheet: getImagePath('/images/heroes/heroes-portrait.png'),
     spriteSize: 124,
     gridSize: 4,
     totalSize: 496, // 124 * 4
   },
   small: {
-    spriteSheet: '/images/heroes/heroes-small.png',
+    spriteSheet: getImagePath('/images/heroes/heroes-small.png'),
     spriteSize: 18,
     gridSize: 4,
     totalSize: 72, // 18 * 4
