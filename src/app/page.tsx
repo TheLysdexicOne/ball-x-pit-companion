@@ -3,17 +3,56 @@
 import Header from '@/components/Header';
 import HeroList from '@/components/HeroList';
 import HeroSprite from '@/components/HeroSprite';
+import LevelHeroSprite from '@/components/LevelHeroSprite';
 import { HEROES } from '@/data/heroes';
 import { useProgressData } from '@/hooks/useProgressData';
 import { getImagePath } from '@/utils/basePath';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import type { Hero } from '@/data/heroes';
+import type { DifficultyTier, FastTierCompletion } from '@/types/heroProgress';
+
+// Difficulty tier options
+const DIFFICULTY_TIERS: { value: DifficultyTier; label: string }[] = [
+  { value: 'base', label: 'Base Level' },
+  { value: 'ng-plus', label: 'New Game +' },
+  { value: 'ng-plus-2', label: 'New Game ++' },
+  { value: 'ng-plus-3', label: 'New Game +3' },
+  { value: 'ng-plus-4', label: 'New Game +4' },
+  { value: 'ng-plus-5', label: 'New Game +5' },
+  { value: 'ng-plus-6', label: 'New Game +6' },
+  { value: 'ng-plus-7', label: 'New Game +7' },
+  { value: 'ng-plus-8', label: 'New Game +8' },
+  { value: 'ng-plus-9', label: 'New Game +9' },
+];
+
+// Fast tier options
+const FAST_TIERS: { value: FastTierCompletion; label: string }[] = [
+  { value: 1, label: 'Normal' },
+  { value: 2, label: 'Fast' },
+  { value: 3, label: 'Fast +' },
+  { value: 4, label: 'Fast ++' },
+  { value: 5, label: 'Fast +3' },
+  { value: 6, label: 'Fast +4' },
+  { value: 7, label: 'Fast +5' },
+  { value: 8, label: 'Fast +6' },
+  { value: 9, label: 'Fast +7' },
+  { value: 10, label: 'Fast +8' },
+  { value: 11, label: 'Fast +9' },
+];
 
 export default function Home() {
   const [showHeroOverlay, setShowHeroOverlay] = useState(false);
-  const { getSortedHeroes } = useProgressData();
+  const { getSortedHeroes, updateLevelCompletion, getHeroProgress } = useProgressData();
   const [sortedHeroes, setSortedHeroes] = useState<Hero[]>(HEROES);
+  const [currentDifficulty, setCurrentDifficulty] = useState<DifficultyTier>('base');
+  const [currentFastTier, setCurrentFastTier] = useState<FastTierCompletion>(1);
+  const [isClient, setIsClient] = useState(false);
+
+  // Set client flag after hydration to prevent SSR mismatch
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Load sorted heroes from progress data
   useEffect(() => {
@@ -23,6 +62,58 @@ export default function Home() {
       .filter((h): h is Hero => h !== undefined);
     setSortedHeroes(heroes);
   }, [getSortedHeroes]);
+
+  // Navigate difficulty tiers
+  const navigateDifficulty = (direction: 'prev' | 'next') => {
+    const currentIndex = DIFFICULTY_TIERS.findIndex(t => t.value === currentDifficulty);
+    if (direction === 'prev' && currentIndex > 0) {
+      setCurrentDifficulty(DIFFICULTY_TIERS[currentIndex - 1].value);
+    } else if (direction === 'next' && currentIndex < DIFFICULTY_TIERS.length - 1) {
+      setCurrentDifficulty(DIFFICULTY_TIERS[currentIndex + 1].value);
+    }
+  };
+
+  // Navigate fast tiers
+  const navigateFastTier = (direction: 'prev' | 'next') => {
+    const currentIndex = FAST_TIERS.findIndex(t => t.value === currentFastTier);
+    if (direction === 'prev' && currentIndex > 0) {
+      setCurrentFastTier(FAST_TIERS[currentIndex - 1].value);
+    } else if (direction === 'next' && currentIndex < FAST_TIERS.length - 1) {
+      setCurrentFastTier(FAST_TIERS[currentIndex + 1].value);
+    }
+  };
+
+  // Check if a hero has completed a specific level at current difficulty/fast tier
+  const isHeroLevelComplete = (heroId: string, levelId: number): boolean => {
+    const progress = getHeroProgress(heroId);
+    if (!progress) return false;
+
+    const completion = progress.levelCompletions.find(
+      lc => lc.levelId === levelId && lc.difficulty === currentDifficulty
+    );
+
+    // If no completion record, not complete
+    if (!completion) return false;
+
+    // Check if fast tier is at or above current
+    return completion.fastTier >= currentFastTier;
+  };
+
+  // Toggle hero completion for a level
+  const toggleHeroCompletion = (heroId: string, levelId: number) => {
+    const isComplete = isHeroLevelComplete(heroId, levelId);
+
+    // If already complete at this tier, set to 0 (uncomplete)
+    // If not complete, set to current fast tier (which auto-completes lower tiers)
+    updateLevelCompletion(heroId, levelId, {
+      difficulty: currentDifficulty,
+      fastTier: isComplete ? 0 : currentFastTier,
+    });
+  };
+
+  const currentDifficultyLabel =
+    DIFFICULTY_TIERS.find(t => t.value === currentDifficulty)?.label || 'Base Level';
+  const currentFastTierLabel = FAST_TIERS.find(t => t.value === currentFastTier)?.label || 'Normal';
 
   return (
     <main className="min-h-screen p-8">
@@ -93,7 +184,7 @@ export default function Home() {
               imageRendering: 'pixelated',
             }}
           />
-          <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+          <span className="relative inset-0 flex items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
             REORDER HEROES
           </span>
         </button>
@@ -113,7 +204,7 @@ export default function Home() {
         >
           <div className="flex justify-center gap-8 px-12">
             <div
-              className="flex w-full items-center justify-center gap-8 py-4"
+              className="relative flex w-full items-center justify-center py-4"
               style={{
                 borderImageSource: `url(${getImagePath('/images/backgrounds/text-bg1.png')})`,
                 borderImageSlice: '50 50 50 50 fill',
@@ -123,46 +214,58 @@ export default function Home() {
               }}
             >
               {/* Left Arrow */}
-              <button className="group relative h-8 w-8">
-                <Image
-                  src={getImagePath('/images/ui/left-arrow-1.png')}
-                  alt=""
-                  fill
-                  className="object-contain transition-opacity group-hover:opacity-0"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-                <Image
-                  src={getImagePath('/images/ui/left-arrow-2.png')}
-                  alt=""
-                  fill
-                  className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-              </button>
+              {currentDifficulty !== 'base' && (
+                <button
+                  className="group absolute left-8 h-8 w-8"
+                  onClick={() => navigateDifficulty('prev')}
+                >
+                  <Image
+                    src={getImagePath('/images/ui/left-arrow-1.png')}
+                    alt=""
+                    fill
+                    className="object-contain transition-opacity group-hover:opacity-0"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                  <Image
+                    src={getImagePath('/images/ui/left-arrow-2.png')}
+                    alt=""
+                    fill
+                    className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                </button>
+              )}
 
-              <h1 className="text-center font-pixel text-4xl tracking-widest">Base Levels</h1>
+              <h1 className="text-center font-pixel text-4xl tracking-widest">
+                {currentDifficultyLabel}
+              </h1>
 
               {/* Right Arrow */}
-              <button className="group relative h-8 w-8">
-                <Image
-                  src={getImagePath('/images/ui/right-arrow-1.png')}
-                  alt=""
-                  fill
-                  className="object-contain transition-opacity group-hover:opacity-0"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-                <Image
-                  src={getImagePath('/images/ui/right-arrow-2.png')}
-                  alt=""
-                  fill
-                  className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-              </button>
+              {currentDifficulty !== 'ng-plus-9' && (
+                <button
+                  className="group absolute right-8 h-8 w-8"
+                  onClick={() => navigateDifficulty('next')}
+                >
+                  <Image
+                    src={getImagePath('/images/ui/right-arrow-1.png')}
+                    alt=""
+                    fill
+                    className="object-contain transition-opacity group-hover:opacity-0"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                  <Image
+                    src={getImagePath('/images/ui/right-arrow-2.png')}
+                    alt=""
+                    fill
+                    className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                </button>
+              )}
             </div>
 
             <div
-              className="flex w-full items-center justify-center gap-8 py-4"
+              className="relative flex w-full items-center justify-center py-4"
               style={{
                 borderImageSource: `url(${getImagePath('/images/backgrounds/text-bg1.png')})`,
                 borderImageSlice: '50 50 50 50 fill',
@@ -172,42 +275,54 @@ export default function Home() {
               }}
             >
               {/* Left Arrow */}
-              <button className="group relative h-8 w-8 flex-shrink-0">
-                <Image
-                  src={getImagePath('/images/ui/left-arrow-1.png')}
-                  alt=""
-                  fill
-                  className="object-contain transition-opacity group-hover:opacity-0"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-                <Image
-                  src={getImagePath('/images/ui/left-arrow-2.png')}
-                  alt=""
-                  fill
-                  className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-              </button>
+              {currentFastTier !== 1 && (
+                <button
+                  className="group absolute left-8 h-8 w-8"
+                  onClick={() => navigateFastTier('prev')}
+                >
+                  <Image
+                    src={getImagePath('/images/ui/left-arrow-1.png')}
+                    alt=""
+                    fill
+                    className="object-contain transition-opacity group-hover:opacity-0"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                  <Image
+                    src={getImagePath('/images/ui/left-arrow-2.png')}
+                    alt=""
+                    fill
+                    className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                </button>
+              )}
 
-              <h1 className="text-center font-pixel text-4xl tracking-widest">Normal</h1>
+              <h1 className="text-center font-pixel text-4xl tracking-widest">
+                {currentFastTierLabel}
+              </h1>
 
               {/* Right Arrow */}
-              <button className="group relative h-8 w-8 flex-shrink-0">
-                <Image
-                  src={getImagePath('/images/ui/right-arrow-1.png')}
-                  alt=""
-                  fill
-                  className="object-contain transition-opacity group-hover:opacity-0"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-                <Image
-                  src={getImagePath('/images/ui/right-arrow-2.png')}
-                  alt=""
-                  fill
-                  className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-              </button>
+              {currentFastTier !== 11 && (
+                <button
+                  className="group absolute right-8 h-8 w-8"
+                  onClick={() => navigateFastTier('next')}
+                >
+                  <Image
+                    src={getImagePath('/images/ui/right-arrow-1.png')}
+                    alt=""
+                    fill
+                    className="object-contain transition-opacity group-hover:opacity-0"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                  <Image
+                    src={getImagePath('/images/ui/right-arrow-2.png')}
+                    alt=""
+                    fill
+                    className="object-contain opacity-0 transition-opacity group-hover:opacity-100"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                </button>
+              )}
             </div>
           </div>
 
@@ -272,22 +387,26 @@ export default function Home() {
                     <div className="relative flex flex-col gap-2 p-2">
                       <div className="flex gap-2">
                         {sortedHeroes.slice(0, 8).map(hero => (
-                          <div
+                          <LevelHeroSprite
                             key={hero.id}
-                            className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                          >
-                            <HeroSprite hero={hero} type="small" scale={3} />
-                          </div>
+                            hero={hero}
+                            levelId={1}
+                            isComplete={isHeroLevelComplete(hero.id, 1)}
+                            onToggle={toggleHeroCompletion}
+                            isClient={isClient}
+                          />
                         ))}
                       </div>
                       <div className="flex gap-2">
                         {sortedHeroes.slice(8, 16).map(hero => (
-                          <div
+                          <LevelHeroSprite
                             key={hero.id}
-                            className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                          >
-                            <HeroSprite hero={hero} type="small" scale={3} />
-                          </div>
+                            hero={hero}
+                            levelId={1}
+                            isComplete={isHeroLevelComplete(hero.id, 1)}
+                            onToggle={toggleHeroCompletion}
+                            isClient={isClient}
+                          />
                         ))}
                       </div>
                     </div>
@@ -345,22 +464,26 @@ export default function Home() {
                     <div className="relative flex flex-col gap-2 p-2">
                       <div className="flex gap-2">
                         {sortedHeroes.slice(0, 8).map(hero => (
-                          <div
+                          <LevelHeroSprite
                             key={hero.id}
-                            className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                          >
-                            <HeroSprite hero={hero} type="small" scale={3} />
-                          </div>
+                            hero={hero}
+                            levelId={2}
+                            isComplete={isHeroLevelComplete(hero.id, 2)}
+                            onToggle={toggleHeroCompletion}
+                            isClient={isClient}
+                          />
                         ))}
                       </div>
                       <div className="flex gap-2">
                         {sortedHeroes.slice(8, 16).map(hero => (
-                          <div
+                          <LevelHeroSprite
                             key={hero.id}
-                            className="transition-all hover:drop-shadow-[0_0_4px_rgba(255,215,0,0.8)]"
-                          >
-                            <HeroSprite hero={hero} type="small" scale={3} />
-                          </div>
+                            hero={hero}
+                            levelId={2}
+                            isComplete={isHeroLevelComplete(hero.id, 2)}
+                            onToggle={toggleHeroCompletion}
+                            isClient={isClient}
+                          />
                         ))}
                       </div>
                     </div>
@@ -845,5 +968,3 @@ export default function Home() {
     </main>
   );
 }
-
-
