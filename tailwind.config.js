@@ -6,7 +6,15 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      textColor: {
+        primary: '#f6eade', // Title/Header color
+        secondary: '#dabda1', // Bulk text color
+      },
+      fontFamily: {
+        pixel: ['TimesNewPixel', 'monospace'],
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
