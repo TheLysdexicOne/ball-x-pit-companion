@@ -43,30 +43,21 @@ const FAST_TIERS: { value: FastTierCompletion; label: string }[] = [
 
 export default function Home() {
   const [showHeroOverlay, setShowHeroOverlay] = useState(false);
-  const { getSortedHeroes, updateLevelCompletion, getHeroProgress } = useProgressData();
+  const {
+    getSortedHeroes,
+    updateLevelCompletion,
+    getHeroProgress,
+    currentDifficulty,
+    currentTier,
+    setCurrentDifficulty,
+    setCurrentTier,
+  } = useProgressData();
   const [sortedHeroes, setSortedHeroes] = useState<Hero[]>(HEROES);
-  const [currentDifficulty, setCurrentDifficulty] = useState<DifficultyTier>('base');
-  const [currentFastTier, setCurrentFastTier] = useState<FastTierCompletion>(1);
   const [isClient, setIsClient] = useState(false);
 
   // Set client flag after hydration to prevent SSR mismatch
   useEffect(() => {
     setIsClient(true);
-
-    // Load saved navigation state from localStorage
-    const savedDifficulty = localStorage.getItem('currentDifficulty');
-    const savedFastTier = localStorage.getItem('currentFastTier');
-
-    if (savedDifficulty && DIFFICULTY_TIERS.some(t => t.value === savedDifficulty)) {
-      setCurrentDifficulty(savedDifficulty as DifficultyTier);
-    }
-
-    if (savedFastTier) {
-      const tierValue = parseInt(savedFastTier, 10);
-      if (tierValue >= 1 && tierValue <= 11) {
-        setCurrentFastTier(tierValue as FastTierCompletion);
-      }
-    }
   }, []);
 
   // Load sorted heroes from progress data
@@ -91,13 +82,12 @@ export default function Home() {
 
     if (newDifficulty) {
       setCurrentDifficulty(newDifficulty);
-      localStorage.setItem('currentDifficulty', newDifficulty);
     }
   };
 
   // Navigate fast tiers
   const navigateFastTier = (direction: 'prev' | 'next') => {
-    const currentIndex = FAST_TIERS.findIndex(t => t.value === currentFastTier);
+    const currentIndex = FAST_TIERS.findIndex(t => t.value === currentTier);
     let newFastTier: FastTierCompletion | null = null;
 
     if (direction === 'prev' && currentIndex > 0) {
@@ -107,8 +97,7 @@ export default function Home() {
     }
 
     if (newFastTier) {
-      setCurrentFastTier(newFastTier);
-      localStorage.setItem('currentFastTier', newFastTier.toString());
+      setCurrentTier(newFastTier);
     }
   };
 
@@ -125,16 +114,16 @@ export default function Home() {
     if (!completion) return false;
 
     // Check if fast tier is at or above current
-    return completion.fastTier >= currentFastTier;
+    return completion.fastTier >= currentTier;
   };
 
   // Toggle hero completion for a level
   const toggleHeroCompletion = (heroId: string, levelId: number) => {
     const isComplete = isHeroLevelComplete(heroId, levelId);
 
-    // If already complete at this tier, downgrade to previous tier (currentFastTier - 1)
+    // If already complete at this tier, downgrade to previous tier (currentTier - 1)
     // If not complete, set to current fast tier (which auto-completes lower tiers)
-    const newFastTier = isComplete ? Math.max(0, currentFastTier - 1) : currentFastTier;
+    const newFastTier = isComplete ? Math.max(0, currentTier - 1) : currentTier;
 
     updateLevelCompletion(heroId, levelId, {
       difficulty: currentDifficulty,
@@ -144,7 +133,7 @@ export default function Home() {
 
   const currentDifficultyLabel =
     DIFFICULTY_TIERS.find(t => t.value === currentDifficulty)?.label || 'Base Level';
-  const currentFastTierLabel = FAST_TIERS.find(t => t.value === currentFastTier)?.label || 'Normal';
+  const currentFastTierLabel = FAST_TIERS.find(t => t.value === currentTier)?.label || 'Normal';
 
   return (
     <main className="min-h-screen p-8">
@@ -246,7 +235,7 @@ export default function Home() {
                 }}
               >
                 {/* Left Arrow */}
-                {currentDifficulty !== 'base' && (
+                {isClient && currentDifficulty !== 'base' && (
                   <button
                     className="group absolute left-8 h-8 w-8 select-none"
                     onClick={() => navigateDifficulty('prev')}
@@ -269,11 +258,11 @@ export default function Home() {
                 )}
 
                 <h1 className="select-none text-center font-pixel text-4xl tracking-widest">
-                  {currentDifficultyLabel}
+                  {isClient ? currentDifficultyLabel : 'Base Level'}
                 </h1>
 
                 {/* Right Arrow */}
-                {currentDifficulty !== 'ng-plus-9' && (
+                {isClient && currentDifficulty !== 'ng-plus-9' && (
                   <button
                     className="group absolute right-8 h-8 w-8 select-none"
                     onClick={() => navigateDifficulty('next')}
@@ -307,7 +296,7 @@ export default function Home() {
                 }}
               >
                 {/* Left Arrow */}
-                {currentFastTier !== 1 && (
+                {isClient && currentTier !== 1 && (
                   <button
                     className="group absolute left-8 h-8 w-8 select-none"
                     onClick={() => navigateFastTier('prev')}
@@ -330,11 +319,11 @@ export default function Home() {
                 )}
 
                 <h1 className="select-none text-center font-pixel text-4xl tracking-widest">
-                  {currentFastTierLabel}
+                  {isClient ? currentFastTierLabel : 'Normal'}
                 </h1>
 
                 {/* Right Arrow */}
-                {currentFastTier !== 11 && (
+                {isClient && currentTier !== 11 && (
                   <button
                     className="group absolute right-8 h-8 w-8 select-none"
                     onClick={() => navigateFastTier('next')}

@@ -60,3 +60,19 @@ export interface ProgressData {
   /** Progress data for all heroes */
   heroes: HeroProgress[];
 }
+
+/**
+ * Save slot data structure
+ */
+export interface SaveSlotData {
+  /** Hero progress data */
+  heroProgress: ProgressData;
+  /** Last selected difficulty tier */
+  lastDifficulty: DifficultyTier;
+  /** Last selected tier completion level */
+  lastTier: FastTierCompletion;
+  /** Last modified timestamp */
+  lastModified: number;
+  /** Optional save slot name */
+  name?: string;
+}
