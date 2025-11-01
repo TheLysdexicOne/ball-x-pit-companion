@@ -94,3 +94,4 @@ logs
 # Game data (extraction only)
 .gamedata/
 .github/documentation/
+balls/

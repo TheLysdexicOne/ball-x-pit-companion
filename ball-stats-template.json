@@ -1,0 +1,1552 @@
+[
+  {
+    "id": "assassin",
+    "name": "Assassin",
+    "slug": "hupg_assassin",
+    "variables": "damage_pct",
+    "description": "Passes through the front of enemies, but not the back. Backstabs deal {[damage_pct]} bonus damage.",
+    "stats": {
+      "level2": {
+        "damage_pct": ""
+      },
+      "level3": {
+        "damage_pct": ""
+      },
+      "level1": {
+        "damage_pct": "30"
+      }
+    }
+  },
+  {
+    "id": "berserk",
+    "name": "Berserk",
+    "slug": "hupg_berserk",
+    "variables": ["berserk_chance", "berserk_length", "min_berserk_damage", "max_berserk_damage"],
+    "description": "Each hit has a {[berserk_chance]} chance of causing enemies to go berserk for {[berserk_length]} seconds. Berserk enemies deal {[min_berserk_damage]}-{[max_berserk_damage]} damage to adjacent enemies every second.",
+    "stats": {
+      "level2": {
+        "berserk_chance": "",
+        "berserk_length": "",
+        "min_berserk_damage": "",
+        "max_berserk_damage": ""
+      },
+      "level3": {
+        "berserk_chance": "",
+        "berserk_length": "",
+        "min_berserk_damage": "",
+        "max_berserk_damage": ""
+      },
+      "level1": {
+        "berserk_chance": "30",
+        "berserk_length": "6",
+        "min_berserk_damage": "15",
+        "max_berserk_damage": "24"
+      }
+    }
+  },
+  {
+    "id": "blackhole",
+    "name": "Black Hole",
+    "slug": "hupg_blackhole",
+    "variables": "cooldown_length",
+    "description": "Instantly kills the first non-boss enemy that it hits, but destroys itself afterwards. Has a {[cooldown_length]} second cooldown before it can be shot again.",
+    "stats": {
+      "level2": {
+        "cooldown_length": ""
+      },
+      "level3": {
+        "cooldown_length": ""
+      },
+      "level1": {
+        "cooldown_length": "7"
+      }
+    }
+  },
+  {
+    "id": "bleed",
+    "name": "Bleed",
+    "slug": "hupg_bleed",
+    "variables": ["bleed_amt", "bleed_max_stacks"],
+    "description": "Inflicts {[bleed_amt]} stacks of bleed. Bleeding enemies receive 1 damage per stack when hit by a ball (Max {[bleed_max_stacks]} stacks)",
+    "stats": {
+      "level2": {
+        "bleed_amt": "",
+        "bleed_max_stacks": ""
+      },
+      "level3": {
+        "bleed_amt": "",
+        "bleed_max_stacks": ""
+      },
+      "level1": {
+        "bleed_amt": "1",
+        "bleed_max_stacks": "2"
+      }
+    }
+  },
+  {
+    "id": "blizzard",
+    "name": "Blizzard",
+    "slug": "hupg_blizzard",
+    "variables": ["range", "freeze_length", "min_lightning_damage", "max_lightning_damage"],
+    "description": "Freezes all enemies within a {[range]} tile radius for {[freeze_length]} seconds, dealing {[min_lightning_damage]}-{[max_lightning_damage]} damage.",
+    "stats": {
+      "level2": {
+        "range": "",
+        "freeze_length": "",
+        "min_lightning_damage": "",
+        "max_lightning_damage": ""
+      },
+      "level3": {
+        "range": "",
+        "freeze_length": "",
+        "min_lightning_damage": "",
+        "max_lightning_damage": ""
+      },
+      "level1": {
+        "range": "2",
+        "freeze_length": "0.8",
+        "min_lightning_damage": "1",
+        "max_lightning_damage": "50"
+      }
+    }
+  },
+  {
+    "id": "bomb",
+    "name": "Bomb",
+    "slug": "hupg_bomb",
+    "variables": ["min_bomb_damage", "max_bomb_damage", "cooldown_length"],
+    "description": "Explodes when hitting an enemy, dealing {[min_bomb_damage]}-{[max_bomb_damage]} damage to nearby enemies. Has a {[cooldown_length]} second cooldown before it can be shot again.",
+    "stats": {
+      "level2": {
+        "min_bomb_damage": "",
+        "max_bomb_damage": "",
+        "cooldown_length": ""
+      },
+      "level3": {
+        "min_bomb_damage": "",
+        "max_bomb_damage": "",
+        "cooldown_length": ""
+      },
+      "level1": {
+        "min_bomb_damage": "150",
+        "max_bomb_damage": "300",
+        "cooldown_length": "3"
+      }
+    }
+  },
+  {
+    "id": "broodmother",
+    "name": "Brood Mother",
+    "slug": "hupg_broodmother",
+    "variables": "birth_chance",
+    "description": "Has a {[birth_chance]} chance of birthing a baby ball each time it hits an enemy",
+    "stats": {
+      "level2": {
+        "birth_chance": ""
+      },
+      "level3": {
+        "birth_chance": ""
+      },
+      "level1": {
+        "birth_chance": "25"
+      }
+    }
+  },
+  {
+    "id": "burn",
+    "name": "Burn",
+    "slug": "hupg_burn",
+    "variables": ["burn_length", "max_burn_stacks", "min_burn_damage", "max_burn_damage"],
+    "description": "Add 1 stack of burn on hit for {[burn_length]} seconds (max {[max_burn_stacks]} stacks). Burnt units are dealt {[min_burn_damage]}-{[max_burn_damage]} damage per stack per second.",
+    "stats": {
+      "level2": {
+        "burn_length": "",
+        "max_burn_stacks": "",
+        "min_burn_damage": "",
+        "max_burn_damage": ""
+      },
+      "level3": {
+        "burn_length": "",
+        "max_burn_stacks": "",
+        "min_burn_damage": "",
+        "max_burn_damage": ""
+      },
+      "level1": {
+        "burn_length": "3",
+        "max_burn_stacks": "3",
+        "min_burn_damage": "4",
+        "max_burn_damage": "8"
+      }
+    }
+  },
+  {
+    "id": "cell",
+    "name": "Cell",
+    "slug": "hupg_cell",
+    "variables": "cell_limit",
+    "description": "Splits into a clone on hit {[cell_limit]} times.",
+    "stats": {
+      "level2": {
+        "cell_limit": ""
+      },
+      "level3": {
+        "cell_limit": ""
+      },
+      "level1": {
+        "cell_limit": "2"
+      }
+    }
+  },
+  {
+    "id": "charm",
+    "name": "Charm",
+    "slug": "hupg_charm",
+    "variables": ["charm_chance", "charm_length"],
+    "description": "Each hit has a {[charm_chance]} chance of charming the enemy for {[charm_length]} seconds. Charmed units walk up the board and attack enemies.",
+    "stats": {
+      "level2": {
+        "charm_chance": "",
+        "charm_length": ""
+      },
+      "level3": {
+        "charm_chance": "",
+        "charm_length": ""
+      },
+      "level1": {
+        "charm_chance": "4",
+        "charm_length": "5"
+      }
+    }
+  },
+  {
+    "id": "dark",
+    "name": "Dark",
+    "slug": "hupg_dark",
+    "variables": ["damage_multiplier", "cooldown_length"],
+    "description": "Deals {[damage_multiplier]}x damage but destroys itself after hitting an enemy. Has a {[cooldown_length]} second cooldown before it can be shot again.",
+    "stats": {
+      "level2": {
+        "damage_multiplier": "",
+        "cooldown_length": ""
+      },
+      "level3": {
+        "damage_multiplier": "",
+        "cooldown_length": ""
+      },
+      "level1": {
+        "damage_multiplier": "3.0",
+        "cooldown_length": "3"
+      }
+    }
+  },
+  {
+    "id": "earthquake",
+    "name": "Earthquake",
+    "slug": "hupg_earthquake",
+    "variables": ["min_earthquake_damage", "max_earthquake_damage", "range"],
+    "description": "Deals {[min_earthquake_damage]}-{[max_earthquake_damage]} damage to nearby units in a {[range]}x{[range]} tile square",
+    "stats": {
+      "level2": {
+        "min_earthquake_damage": "",
+        "max_earthquake_damage": "",
+        "range": ""
+      },
+      "level3": {
+        "min_earthquake_damage": "",
+        "max_earthquake_damage": "",
+        "range": ""
+      },
+      "level1": {
+        "min_earthquake_damage": "5",
+        "max_earthquake_damage": "13",
+        "range": "3"
+      }
+    }
+  },
+  {
+    "id": "eggsac",
+    "name": "Egg Sac",
+    "slug": "hupg_eggsac",
+    "variables": ["min_babies", "max_babies", "cooldown_length"],
+    "description": "Explodes into {[min_babies]}-{[max_babies]} baby balls on hitting an enemy. Has a {[cooldown_length]} second cooldown before it can be shot again.",
+    "stats": {
+      "level2": {
+        "min_babies": "",
+        "max_babies": "",
+        "cooldown_length": ""
+      },
+      "level3": {
+        "min_babies": "",
+        "max_babies": "",
+        "cooldown_length": ""
+      },
+      "level1": {
+        "min_babies": "2",
+        "max_babies": "4",
+        "cooldown_length": "3"
+      }
+    }
+  },
+  {
+    "id": "flash",
+    "name": "Flash",
+    "slug": "hupg_flash",
+    "variables": ["min_flash_damage", "max_flash_damage", "blind_length"],
+    "description": "Damage all enemies on screen for {[min_flash_damage]} - {[max_flash_damage]} damage after hitting an enemy and blind them for {[blind_length]} seconds.",
+    "stats": {
+      "level2": {
+        "min_flash_damage": "",
+        "max_flash_damage": "",
+        "blind_length": ""
+      },
+      "level3": {
+        "min_flash_damage": "",
+        "max_flash_damage": "",
+        "blind_length": ""
+      },
+      "level1": {
+        "min_flash_damage": "1",
+        "max_flash_damage": "3",
+        "blind_length": "2"
+      }
+    }
+  },
+  {
+    "id": "flicker",
+    "name": "Flicker",
+    "slug": "hupg_flicker",
+    "variables": ["min_flicker_damage", "max_flicker_damage", "flicker_cycle"],
+    "description": "Deals {[min_flicker_damage]}-{[max_flicker_damage]} damage to every enemy on screen every {[flicker_cycle]} seconds.",
+    "stats": {
+      "level2": {
+        "min_flicker_damage": "",
+        "max_flicker_damage": "",
+        "flicker_cycle": ""
+      },
+      "level3": {
+        "min_flicker_damage": "",
+        "max_flicker_damage": "",
+        "flicker_cycle": ""
+      },
+      "level1": {
+        "min_flicker_damage": "1",
+        "max_flicker_damage": "7",
+        "flicker_cycle": "1.4"
+      }
+    }
+  },
+  {
+    "id": "freeze",
+    "name": "Freeze",
+    "slug": "hupg_freeze",
+    "variables": ["freeze_pct", "freeze_length", "freeze_damage_pct"],
+    "description": "Has a {[freeze_pct]} chance to freeze enemies for {[freeze_length]} seconds. Frozen enemies receive {[freeze_damage_pct]} more damage",
+    "stats": {
+      "level2": {
+        "freeze_pct": "",
+        "freeze_length": "",
+        "freeze_damage_pct": ""
+      },
+      "level3": {
+        "freeze_pct": "",
+        "freeze_length": "",
+        "freeze_damage_pct": ""
+      },
+      "level1": {
+        "freeze_pct": "4",
+        "freeze_length": "5.0",
+        "freeze_damage_pct": "25"
+      }
+    }
+  },
+  {
+    "id": "freezeray",
+    "name": "Freeze Ray",
+    "slug": "hupg_freezeray",
+    "variables": ["min_laser_damage", "max_laser_damage", "freeze_pct", "freeze_length"],
+    "description": "Emits a freeze ray when hitting an enemy, dealing  {[min_laser_damage]}-{[max_laser_damage]} to all enemies in its path, with a {[freeze_pct]} chance of freezing them for {[freeze_length]} seconds",
+    "stats": {
+      "level2": {
+        "min_laser_damage": "",
+        "max_laser_damage": "",
+        "freeze_pct": "",
+        "freeze_length": ""
+      },
+      "level3": {
+        "min_laser_damage": "",
+        "max_laser_damage": "",
+        "freeze_pct": "",
+        "freeze_length": ""
+      },
+      "level1": {
+        "min_laser_damage": "20",
+        "max_laser_damage": "50",
+        "freeze_pct": "10",
+        "freeze_length": "10.0"
+      }
+    }
+  },
+  {
+    "id": "frozenflame",
+    "name": "Frozen Flame",
+    "slug": "hupg_frozenflame",
+    "variables": [
+      "frostburn_length",
+      "max_frostburn_stacks",
+      "min_frostburn_damage",
+      "max_frostburn_damage",
+      "freeze_damage_pct"
+    ],
+    "description": "Add 1 stack of frostburn on hit for {[frostburn_length]} seconds (max {[max_frostburn_stacks]} stacks). Frostburnt units are dealt {[min_frostburn_damage]}-{[max_frostburn_damage]} damage per stack per second and receive {[freeze_damage_pct]} more damage from other sources.",
+    "stats": {
+      "level2": {
+        "frostburn_length": "",
+        "max_frostburn_stacks": "",
+        "min_frostburn_damage": "",
+        "max_frostburn_damage": "",
+        "freeze_damage_pct": ""
+      },
+      "level3": {
+        "frostburn_length": "",
+        "max_frostburn_stacks": "",
+        "min_frostburn_damage": "",
+        "max_frostburn_damage": "",
+        "freeze_damage_pct": ""
+      },
+      "level1": {
+        "frostburn_length": "20",
+        "max_frostburn_stacks": "4",
+        "min_frostburn_damage": "8",
+        "max_frostburn_damage": "12",
+        "freeze_damage_pct": "25"
+      }
+    }
+  },
+  {
+    "id": "ghost",
+    "name": "Ghost",
+    "slug": "hupg_ghost",
+    "variables": [],
+    "description": "Passes through enemies.",
+    "stats": {
+      "level2": {},
+      "level3": {},
+      "level1": {}
+    }
+  },
+  {
+    "id": "glacier",
+    "name": "Glacier",
+    "slug": "hupg_glacier",
+    "variables": [
+      "min_glacier_damage",
+      "max_glacier_damage",
+      "freeze_length",
+      "min_earthquake_damage",
+      "max_earthquake_damage"
+    ],
+    "description": "Releases glacial spikes over time that deal {[min_glacier_damage]}-{[max_glacier_damage]} to enemies that touch them and freeze them for {[freeze_length]} seconds. This ball and its glacial spikes also deal {[min_earthquake_damage]}-{[max_earthquake_damage]} damage to nearby units.",
+    "stats": {
+      "level2": {
+        "min_glacier_damage": "",
+        "max_glacier_damage": "",
+        "freeze_length": "",
+        "min_earthquake_damage": "",
+        "max_earthquake_damage": ""
+      },
+      "level3": {
+        "min_glacier_damage": "",
+        "max_glacier_damage": "",
+        "freeze_length": "",
+        "min_earthquake_damage": "",
+        "max_earthquake_damage": ""
+      },
+      "level1": {
+        "min_glacier_damage": "15",
+        "max_glacier_damage": "30",
+        "freeze_length": "2.0",
+        "min_earthquake_damage": "6",
+        "max_earthquake_damage": "12"
+      }
+    }
+  },
+  {
+    "id": "hemorrhage",
+    "name": "Hemorrhage",
+    "slug": "hupg_hemorrhage",
+    "variables": ["bleed_amt", "bleed_max_stacks", "hemorrhage_pct"],
+    "description": "Inflicts {[bleed_amt]} stacks of bleed. When hitting an enemy with {[bleed_max_stacks]} stacks of bleed or more, consumes all stacks of bleed to deal {[hemorrhage_pct]} of their current health.",
+    "stats": {
+      "level2": {
+        "bleed_amt": "4",
+        "bleed_max_stacks": "12",
+        "hemorrhage_pct": "20"
+      },
+      "level3": {
+        "bleed_amt": "4",
+        "bleed_max_stacks": "12",
+        "hemorrhage_pct": "30"
+      },
+      "level1": {
+        "bleed_amt": "3",
+        "bleed_max_stacks": "12",
+        "hemorrhage_pct": "20"
+      }
+    }
+  },
+  {
+    "id": "lasercross",
+    "name": "Holy Laser",
+    "slug": "hupg_lasercross",
+    "variables": ["min_laser_damage", "max_laser_damage"],
+    "description": "Deals {[min_laser_damage]}-{[max_laser_damage]} damage to all enemies in the same row and column",
+    "stats": {
+      "level2": {
+        "min_laser_damage": "",
+        "max_laser_damage": ""
+      },
+      "level3": {
+        "min_laser_damage": "",
+        "max_laser_damage": ""
+      },
+      "level1": {
+        "min_laser_damage": "24",
+        "max_laser_damage": "36"
+      }
+    }
+  },
+  {
+    "id": "incubus",
+    "name": "Incubus",
+    "slug": "hupg_incubus",
+    "variables": [
+      "charm_chance",
+      "charm_length",
+      "min_curse_damage",
+      "max_curse_damage",
+      "curse_delay"
+    ],
+    "description": "Each hit has a {[charm_chance]} chance of charming the enemy for {[charm_length]} seconds. Charmed enemies curse nearby enemies. Cursed enemies are dealt {[min_curse_damage]}-{[max_curse_damage]} after being hit {[curse_delay]} times.",
+    "stats": {
+      "level2": {
+        "charm_chance": "",
+        "charm_length": "",
+        "min_curse_damage": "",
+        "max_curse_damage": "",
+        "curse_delay": ""
+      },
+      "level3": {
+        "charm_chance": "",
+        "charm_length": "",
+        "min_curse_damage": "",
+        "max_curse_damage": "",
+        "curse_delay": ""
+      },
+      "level1": {
+        "charm_chance": "4",
+        "charm_length": "9",
+        "min_curse_damage": "100",
+        "max_curse_damage": "200",
+        "curse_delay": "5"
+      }
+    }
+  },
+  {
+    "id": "inferno",
+    "name": "Inferno",
+    "slug": "hupg_inferno",
+    "variables": ["range", "burn_length", "min_burn_damage", "max_burn_damage"],
+    "description": "Applies 1 stack of burn every second to all enemies within a {[range]} tile radius. Burn lasts for {[burn_length]} seconds, dealing {[min_burn_damage]}-{[max_burn_damage]} damage per stack per second.",
+    "stats": {
+      "level2": {
+        "range": "",
+        "burn_length": "",
+        "min_burn_damage": "",
+        "max_burn_damage": ""
+      },
+      "level3": {
+        "range": "",
+        "burn_length": "",
+        "min_burn_damage": "",
+        "max_burn_damage": ""
+      },
+      "level1": {
+        "range": "2",
+        "burn_length": "6",
+        "min_burn_damage": "3",
+        "max_burn_damage": "7"
+      }
+    }
+  },
+  {
+    "id": "heavy",
+    "name": "Iron",
+    "slug": "hupg_heavy",
+    "variables": "reduce_speed_pct",
+    "description": "Deals double damage but moves {[reduce_speed_pct]} slower",
+    "stats": {
+      "level2": {
+        "reduce_speed_pct": ""
+      },
+      "level3": {
+        "reduce_speed_pct": ""
+      },
+      "level1": {
+        "reduce_speed_pct": "40"
+      }
+    }
+  },
+  {
+    "id": "laserhorz",
+    "name": "Laser (Horizontal)",
+    "slug": "hupg_laserhorz",
+    "variables": ["min_laser_damage", "max_laser_damage"],
+    "description": "Deals {[min_laser_damage]}-{[max_laser_damage]} damage to all enemies in the same row",
+    "stats": {
+      "level2": {
+        "min_laser_damage": "",
+        "max_laser_damage": ""
+      },
+      "level3": {
+        "min_laser_damage": "",
+        "max_laser_damage": ""
+      },
+      "level1": {
+        "min_laser_damage": "9",
+        "max_laser_damage": "18"
+      }
+    }
+  },
+  {
+    "id": "laservert",
+    "name": "Laser (Vertical)",
+    "slug": "hupg_laservert",
+    "variables": ["min_laser_damage", "max_laser_damage"],
+    "description": "Deals {[min_laser_damage]}-{[max_laser_damage]} damage to all enemies in the same column",
+    "stats": {
+      "level2": {
+        "min_laser_damage": "",
+        "max_laser_damage": ""
+      },
+      "level3": {
+        "min_laser_damage": "",
+        "max_laser_damage": ""
+      },
+      "level1": {
+        "min_laser_damage": "9",
+        "max_laser_damage": "18"
+      }
+    }
+  },
+  {
+    "id": "laserbeam",
+    "name": "Laser Beam",
+    "slug": "hupg_laserbeam",
+    "variables": ["min_laser_damage", "max_laser_damage", "blind_length"],
+    "description": "Emit a laser beam on hit that deals {[min_laser_damage]}-{[max_laser_damage]} damage and blinds enemies for {[blind_length]} seconds.",
+    "stats": {
+      "level2": {
+        "min_laser_damage": "",
+        "max_laser_damage": "",
+        "blind_length": ""
+      },
+      "level3": {
+        "min_laser_damage": "",
+        "max_laser_damage": "",
+        "blind_length": ""
+      },
+      "level1": {
+        "min_laser_damage": "30",
+        "max_laser_damage": "42",
+        "blind_length": "8"
+      }
+    }
+  },
+  {
+    "id": "leech",
+    "name": "Leech",
+    "slug": "hupg_leech",
+    "variables": ["bleed_amt", "bleed_max_stacks"],
+    "description": "Attaches up to 1 leech onto enemies it hits, which adds {[bleed_amt]} stacks of bleed per second (Max {[bleed_max_stacks]} stacks)",
+    "stats": {
+      "level2": {
+        "bleed_amt": "",
+        "bleed_max_stacks": ""
+      },
+      "level3": {
+        "bleed_amt": "",
+        "bleed_max_stacks": ""
+      },
+      "level1": {
+        "bleed_amt": "2",
+        "bleed_max_stacks": "24"
+      }
+    }
+  },
+  {
+    "id": "light",
+    "name": "Light",
+    "slug": "hupg_light",
+    "variables": "blind_length",
+    "description": "Blinds enemies on hit for {[blind_length]} seconds. Blinded units have a hard time detecting you and have a 50% chance of missing when they attack.",
+    "stats": {
+      "level2": {
+        "blind_length": ""
+      },
+      "level3": {
+        "blind_length": ""
+      },
+      "level1": {
+        "blind_length": "3"
+      }
+    }
+  },
+  {
+    "id": "lightning",
+    "name": "Lightning",
+    "slug": "hupg_lightning",
+    "variables": ["min_lightning_damage", "max_lightning_damage", "lightning_limit"],
+    "description": "Deals {[min_lightning_damage]}-{[max_lightning_damage]} damage to up to {[lightning_limit]} nearby enemies",
+    "stats": {
+      "level2": {
+        "min_lightning_damage": "",
+        "max_lightning_damage": "",
+        "lightning_limit": ""
+      },
+      "level3": {
+        "min_lightning_damage": "",
+        "max_lightning_damage": "",
+        "lightning_limit": ""
+      },
+      "level1": {
+        "min_lightning_damage": "1",
+        "max_lightning_damage": "20",
+        "lightning_limit": "3"
+      }
+    }
+  },
+  {
+    "id": "lightningrod",
+    "name": "Lightning Rod",
+    "slug": "hupg_lightningrod",
+    "variables": [
+      "lightning_rod_length",
+      "min_lightning_damage",
+      "max_lightning_damage",
+      "lightning_limit"
+    ],
+    "description": "Plants a lightning rod into enemies it hits. These enemies are struck by lightning every {[lightning_rod_length]} seconds, dealing {[min_lightning_damage]}-{[max_lightning_damage]} damage to up to {[lightning_limit]} nearby enemies",
+    "stats": {
+      "level2": {
+        "lightning_rod_length": "",
+        "min_lightning_damage": "",
+        "max_lightning_damage": "",
+        "lightning_limit": ""
+      },
+      "level3": {
+        "lightning_rod_length": "",
+        "min_lightning_damage": "",
+        "max_lightning_damage": "",
+        "lightning_limit": ""
+      },
+      "level1": {
+        "lightning_rod_length": "3.0",
+        "min_lightning_damage": "1",
+        "max_lightning_damage": "30",
+        "lightning_limit": "8"
+      }
+    }
+  },
+  {
+    "id": "lovestruck",
+    "name": "Lovestruck",
+    "slug": "hupg_lovestruck",
+    "variables": ["lovestruck_length", "lovestruck_heal"],
+    "description": "Inflicts lovestruck on hit enemies for {[lovestruck_length]} seconds. Lovestruck units have a 50% chance of healing you for {[lovestruck_heal]} health when they attack.",
+    "stats": {
+      "level2": {
+        "lovestruck_length": "",
+        "lovestruck_heal": ""
+      },
+      "level3": {
+        "lovestruck_length": "",
+        "lovestruck_heal": ""
+      },
+      "level1": {
+        "lovestruck_length": "20",
+        "lovestruck_heal": "5"
+      }
+    }
+  },
+  {
+    "id": "maggot",
+    "name": "Maggot",
+    "slug": "hupg_maggot",
+    "variables": ["min_babies", "max_babies"],
+    "description": "Infest enemies on hit with maggots. When they die, they explode into {[min_babies]}-{[max_babies]} baby balls",
+    "stats": {
+      "level2": {
+        "min_babies": "",
+        "max_babies": ""
+      },
+      "level3": {
+        "min_babies": "",
+        "max_babies": ""
+      },
+      "level1": {
+        "min_babies": "1",
+        "max_babies": "2"
+      }
+    }
+  },
+  {
+    "id": "magma",
+    "name": "Magma",
+    "slug": "hupg_magma",
+    "variables": [
+      "min_magma_damage",
+      "max_magma_damage",
+      "max_burn_stacks",
+      "burn_length",
+      "min_burn_damage",
+      "max_burn_damage",
+      "min_earthquake_damage",
+      "max_earthquake_damage"
+    ],
+    "description": "Emits lava blobs over time. Enemies who walk into lava blobs are dealt {[min_magma_damage]} - {[max_magma_damage]} damage and gain 1 stack of burn (max {[max_burn_stacks]} stacks). Burn lasts for for {[burn_length]} seconds, dealing  {[min_burn_damage]}-{[max_burn_damage]} damage per stack per second.  This ball and its lava blobs also deal {[min_earthquake_damage]}-{[max_earthquake_damage]} damage to nearby units.",
+    "stats": {
+      "level2": {
+        "min_magma_damage": "",
+        "max_magma_damage": "",
+        "max_burn_stacks": "",
+        "burn_length": "",
+        "min_burn_damage": "",
+        "max_burn_damage": "",
+        "min_earthquake_damage": "",
+        "max_earthquake_damage": ""
+      },
+      "level3": {
+        "min_magma_damage": "",
+        "max_magma_damage": "",
+        "max_burn_stacks": "",
+        "burn_length": "",
+        "min_burn_damage": "",
+        "max_burn_damage": "",
+        "min_earthquake_damage": "",
+        "max_earthquake_damage": ""
+      },
+      "level1": {
+        "min_magma_damage": "15",
+        "max_magma_damage": "30",
+        "max_burn_stacks": "3",
+        "burn_length": "3",
+        "min_burn_damage": "3",
+        "max_burn_damage": "8",
+        "min_earthquake_damage": "6",
+        "max_earthquake_damage": "12"
+      }
+    }
+  },
+  {
+    "id": "mosquitoking",
+    "name": "Mosquito King",
+    "slug": "hupg_mosquitoking",
+    "variables": ["min_mosquito_damage", "max_mosquito_damage", "lifesteal_heal"],
+    "description": "Spawns a mosquito each time it hits an enemy. Mosquitos attack a random enemy, dealing {[min_mosquito_damage]} - {[max_mosquito_damage]} damage each. If a mosquito kills an enemy, they steal {[lifesteal_heal]} health.",
+    "stats": {
+      "level2": {
+        "min_mosquito_damage": "",
+        "max_mosquito_damage": "",
+        "lifesteal_heal": ""
+      },
+      "level3": {
+        "min_mosquito_damage": "",
+        "max_mosquito_damage": "",
+        "lifesteal_heal": ""
+      },
+      "level1": {
+        "min_mosquito_damage": "80",
+        "max_mosquito_damage": "120",
+        "lifesteal_heal": "1"
+      }
+    }
+  },
+  {
+    "id": "mosquito",
+    "name": "Mosquito Swarm",
+    "slug": "hupg_mosquito",
+    "variables": [
+      "min_mosquitos",
+      "max_mosquitos",
+      "min_mosquito_damage",
+      "max_mosquito_damage",
+      "lifesteal_heal"
+    ],
+    "description": "Explodes into {[min_mosquitos]}-{[max_mosquitos]} mosquitos. Mosquitos attack random enemies, dealing {[min_mosquito_damage]} - {[max_mosquito_damage]} damage each. If a mosquito kills an enemy, they steal {[lifesteal_heal]} health.",
+    "stats": {
+      "level2": {
+        "min_mosquitos": "",
+        "max_mosquitos": "",
+        "min_mosquito_damage": "",
+        "max_mosquito_damage": "",
+        "lifesteal_heal": ""
+      },
+      "level3": {
+        "min_mosquitos": "",
+        "max_mosquitos": "",
+        "min_mosquito_damage": "",
+        "max_mosquito_damage": "",
+        "lifesteal_heal": ""
+      },
+      "level1": {
+        "min_mosquitos": "3",
+        "max_mosquitos": "6",
+        "min_mosquito_damage": "80",
+        "max_mosquito_damage": "120",
+        "lifesteal_heal": "1"
+      }
+    }
+  },
+  {
+    "id": "nosferatu",
+    "name": "Nosferatu",
+    "slug": "hupg_nosferatu",
+    "variables": ["min_vampire_bat_damage", "max_vampire_bat_damage"],
+    "description": "Spawns a vampire bat each bounce. Vampire bats fly towards a random enemy, dealing {[min_vampire_bat_damage]}-{[max_vampire_bat_damage]} damage on hit, turning into a Vampire Lord.",
+    "stats": {
+      "level2": {
+        "min_vampire_bat_damage": "",
+        "max_vampire_bat_damage": ""
+      },
+      "level3": {
+        "min_vampire_bat_damage": "",
+        "max_vampire_bat_damage": ""
+      },
+      "level1": {
+        "min_vampire_bat_damage": "132",
+        "max_vampire_bat_damage": "176"
+      }
+    }
+  },
+  {
+    "id": "noxious",
+    "name": "Noxious",
+    "slug": "hupg_noxious",
+    "variables": [
+      "max_poison_stacks",
+      "range",
+      "poison_length",
+      "min_poison_damage",
+      "max_poison_damage"
+    ],
+    "description": "Passes through enemies and applies {[max_poison_stacks]} stacks of poison to nearby enemies within a {[range]} tile radius. Poison lasts for {[poison_length]} seconds and each stack deals {[min_poison_damage]}-{[max_poison_damage]} damage per second.",
+    "stats": {
+      "level2": {
+        "max_poison_stacks": "3",
+        "range": "2",
+        "poison_length": "4",
+        "min_poison_damage": "",
+        "max_poison_damage": ""
+      },
+      "level3": {
+        "max_poison_stacks": "",
+        "range": "",
+        "poison_length": "",
+        "min_poison_damage": "",
+        "max_poison_damage": ""
+      },
+      "level1": {
+        "max_poison_stacks": "3",
+        "range": "2",
+        "poison_length": "4",
+        "min_poison_damage": "3",
+        "max_poison_damage": "1"
+      }
+    }
+  },
+  {
+    "id": "nuke",
+    "name": "Nuclear Bomb",
+    "slug": "hupg_nuke",
+    "variables": [
+      "min_bomb_damage",
+      "max_bomb_damage",
+      "max_radiation_stacks",
+      "radiation_pct",
+      "cooldown_length"
+    ],
+    "description": "Explodes when hitting an enemy, dealing {[min_bomb_damage]}-{[max_bomb_damage]} damage to nearby enemies and applying 1 stack of radiation to everyone present indefinitely (max {[max_radiation_stacks]} stacks). Each stack of radiation increases damage received by {[radiation_pct]}. Has a {[cooldown_length]} second cooldown.",
+    "stats": {
+      "level2": {
+        "min_bomb_damage": "",
+        "max_bomb_damage": "",
+        "max_radiation_stacks": "",
+        "radiation_pct": "",
+        "cooldown_length": ""
+      },
+      "level3": {
+        "min_bomb_damage": "",
+        "max_bomb_damage": "",
+        "max_radiation_stacks": "",
+        "radiation_pct": "",
+        "cooldown_length": ""
+      },
+      "level1": {
+        "min_bomb_damage": "300",
+        "max_bomb_damage": "500",
+        "max_radiation_stacks": "5",
+        "radiation_pct": "10",
+        "cooldown_length": "3"
+      }
+    }
+  },
+  {
+    "id": "overgrowth",
+    "name": "Overgrowth",
+    "slug": "hupg_overgrowth",
+    "variables": [
+      "max_overgrowth_stacks",
+      "min_overgrowth_damage",
+      "max_overgrowth_damage",
+      "range"
+    ],
+    "description": "Applies 1 stack of overgrowth. Upon reaching {[max_overgrowth_stacks]}, consume all stacks and deal {[min_overgrowth_damage]}-{[max_overgrowth_damage]} damage to all enemies in a {[range]}x{[range]} tile square.",
+    "stats": {
+      "level2": {
+        "max_overgrowth_stacks": "",
+        "min_overgrowth_damage": "",
+        "max_overgrowth_damage": "",
+        "range": ""
+      },
+      "level3": {
+        "max_overgrowth_stacks": "",
+        "min_overgrowth_damage": "",
+        "max_overgrowth_damage": "",
+        "range": ""
+      },
+      "level1": {
+        "max_overgrowth_stacks": "3",
+        "min_overgrowth_damage": "150",
+        "max_overgrowth_damage": "200",
+        "range": "3"
+      }
+    }
+  },
+  {
+    "id": "phantom",
+    "name": "Phantom",
+    "slug": "hupg_phantom",
+    "variables": ["min_curse_damage", "max_curse_damage", "curse_delay"],
+    "description": "Curse enemies on hit. Cursed enemies are dealt {[min_curse_damage]}-{[max_curse_damage]} damage after being hit {[curse_delay]} times.",
+    "stats": {
+      "level2": {
+        "min_curse_damage": "",
+        "max_curse_damage": "",
+        "curse_delay": ""
+      },
+      "level3": {
+        "min_curse_damage": "",
+        "max_curse_damage": "",
+        "curse_delay": ""
+      },
+      "level1": {
+        "min_curse_damage": "100",
+        "max_curse_damage": "200",
+        "curse_delay": "5"
+      }
+    }
+  },
+  {
+    "id": "poison",
+    "name": "Poison",
+    "slug": "hupg_poison",
+    "variables": ["max_poison_stacks", "poison_length", "min_poison_damage", "max_poison_damage"],
+    "description": "Applies 1 stack of poison on hit (max {[max_poison_stacks]} stacks). Poison lasts for {[poison_length]} seconds and each stack deals {[min_poison_damage]}-{[max_poison_damage]} damage per second",
+    "stats": {
+      "level2": {
+        "max_poison_stacks": "",
+        "poison_length": "",
+        "min_poison_damage": "",
+        "max_poison_damage": ""
+      },
+      "level3": {
+        "max_poison_stacks": "",
+        "poison_length": "",
+        "min_poison_damage": "",
+        "max_poison_damage": ""
+      },
+      "level1": {
+        "max_poison_stacks": "5",
+        "poison_length": "6",
+        "min_poison_damage": "1",
+        "max_poison_damage": "4"
+      }
+    }
+  },
+  {
+    "id": "radiationbeam",
+    "name": "Radiation Beam",
+    "slug": "hupg_radiationbeam",
+    "variables": [
+      "min_laser_damage",
+      "max_laser_damage",
+      "max_radiation_stacks",
+      "radiation_length",
+      "radiation_pct"
+    ],
+    "description": "Emit a radiation beam on hit that deals {[min_laser_damage]}-{[max_laser_damage]} damage and applies 1 stack of radiation (max {[max_radiation_stacks]} stacks). Radiation lasts for {[radiation_length]} seconds and cause enemies to receive {[radiation_pct]} more damage from all sources per stack.",
+    "stats": {
+      "level2": {
+        "min_laser_damage": "",
+        "max_laser_damage": "",
+        "max_radiation_stacks": "",
+        "radiation_length": "",
+        "radiation_pct": ""
+      },
+      "level3": {
+        "min_laser_damage": "",
+        "max_laser_damage": "",
+        "max_radiation_stacks": "",
+        "radiation_length": "",
+        "radiation_pct": ""
+      },
+      "level1": {
+        "min_laser_damage": "24",
+        "max_laser_damage": "48",
+        "max_radiation_stacks": "5",
+        "radiation_length": "15",
+        "radiation_pct": "10"
+      }
+    }
+  },
+  {
+    "id": "sacrifice",
+    "name": "Sacrifice",
+    "slug": "hupg_sacrifice",
+    "variables": [
+      "bleed_amt",
+      "bleed_max_stacks",
+      "min_curse_damage",
+      "max_curse_damage",
+      "curse_delay"
+    ],
+    "description": "Inflicts {[bleed_amt]} stacks of bleed (Max {[bleed_max_stacks]} stacks) and applies curse to hit enemies. Cursed enemies are dealt {[min_curse_damage]}-{[max_curse_damage]} after being hit {[curse_delay]} times.",
+    "stats": {
+      "level2": {
+        "bleed_amt": "",
+        "bleed_max_stacks": "",
+        "min_curse_damage": "",
+        "max_curse_damage": "",
+        "curse_delay": ""
+      },
+      "level3": {
+        "bleed_amt": "",
+        "bleed_max_stacks": "",
+        "min_curse_damage": "",
+        "max_curse_damage": "",
+        "curse_delay": ""
+      },
+      "level1": {
+        "bleed_amt": "4",
+        "bleed_max_stacks": "15",
+        "min_curse_damage": "50",
+        "max_curse_damage": "100",
+        "curse_delay": "5"
+      }
+    }
+  },
+  {
+    "id": "sandstorm",
+    "name": "Sandstorm",
+    "slug": "hupg_sandstorm",
+    "variables": ["min_sandstorm_damage", "max_sandstorm_damage", "blind_length"],
+    "description": "Goes through enemies and is surrounded by a raging storm dealing {[min_sandstorm_damage]}-{[max_sandstorm_damage]} damage per second and blinding nearby enemies for {[blind_length]} seconds.",
+    "stats": {
+      "level2": {
+        "min_sandstorm_damage": "",
+        "max_sandstorm_damage": "",
+        "blind_length": ""
+      },
+      "level3": {
+        "min_sandstorm_damage": "",
+        "max_sandstorm_damage": "",
+        "blind_length": ""
+      },
+      "level1": {
+        "min_sandstorm_damage": "10",
+        "max_sandstorm_damage": "20",
+        "blind_length": "3"
+      }
+    }
+  },
+  {
+    "id": "satan",
+    "name": "Satan",
+    "slug": "hupg_satan",
+    "variables": [
+      "max_burn_stacks",
+      "min_burn_damage",
+      "max_burn_damage",
+      "min_berserk_damage",
+      "max_berserk_damage"
+    ],
+    "description": "While active, add 1 stack of burn to all active enemies per second (max {[max_burn_stacks]} stacks), dealing {[min_burn_damage]}-{[max_burn_damage]} damage per stack per second and make them go berserk, dealing {[min_berserk_damage]}-{[max_berserk_damage]} damage to adjacent enemies every second.",
+    "stats": {
+      "level2": {
+        "max_burn_stacks": "",
+        "min_burn_damage": "",
+        "max_burn_damage": "",
+        "min_berserk_damage": "",
+        "max_berserk_damage": ""
+      },
+      "level3": {
+        "max_burn_stacks": "",
+        "min_burn_damage": "",
+        "max_burn_damage": "",
+        "min_berserk_damage": "",
+        "max_berserk_damage": ""
+      },
+      "level1": {
+        "max_burn_stacks": "5",
+        "min_burn_damage": "10",
+        "max_burn_damage": "20",
+        "min_berserk_damage": "15",
+        "max_berserk_damage": "24"
+      }
+    }
+  },
+  {
+    "id": "shotgun",
+    "name": "Shotgun",
+    "slug": "hupg_shotgun",
+    "variables": ["min_babies", "max_babies", "base_speed"],
+    "description": "Shoots {[min_babies]}-{[max_babies]} iron baby balls after hitting a wall. Iron baby balls move at {[base_speed]} speed but are destroyed upon hitting anything.",
+    "stats": {
+      "level2": {
+        "min_babies": "",
+        "max_babies": "",
+        "base_speed": ""
+      },
+      "level3": {
+        "min_babies": "",
+        "max_babies": "",
+        "base_speed": ""
+      },
+      "level1": {
+        "min_babies": "3",
+        "max_babies": "7",
+        "base_speed": "200"
+      }
+    }
+  },
+  {
+    "id": "soulsucker",
+    "name": "Soul Sucker",
+    "slug": "hupg_soulsucker",
+    "variables": ["lifesteal_chance", "lifesteal_heal", "reduce_dmg_pct"],
+    "description": "Passes through enemies and saps them, with a {[lifesteal_chance]} chance of stealing {[lifesteal_heal]} health and reducing their attack damage by {[reduce_dmg_pct]}. Lifesteal chance only applies once per enemy.",
+    "stats": {
+      "level2": {
+        "lifesteal_chance": "",
+        "lifesteal_heal": "",
+        "reduce_dmg_pct": ""
+      },
+      "level3": {
+        "lifesteal_chance": "",
+        "lifesteal_heal": "",
+        "reduce_dmg_pct": ""
+      },
+      "level1": {
+        "lifesteal_chance": "30",
+        "lifesteal_heal": "1",
+        "reduce_dmg_pct": "20"
+      }
+    }
+  },
+  {
+    "id": "spiderqueen",
+    "name": "Spider Queen",
+    "slug": "hupg_spiderqueen",
+    "variables": "birth_chance",
+    "description": "Has a {[birth_chance]} chance of birthing an Egg Sac each time it hits an enemy",
+    "stats": {
+      "level2": {
+        "birth_chance": ""
+      },
+      "level3": {
+        "birth_chance": ""
+      },
+      "level1": {
+        "birth_chance": "25"
+      }
+    }
+  },
+  {
+    "id": "storm",
+    "name": "Storm",
+    "slug": "hupg_storm",
+    "variables": ["min_lightning_damage", "max_lightning_damage"],
+    "description": "Emits lightning to strike nearby enemies every second, dealing {[min_lightning_damage]}-{[max_lightning_damage]} damage.",
+    "stats": {
+      "level2": {
+        "min_lightning_damage": "",
+        "max_lightning_damage": ""
+      },
+      "level3": {
+        "min_lightning_damage": "",
+        "max_lightning_damage": ""
+      },
+      "level1": {
+        "min_lightning_damage": "1",
+        "max_lightning_damage": "40"
+      }
+    }
+  },
+  {
+    "id": "succubus",
+    "name": "Succubus",
+    "slug": "hupg_succubus",
+    "variables": ["charm_chance", "charm_length", "lifesteal_heal"],
+    "description": "Each hit has a {[charm_chance]} chance of charming the enemy for {[charm_length]} seconds. Heals {[lifesteal_heal]} when hitting a charmed enemy.",
+    "stats": {
+      "level2": {
+        "charm_chance": "",
+        "charm_length": "",
+        "lifesteal_heal": ""
+      },
+      "level3": {
+        "charm_chance": "",
+        "charm_length": "",
+        "lifesteal_heal": ""
+      },
+      "level1": {
+        "charm_chance": "4",
+        "charm_length": "9",
+        "lifesteal_heal": "1"
+      }
+    }
+  },
+  {
+    "id": "sun",
+    "name": "Sun",
+    "slug": "hupg_sun",
+    "variables": ["max_burn_stacks", "burn_length", "min_burn_damage", "max_burn_damage"],
+    "description": "Blind all enemies in view and add 1 stack of burn every second (max {[max_burn_stacks]} stacks). Burn lasts for {[burn_length]} seconds and deals {[min_burn_damage]}-{[max_burn_damage]} damage per stack per second.",
+    "stats": {
+      "level2": {
+        "max_burn_stacks": "",
+        "burn_length": "",
+        "min_burn_damage": "",
+        "max_burn_damage": ""
+      },
+      "level3": {
+        "max_burn_stacks": "",
+        "burn_length": "",
+        "min_burn_damage": "",
+        "max_burn_damage": ""
+      },
+      "level1": {
+        "max_burn_stacks": "5",
+        "burn_length": "6",
+        "min_burn_damage": "6",
+        "max_burn_damage": "12"
+      }
+    }
+  },
+  {
+    "id": "swamp",
+    "name": "Swamp",
+    "slug": "hupg_swamp",
+    "variables": [
+      "min_tar_damage",
+      "max_tar_damage",
+      "slow_pct",
+      "slow_len",
+      "max_poison_stacks",
+      "min_poison_damage",
+      "max_poison_damage",
+      "min_earthquake_damage",
+      "max_earthquake_damage"
+    ],
+    "description": "Leaves behind tar blobs over time. Enemies who walk into tar blobs are dealt {[min_tar_damage]} - {[max_tar_damage]}, are slowed by {[slow_pct]} for {[slow_len]} seconds and gain 1 stack of poison (max {[max_poison_stacks]} stacks). Each stack of poison deals  {[min_poison_damage]}-{[max_poison_damage]} damage per second.  This ball and its tar blobs also deal {[min_earthquake_damage]}-{[max_earthquake_damage]} damage to nearby units.",
+    "stats": {
+      "level2": {
+        "min_tar_damage": "",
+        "max_tar_damage": "",
+        "slow_pct": "",
+        "slow_len": "",
+        "max_poison_stacks": "",
+        "min_poison_damage": "",
+        "max_poison_damage": "",
+        "min_earthquake_damage": "",
+        "max_earthquake_damage": ""
+      },
+      "level3": {
+        "min_tar_damage": "",
+        "max_tar_damage": "",
+        "slow_pct": "",
+        "slow_len": "",
+        "max_poison_stacks": "",
+        "min_poison_damage": "",
+        "max_poison_damage": "",
+        "min_earthquake_damage": "",
+        "max_earthquake_damage": ""
+      },
+      "level1": {
+        "min_tar_damage": "15",
+        "max_tar_damage": "30",
+        "slow_pct": "50",
+        "slow_len": "7",
+        "max_poison_stacks": "8",
+        "min_poison_damage": "1",
+        "max_poison_damage": "3",
+        "min_earthquake_damage": "6",
+        "max_earthquake_damage": "12"
+      }
+    }
+  },
+  {
+    "id": "vampire",
+    "name": "Vampire",
+    "slug": "hupg_vampire",
+    "variables": ["lifesteal_chance", "lifesteal_heal"],
+    "description": "Each hit has a {[lifesteal_chance]} chance of healing {[lifesteal_heal]} health",
+    "stats": {
+      "level2": {
+        "lifesteal_chance": "",
+        "lifesteal_heal": ""
+      },
+      "level3": {
+        "lifesteal_chance": "",
+        "lifesteal_heal": ""
+      },
+      "level1": {
+        "lifesteal_chance": "4.5",
+        "lifesteal_heal": "1"
+      }
+    }
+  },
+  {
+    "id": "vampirelord",
+    "name": "Vampire Lord",
+    "slug": "hupg_vampirelord",
+    "variables": ["bleed_amt", "lifesteal_heal", "lifesteal_bleed_stacks"],
+    "description": "Each hit inflicts {[bleed_amt]} stacks of bleed. Heals {[lifesteal_heal]} health and consumes all stacks when hitting an enemy with at least {[lifesteal_bleed_stacks]} stacks of bleed.",
+    "stats": {
+      "level2": {
+        "bleed_amt": "",
+        "lifesteal_heal": "",
+        "lifesteal_bleed_stacks": ""
+      },
+      "level3": {
+        "bleed_amt": "",
+        "lifesteal_heal": "",
+        "lifesteal_bleed_stacks": ""
+      },
+      "level1": {
+        "bleed_amt": "3",
+        "lifesteal_heal": "1",
+        "lifesteal_bleed_stacks": "10"
+      }
+    }
+  },
+  {
+    "id": "virus",
+    "name": "Virus",
+    "slug": "hupg_virus",
+    "variables": [
+      "max_disease_stacks",
+      "disease_length",
+      "min_disease_damage",
+      "max_disease_damage",
+      "disease_chance"
+    ],
+    "description": "'Applies 1 stack of disease to units it hits (max {[max_disease_stacks]} stacks). Disease lasts for {[disease_length]} seconds. Each stack of disease deals {[min_disease_damage]}-{[max_disease_damage]} damage per second and diseased units have a {[disease_chance]} chance of passing a stack to undiseased nearby enemies each second. '",
+    "stats": {
+      "level2": {
+        "max_disease_stacks": "",
+        "disease_length": "",
+        "min_disease_damage": "",
+        "max_disease_damage": "",
+        "disease_chance": ""
+      },
+      "level3": {
+        "max_disease_stacks": "",
+        "disease_length": "",
+        "min_disease_damage": "",
+        "max_disease_damage": "",
+        "disease_chance": ""
+      },
+      "level1": {
+        "max_disease_stacks": "8",
+        "disease_length": "6",
+        "min_disease_damage": "3",
+        "max_disease_damage": "6",
+        "disease_chance": "15"
+      }
+    }
+  },
+  {
+    "id": "eggsacsac",
+    "name": "Voluptuous Egg Sac",
+    "slug": "hupg_eggsacsac",
+    "variables": ["min_egg_sacs", "max_egg_sacs", "cooldown_length"],
+    "description": "Explodes into {[min_egg_sacs]}-{[max_egg_sacs]} egg sacs on hitting an enemy. Has a {[cooldown_length]} second cooldown before it can be shot again.",
+    "stats": {
+      "level2": {
+        "min_egg_sacs": "",
+        "max_egg_sacs": "",
+        "cooldown_length": ""
+      },
+      "level3": {
+        "min_egg_sacs": "",
+        "max_egg_sacs": "",
+        "cooldown_length": ""
+      },
+      "level1": {
+        "min_egg_sacs": "2",
+        "max_egg_sacs": "3",
+        "cooldown_length": "3"
+      }
+    }
+  },
+  {
+    "id": "wind",
+    "name": "Wind",
+    "slug": "hupg_wind",
+    "variables": ["slow_pct", "slow_len"],
+    "description": "Passes through enemies and slows them down by {[slow_pct]} for {[slow_len]} seconds, but deals 25% less damage.",
+    "stats": {
+      "level2": {
+        "slow_pct": "",
+        "slow_len": ""
+      },
+      "level3": {
+        "slow_pct": "",
+        "slow_len": ""
+      },
+      "level1": {
+        "slow_pct": "30",
+        "slow_len": "5"
+      }
+    }
+  },
+  {
+    "id": "wraith",
+    "name": "Wraith",
+    "slug": "hupg_wraith",
+    "variables": "freeze_length",
+    "description": "Freezes any enemy it passes through for {[freeze_length]} seconds",
+    "stats": {
+      "level2": {
+        "freeze_length": ""
+      },
+      "level3": {
+        "freeze_length": ""
+      },
+      "level1": {
+        "freeze_length": "0.8"
+      }
+    }
+  }
+]

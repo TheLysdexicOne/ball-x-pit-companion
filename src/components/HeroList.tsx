@@ -10,8 +10,8 @@ type SpriteType = 'portrait' | 'small';
 
 // Define fixed scales for each sprite type
 const SPRITE_SCALES = {
-  portrait: 1.2,
-  small: 5,
+  portrait: 0.75,
+  small: 2,
 } as const;
 
 export default function HeroList() {
@@ -81,10 +81,10 @@ export default function HeroList() {
   return (
     <div>
       {/* Sprite Type Toggle */}
-      <div className="mb-4 flex flex-col justify-center gap-2 sm:mb-8 sm:flex-row sm:gap-4">
+      <div className="mb-3 flex flex-col justify-center gap-2 px-8 pt-1 sm:mx-2 sm:flex-row sm:gap-3">
         <button
           onClick={() => setSpriteType('portrait')}
-          className="group relative h-16 w-full sm:h-20 sm:w-64"
+          className="group relative h-12 w-full sm:h-14 sm:w-48"
         >
           <div
             className={`absolute inset-0 transition-opacity ${spriteType === 'portrait' ? '' : 'group-hover:opacity-0'}`}
@@ -108,13 +108,13 @@ export default function HeroList() {
               }}
             />
           )}
-          <span className="absolute inset-0 flex items-center justify-center font-pixel text-2xl tracking-widest sm:text-4xl">
+          <span className="absolute inset-0 flex items-center justify-center font-pixel text-xl tracking-widest sm:text-2xl">
             PORTRAIT
           </span>
         </button>
         <button
           onClick={() => setSpriteType('small')}
-          className="group relative h-16 w-full sm:h-20 sm:w-64"
+          className="group relative h-12 w-full sm:h-14 sm:w-48"
         >
           <div
             className={`absolute inset-0 transition-opacity ${spriteType === 'small' ? '' : 'group-hover:opacity-0'}`}
@@ -138,14 +138,14 @@ export default function HeroList() {
               }}
             />
           )}
-          <span className="absolute inset-0 flex items-center justify-center font-pixel text-2xl tracking-widest sm:text-4xl">
-            SMALL
+          <span className="absolute inset-0 flex items-center justify-center font-pixel text-xl tracking-widest sm:text-2xl">
+            SPRITE
           </span>
         </button>
       </div>
 
-      {/* Hero Grid - 4 columns, responsive sizing */}
-      <div className="grid grid-cols-3 gap-3 md:grid-cols-4 md:gap-4">
+      {/* Hero Grid - 4 columns on small screens, 8 columns on large screens for 2 rows */}
+      <div className="grid grid-cols-4 gap-2 md:grid-cols-8">
         {heroes.map((hero, index) => (
           <div
             key={hero.id}
@@ -166,9 +166,9 @@ export default function HeroList() {
                 className="absolute inset-0 transition-opacity group-hover:opacity-0"
                 style={{
                   borderImageSource: `url(${getImagePath('/images/ui/portrait-bg-1.png')})`,
-                  borderImageSlice: '8 fill',
+                  borderImageSlice: '12 fill',
                   borderImageRepeat: 'repeat',
-                  borderImageWidth: '32px',
+                  borderImageWidth: '24px',
                   imageRendering: 'pixelated',
                 }}
               />
@@ -177,9 +177,9 @@ export default function HeroList() {
                 className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
                 style={{
                   borderImageSource: `url(${getImagePath('/images/ui/portrait-bg-2.png')})`,
-                  borderImageSlice: '8 fill',
+                  borderImageSlice: '12 fill',
                   borderImageRepeat: 'repeat',
-                  borderImageWidth: '32px',
+                  borderImageWidth: '24px',
                   imageRendering: 'pixelated',
                 }}
               />

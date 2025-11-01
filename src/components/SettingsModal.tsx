@@ -128,7 +128,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           onClick={() => setShowHeroOverlay(false)}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-screen-lg overflow-auto"
+            className="relative max-h-[90vh] w-full max-w-2xl overflow-auto"
             onClick={e => e.stopPropagation()}
             style={{
               borderImageSource: `url(${getImagePath('/images/backgrounds/parchment.png')})`,
@@ -146,7 +146,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               ×
             </button>
 
-            <div className="p-6 sm:p-12">
+            <div className="p-4 sm:p-6">
               <HeroList />
             </div>
           </div>

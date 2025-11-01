@@ -1022,7 +1022,7 @@ export default function Home() {
           onClick={() => setShowHeroOverlay(false)}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-screen-lg overflow-auto"
+            className="relative max-h-[90vh] w-full max-w-xl overflow-auto md:max-w-5xl"
             onClick={e => e.stopPropagation()}
             style={{
               borderImageSource: `url(${getImagePath('/images/backgrounds/parchment.png')})`,
@@ -1040,7 +1040,7 @@ export default function Home() {
               ×
             </button>
 
-            <div className="p-6 sm:p-12">
+            <div className="p-4 sm:p-6">
               <HeroList />
             </div>
           </div>
