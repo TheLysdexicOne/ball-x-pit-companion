@@ -71,7 +71,7 @@ export default function Header() {
           />
 
           {/* Right Navigation Buttons */}
-          <NavButton icon={faBookSkull} label="Encyclopedia" href="/encyclopedia" />
+          <NavButton icon={faBookSkull} label="Encyclopedia" href="/encyclopedia/balls" />
           <NavButton icon={faGear} label="Settings" onClick={() => setIsSettingsOpen(true)} />
         </div>
       </div>

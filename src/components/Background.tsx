@@ -51,14 +51,13 @@ export default function Background({ children, className = '' }: BackgroundProps
 
       {/* Side borders - tiled vertically */}
       <div
-        className="pointer-events-none absolute bottom-8 right-0 top-8 z-10 w-full bg-right bg-repeat-y"
+        className="pointer-events-none absolute bottom-8 left-0 top-8 z-10 w-full bg-right-top bg-repeat-y"
         style={{
           backgroundImage: `url(${basePath}/images/backgrounds/right.png)`,
-          height: 'calc(100% - 64px)',
         }}
       />
       <div
-        className="pointer-events-none absolute bottom-8 left-0 top-8 z-10 w-full -scale-x-100 bg-right bg-repeat-y"
+        className="pointer-events-none absolute bottom-8 left-0 top-8 z-10 w-full -scale-x-100 bg-right-top bg-repeat-y"
         style={{
           backgroundImage: `url(${basePath}/images/backgrounds/right.png)`,
           height: 'calc(100% - 64px)',

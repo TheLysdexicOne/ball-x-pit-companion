@@ -14,6 +14,12 @@ module.exports = {
       fontFamily: {
         pixel: ['TimesNewPixel', 'monospace'],
       },
+      backgroundColor: {
+        input_box: '#423532',
+      },
+      borderColor: {
+        input_highlight: '#734532',
+      },
     },
   },
   plugins: [
