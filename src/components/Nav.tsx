@@ -4,7 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight, faCaretDown, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCaretRight,
+  faCaretDown,
+  faBars,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import Header from './Header';
 import SettingsModal from './SettingsModal';
 
@@ -57,6 +62,7 @@ export default function Nav({ pageTitle }: NavProps) {
       label: 'Tools',
       isHeader: true,
       children: [
+        { label: 'Fusion', href: '/tools/fusion' },
         {
           label: 'Progression',
           isSubHeader: true,
@@ -65,7 +71,6 @@ export default function Nav({ pageTitle }: NavProps) {
             { label: 'Hero View', href: '/tools/progression/hero' },
           ],
         },
-        { label: 'Fusion', href: '/tools/fusion' },
       ],
     },
     {
@@ -117,11 +122,13 @@ export default function Nav({ pageTitle }: NavProps) {
     if (item.isHeader && hasChildren) {
       return (
         <li key={item.label}>
-          <div className="border-primary mt-4 border-t pt-4">
+          <div className="border-highlight mt-4 border-t pt-4">
             <div className="px-2 py-2 text-sm font-bold uppercase tracking-wider text-primary opacity-70 lg:text-base">
               {item.label}
             </div>
-            <ul className="space-y-1">{item.children!.map(child => renderNavItem(child, 1))}</ul>
+            <ul className="space-y-1">
+              {item.children!.map(child => renderNavItem(child, 1))}
+            </ul>
           </div>
         </li>
       );
@@ -135,7 +142,9 @@ export default function Nav({ pageTitle }: NavProps) {
             <div className="px-6 py-1 text-sm font-semibold uppercase tracking-wide text-secondary opacity-60 lg:text-base">
               {item.label}
             </div>
-            <ul className="space-y-1">{item.children!.map(child => renderNavItem(child, 2))}</ul>
+            <ul className="space-y-1">
+              {item.children!.map(child => renderNavItem(child, 2))}
+            </ul>
           </div>
         </li>
       );
@@ -148,9 +157,11 @@ export default function Nav({ pageTitle }: NavProps) {
         <li key={item.label}>
           <button
             onClick={() => toggleSection(item.label)}
-            className={`flex w-full items-center justify-between rounded ${padding} hover:bg-nav_btn_hover py-2 text-left text-secondary transition-colors hover:text-primary`}
+            className={`flex w-full items-center justify-between rounded ${padding} hover:bg-highlight py-2 text-left text-secondary transition-colors hover:text-primary`}
           >
-            <span className="text-sm tracking-wide lg:text-base">{item.label}</span>
+            <span className="text-sm tracking-wide lg:text-base">
+              {item.label}
+            </span>
             <FontAwesomeIcon
               icon={isExpanded ? faCaretDown : faCaretRight}
               className="text-xs lg:text-sm"
@@ -177,7 +188,7 @@ export default function Nav({ pageTitle }: NavProps) {
               item.onClick!();
               setIsOpen(false);
             }}
-            className={`block w-full rounded ${padding} hover:bg-nav_btn_hover py-2 text-left text-sm tracking-wide text-secondary transition-colors hover:text-primary lg:text-base`}
+            className={`block w-full rounded ${padding} hover:bg-highlight py-2 text-left text-sm tracking-wide text-secondary transition-colors hover:text-primary lg:text-base`}
           >
             {item.label}
           </button>
@@ -193,8 +204,8 @@ export default function Nav({ pageTitle }: NavProps) {
           onClick={() => setIsOpen(false)}
           className={`block rounded ${padding} py-2 text-sm tracking-wide transition-colors lg:text-base ${
             item.href && isActive(item.href)
-              ? 'bg-nav_btn_active text-primary'
-              : 'hover:bg-nav_btn_hover text-secondary hover:text-primary'
+              ? 'bg-highlight text-primary'
+              : 'hover:bg-highlight text-secondary hover:text-primary'
           }`}
         >
           {item.label}
@@ -211,14 +222,17 @@ export default function Nav({ pageTitle }: NavProps) {
       {/* Mobile Menu Button - Top Right */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-nav_btn_active fixed right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded text-xl text-primary lg:hidden"
+        className="bg-body-btn-highlight fixed right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded text-xl text-primary lg:hidden"
         aria-label="Toggle menu"
       >
         <FontAwesomeIcon icon={isOpen ? faXmark : faBars} />
       </button>
 
       {/* Settings Modal */}
-      <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+      <SettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+      />
 
       {/* Overlay for mobile only */}
       {isOpen && (
@@ -230,9 +244,7 @@ export default function Nav({ pageTitle }: NavProps) {
 
       {/* Sidebar */}
       <nav
-        className={`bg-nav border-primary fixed left-0 top-0 z-40 h-screen w-64 transform border-r-2 transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className="flex h-full flex-col p-6">
           {/* Logo/Title */}
@@ -247,13 +259,13 @@ export default function Nav({ pageTitle }: NavProps) {
           </div>
 
           {/* Separator */}
-          <div className="border-primary mb-4 border-t" />
+          <div className="border-highlight mb-4 border-t" />
 
           {/* Navigation Links */}
           <ul className="flex-1 space-y-1 overflow-y-auto">
             {navStructure.map(item => renderNavItem(item))}
           </ul>
-          <div className="border-primary mb-4 border-t" />
+          <div className="border-highlight mb-4 border-t" />
         </div>
       </nav>
     </>

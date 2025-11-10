@@ -77,12 +77,17 @@ export default function Home() {
   }, [getSortedHeroes]);
 
   const navigateDifficulty = (direction: 'prev' | 'next') => {
-    const currentIndex = DIFFICULTY_TIERS.findIndex(tier => tier.value === currentDifficulty);
+    const currentIndex = DIFFICULTY_TIERS.findIndex(
+      tier => tier.value === currentDifficulty
+    );
     let nextDifficulty: DifficultyTier | null = null;
 
     if (direction === 'prev' && currentIndex > 0) {
       nextDifficulty = DIFFICULTY_TIERS[currentIndex - 1].value;
-    } else if (direction === 'next' && currentIndex < DIFFICULTY_TIERS.length - 1) {
+    } else if (
+      direction === 'next' &&
+      currentIndex < DIFFICULTY_TIERS.length - 1
+    ) {
       nextDifficulty = DIFFICULTY_TIERS[currentIndex + 1].value;
     }
 
@@ -92,7 +97,9 @@ export default function Home() {
   };
 
   const navigateFastTier = (direction: 'prev' | 'next') => {
-    const currentIndex = FAST_TIERS.findIndex(tier => tier.value === currentTier);
+    const currentIndex = FAST_TIERS.findIndex(
+      tier => tier.value === currentTier
+    );
     let nextTier: FastTierCompletion | null = null;
 
     if (direction === 'prev' && currentIndex > 0) {
@@ -111,7 +118,8 @@ export default function Home() {
     if (!progress) return false;
 
     const completion = progress.levelCompletions.find(
-      entry => entry.levelId === levelId && entry.difficulty === currentDifficulty
+      entry =>
+        entry.levelId === levelId && entry.difficulty === currentDifficulty
     );
 
     if (!completion) return false;
@@ -121,7 +129,9 @@ export default function Home() {
 
   const toggleHeroCompletion = (heroId: string, levelId: number) => {
     const alreadyComplete = isHeroLevelComplete(heroId, levelId);
-    const newFastTier = alreadyComplete ? Math.max(0, currentTier - 1) : currentTier;
+    const newFastTier = alreadyComplete
+      ? Math.max(0, currentTier - 1)
+      : currentTier;
 
     updateLevelCompletion(heroId, levelId, {
       difficulty: currentDifficulty,
@@ -130,24 +140,16 @@ export default function Home() {
   };
 
   const currentDifficultyLabel =
-    DIFFICULTY_TIERS.find(tier => tier.value === currentDifficulty)?.label || 'Base Level';
+    DIFFICULTY_TIERS.find(tier => tier.value === currentDifficulty)?.label ||
+    'Base Level';
   const currentFastTierLabel =
     FAST_TIERS.find(tier => tier.value === currentTier)?.label || 'Normal';
 
   return (
-    <main className="min-h-screen px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
-        <div className="flex justify-center">
-          <button
-            className="btn-body-primary font-pixel text-2xl tracking-widest sm:text-3xl"
-            onClick={() => setShowHeroOverlay(true)}
-          >
-            REORDER HEROES
-          </button>
-        </div>
-
-        <section className="border-primary/40 bg-body/40 rounded-3xl border-2 p-4 shadow-lg backdrop-blur sm:p-6">
-          <div className="grid gap-4 sm:grid-cols-2">
+    <main className="flex flex-col items-center justify-center p-8">
+      <div className="flex w-full max-w-4xl flex-col">
+        <div className="card-primary">
+          <div className="mb-4 grid gap-4 sm:grid-cols-2">
             <div className="btn-body-primary relative flex min-h-[72px] items-center justify-center px-6 py-3 sm:px-10">
               {isClient && currentDifficulty !== DIFFICULTY_TIERS[0].value && (
                 <button
@@ -158,13 +160,12 @@ export default function Home() {
                   <FontAwesomeIcon icon={faCaretLeft} />
                 </button>
               )}
-
               <h1 className="select-none text-center font-pixel text-2xl tracking-widest text-secondary sm:text-3xl lg:text-4xl">
                 {isClient ? currentDifficultyLabel : 'Base Level'}
               </h1>
-
               {isClient &&
-                currentDifficulty !== DIFFICULTY_TIERS[DIFFICULTY_TIERS.length - 1].value && (
+                currentDifficulty !==
+                  DIFFICULTY_TIERS[DIFFICULTY_TIERS.length - 1].value && (
                   <button
                     className="absolute right-4 text-3xl text-secondary transition-colors hover:text-primary sm:right-6 sm:text-4xl"
                     onClick={() => navigateDifficulty('next')}
@@ -174,7 +175,6 @@ export default function Home() {
                   </button>
                 )}
             </div>
-
             <div className="btn-body-primary relative flex min-h-[72px] items-center justify-center px-6 py-3 sm:px-10">
               {isClient && currentTier !== FAST_TIERS[0].value && (
                 <button
@@ -185,55 +185,55 @@ export default function Home() {
                   <FontAwesomeIcon icon={faCaretLeft} />
                 </button>
               )}
-
               <h1 className="select-none text-center font-pixel text-2xl tracking-widest text-secondary sm:text-3xl lg:text-4xl">
                 {isClient ? currentFastTierLabel : 'Normal'}
               </h1>
-
-              {isClient && currentTier !== FAST_TIERS[FAST_TIERS.length - 1].value && (
-                <button
-                  className="absolute right-4 text-3xl text-secondary transition-colors hover:text-primary sm:right-6 sm:text-4xl"
-                  onClick={() => navigateFastTier('next')}
-                  aria-label="Next fast tier"
-                >
-                  <FontAwesomeIcon icon={faCaretRight} />
-                </button>
-              )}
+              {isClient &&
+                currentTier !== FAST_TIERS[FAST_TIERS.length - 1].value && (
+                  <button
+                    className="absolute right-4 text-3xl text-secondary transition-colors hover:text-primary sm:right-6 sm:text-4xl"
+                    onClick={() => navigateFastTier('next')}
+                    aria-label="Next fast tier"
+                  >
+                    <FontAwesomeIcon icon={faCaretRight} />
+                  </button>
+                )}
             </div>
           </div>
-        </section>
-
-        <div className="space-y-6">
-          {LEVELS.map(level => (
-            <section
-              key={level.id}
-              className="border-primary/40 bg-nav/60 rounded-3xl border-2 shadow-lg backdrop-blur"
-            >
-              <header className="border-primary/30 flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3 sm:px-6 sm:py-4">
-                <h2 className="font-pixel text-2xl tracking-widest text-secondary sm:text-3xl">
-                  {level.label}
-                </h2>
-                <span className="text-xs uppercase tracking-[0.45em] text-secondary/70">
-                  Level {level.id.toString().padStart(2, '0')}
-                </span>
-              </header>
-
-              <div className="px-4 py-4 sm:px-6 sm:py-6">
-                <div className="grid grid-cols-4 gap-3 sm:grid-cols-8">
-                  {sortedHeroes.map(hero => (
-                    <LevelHeroSprite
-                      key={`${level.id}-${hero.id}`}
-                      hero={hero}
-                      levelId={level.id}
-                      isComplete={isHeroLevelComplete(hero.id, level.id)}
-                      onToggle={toggleHeroCompletion}
-                      isClient={isClient}
-                    />
-                  ))}
+          <div className="space-y-6">
+            {LEVELS.map(level => (
+              <section
+                key={level.id}
+                className="border-primary rounded-xl border-2 shadow-lg backdrop-blur"
+              >
+                <header className="bg-primary flex flex-wrap items-center justify-between gap-3 rounded-t-xl px-4 py-3 sm:px-6 sm:py-4">
+                  <h2 className="font-pixel text-2xl tracking-widest text-secondary sm:text-3xl">
+                    {level.label}
+                  </h2>
+                  <span className="text-xs uppercase tracking-[0.45em] text-secondary/70">
+                    Level {level.id.toString().padStart(2, '0')}
+                  </span>
+                </header>
+                <div className="px-4 py-4 sm:px-6 sm:py-6">
+                  <div className="grid grid-cols-4 gap-3 sm:grid-cols-8">
+                    {sortedHeroes.map(hero => (
+                      <LevelHeroSprite
+                        key={`${level.id}-${hero.id}`}
+                        hero={hero}
+                        levelId={level.id}
+                        isComplete={isHeroLevelComplete(hero.id, level.id)}
+                        onToggle={toggleHeroCompletion}
+                        isClient={isClient}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </section>
-          ))}
+              </section>
+            ))}
+          </div>
+        </div>
+        <div className="card-primary">
+          <div className="card-text-box">Reorder heroes in the Settings.</div>
         </div>
       </div>
 

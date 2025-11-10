@@ -10,7 +10,7 @@ export default function Header({ title }: HeaderProps) {
   const hasMultipleParts = titleParts.length > 1;
 
   return (
-    <header className="bg-nav border-primary fixed left-0 right-0 top-0 z-30 border-b-2 lg:left-64">
+    <header className="border-highlight bg-nav fixed left-0 right-0 top-0 z-30 border-b-2 lg:left-64">
       <div className="flex items-center px-6 py-4">
         {/* Page Title */}
         <h1 className="font-pixel text-2xl tracking-widest text-primary sm:text-4xl">

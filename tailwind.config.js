@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -11,30 +13,58 @@ module.exports = {
         primary: '#f6eade', // Title/Header color
         secondary: '#dabda1', // Bulk text color
       },
+
       fontFamily: {
         pixel: ['TimesNewPixel', 'monospace'],
       },
+
       backgroundColor: {
-        primary: '#191516',
-        secondary: '#1f191a',
-        input_box: '#423532',
-        // NAV
-        nav: '#1f1919',
-        nav_btn_hover: '#452c1f',
-        nav_btn_active: '#734325',
-        // Buttons
-        btn: {
-          primary: {
-            DEFAULT: '#251d1c',
-            active: '#39271E',
-            hover: '#251b18',
+        main: colors.stone[950],
+
+        body: {
+          DEFAULT: colors.stone[800],
+          btn: {
+            highlight: colors.amber[800] + 'CC',
           },
         },
+
+        nav: {
+          DEFAULT: colors.stone[900],
+          btn: {
+            highlight: colors.amber[800] + 'CC',
+          },
+        },
+
+        card: {
+          DEFAULT: colors.stone[800],
+          header: colors.stone[900],
+        },
+
+        btn: {
+          primary: {
+            DEFAULT: colors.stone[900],
+            highlight: colors.amber[800] + 'CC',
+          },
+        },
+
+        primary: colors.stone[900],
+        secondary: colors.stone[800],
+        highlight: colors.amber[800] + 'CC',
+        hover: colors.stone[700],
       },
       borderColor: {
-        input_highlight: '#734532',
-        primary: '#452c1f',
-        secondary: '#8b7355',
+        nav: colors.amber[800] + 'CC',
+
+        btn: {
+          DEFAULT: colors.stone[600],
+          highlight: colors.amber[950],
+          dark: colors.stone[900],
+        },
+
+        highlight: colors.amber[800] + 'CC',
+        input_highlight: colors.stone[700],
+        primary: colors.stone[600],
+        secondary: colors.stone[500],
       },
     },
   },

@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="bg-primary">
+      <body className="bg-main">
         <Nav />
         <div className="pt-20 lg:ml-64">{children}</div>
       </body>

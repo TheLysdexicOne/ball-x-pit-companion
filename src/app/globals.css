@@ -39,7 +39,25 @@
   .btn-body-primary {
     @apply rounded-lg border-2 px-6 py-4 text-center transition-colors;
     @apply bg-btn-primary border-primary text-secondary;
-    @apply hover:bg-btn-primary-hover hover:border-[#734325] hover:text-primary;
+    @apply hover:bg-btn-primary-highlight hover:border-btn-highlight hover:text-primary;
+  }
+
+  .card-primary {
+    @apply bg-body border-nav mb-12 w-full rounded-lg p-4 text-center;
+  }
+
+  .card-primary-header {
+    @apply bg-card-header -mx-4 -mt-4 mb-4 rounded-t-lg px-4 py-3;
+  }
+
+  .card-text-box {
+    @apply bg-btn-primary text-secondary;
+    @apply rounded-lg p-4 px-6 text-center;
+    @apply text-base sm:text-lg;
+  }
+
+  .hr-separator {
+    @apply border-primary m-2 border-t;
   }
 
   /* Custom scrollbar for nav menu */
@@ -62,8 +80,19 @@
 
   /* Firefox scrollbar */
   nav {
+    /* Colors */
+    @apply bg-nav border-nav border-r-2;
+    /* Positioning */
+    @apply fixed left-0 top-0 z-40 h-screen w-64;
+    /* Animation */
+    @apply transform transition-transform duration-300 ease-in-out;
+    /* Scrollbar */
     scrollbar-width: thin;
     scrollbar-color: #452c1f #1f191a;
+  }
+
+  .standard-card {
+    @apply bg-card;
   }
 
   /* Pixelated rendering for all images */

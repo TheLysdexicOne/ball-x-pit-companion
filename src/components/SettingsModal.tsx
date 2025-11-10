@@ -13,7 +13,8 @@ interface SettingsModalProps {
 }
 
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
-  const { activeSlot, switchSaveSlot, getAllSaveSlots, deleteSaveSlot } = useProgressData();
+  const { activeSlot, switchSaveSlot, getAllSaveSlots, deleteSaveSlot } =
+    useProgressData();
   const [showHeroOverlay, setShowHeroOverlay] = useState(false);
 
   if (!isOpen) return null;
@@ -48,7 +49,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       onClick={onClose}
     >
       <div
-        className="border-primary bg-primary relative w-full max-w-2xl rounded-lg border-4 p-8 shadow-2xl"
+        className="border-primary bg-body relative w-full max-w-2xl rounded-lg border-4 p-8 shadow-2xl"
         onClick={e => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -61,11 +62,17 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         </button>
 
         {/* Title */}
-        <h2 className="mb-8 text-center text-4xl font-bold text-primary">Settings</h2>
+        <div className="card-primary-header -mx-8 -mt-8">
+          <h2 className="mb-4 text-center text-4xl font-bold text-primary">
+            Settings
+          </h2>
+        </div>
 
         {/* Save Slots Section */}
         <div className="mb-8">
-          <h3 className="mb-4 text-2xl font-semibold text-primary">Save Slots</h3>
+          <h3 className="mb-4 text-2xl font-semibold text-primary">
+            Save Slots
+          </h3>
           <div className="space-y-3">
             {saveSlots.map(({ slot, data }) => (
               <div
@@ -73,8 +80,8 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 onClick={() => handleSlotClick(slot)}
                 className={`border-primary relative cursor-pointer rounded-lg border-2 p-4 transition-all ${
                   slot === activeSlot
-                    ? 'bg-btn-primary-active border-secondary'
-                    : 'bg-btn-primary hover:bg-btn-primary-hover hover:border-secondary'
+                    ? 'btn-body-primary bg-btn-primary-highlight/30 border-btn-dark text-left'
+                    : 'btn-body-primary hover:bg-btn-primary-hover text-left'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -110,13 +117,20 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
         {/* Quick Links Section */}
         <div>
-          <h3 className="mb-4 text-2xl font-semibold text-primary">Quick Links</h3>
+          <h3 className="mb-4 text-2xl font-semibold text-primary">
+            Quick Links
+          </h3>
           <button
             onClick={() => setShowHeroOverlay(true)}
-            className="border-primary bg-btn-primary hover:border-secondary hover:bg-btn-primary-hover flex w-full items-center gap-3 rounded-lg border-2 p-4 transition-colors"
+            className="btn-body-primary flex w-full items-center gap-4"
           >
-            <FontAwesomeIcon icon={faDungeon} className="text-2xl text-primary" />
-            <span className="text-xl font-bold text-primary">Reorder Heroes</span>
+            <FontAwesomeIcon
+              icon={faDungeon}
+              className="text-2xl text-primary"
+            />
+            <span className="text-xl font-bold text-primary">
+              Reorder Heroes
+            </span>
           </button>
         </div>
       </div>
