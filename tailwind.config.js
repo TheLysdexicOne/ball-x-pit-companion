@@ -15,10 +15,26 @@ module.exports = {
         pixel: ['TimesNewPixel', 'monospace'],
       },
       backgroundColor: {
+        primary: '#191516',
+        secondary: '#1f191a',
         input_box: '#423532',
+        // NAV
+        nav: '#1f1919',
+        nav_btn_hover: '#452c1f',
+        nav_btn_active: '#734325',
+        // Buttons
+        btn: {
+          primary: {
+            DEFAULT: '#251d1c',
+            active: '#39271E',
+            hover: '#251b18',
+          },
+        },
       },
       borderColor: {
         input_highlight: '#734532',
+        primary: '#452c1f',
+        secondary: '#8b7355',
       },
     },
   },

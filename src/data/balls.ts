@@ -27,7 +27,8 @@ function normalizeBall(data: BallData): Ball {
 
     ballColor: data.BallColor,
     damageType: data.DamageType,
-    effects: [...(data.HitEffects || []), ...(data.AOETypes || [])],
+    hitEffects: data.HitEffects || [],
+    aoeTypes: data.AOETypes || [],
     specials: data.Specials || [],
     isSpawner: data.IsSpawner,
   };

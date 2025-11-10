@@ -145,7 +145,7 @@ export default function HeroList() {
       </div>
 
       {/* Hero Grid - 4 columns on small screens, 8 columns on large screens for 2 rows */}
-      <div className="grid grid-cols-4 gap-2 md:grid-cols-8">
+      <div className="grid grid-cols-4 gap-2 lg:grid-cols-8">
         {heroes.map((hero, index) => (
           <div
             key={hero.id}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Background from '@/components/Background';
+import Nav from '@/components/Nav';
 import { getImagePath } from '@/utils/basePath';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -33,8 +34,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body>
-        <Background>{children}</Background>
+      <body className="bg-primary">
+        <Nav />
+        <div className="pt-20 lg:ml-64">{children}</div>
       </body>
     </html>
   );

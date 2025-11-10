@@ -4,11 +4,17 @@ import { useState, useMemo } from 'react';
 import type { Ball } from '@/types/ball';
 import { getAllBalls, getBasicBalls, getFusionBalls } from '@/data/balls';
 import BallListItem from './BallListItem';
+import BallCard from './BallCard';
 
 type FilterType = 'all' | 'basic' | 'fusion';
 type SortType = 'name' | 'encyclopedia';
+type ViewType = 'list' | 'grid';
 
-export default function BallsGrid() {
+interface BallsGridProps {
+  viewType?: ViewType;
+}
+
+export default function BallsGrid({ viewType = 'list' }: BallsGridProps) {
   const [filter, setFilter] = useState<FilterType>('all');
   const [sort, setSort] = useState<SortType>('encyclopedia');
   const [searchQuery, setSearchQuery] = useState('');
@@ -92,12 +98,20 @@ export default function BallsGrid() {
         </select>
       </div>
 
-      {/* List View */}
-      <div className="mx-8">
-        {filteredBalls.map(ball => (
-          <BallListItem key={ball.id} ball={ball} />
-        ))}
-      </div>
+      {/* View Rendering */}
+      {viewType === 'list' ? (
+        <div className="mx-8 space-y-4">
+          {filteredBalls.map(ball => (
+            <BallListItem key={ball.id} ball={ball} />
+          ))}
+        </div>
+      ) : (
+        <div className="mx-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredBalls.map(ball => (
+            <BallCard key={ball.id} ball={ball} />
+          ))}
+        </div>
+      )}
 
       {filteredBalls.length === 0 && (
         <p className="py-8 text-center text-gray-500">No balls found matching your criteria.</p>

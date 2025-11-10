@@ -40,11 +40,27 @@ export default function BallListItem({ ball }: BallListItemProps) {
 
   const highlightColor = getDamageTypeColor();
 
-  // Get readable damage type name
-  const getDamageTypeName = () => {
-    const damageType = ball.damageType.replace('k', '');
-    if (damageType.toLowerCase().includes('fire')) return 'Burn';
-    return damageType;
+  // Format tag names by removing 'k' prefix and capitalizing
+  const formatTagName = (tag: string) => {
+    const cleaned = tag.replace(/^k/, '');
+    // Special case replacements
+    if (cleaned === 'Frozen') return 'Freeze';
+    if (cleaned === 'LaserHorz' || cleaned === 'LaserVert' || cleaned === 'Ray') return 'Laser';
+    // Convert camelCase to Title Case
+    return cleaned.replace(/([A-Z])/g, ' $1').trim();
+  };
+
+  // Filter out tags that match the ball's slug (for spawners)
+  const shouldShowTag = (tag: string) => {
+    if (!ball.isSpawner) return true;
+
+    const tagCleaned = tag
+      .replace(/^k/, '')
+      .replace(/^hupg_/, '')
+      .toLowerCase();
+    const slugCleaned = ball.slug.replace(/^hupg_/, '').toLowerCase();
+
+    return tagCleaned !== slugCleaned;
   };
 
   // Format description with highlighted values
@@ -77,7 +93,7 @@ export default function BallListItem({ ball }: BallListItemProps) {
           if (!isNaN(numValue)) {
             displayValue = (numValue / 10).toFixed(1);
           }
-        } else if (key.includes('_chance')) {
+        } else if (key.includes('_chance') || key.includes('_pct')) {
           // Handle percentage values
           displayValue = `${value}%`;
         }
@@ -143,9 +159,27 @@ export default function BallListItem({ ball }: BallListItemProps) {
               <h3 className="mb-2 font-pixel text-4xl tracking-widest text-primary">{ball.name}</h3>
               <div className="flex flex-wrap gap-2">
                 <span className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">{tier}</span>
-                <span className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">
-                  {getDamageTypeName()}
-                </span>
+                {ball.hitEffects.filter(shouldShowTag).map(effect => (
+                  <span
+                    key={effect}
+                    className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary"
+                  >
+                    {formatTagName(effect)}
+                  </span>
+                ))}
+                {ball.aoeTypes.filter(shouldShowTag).map(aoe => (
+                  <span key={aoe} className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">
+                    {formatTagName(aoe)}
+                  </span>
+                ))}
+                {ball.specials.filter(shouldShowTag).map(special => (
+                  <span
+                    key={special}
+                    className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary"
+                  >
+                    {formatTagName(special)}
+                  </span>
+                ))}
                 {ball.isSpawner && (
                   <span className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">
                     Spawner

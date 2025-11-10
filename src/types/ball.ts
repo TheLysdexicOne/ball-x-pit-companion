@@ -55,7 +55,8 @@ export interface Ball {
   // Visual
   ballColor: string;
   damageType: string;
-  effects: string[];
+  hitEffects: string[];
+  aoeTypes: string[];
   specials: string[];
   isSpawner?: boolean;
 }

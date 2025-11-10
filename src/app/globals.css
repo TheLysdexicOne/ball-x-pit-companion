@@ -5,6 +5,22 @@
 /* Font will be loaded via layout.tsx to handle basePath correctly */
 
 @layer base {
+  /* Prevent horizontal scroll */
+  html {
+    @apply overflow-y-scroll;
+  }
+
+  body {
+    @apply overflow-x-hidden;
+  }
+
+  /* Prevent scroll when mobile menu is open - target body to allow pull-to-refresh */
+  body:has(.no-doc-scroll) {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
   /* Set default text colors */
   body {
     @apply text-secondary;
@@ -18,6 +34,36 @@
   h5,
   h6 {
     @apply text-primary;
+  }
+
+  .btn-body-primary {
+    @apply rounded-lg border-2 px-6 py-4 text-center transition-colors;
+    @apply bg-btn-primary border-primary text-secondary;
+    @apply hover:bg-btn-primary-hover hover:border-[#734325] hover:text-primary;
+  }
+
+  /* Custom scrollbar for nav menu */
+  nav::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  nav::-webkit-scrollbar-track {
+    background: #1f191a;
+  }
+
+  nav::-webkit-scrollbar-thumb {
+    background: #452c1f;
+    border-radius: 4px;
+  }
+
+  nav::-webkit-scrollbar-thumb:hover {
+    background: #734325;
+  }
+
+  /* Firefox scrollbar */
+  nav {
+    scrollbar-width: thin;
+    scrollbar-color: #452c1f #1f191a;
   }
 
   /* Pixelated rendering for all images */

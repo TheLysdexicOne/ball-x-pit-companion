@@ -48,57 +48,57 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl rounded-lg border-4 border-[#8b7355] bg-[#2a1810] p-8 shadow-2xl"
+        className="border-primary bg-primary relative w-full max-w-2xl rounded-lg border-4 p-8 shadow-2xl"
         onClick={e => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 text-3xl text-white/70 transition-colors hover:text-white"
+          className="absolute right-4 top-4 text-3xl text-primary transition-colors hover:text-secondary"
           title="Close"
         >
           <FontAwesomeIcon icon={faXmark} />
         </button>
 
         {/* Title */}
-        <h2 className="mb-8 text-center text-4xl font-bold text-[#f4e4c1]">Settings</h2>
+        <h2 className="mb-8 text-center text-4xl font-bold text-primary">Settings</h2>
 
         {/* Save Slots Section */}
         <div className="mb-8">
-          <h3 className="mb-4 text-2xl font-semibold text-[#f4e4c1]">Save Slots</h3>
+          <h3 className="mb-4 text-2xl font-semibold text-primary">Save Slots</h3>
           <div className="space-y-3">
             {saveSlots.map(({ slot, data }) => (
               <div
                 key={slot}
                 onClick={() => handleSlotClick(slot)}
-                className={`relative cursor-pointer rounded-lg border-2 p-4 transition-all ${
+                className={`border-primary relative cursor-pointer rounded-lg border-2 p-4 transition-all ${
                   slot === activeSlot
-                    ? 'border-yellow-500 bg-yellow-500/10'
-                    : 'border-[#8b7355] bg-[#1a0f08] hover:border-yellow-700 hover:bg-yellow-900/20'
+                    ? 'bg-btn-primary-active border-secondary'
+                    : 'bg-btn-primary hover:bg-btn-primary-hover hover:border-secondary'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <span className="text-xl font-bold text-[#f4e4c1]">
+                      <span className="text-xl font-bold text-primary">
                         {data.name || `Save ${slot}`}
                       </span>
                       {slot === activeSlot && (
-                        <span className="rounded bg-yellow-600 px-2 py-1 text-xs font-bold text-white">
+                        <span className="bg-nav_btn_active rounded px-2 py-1 text-xs font-bold text-primary">
                           ACTIVE
                         </span>
                       )}
                     </div>
-                    <div className="mt-1 text-sm text-gray-400">
+                    <div className="mt-1 text-sm text-secondary">
                       Last modified: {formatDate(data.lastModified)}
                     </div>
-                    <div className="mt-1 text-xs text-gray-500">
+                    <div className="mt-1 text-xs text-secondary">
                       {data.lastDifficulty} • Tier {data.lastTier}
                     </div>
                   </div>
                   <button
                     onClick={e => handleDeleteSlot(slot, e)}
-                    className="ml-4 rounded bg-red-600 px-3 py-1 text-sm font-bold text-white transition-colors hover:bg-red-700"
+                    className="ml-4 rounded bg-red-700 px-3 py-1 text-sm font-bold text-primary transition-colors hover:bg-red-600"
                   >
                     Delete
                   </button>
@@ -110,13 +110,13 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
         {/* Quick Links Section */}
         <div>
-          <h3 className="mb-4 text-2xl font-semibold text-[#f4e4c1]">Quick Links</h3>
+          <h3 className="mb-4 text-2xl font-semibold text-primary">Quick Links</h3>
           <button
             onClick={() => setShowHeroOverlay(true)}
-            className="flex w-full items-center gap-3 rounded-lg border-2 border-[#8b7355] bg-[#1a0f08] p-4 transition-colors hover:border-yellow-700 hover:bg-yellow-900/20"
+            className="border-primary bg-btn-primary hover:border-secondary hover:bg-btn-primary-hover flex w-full items-center gap-3 rounded-lg border-2 p-4 transition-colors"
           >
-            <FontAwesomeIcon icon={faDungeon} className="text-2xl text-[#f4e4c1]" />
-            <span className="text-xl font-bold text-[#f4e4c1]">Reorder Heroes</span>
+            <FontAwesomeIcon icon={faDungeon} className="text-2xl text-primary" />
+            <span className="text-xl font-bold text-primary">Reorder Heroes</span>
           </button>
         </div>
       </div>

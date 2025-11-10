@@ -277,7 +277,7 @@
   },
   {
     "Type": "3",
-    "Name": "Laser (Horizontal)",
+    "Name": "Laser (Horz)",
     "Slug": "hupg_laserhorz",
     "Description": "Deals {[min_laser_damage]}-{[max_laser_damage]} damage to all enemies in the same row",
     "Properties": {
@@ -365,7 +365,7 @@
   },
   {
     "Type": "4",
-    "Name": "Laser (Vertical)",
+    "Name": "Laser (Vert)",
     "Slug": "hupg_laservert",
     "Description": "Deals {[min_laser_damage]}-{[max_laser_damage]} damage to all enemies in the same column",
     "Properties": {

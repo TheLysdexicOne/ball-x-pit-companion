@@ -1,16 +1,14 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import BallsGrid from '@/components/BallsGrid';
 import { getImagePath } from '@/utils/basePath';
 
-export default function Balls() {
+export default function BallsGridPage() {
   return (
     <main className="min-h-screen p-8">
-      <Header title={'Encyclopedia | Balls'} />
+      <Header />
       {/* Main content container with max-width */}
       <div className="mx-auto max-w-6xl">
         <div className="mb-4 text-center font-pixel text-6xl tracking-widest">ENCYCLOPEDIA</div>
@@ -109,22 +107,7 @@ export default function Balls() {
           </button>
         </div>
         <div className="mb-8 flex justify-center gap-4">
-          <Link href="/encyclopedia/balls" className="group relative flex h-14">
-            <div
-              className="absolute inset-0 transition-opacity"
-              style={{
-                borderImageSource: `url(${getImagePath('/images/ui/btn4.png')})`,
-                borderImageSlice: '16 fill',
-                borderImageRepeat: 'repeat',
-                borderImageWidth: '64px',
-                imageRendering: 'pixelated',
-              }}
-            />
-            <span className="relative inset-0 flex items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
-              LIST
-            </span>
-          </Link>
-          <Link href="/encyclopedia/balls/grid" className="group relative flex h-14">
+          <Link href="/encyclopedia/balls" className="group relative h-14">
             <div
               className="absolute inset-0 transition-opacity group-hover:opacity-0"
               style={{
@@ -146,10 +129,25 @@ export default function Balls() {
               }}
             />
             <span className="relative inset-0 flex items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
+              LIST
+            </span>
+          </Link>
+          <Link href="/encyclopedia/balls/grid" className="group relative h-14">
+            <div
+              className="absolute inset-0 transition-opacity"
+              style={{
+                borderImageSource: `url(${getImagePath('/images/ui/btn4.png')})`,
+                borderImageSlice: '16 fill',
+                borderImageRepeat: 'repeat',
+                borderImageWidth: '64px',
+                imageRendering: 'pixelated',
+              }}
+            />
+            <span className="relative inset-0 flex items-center justify-center whitespace-nowrap px-8 font-pixel text-3xl tracking-widest">
               GRID
             </span>
           </Link>
-          <Link href="/encyclopedia/balls/chart" className="group relative flex h-14">
+          <Link href="/encyclopedia/balls/chart" className="group relative h-14">
             <div
               className="absolute inset-0 transition-opacity group-hover:opacity-0"
               style={{
@@ -174,7 +172,7 @@ export default function Balls() {
               CHART
             </span>
           </Link>
-          <Link href="/encyclopedia/balls/fusing" className="group relative flex h-14">
+          <Link href="/encyclopedia/balls/fusing" className="group relative h-14">
             <div
               className="absolute inset-0 transition-opacity group-hover:opacity-0"
               style={{
@@ -212,8 +210,7 @@ export default function Balls() {
             imageRendering: 'pixelated',
           }}
         >
-          {/* <h1 className="mb-6 text-center font-pixel text-5xl tracking-widest">BALLS</h1> */}
-          <BallsGrid />
+          <BallsGrid viewType="grid" />
         </div>
       </div>
     </main>
