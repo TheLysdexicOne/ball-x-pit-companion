@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Background from '@/components/Background';
 import Nav from '@/components/Nav';
 import { getImagePath } from '@/utils/basePath';
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -14,7 +13,11 @@ export const metadata: Metadata = {
   description: 'Companion site for Ball X Pit game',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const fontPath = getImagePath('/fonts/TimesNewPixel.ttf');
 
   return (

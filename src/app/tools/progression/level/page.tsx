@@ -1,24 +1,57 @@
 'use client';
 
-import HeroList from '@/components/HeroList';
 import LevelHeroSprite from '@/components/LevelHeroSprite';
 import { HEROES } from '@/data/heroes';
 import { useProgressData } from '@/hooks/useProgressData';
+import { getImagePath } from '@/utils/basePath';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import type { Hero } from '@/data/heroes';
 import type { DifficultyTier, FastTierCompletion } from '@/types/heroProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
-const LEVELS: { id: number; label: string }[] = [
-  { id: 1, label: 'The Bone Yard' },
-  { id: 2, label: 'The Snowy Shores' },
-  { id: 3, label: 'The Liminal Desert' },
-  { id: 4, label: 'The Fungal Forest' },
-  { id: 5, label: 'The Gory Grasslands' },
-  { id: 6, label: 'The Smoldering Depths' },
-  { id: 7, label: 'The Heavenly Gates' },
-  { id: 8, label: 'The Vast Void' },
+const LEVELS: { id: number; label: string; backgroundSrc?: string }[] = [
+  {
+    id: 1,
+    label: 'The Bone Yard',
+    backgroundSrc: '/images/levels/01-bone-yard.png',
+  },
+  {
+    id: 2,
+    label: 'The Snowy Shores',
+    backgroundSrc: '/images/levels/02-snowy-shores.png',
+  },
+  {
+    id: 3,
+    label: 'The Liminal Desert',
+    backgroundSrc: '/images/levels/03-liminal-desert.png',
+  },
+  {
+    id: 4,
+    label: 'The Fungal Forest',
+    backgroundSrc: '/images/levels/04-fungal-forest.png',
+  },
+  {
+    id: 5,
+    label: 'The Gory Grasslands',
+    backgroundSrc: '/images/levels/05-gory-grasslands.png',
+  },
+  {
+    id: 6,
+    label: 'The Smoldering Depths',
+    backgroundSrc: '/images/levels/06-smoldering-depths.png',
+  },
+  {
+    id: 7,
+    label: 'The Heavenly Gates',
+    backgroundSrc: '/images/levels/07-heavenly-gates.png',
+  },
+  {
+    id: 8,
+    label: 'The Vast Void',
+    backgroundSrc: '/images/levels/08-vast-void.png',
+  },
 ];
 
 // Difficulty tier options
@@ -51,7 +84,7 @@ const FAST_TIERS: { value: FastTierCompletion; label: string }[] = [
 ];
 
 export default function Home() {
-  const [showHeroOverlay, setShowHeroOverlay] = useState(false);
+  const router = useRouter();
   const {
     getSortedHeroes,
     updateLevelCompletion,
@@ -148,7 +181,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center p-8">
       <div className="flex w-full max-w-4xl flex-col">
-        <div className="card-primary">
+        <div className="">
           <div className="mb-4 grid gap-4 sm:grid-cols-2">
             <div className="btn-body-primary relative flex min-h-[72px] items-center justify-center px-6 py-3 sm:px-10">
               {isClient && currentDifficulty !== DIFFICULTY_TIERS[0].value && (
@@ -201,65 +234,67 @@ export default function Home() {
             </div>
           </div>
           <div className="space-y-6">
-            {LEVELS.map(level => (
-              <section
-                key={level.id}
-                className="border-primary rounded-xl border-2 shadow-lg backdrop-blur"
-              >
-                <header className="bg-primary flex flex-wrap items-center justify-between gap-3 rounded-t-xl px-4 py-3 sm:px-6 sm:py-4">
-                  <h2 className="font-pixel text-2xl tracking-widest text-secondary sm:text-3xl">
-                    {level.label}
-                  </h2>
-                  <span className="text-xs uppercase tracking-[0.45em] text-secondary/70">
-                    Level {level.id.toString().padStart(2, '0')}
-                  </span>
-                </header>
-                <div className="px-4 py-4 sm:px-6 sm:py-6">
-                  <div className="grid grid-cols-4 gap-3 sm:grid-cols-8">
-                    {sortedHeroes.map(hero => (
-                      <LevelHeroSprite
-                        key={`${level.id}-${hero.id}`}
-                        hero={hero}
-                        levelId={level.id}
-                        isComplete={isHeroLevelComplete(hero.id, level.id)}
-                        onToggle={toggleHeroCompletion}
-                        isClient={isClient}
+            {LEVELS.map(level => {
+              const backgroundUrl = level.backgroundSrc
+                ? getImagePath(level.backgroundSrc)
+                : null;
+
+              return (
+                <section
+                  key={level.id}
+                  className="border-primary relative overflow-hidden rounded-xl border-2 shadow-lg backdrop-blur"
+                >
+                  {backgroundUrl && (
+                    <>
+                      <div
+                        className="absolute inset-0 -z-20 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${backgroundUrl})` }}
+                        aria-hidden="true"
                       />
-                    ))}
+                      <div
+                        className="bg-body/80 absolute inset-0 -z-10"
+                        aria-hidden="true"
+                      />
+                    </>
+                  )}
+
+                  <header className="bg-primary relative z-10 flex flex-wrap items-center justify-between gap-3 rounded-t-xl px-4 py-3 sm:px-6 sm:py-4">
+                    <h2 className="font-pixel text-2xl tracking-widest text-secondary sm:text-3xl">
+                      {level.label}
+                    </h2>
+                    <span className="text-xs uppercase tracking-[0.45em] text-secondary/70 md:text-sm">
+                      Level {level.id.toString().padStart(2, '0')}
+                    </span>
+                  </header>
+                  <div className="relative z-10 px-4 py-4 sm:px-6 sm:py-6">
+                    <div className="grid grid-cols-4 justify-items-center gap-3 sm:grid-cols-8">
+                      {sortedHeroes.map(hero => (
+                        <LevelHeroSprite
+                          key={`${level.id}-${hero.id}`}
+                          hero={hero}
+                          levelId={level.id}
+                          isComplete={isHeroLevelComplete(hero.id, level.id)}
+                          onToggle={toggleHeroCompletion}
+                          isClient={isClient}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </section>
-            ))}
+                </section>
+              );
+            })}
           </div>
         </div>
-        <div className="card-primary">
-          <div className="card-text-box">Reorder heroes in the Settings.</div>
+        <div className="mt-8 flex justify-center">
+          <button
+            className="btn-body-primary font-pixel text-xl tracking-widest"
+            onClick={() => router.push('/settings/reorder-heroes')}
+            type="button"
+          >
+            REORDER HEROES
+          </button>
         </div>
       </div>
-
-      {showHeroOverlay && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-8 sm:px-6"
-          onClick={() => setShowHeroOverlay(false)}
-        >
-          <div
-            className="border-primary bg-nav relative max-h-[90vh] w-full max-w-xl overflow-auto rounded-3xl border-2 p-4 shadow-2xl sm:p-6 lg:max-w-4xl"
-            onClick={event => event.stopPropagation()}
-          >
-            <button
-              className="absolute right-4 top-4 font-pixel text-4xl leading-none text-primary transition-colors hover:text-secondary sm:right-6 sm:top-6 sm:text-5xl"
-              onClick={() => setShowHeroOverlay(false)}
-              aria-label="Close hero reorder"
-            >
-              ×
-            </button>
-
-            <div className="pt-6 sm:pt-8">
-              <HeroList />
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   );
 }

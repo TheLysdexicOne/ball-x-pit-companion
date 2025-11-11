@@ -60,24 +60,6 @@
     @apply border-primary m-2 border-t;
   }
 
-  /* Custom scrollbar for nav menu */
-  nav::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  nav::-webkit-scrollbar-track {
-    background: #1f191a;
-  }
-
-  nav::-webkit-scrollbar-thumb {
-    background: #452c1f;
-    border-radius: 4px;
-  }
-
-  nav::-webkit-scrollbar-thumb:hover {
-    background: #734325;
-  }
-
   /* Firefox scrollbar */
   nav {
     /* Colors */
@@ -86,9 +68,7 @@
     @apply fixed left-0 top-0 z-40 h-screen w-64;
     /* Animation */
     @apply transform transition-transform duration-300 ease-in-out;
-    /* Scrollbar */
-    scrollbar-width: thin;
-    scrollbar-color: #452c1f #1f191a;
+    @apply nav-scroll;
   }
 
   .standard-card {
@@ -100,5 +80,21 @@
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar for nav menu */
+  .nav-scroll::-webkit-scrollbar {
+    width: 8px; /* Set scrollbar width */
+  }
+
+  .nav-scroll::-webkit-scrollbar-track {
+    @apply bg-secondary mb-4 rounded-full;
+  }
+
+  .nav-scroll::-webkit-scrollbar-thumb {
+    @apply bg-highlight;
+    border-radius: 6px; /* Rounded corners for the thumb */
   }
 }

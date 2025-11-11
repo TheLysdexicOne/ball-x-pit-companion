@@ -8,10 +8,12 @@ import { getImagePath } from '@/utils/basePath';
 export default function BallsGridPage() {
   return (
     <main className="min-h-screen p-8">
-      <Header />
+      <Header title="Encyclopedia | Balls | Grid" />
       {/* Main content container with max-width */}
       <div className="mx-auto max-w-6xl">
-        <div className="mb-4 text-center font-pixel text-6xl tracking-widest">ENCYCLOPEDIA</div>
+        <div className="mb-4 text-center font-pixel text-6xl tracking-widest">
+          ENCYCLOPEDIA
+        </div>
 
         {/* Sub-navigation buttons */}
         <div className="mb-2 flex justify-center gap-4">
@@ -147,7 +149,10 @@ export default function BallsGridPage() {
               GRID
             </span>
           </Link>
-          <Link href="/encyclopedia/balls/chart" className="group relative h-14">
+          <Link
+            href="/encyclopedia/balls/chart"
+            className="group relative h-14"
+          >
             <div
               className="absolute inset-0 transition-opacity group-hover:opacity-0"
               style={{
@@ -172,7 +177,10 @@ export default function BallsGridPage() {
               CHART
             </span>
           </Link>
-          <Link href="/encyclopedia/balls/fusing" className="group relative h-14">
+          <Link
+            href="/encyclopedia/balls/fusing"
+            className="group relative h-14"
+          >
             <div
               className="absolute inset-0 transition-opacity group-hover:opacity-0"
               style={{

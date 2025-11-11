@@ -147,11 +147,10 @@ SaveSlotData {
      * If already tier 4+: set fastTier=3 (uncompletes tier 4, keeps 0-3)
 
 #### Hero Management
-- 16 heroes in 4x4 sprite sheet grid
-- Each hero has gridX (0-3), gridY (0-3) for sprite positioning
-- `customIndex` (0-15) controls display order (independent of sprite position)
-- Drag-and-drop reordering updates multiple customIndex values atomically
-- Sprite types: portrait (124x124) and small (18x18)
+- Hero art now loads from individual images in `public/heroes/portrait` (124×124) and `public/heroes/sprites` (18×18)
+- Legacy gridX/gridY fields remain on the data model for backwards compatibility but no longer drive rendering
+- `customIndex` (0-15) controls display order
+- Drag-and-drop reordering updates multiple `customIndex` values atomically
 
 #### Save Slot System
 - 3 independent save slots (slots 1-3)

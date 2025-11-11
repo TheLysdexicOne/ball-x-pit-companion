@@ -11,7 +11,6 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import Header from './Header';
-import SettingsModal from './SettingsModal';
 
 interface NavSection {
   label: string;
@@ -28,7 +27,6 @@ interface NavProps {
 
 export default function Nav({ pageTitle }: NavProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(['Tools', 'Encyclopedia'])
   );
@@ -40,6 +38,8 @@ export default function Nav({ pageTitle }: NavProps) {
 
     const titleMap: Record<string, string> = {
       '/': 'BALL X PIT',
+      '/settings': 'Settings',
+      '/settings/reorder-heroes': 'Settings | Reorder Heroes',
       '/tools/progression/level': 'Progression | Level View',
       '/tools/progression/hero': 'Progression | Hero View',
       '/tools/fusion': 'Fusion',
@@ -57,7 +57,7 @@ export default function Nav({ pageTitle }: NavProps) {
 
   const navStructure: NavSection[] = [
     { label: 'Home', href: '/' },
-    { label: 'Settings', onClick: () => setIsSettingsOpen(true) },
+    { label: 'Settings', href: '/settings' },
     {
       label: 'Tools',
       isHeader: true,
@@ -228,12 +228,6 @@ export default function Nav({ pageTitle }: NavProps) {
         <FontAwesomeIcon icon={isOpen ? faXmark : faBars} />
       </button>
 
-      {/* Settings Modal */}
-      <SettingsModal
-        isOpen={isSettingsOpen}
-        onClose={() => setIsSettingsOpen(false)}
-      />
-
       {/* Overlay for mobile only */}
       {isOpen && (
         <div
@@ -262,7 +256,7 @@ export default function Nav({ pageTitle }: NavProps) {
           <div className="border-highlight mb-4 border-t" />
 
           {/* Navigation Links */}
-          <ul className="flex-1 space-y-1 overflow-y-auto">
+          <ul className="nav-scroll flex-1 space-y-1 overflow-y-auto pr-2">
             {navStructure.map(item => renderNavItem(item))}
           </ul>
           <div className="border-highlight mb-4 border-t" />
