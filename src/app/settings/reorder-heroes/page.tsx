@@ -9,21 +9,67 @@ import { faGripVertical } from '@fortawesome/free-solid-svg-icons';
 import {
   DndContext,
   closestCenter,
-  PointerSensor,
+  MouseSensor,
   TouchSensor,
   useSensor,
   useSensors,
   DragEndEvent,
   DragStartEvent,
   DragOverlay,
+  KeyboardSensor,
 } from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
+  sortableKeyboardCoordinates,
   useSortable,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+
+interface HeroItemProps {
+  hero: Hero;
+  isDragging?: boolean;
+  dragHandleProps?: any;
+}
+
+function HeroItem({
+  hero,
+  isDragging = false,
+  dragHandleProps,
+}: HeroItemProps) {
+  return (
+    <div
+      className={`group flex items-center gap-4 rounded-lg border-2 bg-nav/70 px-4 py-2 transition-colors sm:px-5 ${
+        isDragging
+          ? 'border-highlight bg-nav/60 shadow-[0_0_15px_rgba(226,170,97,0.3)]'
+          : 'border-primary/60 hover:border-highlight hover:bg-nav/60'
+      }`}
+    >
+      <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-lg border-2 border-primary/60 bg-body sm:h-20 sm:w-20">
+        <HeroSprite
+          hero={hero}
+          type="portrait"
+          scale={0.75}
+          highlighted={isDragging}
+        />
+      </div>
+      <div className="flex flex-1 items-center justify-between gap-4">
+        <span className="font-pixel text-lg uppercase tracking-widest text-secondary sm:text-xl">
+          {hero.name}
+        </span>
+      </div>
+      <button
+        type="button"
+        aria-label={`Reorder ${hero.name}`}
+        className="flex h-12 w-12 cursor-grab items-center justify-center rounded-lg text-xl text-primary hover:text-secondary active:cursor-grabbing"
+        {...dragHandleProps}
+      >
+        <FontAwesomeIcon icon={faGripVertical} />
+      </button>
+    </div>
+  );
+}
 
 interface SortableHeroItemProps {
   hero: Hero;
@@ -41,38 +87,19 @@ function SortableHeroItem({ hero, index, isDragging }: SortableHeroItemProps) {
     opacity: isDragging ? 0.3 : 1,
   };
 
+  const dragHandleProps = {
+    ...attributes,
+    ...listeners,
+    style: { touchAction: 'manipulation' },
+  };
+
   return (
     <li ref={setNodeRef} style={style}>
-      <div
-        className={`bg-nav/70 group flex items-center gap-4 rounded-lg border-2 px-4 py-2 transition-colors sm:px-5 ${
-          isDragging
-            ? 'border-highlight bg-nav/60 shadow-[0_0_15px_rgba(226,170,97,0.3)]'
-            : 'border-primary/60 hover:border-highlight hover:bg-nav/60'
-        }`}
-      >
-        <div className="border-primary/60 bg-body relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-lg border-2 sm:h-20 sm:w-20">
-          <HeroSprite
-            hero={hero}
-            type="portrait"
-            scale={0.75}
-            highlighted={isDragging}
-          />
-        </div>
-        <div className="flex flex-1 items-center justify-between gap-4">
-          <span className="font-pixel text-lg uppercase tracking-widest text-secondary sm:text-xl">
-            {hero.name}
-          </span>
-        </div>
-        <button
-          type="button"
-          aria-label={`Reorder ${hero.name}`}
-          className="flex h-12 w-12 cursor-grab items-center justify-center rounded-lg text-xl text-primary hover:text-secondary active:cursor-grabbing"
-          {...attributes}
-          {...listeners}
-        >
-          <FontAwesomeIcon icon={faGripVertical} />
-        </button>
-      </div>
+      <HeroItem
+        hero={hero}
+        isDragging={isDragging}
+        dragHandleProps={dragHandleProps}
+      />
     </li>
   );
 }
@@ -83,18 +110,17 @@ export default function ReorderHeroesPage() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  // Configure sensors for both mouse and touch with activation constraints
+  // Sensor setup: MouseSensor for PC (instant), TouchSensor for mobile (long-press)
   const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 8, // Require 8px movement before drag starts
-      },
-    }),
+    useSensor(MouseSensor),
     useSensor(TouchSensor, {
       activationConstraint: {
-        delay: 500, // 500ms long-press to activate drag
-        tolerance: 2, // Cancel if finger moves >2px during hold (scrolling intent)
+        delay: 250,
+        tolerance: 5,
       },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
     })
   );
 
@@ -148,65 +174,39 @@ export default function ReorderHeroesPage() {
   const activeHero = activeId ? heroes.find(h => h.id === activeId) : null;
 
   return (
-    <main className="min-h-screen p-4 sm:p-8">
-      <div className="mx-auto max-w-4xl">
-        <h1 className="mb-6 text-center font-pixel text-2xl uppercase tracking-widest text-primary sm:text-3xl">
-          Reorder Heroes
-        </h1>
-
-        <div className="nav-scroll border-primary bg-body relative w-full overflow-auto rounded-lg border-2 p-4 sm:p-6">
-          <div className="space-y-4">
-            <div className="card-text-box m-0 font-pixel text-sm uppercase tracking-widest text-secondary sm:text-base">
-              Drag heroes up or down to change the order they appear in
-              progression views.
-            </div>
-
-            <DndContext
-              sensors={sensors}
-              collisionDetection={closestCenter}
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              <SortableContext
-                items={heroes.map(h => h.id)}
-                strategy={verticalListSortingStrategy}
-              >
-                <ul className="flex flex-col gap-2">
-                  {heroes.map((hero, index) => (
-                    <SortableHeroItem
-                      key={hero.id}
-                      hero={hero}
-                      index={index}
-                      isDragging={activeId === hero.id}
-                    />
-                  ))}
-                </ul>
-              </SortableContext>
-
-              <DragOverlay>
-                {activeHero ? (
-                  <div className="bg-nav/90 border-highlight flex items-center gap-4 rounded-lg border-2 px-4 py-2 shadow-[0_0_20px_rgba(226,170,97,0.5)] sm:px-5">
-                    <div className="border-primary/60 bg-body relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-lg border-2 sm:h-20 sm:w-20">
-                      <HeroSprite
-                        hero={activeHero}
-                        type="portrait"
-                        scale={0.75}
-                        highlighted={true}
-                      />
-                    </div>
-                    <div className="flex flex-1 items-center justify-between gap-4">
-                      <span className="font-pixel text-lg uppercase tracking-widest text-secondary sm:text-xl">
-                        {activeHero.name}
-                      </span>
-                    </div>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg text-xl text-primary">
-                      <FontAwesomeIcon icon={faGripVertical} />
-                    </div>
-                  </div>
-                ) : null}
-              </DragOverlay>
-            </DndContext>
+    <main className="flex flex-col items-center justify-center p-2 sm:p-8">
+      <div className="flex w-full max-w-4xl flex-col">
+        <div className="card-primary">
+          <div className="card-text-box m-0 font-pixel text-sm uppercase tracking-widest text-secondary sm:text-base">
+            Drag heroes up or down to change the order they appear.
           </div>
+        </div>
+        <div className="card-primary">
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext
+              items={heroes.map(h => h.id)}
+              strategy={verticalListSortingStrategy}
+            >
+              <ul className="flex flex-col gap-2">
+                {heroes.map((hero, index) => (
+                  <SortableHeroItem
+                    key={hero.id}
+                    hero={hero}
+                    index={index}
+                    isDragging={activeId === hero.id}
+                  />
+                ))}
+              </ul>
+            </SortableContext>
+            <DragOverlay>
+              {activeHero ? <HeroItem hero={activeHero} /> : null}
+            </DragOverlay>
+          </DndContext>
         </div>
       </div>
     </main>

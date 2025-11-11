@@ -183,10 +183,10 @@ export default function Home() {
       <div className="flex w-full max-w-4xl flex-col">
         <div className="">
           <div className="mb-4 grid gap-4 sm:grid-cols-2">
-            <div className="btn-body-primary relative flex min-h-[72px] items-center justify-center px-6 py-3 sm:px-10">
+            <div className="btn-body-primary-nohover relative flex min-h-[72px] items-center justify-center px-6 py-3 sm:px-10">
               {isClient && currentDifficulty !== DIFFICULTY_TIERS[0].value && (
                 <button
-                  className="absolute left-4 text-3xl text-secondary transition-colors hover:text-primary sm:left-6 sm:text-4xl"
+                  className="absolute left-4 text-3xl text-secondary transition-colors sm:left-6 sm:text-4xl"
                   onClick={() => navigateDifficulty('prev')}
                   aria-label="Previous difficulty tier"
                 >
@@ -200,7 +200,7 @@ export default function Home() {
                 currentDifficulty !==
                   DIFFICULTY_TIERS[DIFFICULTY_TIERS.length - 1].value && (
                   <button
-                    className="absolute right-4 text-3xl text-secondary transition-colors hover:text-primary sm:right-6 sm:text-4xl"
+                    className="absolute right-4 text-3xl text-secondary transition-colors sm:right-6 sm:text-4xl"
                     onClick={() => navigateDifficulty('next')}
                     aria-label="Next difficulty tier"
                   >
@@ -208,10 +208,10 @@ export default function Home() {
                   </button>
                 )}
             </div>
-            <div className="btn-body-primary relative flex min-h-[72px] items-center justify-center px-6 py-3 sm:px-10">
+            <div className="btn-body-primary-nohover relative flex min-h-[72px] items-center justify-center px-6 py-3 sm:px-10">
               {isClient && currentTier !== FAST_TIERS[0].value && (
                 <button
-                  className="absolute left-4 text-3xl text-secondary transition-colors hover:text-primary sm:left-6 sm:text-4xl"
+                  className="absolute left-4 text-3xl text-secondary transition-colors sm:left-6 sm:text-4xl"
                   onClick={() => navigateFastTier('prev')}
                   aria-label="Previous fast tier"
                 >
@@ -224,7 +224,7 @@ export default function Home() {
               {isClient &&
                 currentTier !== FAST_TIERS[FAST_TIERS.length - 1].value && (
                   <button
-                    className="absolute right-4 text-3xl text-secondary transition-colors hover:text-primary sm:right-6 sm:text-4xl"
+                    className="absolute right-4 text-3xl text-secondary transition-colors sm:right-6 sm:text-4xl"
                     onClick={() => navigateFastTier('next')}
                     aria-label="Next fast tier"
                   >
@@ -242,7 +242,7 @@ export default function Home() {
               return (
                 <section
                   key={level.id}
-                  className="border-primary relative overflow-hidden rounded-xl border-2 shadow-lg backdrop-blur"
+                  className="relative overflow-hidden rounded-xl border-2 border-primary shadow-lg backdrop-blur"
                 >
                   {backgroundUrl && (
                     <>
@@ -252,13 +252,13 @@ export default function Home() {
                         aria-hidden="true"
                       />
                       <div
-                        className="bg-body/80 absolute inset-0 -z-10"
+                        className="absolute inset-0 -z-10 bg-body/80"
                         aria-hidden="true"
                       />
                     </>
                   )}
 
-                  <header className="bg-primary relative z-10 flex flex-wrap items-center justify-between gap-3 rounded-t-xl px-4 py-3 sm:px-6 sm:py-4">
+                  <header className="relative z-10 flex flex-wrap items-center justify-between gap-3 rounded-t-xl bg-primary px-4 py-3 sm:px-6 sm:py-4">
                     <h2 className="font-pixel text-2xl tracking-widest text-secondary sm:text-3xl">
                       {level.label}
                     </h2>

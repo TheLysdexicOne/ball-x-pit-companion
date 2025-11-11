@@ -38,16 +38,21 @@
 
   .btn-body-primary {
     @apply rounded-lg border-2 px-6 py-4 text-center transition-colors;
-    @apply bg-btn-primary border-primary text-secondary;
-    @apply hover:bg-btn-primary-highlight hover:border-btn-highlight hover:text-primary;
+    @apply border-primary bg-btn-primary text-secondary;
+    @apply hover:border-btn-highlight hover:bg-btn-primary-highlight hover:text-primary;
+  }
+
+  .btn-body-primary-nohover {
+    @apply rounded-lg border-2 px-6 py-4 text-center transition-colors;
+    @apply border-primary bg-btn-primary text-secondary;
   }
 
   .card-primary {
-    @apply bg-body border-nav mb-12 w-full rounded-lg p-4 text-center;
+    @apply mb-4 w-full rounded-lg border-nav bg-body p-4 text-center;
   }
 
   .card-primary-header {
-    @apply bg-card-header -mx-4 -mt-4 mb-4 rounded-t-lg px-4 py-3;
+    @apply -mx-4 -mt-4 mb-4 rounded-t-lg bg-card-header px-4 py-3;
   }
 
   .card-text-box {
@@ -57,13 +62,13 @@
   }
 
   .hr-separator {
-    @apply border-primary m-2 border-t;
+    @apply m-2 border-t border-primary;
   }
 
   /* Firefox scrollbar */
   nav {
     /* Colors */
-    @apply bg-nav border-nav border-r-2;
+    @apply border-r-2 border-nav bg-nav;
     /* Positioning */
     @apply fixed left-0 top-0 z-40 h-screen w-64;
     /* Animation */
@@ -90,7 +95,7 @@
   }
 
   .nav-scroll::-webkit-scrollbar-track {
-    @apply bg-secondary mb-4 rounded-full;
+    @apply mb-4 rounded-full bg-secondary;
   }
 
   .nav-scroll::-webkit-scrollbar-thumb {

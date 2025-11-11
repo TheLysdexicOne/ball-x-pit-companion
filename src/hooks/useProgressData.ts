@@ -60,11 +60,13 @@ function loadProgressData(): ProgressData {
 
     // Validate and merge with current heroes (in case new heroes were added)
     const existingHeroIds = new Set(data.heroes.map(h => h.heroId));
-    const newHeroes = HEROES.filter(h => !existingHeroIds.has(h.id)).map((hero, index) => ({
-      heroId: hero.id,
-      customIndex: data.heroes.length + index,
-      levelCompletions: [],
-    }));
+    const newHeroes = HEROES.filter(h => !existingHeroIds.has(h.id)).map(
+      (hero, index) => ({
+        heroId: hero.id,
+        customIndex: data.heroes.length + index,
+        levelCompletions: [],
+      })
+    );
 
     return {
       ...data,
@@ -92,8 +94,12 @@ function migrateLegacyData(): void {
     if (!legacyProgress) return; // No legacy data to migrate
 
     const progressData = JSON.parse(legacyProgress) as ProgressData;
-    const difficulty = (localStorage.getItem(LEGACY_DIFFICULTY_KEY) as DifficultyTier) || 'base';
-    const tier = parseInt(localStorage.getItem(LEGACY_TIER_KEY) || '0', 10) as FastTierCompletion;
+    const difficulty =
+      (localStorage.getItem(LEGACY_DIFFICULTY_KEY) as DifficultyTier) || 'base';
+    const tier = parseInt(
+      localStorage.getItem(LEGACY_TIER_KEY) || '0',
+      10
+    ) as FastTierCompletion;
 
     // Create save slot 1 with legacy data
     const saveSlot: SaveSlotData = {
@@ -137,7 +143,7 @@ function loadSaveSlot(slot: number): SaveSlotData {
     return {
       heroProgress: createInitialData(),
       lastDifficulty: 'base',
-      lastTier: 0,
+      lastTier: 1, // Default to Normal (tier 1)
       lastModified: Date.now(),
       name: `Save ${slot}`,
     };
@@ -150,7 +156,7 @@ function loadSaveSlot(slot: number): SaveSlotData {
       return {
         heroProgress: createInitialData(),
         lastDifficulty: 'base',
-        lastTier: 0,
+        lastTier: 1, // Default to Normal (tier 1)
         lastModified: Date.now(),
         name: `Save ${slot}`,
       };
@@ -162,7 +168,7 @@ function loadSaveSlot(slot: number): SaveSlotData {
     return {
       heroProgress: createInitialData(),
       lastDifficulty: 'base',
-      lastTier: 0,
+      lastTier: 1, // Default to Normal (tier 1)
       lastModified: Date.now(),
       name: `Save ${slot}`,
     };
@@ -221,8 +227,12 @@ export function useProgressData() {
     migrateLegacyData();
   }, []);
 
-  const [activeSlot, setActiveSlotState] = useState<number>(() => getActiveSlot());
-  const [saveData, setSaveData] = useState<SaveSlotData>(() => loadSaveSlot(activeSlot));
+  const [activeSlot, setActiveSlotState] = useState<number>(() =>
+    getActiveSlot()
+  );
+  const [saveData, setSaveData] = useState<SaveSlotData>(() =>
+    loadSaveSlot(activeSlot)
+  );
   const [updateTrigger, setUpdateTrigger] = useState(0);
 
   // Listen for updates from other components
@@ -235,14 +245,17 @@ export function useProgressData() {
     };
 
     window.addEventListener(PROGRESS_UPDATE_EVENT, handleUpdate);
-    return () => window.removeEventListener(PROGRESS_UPDATE_EVENT, handleUpdate);
+    return () =>
+      window.removeEventListener(PROGRESS_UPDATE_EVENT, handleUpdate);
   }, []);
 
   /**
    * Gets all heroes sorted by custom index
    */
   const getSortedHeroes = useCallback((): HeroProgress[] => {
-    return [...saveData.heroProgress.heroes].sort((a, b) => a.customIndex - b.customIndex);
+    return [...saveData.heroProgress.heroes].sort(
+      (a, b) => a.customIndex - b.customIndex
+    );
   }, [saveData.heroProgress.heroes, updateTrigger]);
 
   /**
@@ -295,8 +308,12 @@ export function useProgressData() {
   /**
    * Updates hero order for multiple heroes at once (for drag-and-drop)
    */
-  const updateHeroOrders = (updates: Array<{ heroId: string; customIndex: number }>) => {
-    const heroMap = new Map(saveData.heroProgress.heroes.map(h => [h.heroId, h]));
+  const updateHeroOrders = (
+    updates: Array<{ heroId: string; customIndex: number }>
+  ) => {
+    const heroMap = new Map(
+      saveData.heroProgress.heroes.map(h => [h.heroId, h])
+    );
     updates.forEach(({ heroId, customIndex }) => {
       const hero = heroMap.get(heroId);
       if (hero) {
@@ -326,7 +343,8 @@ export function useProgressData() {
         if (hero.heroId !== heroId) return hero;
 
         const existingIndex = hero.levelCompletions.findIndex(
-          lc => lc.levelId === levelId && lc.difficulty === completion.difficulty
+          lc =>
+            lc.levelId === levelId && lc.difficulty === completion.difficulty
         );
 
         if (existingIndex >= 0) {
@@ -397,7 +415,7 @@ export function useProgressData() {
     const emptySave: SaveSlotData = {
       heroProgress: createInitialData(),
       lastDifficulty: 'base',
-      lastTier: 0,
+      lastTier: 1, // Default to Normal (tier 1)
       lastModified: Date.now(),
       name: `Save ${slot}`,
     };
@@ -418,7 +436,7 @@ export function useProgressData() {
     const initial: SaveSlotData = {
       heroProgress: createInitialData(),
       lastDifficulty: 'base',
-      lastTier: 0,
+      lastTier: 1, // Default to Normal (tier 1)
       lastModified: Date.now(),
       name: saveData.name || `Save ${activeSlot}`,
     };

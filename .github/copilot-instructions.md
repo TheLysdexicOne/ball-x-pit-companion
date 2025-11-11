@@ -57,14 +57,16 @@ src/
 │   ├── layout.tsx                # Root layout with Nav component
 │   ├── page.tsx                  # Home page (navigation cards)
 │   ├── globals.css               # Global styles, custom classes, scrollbar
+│   ├── settings/
+│   │   ├── page.tsx              # Settings page (save slot management)
+│   │   └── reorder-heroes/
+│   │       └── page.tsx          # Hero reordering with drag-and-drop
 │   └── tools/
 │       └── progression/
 │           └── level/page.tsx    # Level View progression tracker
 ├── components/                   # React components
 │   ├── Nav.tsx                   # Navigation sidebar + mobile menu
 │   ├── Header.tsx                # Page title display (decoupled)
-│   ├── SettingsModal.tsx         # Save slot management modal
-│   ├── HeroList.tsx              # Drag-and-drop hero ordering
 │   ├── HeroSprite.tsx            # Hero sprite renderer (portrait/small)
 │   └── LevelHeroSprite.tsx       # Level completion sprite (with checkmark)
 ├── hooks/
@@ -219,7 +221,7 @@ SaveSlotData {
 **Components**: Nav.tsx (sidebar + mobile menu) + Header.tsx (title only)
 
 **Design**: Decoupled architecture
-- **Nav**: Manages menu state, mobile overlay, settings modal, includes Header
+- **Nav**: Manages menu state, mobile overlay, links to settings page, includes Header
 - **Header**: Pure display component, receives title prop, no menu logic
 - **Layout**: Renders Nav at root, adds pt-20 (header space) + lg:ml-64 (sidebar space)
 
@@ -237,11 +239,68 @@ SaveSlotData {
 - Dynamic formatting: mobile stacked ("Progression\nLevel View"), desktop inline ("Progression | Level View")
 - Split on pipe character, render with sm:hidden/hidden sm:block
 
+#### Hero Reordering Page
+**Location**: `src/app/settings/reorder-heroes/page.tsx`
+
+**Architecture**: All drag-and-drop logic inline (no separate HeroList component)
+
+**Components**:
+- **HeroItem**: Presentational component rendering hero card with portrait, name, grip icon
+  - Accepts optional `dragHandleProps` to make grip draggable
+  - Used in both sortable list and DragOverlay (same visual)
+- **SortableHeroItem**: Wraps HeroItem with `useSortable` hook
+  - Applies transform/transition for smooth animations
+  - Passes drag attributes/listeners only to grip handle via dragHandleProps
+  - Sets opacity to 0.3 when dragging (shows placeholder position)
+
+**Drag & Drop Setup** (@dnd-kit/core + @dnd-kit/sortable):
+```typescript
+// Sensors: MouseSensor (PC instant), TouchSensor (mobile long-press), KeyboardSensor
+const sensors = useSensors(
+  useSensor(MouseSensor),                    // PC: Click and drag immediately
+  useSensor(TouchSensor, {                   // Mobile: Long-press with tolerance
+    activationConstraint: {
+      delay: 250,                            // 250ms hold before drag starts
+      tolerance: 5,                          // Allow 5px movement during hold
+    },
+  }),
+  useSensor(KeyboardSensor, {                // Accessibility
+    coordinateGetter: sortableKeyboardCoordinates,
+  })
+);
+
+// Drag handle: Only grip icon is draggable, not entire card
+const dragHandleProps = {
+  ...attributes,
+  ...listeners,
+  style: { touchAction: 'none' },           // Prevent browser touch gestures on handle
+};
+```
+
+**Key Features**:
+- **Mouse drag**: Instant activation on PC (natural click-and-drag)
+- **Touch drag**: 250ms delay with 5px tolerance (prevents accidental drags while scrolling)
+- **Drag overlay**: Renders floating copy of hero card that follows cursor/finger
+- **Visual feedback**: Dragged item shows at 0.3 opacity, other items animate smoothly to new positions
+- **Collision detection**: `closestCenter` algorithm (more forgiving than rectangle intersection)
+- **Sorting strategy**: `verticalListSortingStrategy` (optimized for vertical lists)
+
+**State Management**:
+- `activeId`: Tracks which hero is being dragged (for DragOverlay rendering)
+- `isUpdating`: Flag prevents reload race condition during drag
+- `handleDragEnd`: Uses `arrayMove` to reorder, then saves via `updateHeroOrders`
+- Deferred save with `setTimeout` to avoid cross-component update conflicts
+
+**Critical Pattern**: 
+- DragOverlay must render same component (HeroItem) as sortable items
+- Do NOT render SortableHeroItem in overlay (causes id collision)
+- Grip handle gets drag listeners, rest of card is non-interactive
+
 #### Level View Page (Progression Tracker)
 **Location**: `src/app/tools/progression/level/page.tsx`
 
 **Structure**:
-1. **Header Controls**: Reorder Heroes button (opens HeroList modal)
+1. **Header Controls**: Reorder Heroes button (navigates to `/settings/reorder-heroes`)
 2. **Difficulty/Tier Selectors**: Two sections with FontAwesome caret navigation
 3. **Level Sections**: 8 sections (The Bone Yard → The Vast Void)
   - Uniform parchment-style cards with blurred nav background; per-level background art removed for responsive layout
@@ -250,7 +309,7 @@ SaveSlotData {
 4. **Hero Sprites**: LevelHeroSprite components (18x18 @ scale 3, checkmark overlay)
 
 **State**:
-- Local: showHeroOverlay (modal), sortedHeroes (current order), isClient (SSR flag)
+- Local: sortedHeroes (current order), isClient (SSR flag)
 - Hook: currentDifficulty, currentTier, getHeroProgress, updateLevelCompletion
 
 **SSR Handling**:
@@ -258,21 +317,18 @@ SaveSlotData {
 - Default labels shown until client-side: "Base Level", "Normal"
 - Navigation arrows hidden until isClient=true
 
-#### Settings Modal
-**Location**: `src/components/SettingsModal.tsx`
+#### Settings Pages
 
-**Features**:
-- Save slot list: shows all 3 slots with metadata (name, last modified, difficulty/tier)
-- Active slot highlighted with "ACTIVE" badge
-- Click slot to switch (if different from active)
-- Delete button per slot (with confirmation)
-- Quick Links section: "Reorder Heroes" button (opens HeroList)
-- Nested modal support: HeroList can open over SettingsModal
+**Settings Page** (`/settings`):
+- Save slot management UI with active indicator
+- Links to `/settings/reorder-heroes`
+- Replaced old SettingsModal component
 
-**Integration**:
-- Triggered from Nav via onClick (not a route)
-- Modal state: isSettingsOpen in Nav component
-- Uses useProgressData hook for all save operations
+**Reorder Heroes Page** (`/settings/reorder-heroes`):
+- Full-page hero reordering interface with drag-and-drop
+- See "Hero Reordering Page" section above for details
+
+#### Legacy Components (Removed)
 
 ### Design System
 
