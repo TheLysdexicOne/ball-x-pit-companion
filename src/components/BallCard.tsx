@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import type { Ball } from '@/types/ball';
 import { formatDescription } from '@/data/balls';
-import { getBallIconStyle } from '@/data/ballIcons';
+import BallIcon from './BallIcon';
 
 interface BallCardProps {
   ball: Ball;
@@ -12,9 +12,12 @@ interface BallCardProps {
 export default function BallCard({ ball }: BallCardProps) {
   const [selectedLevel, setSelectedLevel] = useState<1 | 2 | 3>(1);
 
-  const currentLevelProps = ball[`level${selectedLevel}` as 'level1' | 'level2' | 'level3'];
-  const formattedDescription = formatDescription(ball.description, currentLevelProps);
-  const iconStyle = getBallIconStyle(ball.slug);
+  const currentLevelProps =
+    ball[`level${selectedLevel}` as 'level1' | 'level2' | 'level3'];
+  const formattedDescription = formatDescription(
+    ball.description,
+    currentLevelProps
+  );
 
   // Determine ball tier
   const tier =
@@ -52,13 +55,15 @@ export default function BallCard({ ball }: BallCardProps) {
         {/* Ball Icon and Header */}
         <div className="mb-2 flex items-start gap-3">
           {/* Ball Icon */}
-          {iconStyle && (
-            <div className="flex-shrink-0" style={iconStyle} aria-label={`${ball.name} icon`} />
-          )}
+          <div className="flex-shrink-0">
+            <BallIcon slug={ball.slug} name={ball.name} size={50} />
+          </div>
 
           {/* Header Text */}
           <div className="flex-1">
-            <h3 className="font-pixel text-2xl font-bold tracking-widest">{ball.name}</h3>
+            <h3 className="font-pixel text-2xl font-bold tracking-widest">
+              {ball.name}
+            </h3>
             <div className="flex gap-2 text-xs">
               <span className="rounded bg-amber-200 px-2 py-1">{tier}</span>
               <span className="rounded bg-blue-200 px-2 py-1">
@@ -103,8 +108,12 @@ export default function BallCard({ ball }: BallCardProps) {
         {/* Evolutions */}
         {ball.evolvesInto.length > 0 && (
           <div className="mt-2 rounded bg-green-100 p-2">
-            <p className="mb-1 text-xs font-semibold text-green-900">Evolves into:</p>
-            <p className="text-xs text-gray-600">{ball.evolvesInto.length} evolution(s)</p>
+            <p className="mb-1 text-xs font-semibold text-green-900">
+              Evolves into:
+            </p>
+            <p className="text-xs text-gray-600">
+              {ball.evolvesInto.length} evolution(s)
+            </p>
           </div>
         )}
       </div>

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import type { Ball } from '@/types/ball';
 import { formatDescription, getBallBySlug } from '@/data/balls';
-import { getBallIconStyle } from '@/data/ballIcons';
+import BallIcon from './BallIcon';
 
 interface BallListItemProps {
   ball: Ball;
@@ -12,8 +12,8 @@ interface BallListItemProps {
 export default function BallListItem({ ball }: BallListItemProps) {
   const [selectedLevel, setSelectedLevel] = useState<1 | 2 | 3>(1);
 
-  const currentLevelProps = ball[`level${selectedLevel}` as 'level1' | 'level2' | 'level3'];
-  const iconStyle = getBallIconStyle(ball.slug, 2); // 2x scale for list view
+  const currentLevelProps =
+    ball[`level${selectedLevel}` as 'level1' | 'level2' | 'level3'];
 
   // Determine ball tier
   const tier =
@@ -28,7 +28,9 @@ export default function BallListItem({ ball }: BallListItemProps) {
     // Convert Unity color format "r: 0.61, g: 0.50, b: 0.57, a: 1.00" to hex
     if (!ball.ballColor) return '#734325'; // Fallback to parchment highlight
 
-    const colorMatch = ball.ballColor.match(/r:\s*([\d.]+),\s*g:\s*([\d.]+),\s*b:\s*([\d.]+)/);
+    const colorMatch = ball.ballColor.match(
+      /r:\s*([\d.]+),\s*g:\s*([\d.]+),\s*b:\s*([\d.]+)/
+    );
     if (!colorMatch) return '#734325';
 
     const r = Math.round(parseFloat(colorMatch[1]) * 255);
@@ -45,7 +47,8 @@ export default function BallListItem({ ball }: BallListItemProps) {
     const cleaned = tag.replace(/^k/, '');
     // Special case replacements
     if (cleaned === 'Frozen') return 'Freeze';
-    if (cleaned === 'LaserHorz' || cleaned === 'LaserVert' || cleaned === 'Ray') return 'Laser';
+    if (cleaned === 'LaserHorz' || cleaned === 'LaserVert' || cleaned === 'Ray')
+      return 'Laser';
     // Convert camelCase to Title Case
     return cleaned.replace(/([A-Z])/g, ' $1').trim();
   };
@@ -89,7 +92,8 @@ export default function BallListItem({ ball }: BallListItemProps) {
           key.includes('cycle') ||
           key.includes('cooldown')
         ) {
-          const numValue = typeof value === 'number' ? value : parseFloat(String(value));
+          const numValue =
+            typeof value === 'number' ? value : parseFloat(String(value));
           if (!isNaN(numValue)) {
             displayValue = (numValue / 10).toFixed(1);
           }
@@ -99,7 +103,11 @@ export default function BallListItem({ ball }: BallListItemProps) {
         }
 
         parts.push(
-          <span key={match.index} className="font-bold" style={{ color: highlightColor }}>
+          <span
+            key={match.index}
+            className="font-bold"
+            style={{ color: highlightColor }}
+          >
             {String(displayValue)}
           </span>
         );
@@ -144,11 +152,14 @@ export default function BallListItem({ ball }: BallListItemProps) {
       {/* Content */}
       <div className="relative z-10 m-1 flex items-center gap-6">
         {/* Ball Icon Container */}
-        {iconStyle && (
-          <div className="flex flex-shrink-0 items-center justify-center rounded border-2 border-[#452c1f] p-2">
-            <div style={iconStyle} aria-label={`${ball.name} icon`} />
-          </div>
-        )}
+        <div className="flex flex-shrink-0 items-center justify-center">
+          <BallIcon
+            slug={ball.slug}
+            name={ball.name}
+            size={100}
+            borderColor="#452c1f"
+          />
+        </div>
 
         {/* Main Content - Two Column Layout */}
         <div className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-[2fr_3fr]">
@@ -156,9 +167,13 @@ export default function BallListItem({ ball }: BallListItemProps) {
           <div className="space-y-3">
             {/* Header */}
             <div>
-              <h3 className="mb-2 font-pixel text-4xl tracking-widest text-primary">{ball.name}</h3>
+              <h3 className="mb-2 font-pixel text-4xl tracking-widest text-primary">
+                {ball.name}
+              </h3>
               <div className="flex flex-wrap gap-2">
-                <span className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">{tier}</span>
+                <span className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">
+                  {tier}
+                </span>
                 {ball.hitEffects.filter(shouldShowTag).map(effect => (
                   <span
                     key={effect}
@@ -168,7 +183,10 @@ export default function BallListItem({ ball }: BallListItemProps) {
                   </span>
                 ))}
                 {ball.aoeTypes.filter(shouldShowTag).map(aoe => (
-                  <span key={aoe} className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">
+                  <span
+                    key={aoe}
+                    className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary"
+                  >
                     {formatTagName(aoe)}
                   </span>
                 ))}
@@ -195,7 +213,9 @@ export default function BallListItem({ ball }: BallListItemProps) {
                   <strong className="text-primary">Recipe:</strong>{' '}
                   {ball.fusionRecipe
                     .map(recipe =>
-                      recipe.map(slug => getBallBySlug(slug)?.name || slug).join(' + ')
+                      recipe
+                        .map(slug => getBallBySlug(slug)?.name || slug)
+                        .join(' + ')
                     )
                     .join(' | ')}
                 </div>
@@ -203,7 +223,9 @@ export default function BallListItem({ ball }: BallListItemProps) {
               {ball.evolvesInto.length > 0 && (
                 <div>
                   <strong className="text-primary">Evolves into:</strong>{' '}
-                  {ball.evolvesInto.map(slug => getBallBySlug(slug)?.name || slug).join(', ')}
+                  {ball.evolvesInto
+                    .map(slug => getBallBySlug(slug)?.name || slug)
+                    .join(', ')}
                 </div>
               )}
             </div>

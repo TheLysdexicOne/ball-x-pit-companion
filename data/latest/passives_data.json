@@ -1,5 +1,38 @@
 [
   {
+    "Type": "0",
+    "Name": "Spinach",
+    "Slug": "pass_addherodamage",
+    "Description": "All special balls deal {[damage_pct]} more damage",
+    "Properties": {
+      "kBonusDamagePct": 15
+    },
+    "PropertiesByLevel": [
+      {
+        "Level": 1,
+        "Properties": {
+          "damage_pct": 15
+        }
+      },
+      {
+        "Level": 2,
+        "Properties": {
+          "damage_pct": 25
+        }
+      },
+      {
+        "Level": 3,
+        "Properties": {
+          "damage_pct": 30
+        }
+      }
+    ],
+    "EvolutionSlugs": [],
+    "MergeComponents": [],
+    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
+    "IconColorList": []
+  },
+  {
     "Type": "1",
     "Name": "War Horn",
     "Slug": "pass_addfollowerdamage",
@@ -27,9 +60,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_cornucopia"
-    ],
+    "EvolutionSlugs": ["pass_cornucopia"],
     "MergeComponents": [],
     "MainColor": "r: 1.00, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -72,9 +103,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_anointedwings"
-    ],
+    "EvolutionSlugs": ["pass_anointedwings"],
     "MergeComponents": [],
     "MainColor": "r: 0.00, g: 1.00, b: 0.98, a: 1.00",
     "IconColorList": [
@@ -118,9 +147,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_anointedwings"
-    ],
+    "EvolutionSlugs": ["pass_anointedwings"],
     "MergeComponents": [],
     "MainColor": "r: 1.00, g: 0.95, b: 0.91, a: 1.00",
     "IconColorList": [
@@ -161,9 +188,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p4"
-    ],
+    "EvolutionSlugs": ["pass_p4"],
     "MergeComponents": [],
     "MainColor": "r: 0.68, g: 0.71, b: 0.73, a: 1.00",
     "IconColorList": [
@@ -202,9 +227,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p8"
-    ],
+    "EvolutionSlugs": ["pass_p8"],
     "MergeComponents": [],
     "MainColor": "r: 0.27, g: 0.18, b: 0.16, a: 1.00",
     "IconColorList": [
@@ -249,9 +272,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p11"
-    ],
+    "EvolutionSlugs": ["pass_p11"],
     "MergeComponents": [],
     "MainColor": "r: 0.43, g: 0.43, b: 0.47, a: 1.00",
     "IconColorList": [
@@ -294,9 +315,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_cornucopia"
-    ],
+    "EvolutionSlugs": ["pass_cornucopia"],
     "MergeComponents": [],
     "MainColor": "r: 0.18, g: 0.56, b: 1.00, a: 1.00",
     "IconColorList": [
@@ -441,9 +460,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_odiferousshell"
-    ],
+    "EvolutionSlugs": ["pass_odiferousshell"],
     "MergeComponents": [],
     "MainColor": "r: 0.65, g: 0.72, b: 0.80, a: 1.00",
     "IconColorList": [
@@ -577,9 +594,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p4"
-    ],
+    "EvolutionSlugs": ["pass_p4"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -662,9 +677,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_tormentersmask"
-    ],
+    "EvolutionSlugs": ["pass_tormentersmask"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -751,9 +764,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p3"
-    ],
+    "EvolutionSlugs": ["pass_p3"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -904,9 +915,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_soulreaver"
-    ],
+    "EvolutionSlugs": ["pass_soulreaver"],
     "MergeComponents": [],
     "MainColor": "r: 1.00, g: 0.95, b: 0.91, a: 1.00",
     "IconColorList": [
@@ -955,9 +964,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p1"
-    ],
+    "EvolutionSlugs": ["pass_p1"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -996,9 +1003,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p3"
-    ],
+    "EvolutionSlugs": ["pass_p3"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1039,9 +1044,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_phantomregalia"
-    ],
+    "EvolutionSlugs": ["pass_phantomregalia"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1079,9 +1082,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_deadeyescross"
-    ],
+    "EvolutionSlugs": ["pass_deadeyescross"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1123,9 +1124,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_deadeyescross"
-    ],
+    "EvolutionSlugs": ["pass_deadeyescross"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1170,9 +1169,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_deadeyescross"
-    ],
+    "EvolutionSlugs": ["pass_deadeyescross"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1215,9 +1212,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_deadeyescross"
-    ],
+    "EvolutionSlugs": ["pass_deadeyescross"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1257,9 +1252,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_soulreaver"
-    ],
+    "EvolutionSlugs": ["pass_soulreaver"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1301,9 +1294,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p2"
-    ],
+    "EvolutionSlugs": ["pass_p2"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1390,9 +1381,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p11"
-    ],
+    "EvolutionSlugs": ["pass_p11"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1674,9 +1663,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p0"
-    ],
+    "EvolutionSlugs": ["pass_p0"],
     "MergeComponents": [
       [
         "pass_backstabdagger",
@@ -1739,12 +1726,7 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [
-      [
-        "pass_vampiricsword",
-        "pass_overheal"
-      ]
-    ],
+    "MergeComponents": [["pass_vampiricsword", "pass_overheal"]],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -1834,9 +1816,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p1"
-    ],
+    "EvolutionSlugs": ["pass_p1"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1923,9 +1903,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_odiferousshell"
-    ],
+    "EvolutionSlugs": ["pass_odiferousshell"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -1974,9 +1952,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p10"
-    ],
+    "EvolutionSlugs": ["pass_p10"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -2137,9 +2113,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_graciousimpaler"
-    ],
+    "EvolutionSlugs": ["pass_graciousimpaler"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -2186,9 +2160,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_tormentersmask"
-    ],
+    "EvolutionSlugs": ["pass_tormentersmask"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -2229,12 +2201,7 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [
-      [
-        "pass_spikedcollar",
-        "pass_thorns"
-      ]
-    ],
+    "MergeComponents": [["pass_spikedcollar", "pass_thorns"]],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2310,9 +2277,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_phantomregalia"
-    ],
+    "EvolutionSlugs": ["pass_phantomregalia"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -2355,9 +2320,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_graciousimpaler"
-    ],
+    "EvolutionSlugs": ["pass_graciousimpaler"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -2403,9 +2366,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p8"
-    ],
+    "EvolutionSlugs": ["pass_p8"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -2456,9 +2417,7 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p2"
-    ],
+    "EvolutionSlugs": ["pass_p2"],
     "MergeComponents": [],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
@@ -2499,12 +2458,7 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [
-      [
-        "pass_ghostlycorset",
-        "pass_etherealcloak"
-      ]
-    ],
+    "MergeComponents": [["pass_ghostlycorset", "pass_etherealcloak"]],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2547,12 +2501,7 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [
-      [
-        "pass_babyrattle",
-        "pass_addfollowerdamage"
-      ]
-    ],
+    "MergeComponents": [["pass_babyrattle", "pass_addfollowerdamage"]],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2602,15 +2551,8 @@
         }
       }
     ],
-    "EvolutionSlugs": [
-      "pass_p0"
-    ],
-    "MergeComponents": [
-      [
-        "pass_reachersspear",
-        "pass_deadeyesamulet"
-      ]
-    ],
+    "EvolutionSlugs": ["pass_p0"],
+    "MergeComponents": [["pass_reachersspear", "pass_deadeyesamulet"]],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2657,12 +2599,7 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [
-      [
-        "pass_feather",
-        "pass_sneakers"
-      ]
-    ],
+    "MergeComponents": [["pass_feather", "pass_sneakers"]],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2702,12 +2639,7 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [
-      [
-        "pass_wretchedonion",
-        "pass_armor"
-      ]
-    ],
+    "MergeComponents": [["pass_wretchedonion", "pass_armor"]],
     "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2716,149 +2648,5 @@
       "r: 0.47, g: 0.45, b: 0.23, a: 1.00",
       "r: 0.67, g: 0.75, b: 0.25, a: 1.00"
     ]
-  },
-  {
-    "Type": "60",
-    "Name": "???",
-    "Slug": "pass_p0",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "61",
-    "Name": "???",
-    "Slug": "pass_p1",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "62",
-    "Name": "???",
-    "Slug": "pass_p2",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "63",
-    "Name": "???",
-    "Slug": "pass_p3",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "64",
-    "Name": "???",
-    "Slug": "pass_p4",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "65",
-    "Name": "???",
-    "Slug": "pass_p5",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "66",
-    "Name": "???",
-    "Slug": "pass_p6",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "67",
-    "Name": "???",
-    "Slug": "pass_p7",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "68",
-    "Name": "???",
-    "Slug": "pass_p8",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "69",
-    "Name": "???",
-    "Slug": "pass_p9",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.68, g: 0.71, b: 0.73, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "70",
-    "Name": "???",
-    "Slug": "pass_p10",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
-    "Type": "71",
-    "Name": "???",
-    "Slug": "pass_p11",
-    "Description": "???",
-    "Properties": {},
-    "PropertiesByLevel": [],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
   }
 ]

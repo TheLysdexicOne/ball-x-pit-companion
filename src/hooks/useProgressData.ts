@@ -256,7 +256,7 @@ export function useProgressData() {
     return [...saveData.heroProgress.heroes].sort(
       (a, b) => a.customIndex - b.customIndex
     );
-  }, [saveData.heroProgress.heroes, updateTrigger]);
+  }, [saveData.heroProgress.heroes]);
 
   /**
    * Gets current difficulty tier

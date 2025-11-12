@@ -1,6 +1,6 @@
 'use client';
 
-import HeroSprite from './HeroSprite';
+import CharacterIcon from './CharacterIcon';
 import { getImagePath } from '@/utils/basePath';
 import Image from 'next/image';
 import type { Hero } from '@/data/heroes';
@@ -26,7 +26,7 @@ export default function LevelHeroSprite({
       onClick={() => onToggle(hero.id, levelId)}
       title={hero.name}
     >
-      <HeroSprite hero={hero} type="small" scale={3} />
+      <CharacterIcon slug={hero.id} name={hero.name} type="sprite" size={54} />
       {isClient && isComplete && (
         <Image
           src={getImagePath('/images/ui/check.png')}

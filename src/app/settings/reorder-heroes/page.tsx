@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Hero, HEROES } from '@/data/heroes';
-import HeroSprite from '@/components/HeroSprite';
+import CharacterIcon from '@/components/CharacterIcon';
+import BallIcon from '@/components/BallIcon';
+import { getBallBySlug } from '@/data/balls';
 import { useProgressData } from '@/hooks/useProgressData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGripVertical } from '@fortawesome/free-solid-svg-icons';
@@ -38,31 +40,51 @@ function HeroItem({
   isDragging = false,
   dragHandleProps,
 }: HeroItemProps) {
+  const starterBall = hero.starterBall ? getBallBySlug(hero.starterBall) : null;
+
   return (
     <div
-      className={`group flex items-center gap-4 rounded-lg border-2 bg-nav/70 px-4 py-2 transition-colors sm:px-5 ${
+      className={`group flex items-center gap-4 rounded-lg border-2 bg-nav/70 px-2 py-2 transition-colors sm:px-5 ${
         isDragging
           ? 'border-highlight bg-nav/60 shadow-[0_0_15px_rgba(226,170,97,0.3)]'
           : 'border-primary/60 hover:border-highlight hover:bg-nav/60'
       }`}
     >
-      <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-lg border-2 border-primary/60 bg-body sm:h-20 sm:w-20">
-        <HeroSprite
-          hero={hero}
+      {/* Hero Portrait */}
+      <div className="relative flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg border-2 border-primary/60 bg-body sm:h-20 sm:w-20">
+        <CharacterIcon
+          slug={hero.id}
+          name={hero.name}
           type="portrait"
-          scale={0.75}
+          size={93}
           highlighted={isDragging}
         />
       </div>
-      <div className="flex flex-1 items-center justify-between gap-4">
-        <span className="font-pixel text-lg uppercase tracking-widest text-secondary sm:text-xl">
+
+      {/* Text Content - Desktop: Two Lines, Mobile: Starter Ball Text Only */}
+      <div className="flex flex-1 flex-col gap-0.5">
+        <span className="font-pixel text-base uppercase tracking-widest text-secondary sm:text-xl">
           {hero.name}
         </span>
+        {starterBall && (
+          <span className="font-pixel text-xs text-primary sm:text-base sm:tracking-widest">
+            {starterBall.name}
+          </span>
+        )}
       </div>
+
+      {/* Ball Icon - Desktop Only */}
+      {starterBall && (
+        <div className="hidden h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg border-2 border-primary/60 bg-body sm:flex sm:h-20 sm:w-20">
+          <BallIcon slug={starterBall.slug} name={starterBall.name} size={50} />
+        </div>
+      )}
+
+      {/* Drag Handle */}
       <button
         type="button"
         aria-label={`Reorder ${hero.name}`}
-        className="flex h-12 w-12 cursor-grab items-center justify-center rounded-lg text-xl text-primary hover:text-secondary active:cursor-grabbing"
+        className="flex h-12 w-12 flex-shrink-0 cursor-grab items-center justify-center rounded-lg text-xl text-primary hover:text-secondary active:cursor-grabbing"
         {...dragHandleProps}
       >
         <FontAwesomeIcon icon={faGripVertical} />
