@@ -4,6 +4,8 @@ import { useState } from 'react';
 import type { Ball } from '@/types/ball';
 import { formatDescription, getBallBySlug } from '@/data/balls';
 import BallIcon from './BallIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 interface BallListItemProps {
   ball: Ball;
@@ -11,6 +13,7 @@ interface BallListItemProps {
 
 export default function BallListItem({ ball }: BallListItemProps) {
   const [selectedLevel, setSelectedLevel] = useState<1 | 2 | 3>(1);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const currentLevelProps =
     ball[`level${selectedLevel}` as 'level1' | 'level2' | 'level3'];
@@ -25,13 +28,12 @@ export default function BallListItem({ ball }: BallListItemProps) {
 
   // Get damage type color from BallColor property
   const getDamageTypeColor = () => {
-    // Convert Unity color format "r: 0.61, g: 0.50, b: 0.57, a: 1.00" to hex
-    if (!ball.ballColor) return '#734325'; // Fallback to parchment highlight
+    if (!ball.ballColor) return '#f59e0b'; // Fallback to amber-500
 
     const colorMatch = ball.ballColor.match(
       /r:\s*([\d.]+),\s*g:\s*([\d.]+),\s*b:\s*([\d.]+)/
     );
-    if (!colorMatch) return '#734325';
+    if (!colorMatch) return '#f59e0b';
 
     const r = Math.round(parseFloat(colorMatch[1]) * 255);
     const g = Math.round(parseFloat(colorMatch[2]) * 255);
@@ -42,27 +44,23 @@ export default function BallListItem({ ball }: BallListItemProps) {
 
   const highlightColor = getDamageTypeColor();
 
-  // Format tag names by removing 'k' prefix and capitalizing
+  // Format tag names
   const formatTagName = (tag: string) => {
     const cleaned = tag.replace(/^k/, '');
-    // Special case replacements
     if (cleaned === 'Frozen') return 'Freeze';
     if (cleaned === 'LaserHorz' || cleaned === 'LaserVert' || cleaned === 'Ray')
       return 'Laser';
-    // Convert camelCase to Title Case
     return cleaned.replace(/([A-Z])/g, ' $1').trim();
   };
 
   // Filter out tags that match the ball's slug (for spawners)
   const shouldShowTag = (tag: string) => {
     if (!ball.isSpawner) return true;
-
     const tagCleaned = tag
       .replace(/^k/, '')
       .replace(/^hupg_/, '')
       .toLowerCase();
     const slugCleaned = ball.slug.replace(/^hupg_/, '').toLowerCase();
-
     return tagCleaned !== slugCleaned;
   };
 
@@ -74,17 +72,14 @@ export default function BallListItem({ ball }: BallListItemProps) {
     let match;
 
     while ((match = regex.exec(ball.description)) !== null) {
-      // Add text before the match
       if (match.index > lastIndex) {
         parts.push(ball.description.substring(lastIndex, match.index));
       }
 
-      // Add the highlighted value
       const key = match[1];
       const value = currentLevelProps[key];
 
       if (value !== undefined) {
-        // Convert deciseconds to seconds for time-based properties
         let displayValue: string | number = value;
         if (
           key.includes('_length') ||
@@ -98,7 +93,6 @@ export default function BallListItem({ ball }: BallListItemProps) {
             displayValue = (numValue / 10).toFixed(1);
           }
         } else if (key.includes('_chance') || key.includes('_pct')) {
-          // Handle percentage values
           displayValue = `${value}%`;
         }
 
@@ -118,7 +112,6 @@ export default function BallListItem({ ball }: BallListItemProps) {
       lastIndex = regex.lastIndex;
     }
 
-    // Add remaining text
     if (lastIndex < ball.description.length) {
       parts.push(ball.description.substring(lastIndex));
     }
@@ -126,137 +119,128 @@ export default function BallListItem({ ball }: BallListItemProps) {
     return parts;
   };
 
-  return (
-    <div
-      className="group relative mb-3 p-3 shadow-md transition-all hover:shadow-lg"
-      style={{
-        borderImage: 'url(/images/backgrounds/enc_bg.png)',
-        borderImageSlice: '16 fill',
-        borderImageRepeat: 'repeat',
-        borderImageWidth: '100px',
-        imageRendering: 'pixelated',
-      }}
-    >
-      {/* Hover background overlay */}
-      <div
-        className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
-        style={{
-          borderImage: 'url(/images/backgrounds/enc_highlight.png)',
-          borderImageSlice: '16 fill',
-          borderImageRepeat: 'repeat',
-          borderImageWidth: '100px',
-          pointerEvents: 'none',
-        }}
-      />
+  // Collect all tags
+  const allTags = [
+    ...ball.hitEffects.filter(shouldShowTag),
+    ...ball.aoeTypes.filter(shouldShowTag),
+    ...ball.specials.filter(shouldShowTag),
+  ];
 
-      {/* Content */}
-      <div className="relative z-10 m-1 flex items-center gap-6">
-        {/* Ball Icon Container */}
-        <div className="flex flex-shrink-0 items-center justify-center">
-          <BallIcon
-            slug={ball.slug}
-            name={ball.name}
-            size={100}
-            borderColor="#452c1f"
-          />
+  return (
+    <div className="rounded-lg border-2 border-primary bg-body shadow-md transition-all hover:border-highlight">
+      {/* Mobile: Click to expand */}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full p-3 text-left sm:cursor-default sm:p-4"
+      >
+        <div className="flex items-center gap-3 sm:gap-4">
+          {/* Ball Icon */}
+          <div className="flex-shrink-0">
+            <BallIcon
+              slug={ball.slug}
+              name={ball.name}
+              size={60}
+              className="sm:hidden"
+            />
+            <BallIcon
+              slug={ball.slug}
+              name={ball.name}
+              size={80}
+              className="hidden sm:block"
+            />
+          </div>
+
+          {/* Ball Name & Tier */}
+          <div className="min-w-0 flex-1">
+            <h3 className="font-pixel text-lg tracking-wider text-primary sm:text-2xl md:text-3xl">
+              {ball.name}
+            </h3>
+            <div className="mt-1 flex flex-wrap gap-1 sm:gap-2">
+              <span className="text-body rounded bg-primary px-2 py-0.5 font-pixel text-xs sm:text-sm">
+                {tier}
+              </span>
+              {ball.isSpawner && (
+                <span className="text-body rounded bg-primary px-2 py-0.5 font-pixel text-xs sm:text-sm">
+                  Spawner
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Expand Icon (mobile only) */}
+          <div className="flex-shrink-0 sm:hidden">
+            <FontAwesomeIcon
+              icon={isExpanded ? faChevronUp : faChevronDown}
+              className="h-5 w-5 text-primary"
+            />
+          </div>
+        </div>
+      </button>
+
+      {/* Expanded Content - Always shown on desktop, click to expand on mobile */}
+      <div
+        className={`${isExpanded ? 'block' : 'hidden'} border-t-2 border-primary p-3 sm:block sm:p-4`}
+      >
+        {/* Tags */}
+        {allTags.length > 0 && (
+          <div className="mb-3 flex flex-wrap gap-1 sm:gap-2">
+            {allTags.map((tag, idx) => (
+              <span
+                key={`${tag}-${idx}`}
+                className="rounded bg-secondary px-2 py-1 font-pixel text-xs text-primary sm:text-sm"
+              >
+                {formatTagName(tag)}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Level Selector */}
+        <div className="mb-3 flex gap-2">
+          {[1, 2, 3].map(level => (
+            <button
+              key={level}
+              onClick={() => setSelectedLevel(level as 1 | 2 | 3)}
+              className={`flex-1 rounded-lg border-2 px-3 py-2 font-pixel text-sm tracking-wider transition-colors sm:text-base ${
+                selectedLevel === level
+                  ? 'border-highlight bg-highlight text-primary'
+                  : 'border-primary bg-secondary text-primary hover:border-highlight'
+              }`}
+            >
+              Level {level}
+            </button>
+          ))}
         </div>
 
-        {/* Main Content - Two Column Layout */}
-        <div className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-[2fr_3fr]">
-          {/* Left Column: Name, Tags, Recipe/Evolution Info */}
-          <div className="space-y-3">
-            {/* Header */}
-            <div>
-              <h3 className="mb-2 font-pixel text-4xl tracking-widest text-primary">
-                {ball.name}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                <span className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">
-                  {tier}
-                </span>
-                {ball.hitEffects.filter(shouldShowTag).map(effect => (
-                  <span
-                    key={effect}
-                    className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary"
-                  >
-                    {formatTagName(effect)}
-                  </span>
-                ))}
-                {ball.aoeTypes.filter(shouldShowTag).map(aoe => (
-                  <span
-                    key={aoe}
-                    className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary"
-                  >
-                    {formatTagName(aoe)}
-                  </span>
-                ))}
-                {ball.specials.filter(shouldShowTag).map(special => (
-                  <span
-                    key={special}
-                    className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary"
-                  >
-                    {formatTagName(special)}
-                  </span>
-                ))}
-                {ball.isSpawner && (
-                  <span className="rounded bg-[#452c1f] px-3 py-1 text-sm text-primary">
-                    Spawner
-                  </span>
-                )}
-              </div>
-            </div>
+        {/* Description */}
+        <div className="mb-3 rounded-lg border-2 border-primary bg-secondary p-3 sm:p-4">
+          <p className="font-pixel text-sm leading-relaxed text-secondary sm:text-base">
+            {formatDescriptionWithHighlights()}
+          </p>
+        </div>
 
-            {/* Footer Info */}
-            <div className="space-y-1 text-sm text-secondary">
-              {ball.fusionRecipe.length > 0 && (
-                <div>
-                  <strong className="text-primary">Recipe:</strong>{' '}
-                  {ball.fusionRecipe
-                    .map(recipe =>
-                      recipe
-                        .map(slug => getBallBySlug(slug)?.name || slug)
-                        .join(' + ')
-                    )
-                    .join(' | ')}
-                </div>
-              )}
-              {ball.evolvesInto.length > 0 && (
-                <div>
-                  <strong className="text-primary">Evolves into:</strong>{' '}
-                  {ball.evolvesInto
+        {/* Footer Info: Recipe & Evolution */}
+        <div className="space-y-1 font-pixel text-xs text-secondary sm:text-sm">
+          {ball.fusionRecipe.length > 0 && (
+            <div className="rounded-lg bg-secondary p-2 sm:p-3">
+              <strong className="text-primary">Recipe:</strong>{' '}
+              {ball.fusionRecipe
+                .map(recipe =>
+                  recipe
                     .map(slug => getBallBySlug(slug)?.name || slug)
-                    .join(', ')}
-                </div>
-              )}
+                    .join(' + ')
+                )
+                .join(' | ')}
             </div>
-          </div>
-
-          {/* Right Column: Level Selector + Description */}
-          <div className="space-y-2">
-            {/* Level Selector */}
-            <div className="flex gap-2">
-              {[1, 2, 3].map(level => (
-                <button
-                  key={level}
-                  onClick={() => setSelectedLevel(level as 1 | 2 | 3)}
-                  className={`flex-1 rounded px-4 py-1 text-sm font-semibold transition-colors ${
-                    selectedLevel === level
-                      ? 'bg-[#734325] text-primary'
-                      : 'bg-[#452c1f] text-primary hover:bg-[#633f2a]'
-                  }`}
-                >
-                  Level {level}
-                </button>
-              ))}
+          )}
+          {ball.evolvesInto.length > 0 && (
+            <div className="rounded-lg bg-secondary p-2 sm:p-3">
+              <strong className="text-primary">Evolves into:</strong>{' '}
+              {ball.evolvesInto
+                .map(slug => getBallBySlug(slug)?.name || slug)
+                .join(', ')}
             </div>
-
-            {/* Description with highlighted values */}
-            <div className="rounded border border-[#452c1f] bg-[#000]/15 p-3">
-              <p className="text-base leading-relaxed text-secondary">
-                {formatDescriptionWithHighlights()}
-              </p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

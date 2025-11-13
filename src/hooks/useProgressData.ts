@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { HEROES } from '@/data/heroes';
+import { getAllCharacters } from '@/data/characters';
 import type {
   ProgressData,
   HeroProgress,
@@ -31,11 +31,12 @@ function dispatchProgressUpdate() {
  * Creates initial progress data with default values
  */
 function createInitialData(): ProgressData {
+  const characters = getAllCharacters();
   return {
     version: CURRENT_VERSION,
     lastUpdated: new Date().toISOString(),
-    heroes: HEROES.map((hero, index) => ({
-      heroId: hero.id,
+    heroes: characters.map((char, index) => ({
+      heroId: char.id,
       customIndex: index,
       levelCompletions: [],
     })),
@@ -60,13 +61,14 @@ function loadProgressData(): ProgressData {
 
     // Validate and merge with current heroes (in case new heroes were added)
     const existingHeroIds = new Set(data.heroes.map(h => h.heroId));
-    const newHeroes = HEROES.filter(h => !existingHeroIds.has(h.id)).map(
-      (hero, index) => ({
-        heroId: hero.id,
+    const characters = getAllCharacters();
+    const newHeroes = characters
+      .filter(c => !existingHeroIds.has(c.id))
+      .map((char, index) => ({
+        heroId: char.id,
         customIndex: data.heroes.length + index,
         levelCompletions: [],
-      })
-    );
+      }));
 
     return {
       ...data,

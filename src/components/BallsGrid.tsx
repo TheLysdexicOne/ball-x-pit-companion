@@ -46,8 +46,10 @@ export default function BallsGrid({ viewType = 'list' }: BallsGridProps) {
     if (sort === 'encyclopedia') {
       // Sort by recipe length (0 = base, 1 = 2-ball fusion, 2+ = 3+ ball fusion), then alphabetically
       balls = [...balls].sort((a, b) => {
-        const aRecipeLength = a.fusionRecipe.length > 0 ? a.fusionRecipe[0].length : 0;
-        const bRecipeLength = b.fusionRecipe.length > 0 ? b.fusionRecipe[0].length : 0;
+        const aRecipeLength =
+          a.fusionRecipe.length > 0 ? a.fusionRecipe[0].length : 0;
+        const bRecipeLength =
+          b.fusionRecipe.length > 0 ? b.fusionRecipe[0].length : 0;
 
         if (aRecipeLength !== bRecipeLength) {
           return aRecipeLength - bRecipeLength;
@@ -65,48 +67,59 @@ export default function BallsGrid({ viewType = 'list' }: BallsGridProps) {
 
   return (
     <div>
-      {/* Controls */}
-      <div className="mx-8 mb-6 flex flex-wrap gap-4">
-        {/* Search */}
+      {/* Controls Section */}
+      <div className="mb-4 space-y-3">
+        {/* Search Bar */}
         <input
           type="text"
           placeholder="Search balls..."
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="bg-input_box border-input_highlight min-w-[200px] flex-1 rounded border-2 px-4 py-2 text-primary placeholder:text-gray-400 focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800"
+          className="focus:ring-highlight w-full rounded-lg border-2 border-primary bg-secondary px-4 py-3 font-pixel text-base tracking-wider text-primary placeholder:text-primary/50 focus:border-highlight focus:outline-none focus:ring-2 sm:text-lg"
         />
 
-        {/* Filter */}
-        <select
-          value={filter}
-          onChange={e => setFilter(e.target.value as FilterType)}
-          className="bg-input_box border-input_highlight whitespace-nowrap rounded border-2 px-4 py-2 pr-10 text-primary focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800"
-        >
-          <option value="all">All Balls ({getAllBalls().length})</option>
-          <option value="basic">Basic ({getBasicBalls().length})</option>
-          <option value="fusion">Fusion ({getFusionBalls().length})</option>
-        </select>
+        {/* Filters Row */}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {/* Filter Dropdown */}
+          <select
+            value={filter}
+            onChange={e => setFilter(e.target.value as FilterType)}
+            className="focus:ring-highlight w-full cursor-pointer rounded-lg border-2 border-primary bg-secondary px-4 py-3 font-pixel text-base tracking-wider text-primary focus:border-highlight focus:outline-none focus:ring-2 sm:text-lg"
+          >
+            <option value="all">All Balls ({getAllBalls().length})</option>
+            <option value="basic">Basic ({getBasicBalls().length})</option>
+            <option value="fusion">Fusion ({getFusionBalls().length})</option>
+          </select>
 
-        {/* Sort */}
-        <select
-          value={sort}
-          onChange={e => setSort(e.target.value as SortType)}
-          className="bg-input_box border-input_highlight whitespace-nowrap rounded border-2 px-4 py-2 pr-10 text-primary focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800"
-        >
-          <option value="encyclopedia">Sort: Encyclopedia</option>
-          <option value="name">Sort: Alphabetical</option>
-        </select>
+          {/* Sort Dropdown */}
+          <select
+            value={sort}
+            onChange={e => setSort(e.target.value as SortType)}
+            className="focus:ring-highlight w-full cursor-pointer rounded-lg border-2 border-primary bg-secondary px-4 py-3 font-pixel text-base tracking-wider text-primary focus:border-highlight focus:outline-none focus:ring-2 sm:text-lg"
+          >
+            <option value="encyclopedia">Sort: Encyclopedia</option>
+            <option value="name">Sort: Alphabetical</option>
+          </select>
+        </div>
       </div>
+
+      {/* Results Count */}
+      {searchQuery && (
+        <div className="mb-3 text-center font-pixel text-sm tracking-wider text-secondary sm:text-base">
+          Found {filteredBalls.length} ball
+          {filteredBalls.length !== 1 ? 's' : ''}
+        </div>
+      )}
 
       {/* View Rendering */}
       {viewType === 'list' ? (
-        <div className="mx-8 space-y-4">
+        <div className="space-y-3">
           {filteredBalls.map(ball => (
             <BallListItem key={ball.id} ball={ball} />
           ))}
         </div>
       ) : (
-        <div className="mx-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {filteredBalls.map(ball => (
             <BallCard key={ball.id} ball={ball} />
           ))}
@@ -114,7 +127,9 @@ export default function BallsGrid({ viewType = 'list' }: BallsGridProps) {
       )}
 
       {filteredBalls.length === 0 && (
-        <p className="py-8 text-center text-gray-500">No balls found matching your criteria.</p>
+        <div className="card-text-box py-8">
+          No balls found matching your criteria.
+        </div>
       )}
     </div>
   );

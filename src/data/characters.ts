@@ -60,11 +60,11 @@ function normalizeCharacter(data: CharacterData): Character {
 }
 
 /**
- * Get all playable characters (excludes ??? characters)
+ * Get all playable characters (excludes ??? characters and special characters)
  */
 export function getAllCharacters(): Character[] {
   return charactersData
-    .filter(char => char.Name !== '???')
+    .filter(char => char.Name !== '???' && char.Slug !== 'char_influencer')
     .map(normalizeCharacter)
     .sort((a, b) => parseInt(a.type) - parseInt(b.type));
 }
@@ -74,7 +74,7 @@ export function getAllCharacters(): Character[] {
  */
 export function getCharacterBySlug(slug: string): Character | undefined {
   const charData = charactersData.find(
-    c => c.Slug === slug && c.Name !== '???'
+    c => c.Slug === slug && c.Name !== '???' && c.Slug !== 'char_influencer'
   );
   return charData ? normalizeCharacter(charData) : undefined;
 }

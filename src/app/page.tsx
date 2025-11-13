@@ -8,7 +8,7 @@ export default function Home() {
           <h1 className="mb-2 font-pixel text-4xl tracking-widest sm:text-6xl">
             BALL X PIT COMPANION
           </h1>
-          <div className="border-primary mb-4 border-t" />
+          <div className="mb-4 border-t border-primary" />
           <p className="card-text-box">
             A fan-made companion site for tracking your progress and exploring
             game data.
@@ -36,8 +36,11 @@ export default function Home() {
             <Link href="/tools/progression/level" className="btn-body-primary">
               Level View
             </Link>
-            <Link href="/tools/progression/hero" className="btn-body-primary">
-              Hero View
+            <Link
+              href="/tools/progression/character"
+              className="btn-body-primary"
+            >
+              Character View
             </Link>
           </div>
         </div>

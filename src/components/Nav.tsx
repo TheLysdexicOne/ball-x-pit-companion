@@ -41,7 +41,7 @@ export default function Nav({ pageTitle }: NavProps) {
       '/settings': 'Settings',
       '/settings/reorder-heroes': 'Settings | Reorder Heroes',
       '/tools/progression/level': 'Progression | Level View',
-      '/tools/progression/hero': 'Progression | Hero View',
+      '/tools/progression/character': 'Progression | Character View',
       '/tools/fusion': 'Fusion',
       '/encyclopedia/characters': 'Encyclopedia | Characters',
       '/encyclopedia/balls': 'Encyclopedia | Balls',
@@ -68,7 +68,7 @@ export default function Nav({ pageTitle }: NavProps) {
           isSubHeader: true,
           children: [
             { label: 'Level View', href: '/tools/progression/level' },
-            { label: 'Hero View', href: '/tools/progression/hero' },
+            { label: 'Character View', href: '/tools/progression/character' },
           ],
         },
       ],
@@ -122,7 +122,7 @@ export default function Nav({ pageTitle }: NavProps) {
     if (item.isHeader && hasChildren) {
       return (
         <li key={item.label}>
-          <div className="border-highlight mt-4 border-t pt-4">
+          <div className="mt-4 border-t border-highlight pt-4">
             <div className="px-2 py-2 text-sm font-bold uppercase tracking-wider text-primary opacity-70 lg:text-base">
               {item.label}
             </div>
@@ -157,7 +157,7 @@ export default function Nav({ pageTitle }: NavProps) {
         <li key={item.label}>
           <button
             onClick={() => toggleSection(item.label)}
-            className={`flex w-full items-center justify-between rounded ${padding} hover:bg-highlight py-2 text-left text-secondary transition-colors hover:text-primary`}
+            className={`flex w-full items-center justify-between rounded ${padding} py-2 text-left text-secondary transition-colors hover:bg-highlight hover:text-primary`}
           >
             <span className="text-sm tracking-wide lg:text-base">
               {item.label}
@@ -188,7 +188,7 @@ export default function Nav({ pageTitle }: NavProps) {
               item.onClick!();
               setIsOpen(false);
             }}
-            className={`block w-full rounded ${padding} hover:bg-highlight py-2 text-left text-sm tracking-wide text-secondary transition-colors hover:text-primary lg:text-base`}
+            className={`block w-full rounded ${padding} py-2 text-left text-sm tracking-wide text-secondary transition-colors hover:bg-highlight hover:text-primary lg:text-base`}
           >
             {item.label}
           </button>
@@ -205,7 +205,7 @@ export default function Nav({ pageTitle }: NavProps) {
           className={`block rounded ${padding} py-2 text-sm tracking-wide transition-colors lg:text-base ${
             item.href && isActive(item.href)
               ? 'bg-highlight text-primary'
-              : 'hover:bg-highlight text-secondary hover:text-primary'
+              : 'text-secondary hover:bg-highlight hover:text-primary'
           }`}
         >
           {item.label}
@@ -222,7 +222,7 @@ export default function Nav({ pageTitle }: NavProps) {
       {/* Mobile Menu Button - Top Right */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-body-btn-highlight fixed right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded text-xl text-primary lg:hidden"
+        className="fixed right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded bg-body-btn-highlight text-xl text-primary lg:hidden"
         aria-label="Toggle menu"
       >
         <FontAwesomeIcon icon={isOpen ? faXmark : faBars} />
@@ -253,13 +253,13 @@ export default function Nav({ pageTitle }: NavProps) {
           </div>
 
           {/* Separator */}
-          <div className="border-highlight mb-4 border-t" />
+          <div className="mb-4 border-t border-highlight" />
 
           {/* Navigation Links */}
           <ul className="nav-scroll flex-1 space-y-1 overflow-y-auto pr-2">
             {navStructure.map(item => renderNavItem(item))}
           </ul>
-          <div className="border-highlight mb-4 border-t" />
+          <div className="mb-4 border-t border-highlight" />
         </div>
       </nav>
     </>

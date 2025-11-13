@@ -1,48 +1,39 @@
 'use client';
 
 import Link from 'next/link';
-import BallsGrid from '@/components/BallsGrid';
+import PassivesGrid from '@/components/PassivesGrid';
 
-export default function Balls() {
+export default function Passives() {
   return (
     <main className="min-h-screen p-4 sm:p-8">
       <div className="mx-auto max-w-6xl">
         {/* Page Title Card */}
         <div className="card-primary mb-6">
           <h1 className="text-center font-pixel text-3xl tracking-widest sm:text-4xl md:text-5xl">
-            ENCYCLOPEDIA | BALLS
+            ENCYCLOPEDIA | PASSIVES
           </h1>
         </div>
 
-        {/* View Mode Navigation */}
-        <div className="card-primary mb-6">
+        {/* View Mode Navigation - Placeholder for future views */}
+        {/* <div className="card-primary mb-6">
           <div className="card-primary-header">
             <h2 className="text-center font-pixel text-2xl tracking-wider sm:text-3xl">
               VIEW MODE
             </h2>
           </div>
           <div className="grid grid-cols-2 gap-3 p-2 sm:grid-cols-4">
-            <Link href="/encyclopedia/balls" className="btn-body-primary">
+            <Link href="/encyclopedia/passives" className="btn-body-primary">
               List
             </Link>
-            <Link href="/encyclopedia/balls/grid" className="btn-body-primary">
+            <Link href="/encyclopedia/passives/grid" className="btn-body-primary">
               Grid
             </Link>
-            <Link href="/encyclopedia/balls/chart" className="btn-body-primary">
-              Chart
-            </Link>
-            <Link
-              href="/encyclopedia/balls/fusing"
-              className="btn-body-primary"
-            >
-              Fusing
-            </Link>
           </div>
-        </div>
+        </div> */}
 
         {/* Content Card */}
         <div className="card-primary">
-          <BallsGrid />
+          <PassivesGrid />
         </div>
       </div>
     </main>

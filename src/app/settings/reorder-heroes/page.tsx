@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Hero, HEROES } from '@/data/heroes';
+import { useState, useEffect } from 'react';
+import { getAllCharacters, type Character } from '@/data/characters';
 import CharacterIcon from '@/components/CharacterIcon';
 import BallIcon from '@/components/BallIcon';
 import { getBallBySlug } from '@/data/balls';
@@ -30,7 +30,7 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 
 interface HeroItemProps {
-  hero: Hero;
+  hero: Character;
   isDragging?: boolean;
   dragHandleProps?: any;
 }
@@ -94,7 +94,7 @@ function HeroItem({
 }
 
 interface SortableHeroItemProps {
-  hero: Hero;
+  hero: Character;
   index: number;
   isDragging: boolean;
 }
@@ -128,7 +128,7 @@ function SortableHeroItem({ hero, index, isDragging }: SortableHeroItemProps) {
 
 export default function ReorderHeroesPage() {
   const { getSortedHeroes, updateHeroOrders } = useProgressData();
-  const [heroes, setHeroes] = useState<Hero[]>([]);
+  const [heroes, setHeroes] = useState<Character[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -155,9 +155,10 @@ export default function ReorderHeroesPage() {
     }
 
     const sortedProgress = getSortedHeroes();
+    const allCharacters = getAllCharacters();
     const sortedHeroes = sortedProgress
-      .map(progress => HEROES.find(h => h.id === progress.heroId))
-      .filter((h): h is Hero => h !== undefined);
+      .map(progress => allCharacters.find(c => c.id === progress.heroId))
+      .filter((h): h is Character => h !== undefined);
     setHeroes(sortedHeroes);
   }, [getSortedHeroes, isUpdating]);
 
@@ -200,7 +201,7 @@ export default function ReorderHeroesPage() {
       <div className="flex w-full max-w-4xl flex-col">
         <div className="card-primary">
           <div className="card-text-box m-0 font-pixel text-sm uppercase tracking-widest text-secondary sm:text-base">
-            Drag heroes up or down to change the order they appear.
+            Drag characters up or down to change the order they appear.
           </div>
         </div>
         <div className="card-primary">

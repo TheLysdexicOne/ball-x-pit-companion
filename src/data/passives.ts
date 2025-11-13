@@ -4,11 +4,22 @@ export interface PassiveStats {
   [key: string]: number | string;
 }
 
+export interface PassivePropertiesByLevel {
+  Level: number;
+  Properties: PassiveStats;
+}
+
 export interface PassiveData {
   Type: string;
   Name: string;
   Slug: string;
   Description: string;
+  Properties: PassiveStats;
+  PropertiesByLevel?: PassivePropertiesByLevel[];
+  EvolutionSlugs?: string[];
+  MergeComponents?: string[];
+  MainColor?: string;
+  IconColorList?: string[];
   Rarity: string;
   Stats: PassiveStats;
   Tags: string[];
@@ -23,6 +34,12 @@ export interface Passive {
   rarity: string;
   stats: PassiveStats;
   tags: string[];
+  properties: PassiveStats;
+  propertiesByLevel?: { level: number; properties: PassiveStats }[];
+  evolutionSlugs?: string[];
+  mergeComponents?: string[];
+  mainColor?: string;
+  iconColorList?: string[];
 }
 
 import passivesDataJson from '../../data/latest/passives_data.json';
@@ -42,6 +59,15 @@ function normalizePassive(data: PassiveData): Passive {
     rarity: data.Rarity,
     stats: data.Stats,
     tags: data.Tags,
+    properties: data.Properties,
+    propertiesByLevel: data.PropertiesByLevel?.map(level => ({
+      level: level.Level,
+      properties: level.Properties,
+    })),
+    evolutionSlugs: data.EvolutionSlugs,
+    mergeComponents: data.MergeComponents,
+    mainColor: data.MainColor,
+    iconColorList: data.IconColorList,
   };
 }
 

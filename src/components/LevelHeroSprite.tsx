@@ -3,10 +3,10 @@
 import CharacterIcon from './CharacterIcon';
 import { getImagePath } from '@/utils/basePath';
 import Image from 'next/image';
-import type { Hero } from '@/data/heroes';
+import type { Character } from '@/data/characters';
 
 interface LevelHeroSpriteProps {
-  hero: Hero;
+  hero: Character;
   levelId: number;
   isComplete: boolean;
   onToggle: (heroId: string, levelId: number) => void;

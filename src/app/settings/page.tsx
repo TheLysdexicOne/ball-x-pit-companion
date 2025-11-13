@@ -37,7 +37,7 @@ export default function SettingsPage() {
   return (
     <main className="min-h-screen p-4 sm:p-8">
       <div className="mx-auto max-w-2xl">
-        <div className="border-primary bg-body mb-8 rounded-lg border-4 p-6 shadow-2xl sm:p-8">
+        <div className="mb-8 rounded-lg border-4 border-primary bg-body p-6 shadow-2xl sm:p-8">
           {/* Title */}
           <div className="card-primary-header -mx-6 -mt-6 sm:-mx-8 sm:-mt-8">
             <h1 className="mb-4 text-center font-pixel text-3xl font-bold uppercase tracking-widest text-primary sm:text-4xl">
@@ -55,9 +55,9 @@ export default function SettingsPage() {
                 <div
                   key={slot}
                   onClick={() => handleSlotClick(slot)}
-                  className={`border-primary relative cursor-pointer rounded-lg border-2 p-4 transition-all ${
+                  className={`relative cursor-pointer rounded-lg border-2 border-primary p-4 transition-all ${
                     slot === activeSlot
-                      ? 'btn-body-primary bg-btn-primary-highlight/30 border-btn-dark text-left'
+                      ? 'btn-body-primary border-btn-dark bg-btn-primary-highlight/30 text-left'
                       : 'btn-body-primary hover:bg-btn-primary-hover text-left'
                   }`}
                 >
@@ -106,7 +106,7 @@ export default function SettingsPage() {
                 className="text-2xl text-primary"
               />
               <span className="font-pixel text-lg font-bold uppercase tracking-widest text-primary sm:text-xl">
-                Reorder Heroes
+                Reorder Characters
               </span>
             </button>
           </div>

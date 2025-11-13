@@ -1,38 +1,5 @@
 [
   {
-    "Type": "0",
-    "Name": "Spinach",
-    "Slug": "pass_addherodamage",
-    "Description": "All special balls deal {[damage_pct]} more damage",
-    "Properties": {
-      "kBonusDamagePct": 15
-    },
-    "PropertiesByLevel": [
-      {
-        "Level": 1,
-        "Properties": {
-          "damage_pct": 15
-        }
-      },
-      {
-        "Level": 2,
-        "Properties": {
-          "damage_pct": 25
-        }
-      },
-      {
-        "Level": 3,
-        "Properties": {
-          "damage_pct": 30
-        }
-      }
-    ],
-    "EvolutionSlugs": [],
-    "MergeComponents": [],
-    "MainColor": "r: 0.05, g: 1.00, b: 0.00, a: 1.00",
-    "IconColorList": []
-  },
-  {
     "Type": "1",
     "Name": "War Horn",
     "Slug": "pass_addfollowerdamage",

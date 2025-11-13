@@ -2,12 +2,11 @@
 
 import CharacterIcon from '@/components/CharacterIcon';
 import LevelSprite from '@/components/LevelSprite';
-import { HEROES } from '@/data/heroes';
+import { getAllCharacters, type Character } from '@/data/characters';
 import { useProgressData } from '@/hooks/useProgressData';
 import { getImagePath } from '@/utils/basePath';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import type { Hero } from '@/data/heroes';
 import type { DifficultyTier, FastTierCompletion } from '@/types/heroProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -108,7 +107,7 @@ export default function HeroProgressionPage() {
     setCurrentDifficulty,
     setCurrentTier,
   } = useProgressData();
-  const [sortedHeroes, setSortedHeroes] = useState<Hero[]>(HEROES);
+  const [sortedHeroes, setSortedHeroes] = useState<Character[]>([]);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -117,9 +116,10 @@ export default function HeroProgressionPage() {
 
   useEffect(() => {
     const sortedProgress = getSortedHeroes();
+    const allCharacters = getAllCharacters();
     const heroes = sortedProgress
-      .map(progress => HEROES.find(h => h.id === progress.heroId))
-      .filter((hero): hero is Hero => hero !== undefined);
+      .map(progress => allCharacters.find(c => c.id === progress.heroId))
+      .filter((hero): hero is Character => hero !== undefined);
     setSortedHeroes(heroes);
   }, [getSortedHeroes]);
 
@@ -321,7 +321,7 @@ export default function HeroProgressionPage() {
             onClick={() => router.push('/settings/reorder-heroes')}
             type="button"
           >
-            REORDER HEROES
+            REORDER CHARACTERS
           </button>
         </div>
       </div>

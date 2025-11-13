@@ -1,12 +1,11 @@
 'use client';
 
 import LevelHeroSprite from '@/components/LevelHeroSprite';
-import { HEROES } from '@/data/heroes';
+import { getAllCharacters, type Character } from '@/data/characters';
 import { useProgressData } from '@/hooks/useProgressData';
 import { getImagePath } from '@/utils/basePath';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import type { Hero } from '@/data/heroes';
 import type { DifficultyTier, FastTierCompletion } from '@/types/heroProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -94,7 +93,7 @@ export default function Home() {
     setCurrentDifficulty,
     setCurrentTier,
   } = useProgressData();
-  const [sortedHeroes, setSortedHeroes] = useState<Hero[]>(HEROES);
+  const [sortedCharacters, setSortedCharacters] = useState<Character[]>([]);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -103,10 +102,11 @@ export default function Home() {
 
   useEffect(() => {
     const sortedProgress = getSortedHeroes();
-    const heroes = sortedProgress
-      .map(progress => HEROES.find(h => h.id === progress.heroId))
-      .filter((hero): hero is Hero => hero !== undefined);
-    setSortedHeroes(heroes);
+    const allCharacters = getAllCharacters();
+    const characters = sortedProgress
+      .map(progress => allCharacters.find(c => c.id === progress.heroId))
+      .filter((character): character is Character => character !== undefined);
+    setSortedCharacters(characters);
   }, [getSortedHeroes]);
 
   const navigateDifficulty = (direction: 'prev' | 'next') => {
@@ -146,8 +146,11 @@ export default function Home() {
     }
   };
 
-  const isHeroLevelComplete = (heroId: string, levelId: number): boolean => {
-    const progress = getHeroProgress(heroId);
+  const isCharacterLevelComplete = (
+    characterId: string,
+    levelId: number
+  ): boolean => {
+    const progress = getHeroProgress(characterId);
     if (!progress) return false;
 
     const completion = progress.levelCompletions.find(
@@ -160,13 +163,13 @@ export default function Home() {
     return completion.fastTier >= currentTier;
   };
 
-  const toggleHeroCompletion = (heroId: string, levelId: number) => {
-    const alreadyComplete = isHeroLevelComplete(heroId, levelId);
+  const toggleCharacterCompletion = (characterId: string, levelId: number) => {
+    const alreadyComplete = isCharacterLevelComplete(characterId, levelId);
     const newFastTier = alreadyComplete
       ? Math.max(0, currentTier - 1)
       : currentTier;
 
-    updateLevelCompletion(heroId, levelId, {
+    updateLevelCompletion(characterId, levelId, {
       difficulty: currentDifficulty,
       fastTier: newFastTier as FastTierCompletion,
     });
@@ -268,13 +271,16 @@ export default function Home() {
                   </header>
                   <div className="relative z-10 px-4 py-4 sm:px-6 sm:py-6">
                     <div className="grid grid-cols-4 justify-items-center gap-3 sm:grid-cols-8">
-                      {sortedHeroes.map(hero => (
+                      {sortedCharacters.map(character => (
                         <LevelHeroSprite
-                          key={`${level.id}-${hero.id}`}
-                          hero={hero}
+                          key={`${level.id}-${character.id}`}
+                          hero={character}
                           levelId={level.id}
-                          isComplete={isHeroLevelComplete(hero.id, level.id)}
-                          onToggle={toggleHeroCompletion}
+                          isComplete={isCharacterLevelComplete(
+                            character.id,
+                            level.id
+                          )}
+                          onToggle={toggleCharacterCompletion}
                           isClient={isClient}
                         />
                       ))}
@@ -291,7 +297,7 @@ export default function Home() {
             onClick={() => router.push('/settings/reorder-heroes')}
             type="button"
           >
-            REORDER HEROES
+            REORDER CHARACTERS
           </button>
         </div>
       </div>
