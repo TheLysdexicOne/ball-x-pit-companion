@@ -6,7 +6,6 @@ import { getImagePath } from '@/utils/basePath';
 interface BuildingIconProps {
   slug: string;
   name: string;
-  size?: number; // Pixel size (defaults to 64px)
   className?: string;
   onClick?: () => void;
   onDragStart?: (e: React.DragEvent) => void;
@@ -21,11 +20,11 @@ interface BuildingIconProps {
  *
  * Renders a building icon from individual image files in public/images/buildings/
  * Supports various sizes, interactions, and visual states.
+ * Size is controlled via className (e.g., "h-16 w-16" or "h-full w-full").
  *
  * @param slug - Building identifier (e.g., 'bld_bank', 'bld_market')
  * @param name - Building name for accessibility
- * @param size - Pixel dimensions (default: 64)
- * @param className - Additional CSS classes
+ * @param className - CSS classes for sizing and styling
  * @param onClick - Click handler
  * @param draggable - Enable drag-and-drop
  * @param highlighted - Apply glow effect
@@ -33,7 +32,6 @@ interface BuildingIconProps {
 export default function BuildingIcon({
   slug,
   name,
-  size = 64,
   className = '',
   onClick,
   onDragStart,
@@ -55,20 +53,23 @@ export default function BuildingIcon({
   }
 
   return (
-    <Image
-      src={imageSrc}
-      alt={name}
-      width={size}
-      height={size}
-      className={`select-none ${draggable ? 'cursor-grab active:cursor-grabbing' : ''} ${className}`}
-      style={inlineStyles}
+    <div
+      className={`relative select-none ${draggable ? 'cursor-grab active:cursor-grabbing' : ''} ${className}`}
       onClick={onClick}
-      draggable={draggable}
       onDragStart={onDragStart}
       onDragOver={onDragOver}
       onDrop={onDrop}
+      draggable={draggable}
       title={name}
-      unoptimized
-    />
+    >
+      <Image
+        src={imageSrc}
+        alt={name}
+        fill
+        className="object-contain"
+        style={inlineStyles}
+        unoptimized
+      />
+    </div>
   );
 }

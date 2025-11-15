@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import type { Ball } from '@/types/ball';
 import { getAllBalls, getBasicBalls, getFusionBalls } from '@/data/balls';
-import BallsList from './BallsList';
-import BallsGrid from './BallsGrid';
+import BallsCard from './BallsCard';
+import BallIcon from './BallIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,11 +13,74 @@ type SortType = 'name' | 'encyclopedia';
 type ViewType = 'list' | 'grid';
 
 export default function BallsView() {
+  // Load saved view type from localStorage, default to 'list'
   const [viewType, setViewType] = useState<ViewType>('list');
   const [filter, setFilter] = useState<FilterType>('all');
   const [sort, setSort] = useState<SortType>('encyclopedia');
   const [searchQuery, setSearchQuery] = useState('');
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false);
+  const [expandedBallId, setExpandedBallId] = useState<string | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [gridColumns, setGridColumns] = useState(2);
+  const gridItemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  // Load saved view type after mount to avoid hydration mismatch
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('balls-view-type');
+      if (saved === 'list' || saved === 'grid') {
+        setViewType(saved);
+      }
+      setIsLoaded(true);
+    }
+  }, []);
+
+  // Save view type to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== 'undefined' && isLoaded) {
+      localStorage.setItem('balls-view-type', viewType);
+    }
+  }, [viewType, isLoaded]);
+
+  // Auto-scroll to expanded ball on mobile
+  useEffect(() => {
+    if (expandedBallId && typeof window !== 'undefined') {
+      const element = gridItemRefs.current[expandedBallId];
+      if (element && window.innerWidth < 1024) {
+        // Only scroll on mobile/tablet (< lg breakpoint)
+        setTimeout(() => {
+          const headerHeight = 88; // pt-20 = 5rem = 80px
+          const y =
+            element.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerHeight;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100); // Small delay to allow content to render
+      }
+    }
+  }, [expandedBallId]);
+
+  // Track grid columns for responsive layout
+  useEffect(() => {
+    const updateColumns = () => {
+      if (typeof window !== 'undefined') {
+        const width = window.innerWidth;
+        if (width >= 1280)
+          setGridColumns(8); // xl
+        else if (width >= 1024)
+          setGridColumns(6); // lg
+        else if (width >= 768)
+          setGridColumns(6); // md
+        else if (width >= 640)
+          setGridColumns(5); // sm
+        else setGridColumns(4); // mobile
+      }
+    };
+
+    updateColumns();
+    window.addEventListener('resize', updateColumns);
+    return () => window.removeEventListener('resize', updateColumns);
+  }, []);
 
   const filteredBalls = useMemo(() => {
     let balls: Ball[];
@@ -64,6 +127,17 @@ export default function BallsView() {
 
     return balls;
   }, [filter, sort, searchQuery]);
+
+  // Don't render until we've loaded the saved state
+  if (!isLoaded) {
+    return (
+      <div className="flex min-h-[200px] items-center justify-center">
+        <div className="font-pixel text-lg tracking-wider text-secondary">
+          Loading...
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -154,16 +228,106 @@ export default function BallsView() {
 
       {/* View Rendering */}
       {viewType === 'list' ? (
-        <div className="space-y-4">
+        <div className="space-y-4 px-2 py-2">
           {filteredBalls.map(ball => (
-            <BallsList key={ball.id} ball={ball} />
+            <BallsCard key={ball.id} ball={ball} />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredBalls.map(ball => (
-            <BallsGrid key={ball.id} ball={ball} />
-          ))}
+        <div className="space-y-3">
+          {(() => {
+            const expandedIndex = expandedBallId
+              ? filteredBalls.findIndex(b => b.id === expandedBallId)
+              : -1;
+            const expandedRowEnd =
+              expandedIndex >= 0
+                ? Math.floor(expandedIndex / gridColumns) * gridColumns +
+                  gridColumns
+                : -1;
+
+            const items: JSX.Element[] = [];
+
+            filteredBalls.forEach((ball, index) => {
+              const isExpanded = expandedBallId === ball.id;
+
+              // Determine position in row (left, middle, right)
+              const positionInRow = index % gridColumns;
+              const isLeftEdge = positionInRow === 0;
+              const isRightEdge = positionInRow === gridColumns - 1;
+
+              // Add the ball icon button
+              items.push(
+                <div
+                  key={ball.id}
+                  ref={el => {
+                    gridItemRefs.current[ball.id] = el;
+                  }}
+                  className={isExpanded ? 'relative' : ''}
+                >
+                  <button
+                    onClick={() =>
+                      setExpandedBallId(isExpanded ? null : ball.id)
+                    }
+                    className={`z-50 flex aspect-square h-full w-full items-center justify-center rounded-lg border-2 p-1 ${
+                      isExpanded
+                        ? 'rounded-b-none border-highlight border-b-transparent bg-card-header shadow-lg'
+                        : 'border-primary bg-body hover:border-highlight hover:bg-card-header'
+                    }`}
+                  >
+                    <BallIcon
+                      slug={ball.slug}
+                      name={ball.name}
+                      className="h-full w-full"
+                    />
+                  </button>
+                  {isExpanded && (
+                    <>
+                      {/* Main extension below the cell */}
+                      <div className="pointer-events-none absolute left-0 right-0 h-5 w-full -translate-y-[9px] border-x-2 border-b-2 border-highlight border-b-transparent bg-card-header" />
+
+                      {/* Left border extension (right-edge cells only) */}
+                      {isRightEdge && (
+                        <div className="pointer-events-none absolute right-0 h-3 w-1/2 translate-y-[2px] border-r-2 border-highlight bg-card-header" />
+                      )}
+
+                      {/* Right border extension (left-edge cells only) */}
+                      {isLeftEdge && (
+                        <div className="pointer-events-none absolute left-0 h-3 w-1/2 translate-y-[2px] border-l-2 border-highlight bg-card-header" />
+                      )}
+                    </>
+                  )}
+                </div>
+              );
+
+              // If this is the end of the row containing the expanded ball, insert the details
+              if (expandedRowEnd >= 0 && index === expandedRowEnd - 1) {
+                const expandedBall = filteredBalls[expandedIndex];
+                items.push(
+                  <div
+                    key={`expanded-${expandedBall.id}`}
+                    className="col-span-full"
+                  >
+                    <BallsCard
+                      ball={expandedBall}
+                      disableMobileExpand={true}
+                      isGridExpanded={true}
+                    />
+                  </div>
+                );
+              }
+            });
+
+            return (
+              <div
+                className="grid gap-2"
+                style={{
+                  gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))`,
+                }}
+              >
+                {items}
+              </div>
+            );
+          })()}
         </div>
       )}
 

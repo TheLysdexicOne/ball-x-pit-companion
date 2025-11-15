@@ -18,14 +18,15 @@ Track player progression through the game with comprehensive save system:
 - **Multiple Save Slots**: 3 independent save slots with slot switching
 - **Progress Visualization**: Visual checkmark system on hero sprites per level
 
-### 2. **Game Encyclopedia** (Primary Goal - Planned)
+### 2. **Game Encyclopedia** (Primary Goal - Active Development)
 Comprehensive game information resource:
-- Ball types and properties
-- Game mechanics documentation
-- Character/hero information
-- Pit levels and enemies
-- Town buildings and harvesting
-- Tips and strategies
+- **Balls Encyclopedia** (Implemented): List/grid view with search, filtering, and detailed ball information
+- **Passives Encyclopedia** (Implemented): List view with rarity-based filtering and search
+- Game mechanics documentation (Planned)
+- Character/hero information (Planned)
+- Pit levels and enemies (Planned)
+- Town buildings and harvesting (Planned)
+- Tips and strategies (Planned)
 
 ### 3. **Interactive Ball Fusion Tool** (Future Goal)
 Interactive tool for experimenting with ball combinations:
@@ -57,26 +58,42 @@ src/
 │   ├── layout.tsx                # Root layout with Nav component
 │   ├── page.tsx                  # Home page (navigation cards)
 │   ├── globals.css               # Global styles, custom classes, scrollbar
+│   ├── encyclopedia/
+│   │   ├── balls/page.tsx        # Balls encyclopedia (list/grid view)
+│   │   ├── passives/page.tsx     # Passives encyclopedia
+│   │   └── enemies/page.tsx      # Enemies encyclopedia (placeholder)
 │   ├── settings/
 │   │   ├── page.tsx              # Settings page (save slot management)
 │   │   └── reorder-heroes/
 │   │       └── page.tsx          # Hero reordering with drag-and-drop
 │   └── tools/
 │       └── progression/
-│           └── level/page.tsx    # Level View progression tracker
+│           ├── level/page.tsx    # Level View progression tracker
+│           └── character/page.tsx # Character View progression tracker
 ├── components/                   # React components
 │   ├── Nav.tsx                   # Navigation sidebar + mobile menu
 │   ├── Header.tsx                # Page title display (decoupled)
-│   ├── HeroSprite.tsx            # Hero sprite renderer (portrait/small)
-│   └── LevelHeroSprite.tsx       # Level completion sprite (with checkmark)
+│   ├── CharacterIcon.tsx         # Character sprite renderer (className-based sizing)
+│   ├── LevelIcon.tsx             # Level icon renderer (className-based sizing)
+│   ├── BallIcon.tsx              # Ball icon renderer (className-based sizing)
+│   ├── PassiveIcon.tsx           # Passive icon renderer (className-based sizing)
+│   ├── BuildingIcon.tsx          # Building icon renderer (className-based sizing)
+│   ├── BallsView.tsx             # Balls encyclopedia container with list/grid views
+│   ├── BallsList.tsx             # Individual ball list/detail item
+│   ├── BallsGrid.tsx             # Ball grid icon item
+│   ├── PassiveListItem.tsx       # Individual passive list item
+│   └── CompletableIcon.tsx       # Wrapper for checkmark overlay on icons
 ├── hooks/
 │   └── useProgressData.ts        # Progress data management hook
 ├── data/
-│   ├── heroes.ts                 # Hero definitions (16 heroes, 4x4 grid)
-│   ├── balls.ts                  # Ball data (for encyclopedia)
-│   └── ballIcons.ts              # Ball icon mappings
+│   ├── heroes.ts                 # Hero definitions (16 heroes)
+│   ├── balls.ts                  # Ball data with fusion recipes
+│   ├── passives.ts               # Passive item data
+│   └── ballIcons.ts              # Ball icon mappings (legacy)
 ├── types/
 │   ├── heroProgress.ts           # Progress data TypeScript types
+│   ├── ball.ts                   # Ball type definitions
+│   ├── passive.ts                # Passive type definitions
 │   └── index.ts                  # Other type exports
 └── utils/
     └── basePath.ts               # Asset path helpers (GitHub Pages support)
@@ -90,6 +107,7 @@ src/
 - `ball-x-pit-progress`: **Legacy key** (migrated to save-1 on first load)
 - `currentDifficulty`: **Legacy key** (migrated)
 - `currentFastTier`: **Legacy key** (migrated)
+- `balls-view-type`: User's preferred view mode ('list' or 'grid') for balls encyclopedia
 
 #### Data Structure Hierarchy
 ```typescript
@@ -327,6 +345,73 @@ const dragHandleProps = {
 **Reorder Heroes Page** (`/settings/reorder-heroes`):
 - Full-page hero reordering interface with drag-and-drop
 - See "Hero Reordering Page" section above for details
+
+#### Balls Encyclopedia Pages
+
+**Balls Encyclopedia Page** (`/encyclopedia/balls`):
+- Single page with dual view modes (list/grid toggle)
+- View preference persisted to localStorage
+- List view: Full details for each ball with mobile expand/collapse
+- Grid view: Icon grid with expandable full-width detail rows
+- Search, filter (all/basic/fusion), and sort (encyclopedia/alphabetical)
+- Collapsible search/filters section on mobile (<lg breakpoint)
+
+**BallsView Component** (`src/components/BallsView.tsx`):
+**Purpose**: Container managing all state and rendering for balls encyclopedia
+
+**Key State**:
+- `viewType`: 'list' | 'grid' (localStorage-backed)
+- `filter`: 'all' | 'basic' | 'fusion'
+- `sort`: 'encyclopedia' | 'name'
+- `searchQuery`: Text search across name and description
+- `isFiltersExpanded`: Mobile filter section visibility
+- `expandedBallId`: Currently expanded ball in grid view (null when none)
+- `isLoaded`: Prevents hydration mismatch flash
+- `gridColumns`: Responsive column count (4/5/6/7/10 based on viewport)
+- `gridItemRefs`: Ref object for scroll-to-ball functionality
+
+**Grid Layout Logic**:
+- Dynamically calculates columns: 4 (mobile), 5 (sm), 6 (md), 7 (lg), 10 (xl)
+- Uses inline style `gridTemplateColumns: repeat(${gridColumns}, minmax(0, 1fr))`
+- When ball clicked: calculates end of current row, inserts full-width details after that row
+- Formula: `expandedRowEnd = Math.floor(expandedIndex / gridColumns) * gridColumns + gridColumns`
+- Details inserted at index `expandedRowEnd - 1` with `col-span-full`
+
+**Auto-Scroll Behavior**:
+- On mobile/tablet (<1024px), scrolls expanded ball to top of viewport (below 80px header)
+- 100ms delay allows content to render before scrolling
+- Smooth scroll animation
+
+**BallsList Component** (`src/components/BallsList.tsx`):
+**Purpose**: Individual ball detail card (used in both list and grid expanded views)
+
+**Key Features**:
+- Dashboard-style header: CSS Grid `grid-cols-[auto_1fr_auto_auto]` for [icon|name|badges|chevron]
+- Responsive icons: 60px (mobile), 64px (desktop) using className-based sizing
+- Tier badges: "Basic" (no recipe), "Evolved" (2-ball), "Legendary" (3+ ball)
+- Spawner badge conditionally shown
+- Tags section: hitEffects, aoeTypes, specials (filters out spawner's own type)
+- **Default "Normal" tag** if no tags present
+- Level selector (1/2/3) for property display
+- Description with highlighted values (color-coded by ball's ballColor property)
+- Converts time values (/10 → seconds), percentage values (append %)
+- Recipe and evolution info in footer
+- `disableMobileExpand` prop: When true, skips mobile expand button (used in grid view)
+
+**BallsGrid Component** (`src/components/BallsGrid.tsx`):
+**Purpose**: Simple ball icon button for grid view
+
+**Key Features**:
+- `aspect-square` button with 64x64 ball icon (className-based sizing)
+- Border highlight when `isExpanded`
+- Calls `onToggle` callback when clicked
+
+**Icon Components** (`BallIcon`, `PassiveIcon`, `BuildingIcon`, `CharacterIcon`, `LevelIcon`):
+- All use **className-based sizing** (e.g., `className="h-16 w-16"` or `className="h-full w-full"`)
+- Use Next.js Image with `fill` prop and relative container
+- Support `imageRendering: pixelated` for pixel art
+- BallIcon and PassiveIcon support optional `borderColor` prop for damage type/rarity visualization
+- CharacterIcon supports `type: 'portrait' | 'sprite'` for 124x124 vs 18x18 images
 
 #### Legacy Components (Removed)
 

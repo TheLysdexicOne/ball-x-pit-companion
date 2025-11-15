@@ -115,14 +115,12 @@ export default function PassiveListItem({ passive }: PassiveListItemProps) {
             <PassiveIcon
               slug={passive.slug}
               name={passive.name}
-              size={60}
-              className="sm:hidden"
+              className="h-[60px] w-[60px] sm:hidden"
             />
             <PassiveIcon
               slug={passive.slug}
               name={passive.name}
-              size={80}
-              className="hidden sm:block"
+              className="hidden h-20 w-20 sm:block"
             />
           </div>
 

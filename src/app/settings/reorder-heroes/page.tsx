@@ -76,7 +76,11 @@ function HeroItem({
       {/* Ball Icon - Desktop Only */}
       {starterBall && (
         <div className="hidden h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg border-2 border-primary/60 bg-body sm:flex sm:h-20 sm:w-20">
-          <BallIcon slug={starterBall.slug} name={starterBall.name} size={50} />
+          <BallIcon
+            slug={starterBall.slug}
+            name={starterBall.name}
+            className="h-[50px] w-[50px]"
+          />
         </div>
       )}
 

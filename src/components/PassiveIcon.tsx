@@ -6,7 +6,6 @@ import { getImagePath } from '@/utils/basePath';
 interface PassiveIconProps {
   slug: string;
   name: string;
-  size?: number; // Pixel size (defaults to 64px - common passive icon size)
   className?: string;
   onClick?: () => void;
   onDragStart?: (e: React.DragEvent) => void;
@@ -22,11 +21,11 @@ interface PassiveIconProps {
  *
  * Renders a passive item icon from individual image files in public/images/passives/
  * Supports various sizes, interactions, and visual states.
+ * Size is controlled via className (e.g., "h-16 w-16" or "h-full w-full").
  *
  * @param slug - Passive identifier (e.g., 'pass_bow', 'pass_armor')
  * @param name - Passive name for accessibility
- * @param size - Pixel dimensions (default: 64)
- * @param className - Additional CSS classes
+ * @param className - CSS classes for sizing and styling
  * @param onClick - Click handler
  * @param draggable - Enable drag-and-drop
  * @param highlighted - Apply glow effect
@@ -35,7 +34,6 @@ interface PassiveIconProps {
 export default function PassiveIcon({
   slug,
   name,
-  size = 64,
   className = '',
   onClick,
   onDragStart,
@@ -57,37 +55,28 @@ export default function PassiveIcon({
       'drop-shadow(0 0 2px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.4))';
   }
 
-  // Wrapper for optional border
-  const wrapperClassName = borderColor
-    ? `inline-flex items-center justify-center rounded border-2 p-2 ${className}`
-    : className;
-  const wrapperStyle = borderColor ? { borderColor } : undefined;
+  const containerClassName = `relative select-none ${draggable ? 'cursor-grab active:cursor-grabbing' : ''} ${borderColor ? 'inline-flex items-center justify-center rounded border-2 p-2' : ''} ${className}`;
+  const containerStyle = borderColor ? { borderColor } : undefined;
 
-  const imageElement = (
-    <Image
-      src={imageSrc}
-      alt={name}
-      width={size}
-      height={size}
-      className={`select-none ${draggable ? 'cursor-grab active:cursor-grabbing' : ''}`}
-      style={inlineStyles}
+  return (
+    <div
+      className={containerClassName}
+      style={containerStyle}
       onClick={onClick}
-      draggable={draggable}
       onDragStart={onDragStart}
       onDragOver={onDragOver}
       onDrop={onDrop}
+      draggable={draggable}
       title={name}
-      unoptimized
-    />
+    >
+      <Image
+        src={imageSrc}
+        alt={name}
+        fill
+        className="object-contain"
+        style={inlineStyles}
+        unoptimized
+      />
+    </div>
   );
-
-  if (borderColor) {
-    return (
-      <div className={wrapperClassName} style={wrapperStyle}>
-        {imageElement}
-      </div>
-    );
-  }
-
-  return <div className={className}>{imageElement}</div>;
 }

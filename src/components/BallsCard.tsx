@@ -7,11 +7,17 @@ import BallIcon from './BallIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-interface BallsListProps {
+interface BallsCardProps {
   ball: Ball;
+  disableMobileExpand?: boolean;
+  isGridExpanded?: boolean;
 }
 
-export default function BallsList({ ball }: BallsListProps) {
+export default function BallsCard({
+  ball,
+  disableMobileExpand = false,
+  isGridExpanded = false,
+}: BallsCardProps) {
   const [selectedLevel, setSelectedLevel] = useState<1 | 2 | 3>(1);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -134,12 +140,17 @@ export default function BallsList({ ball }: BallsListProps) {
     ...ball.specials.filter(shouldShowTag),
   ];
 
+  // If no tags, default to "Normal"
+  const displayTags = allTags.length > 0 ? allTags : ['Normal'];
+
   return (
-    <div className="overflow-hidden rounded-lg border-2 border-primary bg-body shadow-md transition-all hover:border-highlight">
-      {/* Mobile: Click to expand */}
+    <div
+      className={`overflow-hidden rounded-lg border-2 bg-body shadow-md transition-all ${isGridExpanded ? 'border-highlight' : 'border-primary hover:border-highlight'}`}
+    >
+      {/* Mobile: Click to expand (disabled in grid view) */}
       <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full bg-card-header p-2 text-left sm:cursor-default sm:p-4"
+        onClick={() => !disableMobileExpand && setIsExpanded(!isExpanded)}
+        className={`w-full bg-card-header p-2 text-left sm:p-4 ${disableMobileExpand ? 'cursor-default sm:cursor-default' : 'sm:cursor-default'}`}
       >
         <div className="grid h-16 grid-cols-[auto_1fr_auto_auto] items-center gap-3 sm:gap-4">
           {/* Ball Icon */}
@@ -147,14 +158,12 @@ export default function BallsList({ ball }: BallsListProps) {
             <BallIcon
               slug={ball.slug}
               name={ball.name}
-              size={60}
-              className="sm:hidden"
+              className="h-[60px] w-[60px] sm:hidden"
             />
             <BallIcon
               slug={ball.slug}
               name={ball.name}
-              size={64}
-              className="hidden sm:block"
+              className="hidden h-16 w-16 sm:block"
             />
           </div>
 
@@ -179,24 +188,26 @@ export default function BallsList({ ball }: BallsListProps) {
             )}
           </div>
 
-          {/* Expand Icon (mobile only) */}
-          <div className="flex-shrink-0 sm:hidden">
-            <FontAwesomeIcon
-              icon={isExpanded ? faChevronUp : faChevronDown}
-              className="h-5 w-5 text-primary"
-            />
-          </div>
+          {/* Expand Icon (mobile only, hidden in grid view) */}
+          {!disableMobileExpand && (
+            <div className="flex-shrink-0 sm:hidden">
+              <FontAwesomeIcon
+                icon={isExpanded ? faChevronUp : faChevronDown}
+                className="h-5 w-5 text-primary"
+              />
+            </div>
+          )}
         </div>
       </button>
 
-      {/* Expanded Content - Always shown on desktop, click to expand on mobile */}
+      {/* Expanded Content - Always shown on desktop, click to expand on mobile (unless disabled) */}
       <div
-        className={`${isExpanded ? 'block' : 'hidden'} border-t-2 border-primary p-3 sm:block sm:p-4`}
+        className={`${disableMobileExpand ? 'block' : isExpanded ? 'block' : 'hidden'} border-t-2 border-primary p-3 sm:block sm:p-4`}
       >
         {/* Tags */}
-        {allTags.length > 0 && (
+        {displayTags.length > 0 && (
           <div className="mb-3 flex flex-wrap gap-1 sm:gap-2">
-            {allTags.map((tag, idx) => (
+            {displayTags.map((tag, idx) => (
               <span
                 key={`${tag}-${idx}`}
                 className="rounded border-2 border-highlight bg-primary px-2 py-1 text-base font-semibold text-secondary sm:text-lg"
