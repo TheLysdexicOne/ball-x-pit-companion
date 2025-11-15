@@ -56,7 +56,7 @@ function HeroItem({
           slug={hero.id}
           name={hero.name}
           type="portrait"
-          size={93}
+          className="h-full w-full"
           highlighted={isDragging}
         />
       </div>

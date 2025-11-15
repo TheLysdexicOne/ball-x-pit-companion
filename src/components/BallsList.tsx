@@ -7,11 +7,11 @@ import BallIcon from './BallIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-interface BallListItemProps {
+interface BallsListProps {
   ball: Ball;
 }
 
-export default function BallListItem({ ball }: BallListItemProps) {
+export default function BallsList({ ball }: BallsListProps) {
   const [selectedLevel, setSelectedLevel] = useState<1 | 2 | 3>(1);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -116,6 +116,14 @@ export default function BallListItem({ ball }: BallListItemProps) {
       parts.push(ball.description.substring(lastIndex));
     }
 
+    // Ensure the description ends with a period
+    const lastPart = parts[parts.length - 1];
+    if (typeof lastPart === 'string' && !lastPart.trim().endsWith('.')) {
+      parts[parts.length - 1] = lastPart + '.';
+    } else if (typeof lastPart !== 'string' && parts.length > 0) {
+      parts.push('.');
+    }
+
     return parts;
   };
 
@@ -127,13 +135,13 @@ export default function BallListItem({ ball }: BallListItemProps) {
   ];
 
   return (
-    <div className="rounded-lg border-2 border-primary bg-body shadow-md transition-all hover:border-highlight">
+    <div className="overflow-hidden rounded-lg border-2 border-primary bg-body shadow-md transition-all hover:border-highlight">
       {/* Mobile: Click to expand */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full p-3 text-left sm:cursor-default sm:p-4"
+        className="w-full bg-card-header p-2 text-left sm:cursor-default sm:p-4"
       >
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="grid h-16 grid-cols-[auto_1fr_auto_auto] items-center gap-3 sm:gap-4">
           {/* Ball Icon */}
           <div className="flex-shrink-0">
             <BallIcon
@@ -145,26 +153,30 @@ export default function BallListItem({ ball }: BallListItemProps) {
             <BallIcon
               slug={ball.slug}
               name={ball.name}
-              size={80}
+              size={64}
               className="hidden sm:block"
             />
           </div>
 
-          {/* Ball Name & Tier */}
-          <div className="min-w-0 flex-1">
-            <h3 className="font-pixel text-lg tracking-wider text-primary sm:text-2xl md:text-3xl">
+          {/* Ball Name */}
+          <div className="min-w-0">
+            <h3 className="font-pixel text-2xl tracking-wider text-primary sm:text-2xl md:text-4xl">
               {ball.name}
             </h3>
-            <div className="mt-1 flex flex-wrap gap-1 sm:gap-2">
-              <span className="text-body rounded bg-primary px-2 py-0.5 font-pixel text-xs sm:text-sm">
-                {tier}
+          </div>
+
+          {/* Tier & Spawner Badges (Dashboard Style) */}
+          <div className="flex flex-col items-end justify-center gap-1">
+            <span className="whitespace-nowrap rounded bg-secondary px-2 py-0.5 text-base sm:text-lg">
+              {tier}
+            </span>
+            {ball.isSpawner ? (
+              <span className="whitespace-nowrap rounded bg-secondary px-2 py-0.5 text-base sm:text-lg">
+                Spawner
               </span>
-              {ball.isSpawner && (
-                <span className="text-body rounded bg-primary px-2 py-0.5 font-pixel text-xs sm:text-sm">
-                  Spawner
-                </span>
-              )}
-            </div>
+            ) : (
+              <div className="h-5 sm:h-6" />
+            )}
           </div>
 
           {/* Expand Icon (mobile only) */}
@@ -187,7 +199,7 @@ export default function BallListItem({ ball }: BallListItemProps) {
             {allTags.map((tag, idx) => (
               <span
                 key={`${tag}-${idx}`}
-                className="rounded bg-secondary px-2 py-1 font-pixel text-xs text-primary sm:text-sm"
+                className="rounded border-2 border-highlight bg-primary px-2 py-1 text-base font-semibold text-secondary sm:text-lg"
               >
                 {formatTagName(tag)}
               </span>
@@ -201,10 +213,10 @@ export default function BallListItem({ ball }: BallListItemProps) {
             <button
               key={level}
               onClick={() => setSelectedLevel(level as 1 | 2 | 3)}
-              className={`flex-1 rounded-lg border-2 px-3 py-2 font-pixel text-sm tracking-wider transition-colors sm:text-base ${
+              className={`flex-1 rounded-lg px-3 py-2 text-lg tracking-wider transition-colors sm:text-xl ${
                 selectedLevel === level
-                  ? 'border-highlight bg-highlight text-primary'
-                  : 'border-primary bg-secondary text-primary hover:border-highlight'
+                  ? 'bg-highlight text-primary'
+                  : 'card-text-box'
               }`}
             >
               Level {level}
@@ -213,16 +225,16 @@ export default function BallListItem({ ball }: BallListItemProps) {
         </div>
 
         {/* Description */}
-        <div className="mb-3 rounded-lg border-2 border-primary bg-secondary p-3 sm:p-4">
-          <p className="font-pixel text-sm leading-relaxed text-secondary sm:text-base">
+        <div className="mb-3 rounded-lg bg-primary p-3 sm:p-4">
+          <p className="text-justify text-lg leading-relaxed text-secondary sm:text-lg">
             {formatDescriptionWithHighlights()}
           </p>
         </div>
 
         {/* Footer Info: Recipe & Evolution */}
-        <div className="space-y-1 font-pixel text-xs text-secondary sm:text-sm">
+        <div className="space-y-1 text-base text-secondary sm:text-base">
           {ball.fusionRecipe.length > 0 && (
-            <div className="rounded-lg bg-secondary p-2 sm:p-3">
+            <div className="rounded-lg bg-primary p-2 sm:p-3">
               <strong className="text-primary">Recipe:</strong>{' '}
               {ball.fusionRecipe
                 .map(recipe =>
@@ -234,7 +246,7 @@ export default function BallListItem({ ball }: BallListItemProps) {
             </div>
           )}
           {ball.evolvesInto.length > 0 && (
-            <div className="rounded-lg bg-secondary p-2 sm:p-3">
+            <div className="rounded-lg bg-primary p-2 sm:p-3">
               <strong className="text-primary">Evolves into:</strong>{' '}
               {ball.evolvesInto
                 .map(slug => getBallBySlug(slug)?.name || slug)

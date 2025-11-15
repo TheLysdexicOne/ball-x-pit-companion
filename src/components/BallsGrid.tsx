@@ -1,136 +1,122 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import type { Ball } from '@/types/ball';
-import { getAllBalls, getBasicBalls, getFusionBalls } from '@/data/balls';
-import BallListItem from './BallListItem';
-import BallCard from './BallCard';
-
-type FilterType = 'all' | 'basic' | 'fusion';
-type SortType = 'name' | 'encyclopedia';
-type ViewType = 'list' | 'grid';
+import { formatDescription } from '@/data/balls';
+import BallIcon from './BallIcon';
 
 interface BallsGridProps {
-  viewType?: ViewType;
+  ball: Ball;
 }
 
-export default function BallsGrid({ viewType = 'list' }: BallsGridProps) {
-  const [filter, setFilter] = useState<FilterType>('all');
-  const [sort, setSort] = useState<SortType>('encyclopedia');
-  const [searchQuery, setSearchQuery] = useState('');
+export default function BallsGrid({ ball }: BallsGridProps) {
+  const [selectedLevel, setSelectedLevel] = useState<1 | 2 | 3>(1);
 
-  const filteredBalls = useMemo(() => {
-    let balls: Ball[];
+  const currentLevelProps =
+    ball[`level${selectedLevel}` as 'level1' | 'level2' | 'level3'];
+  const formattedDescription = formatDescription(
+    ball.description,
+    currentLevelProps
+  );
 
-    switch (filter) {
-      case 'basic':
-        balls = getBasicBalls();
-        break;
-      case 'fusion':
-        balls = getFusionBalls();
-        break;
-      default:
-        balls = getAllBalls();
-    }
-
-    // Apply search filter
-    if (searchQuery) {
-      balls = balls.filter(
-        ball =>
-          ball.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          ball.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-
-    // Apply sorting
-    if (sort === 'encyclopedia') {
-      // Sort by recipe length (0 = base, 1 = 2-ball fusion, 2+ = 3+ ball fusion), then alphabetically
-      balls = [...balls].sort((a, b) => {
-        const aRecipeLength =
-          a.fusionRecipe.length > 0 ? a.fusionRecipe[0].length : 0;
-        const bRecipeLength =
-          b.fusionRecipe.length > 0 ? b.fusionRecipe[0].length : 0;
-
-        if (aRecipeLength !== bRecipeLength) {
-          return aRecipeLength - bRecipeLength;
-        }
-
-        return a.name.localeCompare(b.name);
-      });
-    } else {
-      // Sort by name only
-      balls = [...balls].sort((a, b) => a.name.localeCompare(b.name));
-    }
-
-    return balls;
-  }, [filter, sort, searchQuery]);
+  // Determine ball tier
+  const tier =
+    ball.fusionRecipe.length === 0
+      ? 'Basic'
+      : ball.fusionRecipe[0].length >= 3
+        ? 'Legendary'
+        : 'Evolved';
 
   return (
-    <div>
-      {/* Controls Section */}
-      <div className="mb-4 space-y-3">
-        {/* Search Bar */}
-        <input
-          type="text"
-          placeholder="Search balls..."
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-          className="focus:ring-highlight w-full rounded-lg border-2 border-primary bg-secondary px-4 py-3 font-pixel text-base tracking-wider text-primary placeholder:text-primary/50 focus:border-highlight focus:outline-none focus:ring-2 sm:text-lg"
-        />
+    <div
+      className="group relative p-4 shadow-lg transition-transform"
+      style={{
+        borderImage: 'url(/images/backgrounds/enc_bg.png)',
+        borderImageSlice: '16 fill ',
+        borderImageRepeat: 'repeat',
+        borderImageWidth: '100px',
+        imageRendering: 'pixelated',
+      }}
+    >
+      {/* Hover background overlay */}
+      <div
+        className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
+        style={{
+          borderImage: 'url(/images/backgrounds/enc_highlight.png)',
+          borderImageSlice: '16 fill ',
+          borderImageRepeat: 'repeat',
+          borderImageWidth: '100px',
+          pointerEvents: 'none',
+        }}
+      />
 
-        {/* Filters Row */}
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {/* Filter Dropdown */}
-          <select
-            value={filter}
-            onChange={e => setFilter(e.target.value as FilterType)}
-            className="focus:ring-highlight w-full cursor-pointer rounded-lg border-2 border-primary bg-secondary px-4 py-3 font-pixel text-base tracking-wider text-primary focus:border-highlight focus:outline-none focus:ring-2 sm:text-lg"
-          >
-            <option value="all">All Balls ({getAllBalls().length})</option>
-            <option value="basic">Basic ({getBasicBalls().length})</option>
-            <option value="fusion">Fusion ({getFusionBalls().length})</option>
-          </select>
+      {/* Content wrapper with relative positioning */}
+      <div className="relative z-10">
+        {/* Ball Icon and Header */}
+        <div className="mb-2 flex items-start gap-3">
+          {/* Ball Icon */}
+          <div className="flex-shrink-0">
+            <BallIcon slug={ball.slug} name={ball.name} size={50} />
+          </div>
 
-          {/* Sort Dropdown */}
-          <select
-            value={sort}
-            onChange={e => setSort(e.target.value as SortType)}
-            className="focus:ring-highlight w-full cursor-pointer rounded-lg border-2 border-primary bg-secondary px-4 py-3 font-pixel text-base tracking-wider text-primary focus:border-highlight focus:outline-none focus:ring-2 sm:text-lg"
-          >
-            <option value="encyclopedia">Sort: Encyclopedia</option>
-            <option value="name">Sort: Alphabetical</option>
-          </select>
+          {/* Header Text */}
+          <div className="flex-1">
+            <h3 className="font-pixel text-2xl font-bold tracking-widest">
+              {ball.name}
+            </h3>
+            <div className="flex gap-2 text-xs">
+              <span className="rounded bg-amber-200 px-2 py-1">{tier}</span>
+              <span className="rounded bg-blue-200 px-2 py-1">
+                {ball.damageType.replace('k', '')}
+              </span>
+            </div>
+          </div>
         </div>
+
+        {/* Level Selector */}
+        <div className="mb-3 flex gap-1">
+          {[1, 2, 3].map(level => (
+            <button
+              key={level}
+              onClick={() => setSelectedLevel(level as 1 | 2 | 3)}
+              className={`flex-1 rounded px-2 py-1 text-sm font-semibold transition-colors ${
+                selectedLevel === level
+                  ? 'bg-amber-600 text-white'
+                  : 'bg-amber-200 text-amber-800 hover:bg-amber-300'
+              }`}
+            >
+              Lvl {level}
+            </button>
+          ))}
+        </div>
+
+        {/* Description */}
+        <p className="mb-3 text-sm text-gray-700">{formattedDescription}</p>
+
+        {/* Fusion Recipe */}
+        {ball.fusionRecipe.length > 0 && (
+          <div className="mt-3 rounded bg-amber-100 p-2">
+            <p className="mb-1 text-xs font-semibold text-amber-900">Recipe:</p>
+            {ball.fusionRecipe.map((recipe, idx) => (
+              <p key={idx} className="text-xs text-gray-600">
+                {recipe.join(' + ')}
+              </p>
+            ))}
+          </div>
+        )}
+
+        {/* Evolutions */}
+        {ball.evolvesInto.length > 0 && (
+          <div className="mt-2 rounded bg-green-100 p-2">
+            <p className="mb-1 text-xs font-semibold text-green-900">
+              Evolves into:
+            </p>
+            <p className="text-xs text-gray-600">
+              {ball.evolvesInto.length} evolution(s)
+            </p>
+          </div>
+        )}
       </div>
-
-      {/* Results Count */}
-      {searchQuery && (
-        <div className="mb-3 text-center font-pixel text-sm tracking-wider text-secondary sm:text-base">
-          Found {filteredBalls.length} ball
-          {filteredBalls.length !== 1 ? 's' : ''}
-        </div>
-      )}
-
-      {/* View Rendering */}
-      {viewType === 'list' ? (
-        <div className="space-y-3">
-          {filteredBalls.map(ball => (
-            <BallListItem key={ball.id} ball={ball} />
-          ))}
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredBalls.map(ball => (
-            <BallCard key={ball.id} ball={ball} />
-          ))}
-        </div>
-      )}
-
-      {filteredBalls.length === 0 && (
-        <div className="card-text-box py-8">
-          No balls found matching your criteria.
-        </div>
-      )}
     </div>
   );
 }

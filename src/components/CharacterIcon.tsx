@@ -2,12 +2,12 @@
 
 import Image from 'next/image';
 import { getImagePath } from '@/utils/basePath';
+import { ReactNode } from 'react';
 
 interface CharacterIconProps {
   slug: string;
   name: string;
   type: 'portrait' | 'sprite';
-  size?: number; // Pixel size (defaults to native: portrait=124px, sprite=18px)
   className?: string;
   onClick?: () => void;
   onDragStart?: (e: React.DragEvent) => void;
@@ -15,24 +15,20 @@ interface CharacterIconProps {
   onDrop?: (e: React.DragEvent) => void;
   draggable?: boolean;
   highlighted?: boolean;
+  children?: ReactNode;
 }
-
-const NATIVE_SIZES = {
-  portrait: 124,
-  sprite: 18,
-} as const;
 
 /**
  * CharacterIcon Component
  *
  * Renders a character icon from individual image files in public/images/characters/
  * Supports both portrait (124x124) and sprite (18x18) sizes.
+ * Size is controlled via className (e.g., "h-16 w-16" or "h-full w-full").
  *
  * @param slug - Character identifier (e.g., 'char_default', 'char_recaller')
  * @param name - Character name for accessibility
  * @param type - Icon type: 'portrait' or 'sprite'
- * @param size - Pixel dimensions (defaults to native size)
- * @param className - Additional CSS classes
+ * @param className - CSS classes for sizing and styling
  * @param onClick - Click handler
  * @param draggable - Enable drag-and-drop
  * @param highlighted - Apply glow effect
@@ -41,7 +37,6 @@ export default function CharacterIcon({
   slug,
   name,
   type,
-  size,
   className = '',
   onClick,
   onDragStart,
@@ -49,8 +44,8 @@ export default function CharacterIcon({
   onDrop,
   draggable = false,
   highlighted = false,
+  children,
 }: CharacterIconProps) {
-  const displaySize = size ?? NATIVE_SIZES[type];
   const imageSrc = getImagePath(`/images/characters/${type}/${slug}.png`);
 
   const inlineStyles: React.CSSProperties = {
@@ -64,20 +59,24 @@ export default function CharacterIcon({
   }
 
   return (
-    <Image
-      src={imageSrc}
-      alt={name}
-      width={displaySize}
-      height={displaySize}
-      className={`select-none ${draggable ? 'cursor-grab active:cursor-grabbing' : ''} ${className}`}
-      style={inlineStyles}
+    <div
+      className={`relative select-none ${draggable ? 'cursor-grab active:cursor-grabbing' : ''} ${className}`}
       onClick={onClick}
-      draggable={draggable}
       onDragStart={onDragStart}
       onDragOver={onDragOver}
       onDrop={onDrop}
+      draggable={draggable}
       title={name}
-      unoptimized
-    />
+    >
+      <Image
+        src={imageSrc}
+        alt={name}
+        fill
+        className="object-contain"
+        style={inlineStyles}
+        unoptimized
+      />
+      {children}
+    </div>
   );
 }

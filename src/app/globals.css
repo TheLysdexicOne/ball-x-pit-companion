@@ -42,7 +42,7 @@
     @apply hover:border-btn-highlight hover:bg-btn-primary-highlight hover:text-primary;
   }
 
-  .btn-body-primary-nohover {
+  .btn-body-secondary {
     @apply rounded-lg border-2 px-6 py-4 text-center transition-colors;
     @apply border-primary bg-btn-primary text-secondary;
   }
