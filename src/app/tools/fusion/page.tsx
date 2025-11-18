@@ -1,13 +1,13 @@
 'use client';
 
-import Link from 'next/link';
-import PassivesView from '@/components/PassivesView';
+import FusionTool from '@/components/FusionTool';
 
-export default function Passives() {
+export default function FusionPage() {
   return (
     <main className="min-h-screen p-4 sm:p-8">
       <div className="mx-auto max-w-6xl">
-        <PassivesView />
+        {/* Fusion Tool Content */}
+        <FusionTool />
       </div>
     </main>
   );

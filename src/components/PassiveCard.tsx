@@ -7,17 +7,29 @@ import PassiveIcon from './PassiveIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-interface PassiveListItemProps {
+interface PassiveCardProps {
   passive: Passive;
+  disableMobileExpand?: boolean;
+  isGridExpanded?: boolean;
 }
 
-export default function PassiveListItem({ passive }: PassiveListItemProps) {
+export default function PassiveCard({
+  passive,
+  disableMobileExpand = false,
+  isGridExpanded = false,
+}: PassiveCardProps) {
   const [selectedLevel, setSelectedLevel] = useState<1 | 2 | 3>(1);
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Get current level properties
   const currentLevelProps =
     passive.propertiesByLevel?.[selectedLevel - 1]?.properties || {};
+
+  // Determine passive tier
+  const tier =
+    !passive.mergeComponents || passive.mergeComponents.length === 0
+      ? 'Basic'
+      : 'Merged';
 
   // Get main color for highlights
   const getHighlightColor = () => {
@@ -97,19 +109,16 @@ export default function PassiveListItem({ passive }: PassiveListItemProps) {
     return parts;
   };
 
-  // Format type display
-  const formatType = (type: string) => {
-    return `Type ${type}`;
-  };
-
   return (
-    <div className="rounded-lg border-2 border-primary bg-body shadow-md transition-all hover:border-highlight">
-      {/* Mobile: Click to expand */}
+    <div
+      className={`overflow-hidden rounded-lg border-2 bg-body shadow-md transition-all ${isGridExpanded ? 'border-highlight' : 'border-primary hover:border-highlight'}`}
+    >
+      {/* Mobile: Click to expand (disabled in grid view) */}
       <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full p-3 text-left sm:cursor-default sm:p-4"
+        onClick={() => !disableMobileExpand && setIsExpanded(!isExpanded)}
+        className={`w-full bg-card-header p-2 text-left sm:p-4 ${disableMobileExpand ? 'cursor-default sm:cursor-default' : 'sm:cursor-default'}`}
       >
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="grid h-16 grid-cols-[auto_1fr_auto_auto] items-center gap-3 sm:gap-4">
           {/* Passive Icon */}
           <div className="flex-shrink-0">
             <PassiveIcon
@@ -120,98 +129,90 @@ export default function PassiveListItem({ passive }: PassiveListItemProps) {
             <PassiveIcon
               slug={passive.slug}
               name={passive.name}
-              className="hidden h-20 w-20 sm:block"
+              className="hidden h-16 w-16 sm:block"
             />
           </div>
 
-          {/* Passive Name & Type */}
-          <div className="min-w-0 flex-1">
-            <h3 className="font-pixel text-lg tracking-wider text-primary sm:text-2xl md:text-3xl">
+          {/* Passive Name */}
+          <div className="min-w-0">
+            <h3 className="font-pixel text-2xl tracking-wider text-primary sm:text-2xl md:text-4xl">
               {passive.name}
             </h3>
-            <div className="mt-1 flex flex-wrap gap-1 sm:gap-2">
-              <span className="text-body rounded bg-primary px-2 py-0.5 font-pixel text-xs sm:text-sm">
-                {formatType(passive.type)}
-              </span>
-              {passive.tags &&
-                passive.tags.length > 0 &&
-                passive.tags.map((tag, idx) => (
-                  <span
-                    key={`${tag}-${idx}`}
-                    className="rounded bg-secondary px-2 py-0.5 font-pixel text-xs text-primary sm:text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-            </div>
           </div>
 
-          {/* Expand Icon (mobile only) */}
-          <div className="flex-shrink-0 sm:hidden">
-            <FontAwesomeIcon
-              icon={isExpanded ? faChevronUp : faChevronDown}
-              className="h-5 w-5 text-primary"
-            />
+          {/* Tier & Tags Badges (Dashboard Style) */}
+          <div className="flex flex-col items-end justify-center gap-1">
+            <span className="whitespace-nowrap rounded bg-secondary px-2 py-0.5 text-base sm:text-lg">
+              {tier}
+            </span>
+            {passive.tags && passive.tags.length > 0 ? (
+              <span className="whitespace-nowrap rounded bg-secondary px-2 py-0.5 text-base sm:text-lg">
+                {passive.tags[0]}
+              </span>
+            ) : (
+              <div className="h-5 sm:h-6" />
+            )}
           </div>
+
+          {/* Expand Icon (mobile only, hidden in grid view) */}
+          {!disableMobileExpand && (
+            <div className="flex-shrink-0 sm:hidden">
+              <FontAwesomeIcon
+                icon={isExpanded ? faChevronUp : faChevronDown}
+                className="h-5 w-5 text-primary"
+              />
+            </div>
+          )}
         </div>
       </button>
 
-      {/* Expanded Content - Always shown on desktop, click to expand on mobile */}
+      {/* Expanded Content - Always shown on desktop, click to expand on mobile (unless disabled) */}
       <div
-        className={`${isExpanded ? 'block' : 'hidden'} border-t-2 border-primary p-3 sm:block sm:p-4`}
+        className={`${disableMobileExpand ? 'block' : isExpanded ? 'block' : 'hidden'} border-t-2 border-primary p-3 sm:block sm:p-4`}
       >
-        {/* Level Selector - Only show if passive has multiple levels */}
-        {passive.propertiesByLevel && passive.propertiesByLevel.length > 1 && (
-          <div className="mb-3 flex gap-2">
-            {passive.propertiesByLevel.map((levelData, idx) => {
-              const level = (idx + 1) as 1 | 2 | 3;
-              return (
-                <button
-                  key={level}
-                  onClick={() => setSelectedLevel(level)}
-                  className={`flex-1 rounded-lg border-2 px-3 py-2 font-pixel text-sm tracking-wider transition-colors sm:text-base ${
-                    selectedLevel === level
-                      ? 'border-highlight bg-highlight text-primary'
-                      : 'border-primary bg-secondary text-primary hover:border-highlight'
-                  }`}
-                >
-                  Level {level}
-                </button>
-              );
-            })}
-          </div>
-        )}
+        {/* Level Selector */}
+        <div className="mb-3 flex gap-2">
+          {[1, 2, 3].map(level => (
+            <button
+              key={level}
+              onClick={() => setSelectedLevel(level as 1 | 2 | 3)}
+              className={`flex-1 rounded-lg px-3 py-2 text-lg tracking-wider transition-colors sm:text-xl ${
+                selectedLevel === level
+                  ? 'bg-highlight text-primary'
+                  : 'card-text-box'
+              }`}
+            >
+              Level {level}
+            </button>
+          ))}
+        </div>
 
         {/* Description */}
-        <div className="mb-3 rounded-lg border-2 border-primary bg-secondary p-3 sm:p-4">
-          <p className="font-pixel text-sm leading-relaxed text-secondary sm:text-base">
+        <div className="mb-3 rounded-lg bg-primary p-3 sm:p-4">
+          <p className="text-justify text-lg leading-relaxed text-secondary sm:text-lg">
             {formatDescriptionWithHighlights()}
           </p>
         </div>
 
-        {/* Evolution Info */}
-        {passive.evolutionSlugs && passive.evolutionSlugs.length > 0 && (
-          <div className="space-y-1 font-pixel text-xs text-secondary sm:text-sm">
-            <div className="rounded-lg bg-secondary p-2 sm:p-3">
+        {/* Footer Info: Evolution & Merge Recipe */}
+        <div className="space-y-1 text-base text-secondary sm:text-base">
+          {passive.evolutionSlugs && passive.evolutionSlugs.length > 0 && (
+            <div className="rounded-lg bg-primary p-2 sm:p-3">
               <strong className="text-primary">Evolves into:</strong>{' '}
               {passive.evolutionSlugs
                 .map(slug => getPassiveBySlug(slug)?.name || slug)
                 .join(', ')}
             </div>
-          </div>
-        )}
-
-        {/* Merge Components Info */}
-        {passive.mergeComponents && passive.mergeComponents.length > 0 && (
-          <div className="mt-1 space-y-1 font-pixel text-xs text-secondary sm:text-sm">
-            <div className="rounded-lg bg-secondary p-2 sm:p-3">
+          )}
+          {passive.mergeComponents && passive.mergeComponents.length > 0 && (
+            <div className="rounded-lg bg-primary p-2 sm:p-3">
               <strong className="text-primary">Merge Recipe:</strong>{' '}
               {passive.mergeComponents
                 .map(slug => getPassiveBySlug(slug)?.name || slug)
                 .join(' + ')}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

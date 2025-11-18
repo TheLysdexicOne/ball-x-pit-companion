@@ -31,6 +31,7 @@ function normalizeBall(data: BallData): Ball {
     aoeTypes: data.AOETypes || [],
     specials: data.Specials || [],
     isSpawner: data.IsSpawner,
+    iconColorList: data.IconColorList || [],
   };
 }
 
@@ -48,7 +49,9 @@ export function getAllBalls(): Ball[] {
  * Get a specific ball by slug
  */
 export function getBallBySlug(slug: string): Ball | undefined {
-  const ballData = ballsData.find(b => b.Slug === slug && b.IsInGame !== false && b.Name !== '???');
+  const ballData = ballsData.find(
+    b => b.Slug === slug && b.IsInGame !== false && b.Name !== '???'
+  );
   return ballData ? normalizeBall(ballData) : undefined;
 }
 
@@ -94,7 +97,8 @@ export function formatDescription(
       key.includes('cycle') ||
       key.includes('cooldown')
     ) {
-      const numValue = typeof value === 'number' ? value : parseFloat(String(value));
+      const numValue =
+        typeof value === 'number' ? value : parseFloat(String(value));
       if (!isNaN(numValue)) {
         return (numValue / 10).toFixed(1);
       }
@@ -108,5 +112,7 @@ export function formatDescription(
  * Get balls that evolve from a given ball
  */
 export function getEvolutionsFor(ballSlug: string): Ball[] {
-  return getAllBalls().filter(ball => ball.fusionRecipe.some(recipe => recipe.includes(ballSlug)));
+  return getAllBalls().filter(ball =>
+    ball.fusionRecipe.some(recipe => recipe.includes(ballSlug))
+  );
 }

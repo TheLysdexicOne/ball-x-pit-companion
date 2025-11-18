@@ -59,9 +59,17 @@ export interface Ball {
   aoeTypes: string[];
   specials: string[];
   isSpawner?: boolean;
+  iconColorList: string[];
 }
 
 // Filter and sort options
 export type BallSortOption = 'name' | 'type' | 'tier';
 export type BallFilterType = 'all' | 'basic' | 'fusion' | 'evolution';
-export type DamageTypeFilter = 'all' | 'fire' | 'ice' | 'lightning' | 'poison' | 'normal' | 'other';
+export type DamageTypeFilter =
+  | 'all'
+  | 'fire'
+  | 'ice'
+  | 'lightning'
+  | 'poison'
+  | 'normal'
+  | 'other';

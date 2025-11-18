@@ -82,6 +82,35 @@ export function getAllPassives(): Passive[] {
 }
 
 /**
+ * Get basic passives (no merge components)
+ */
+export function getBasicPassives(): Passive[] {
+  return passivesData
+    .filter(
+      passive =>
+        passive.Name !== '???' &&
+        (!passive.MergeComponents || passive.MergeComponents.length === 0)
+    )
+    .map(normalizePassive)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Get merged passives (has merge components)
+ */
+export function getMergedPassives(): Passive[] {
+  return passivesData
+    .filter(
+      passive =>
+        passive.Name !== '???' &&
+        passive.MergeComponents &&
+        passive.MergeComponents.length > 0
+    )
+    .map(normalizePassive)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
  * Get a specific passive by slug
  */
 export function getPassiveBySlug(slug: string): Passive | undefined {

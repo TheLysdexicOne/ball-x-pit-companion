@@ -33,7 +33,10 @@ export default function Home() {
             PROGRESSION
           </h3>
           <div className="grid grid-cols-2 gap-4 p-2">
-            <Link href="/tools/progression/level" className="btn-body-primary">
+            <Link
+              href="/tools/progression/level"
+              className="btn-body-primary flex items-center justify-center"
+            >
               Level View
             </Link>
             <Link
