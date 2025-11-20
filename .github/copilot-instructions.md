@@ -59,9 +59,13 @@ src/
 │   ├── page.tsx                  # Home page (navigation cards)
 │   ├── globals.css               # Global styles, custom classes, scrollbar
 │   ├── encyclopedia/
+│   │   ├── characters/page.tsx  # Characters encyclopedia (placeholder)
 │   │   ├── balls/page.tsx        # Balls encyclopedia (list/grid view)
-│   │   ├── passives/page.tsx     # Passives encyclopedia
-│   │   └── enemies/page.tsx      # Enemies encyclopedia (placeholder)
+│   │   ├── passives/page.tsx     # Passives encyclopedia (list/grid view)
+│   │   ├── levels/page.tsx      # Levels encyclopedia (placeholder)
+│   │   ├── enemies/page.tsx      # Enemies encyclopedia (placeholder)
+│   │   ├── buildings/page.tsx   # Buildings encyclopedia (placeholder)
+│   │   └── harvesting/page.tsx   # Harvesting encyclopedia (placeholder)
 │   ├── settings/
 │   │   ├── page.tsx              # Settings page (save slot management)
 │   │   └── reorder-heroes/

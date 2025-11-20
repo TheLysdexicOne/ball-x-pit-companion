@@ -46,8 +46,8 @@ export default function Nav({ pageTitle }: NavProps) {
       '/encyclopedia/characters': 'Encyclopedia | Characters',
       '/encyclopedia/balls': 'Encyclopedia | Balls',
       '/encyclopedia/passives': 'Encyclopedia | Passives',
-      '/encyclopedia/pit/levels': 'Encyclopedia | Pit Levels',
-      '/encyclopedia/pit/enemies': 'Encyclopedia | Pit Enemies',
+      '/encyclopedia/levels': 'Encyclopedia | Pit Levels',
+      '/encyclopedia/enemies': 'Encyclopedia | Pit Enemies',
       '/encyclopedia/town/buildings': 'Encyclopedia | Town Buildings',
       '/encyclopedia/town/harvesting': 'Encyclopedia | Town Harvesting',
     };
@@ -84,8 +84,8 @@ export default function Nav({ pageTitle }: NavProps) {
           label: 'The Pit',
           isSubHeader: true,
           children: [
-            { label: 'Levels', href: '/encyclopedia/pit/levels' },
-            { label: 'Enemies', href: '/encyclopedia/pit/enemies' },
+            { label: 'Levels', href: '/encyclopedia/levels' },
+            { label: 'Enemies', href: '/encyclopedia/enemies' },
           ],
         },
         {

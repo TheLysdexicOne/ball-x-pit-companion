@@ -72,10 +72,10 @@ export default function Home() {
             THE PIT
           </h3>
           <div className="grid grid-cols-2 gap-4 p-2">
-            <Link href="/encyclopedia/pit/levels" className="btn-body-primary">
+            <Link href="/encyclopedia/levels" className="btn-body-primary">
               Levels
             </Link>
-            <Link href="/encyclopedia/pit/enemies" className="btn-body-primary">
+            <Link href="/encyclopedia/enemies" className="btn-body-primary">
               Enemies
             </Link>
           </div>

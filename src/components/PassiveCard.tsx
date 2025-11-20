@@ -116,7 +116,7 @@ export default function PassiveCard({
       {/* Mobile: Click to expand (disabled in grid view) */}
       <button
         onClick={() => !disableMobileExpand && setIsExpanded(!isExpanded)}
-        className={`w-full bg-card-header p-2 text-left sm:p-4 ${disableMobileExpand ? 'cursor-default sm:cursor-default' : 'sm:cursor-default'}`}
+        className={`w-full p-2 text-left sm:p-4 ${disableMobileExpand ? 'cursor-default bg-card-header sm:cursor-default' : isExpanded ? 'bg-card-header' : 'bg-secondary sm:cursor-default sm:bg-card-header'}`}
       >
         <div className="grid h-16 grid-cols-[auto_1fr_auto_auto] items-center gap-3 sm:gap-4">
           {/* Passive Icon */}
@@ -142,11 +142,15 @@ export default function PassiveCard({
 
           {/* Tier & Tags Badges (Dashboard Style) */}
           <div className="flex flex-col items-end justify-center gap-1">
-            <span className="whitespace-nowrap rounded bg-secondary px-2 py-0.5 text-base sm:text-lg">
+            <span
+              className={`whitespace-nowrap rounded px-2 py-0.5 text-base sm:text-lg ${isExpanded ? 'bg-secondary' : 'bg-card-header sm:bg-secondary'}`}
+            >
               {tier}
             </span>
             {passive.tags && passive.tags.length > 0 ? (
-              <span className="whitespace-nowrap rounded bg-secondary px-2 py-0.5 text-base sm:text-lg">
+              <span
+                className={`whitespace-nowrap rounded px-2 py-0.5 text-base sm:text-lg ${isExpanded ? 'bg-secondary' : 'bg-card-header sm:bg-secondary'}`}
+              >
                 {passive.tags[0]}
               </span>
             ) : (

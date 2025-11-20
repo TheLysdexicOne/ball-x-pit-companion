@@ -1,6 +1,7 @@
 [
   {
     "Type": "kGraveyard",
+    "Id": 1,
     "Name": "THE BONE{[x]}YARD",
     "Slug": "lvl_graveyard",
     "Description": "The blockheads of the pit's first layer subsume to bones of the nearby buried dead.",
@@ -136,6 +137,7 @@
   },
   {
     "Type": "kSnowy",
+    "Id": 2,
     "Name": "THE SNOWY{[x]}SHORES",
     "Slug": "lvl_snowy",
     "Description": "The temperature plunges in the second layer. Blockheads huddle for warmth and wear protective gear.",
@@ -267,6 +269,7 @@
   },
   {
     "Type": "kSavanna",
+    "Id": 5,
     "Name": "THE GORY{[x]}GRASSLANDS",
     "Slug": "lvl_savanna",
     "Description": "A plethora of blockhead wildlife prosper in the third layer.",
@@ -394,6 +397,7 @@
   },
   {
     "Type": "kHell",
+    "Id": 6,
     "Name": "THE SMOLDERING{[x]}DEPTHS",
     "Slug": "lvl_hell",
     "Description": "The constant smoke has mutated the resident blockheads, turning them into nocturnal creatures.",
@@ -520,6 +524,7 @@
   },
   {
     "Type": "kClouds",
+    "Id": 7,
     "Name": "THE HEAVENLY{[x]}GATES",
     "Slug": "lvl_clouds",
     "Description": "The rules of gravity begin to unwind in this layer.",
@@ -639,6 +644,7 @@
   },
   {
     "Type": "kMoon",
+    "Id": 8,
     "Name": "THE VAST{[x]}VOID",
     "Slug": "lvl_moon",
     "Description": "At the core of the planet, the blockheads have been warped by the irregular gravity.",
@@ -724,6 +730,7 @@
   },
   {
     "Type": "kShroom",
+    "Id": 4,
     "Name": "THE FUNGAL{[x]}FOREST",
     "Slug": "lvl_shroom",
     "Description": "A layer filled with shrooms.",
@@ -836,6 +843,7 @@
   },
   {
     "Type": "kDesert",
+    "Id": 3,
     "Name": "THE LIMINAL{[x]}DESERT",
     "Slug": "lvl_desert",
     "Description": "Sand as far as the eye can see.",

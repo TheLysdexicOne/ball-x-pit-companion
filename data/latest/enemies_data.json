@@ -2,7 +2,6 @@
   {
     "Type": "kDefault",
     "Name": "Default",
-    "DisplayName": "Default",
     "Slug": "lvl_default",
     "Description": "",
     "GameplayDescription": "",
@@ -10,73 +9,48 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Default",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Skeleton Warrior",
         "LevelEnemyIndex": 0,
-        "IconName": "PieceDefault_graveyard_icon",
-        "PreviewSpriteName": "PieceDefault_graveyard_icon",
-        "MeshControllerName": "GY_Minion_01_BasicMelee"
+        "IconName": "PieceDefault_graveyard_icon"
       },
       "kSnowy": {
         "DisplayName": "Icebound Warrior",
         "LevelEnemyIndex": 0,
-        "IconName": "PieceDefault_snowy_icon",
-        "PreviewSpriteName": "PieceDefault_snowy_icon",
-        "MeshControllerName": "SS_Minion_01_BasicMelee"
+        "IconName": "PieceDefault_snowy_icon"
       },
       "kSavanna": {
         "DisplayName": "Warg Rider",
         "LevelEnemyIndex": 1,
-        "IconName": "PieceDefault_savanna_icon",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "ES_Minion_01_BasicMelee"
+        "IconName": "PieceDefault_savanna_icon"
       },
       "kHell": {
         "DisplayName": "Dragonling",
         "LevelEnemyIndex": 0,
-        "IconName": "PieceDefault_hell_icon",
-        "PreviewSpriteName": "PieceDefault_hell_icon",
-        "MeshControllerName": "SD_Minion_01_BasicMelee"
+        "IconName": "PieceDefault_hell_icon"
       },
       "kClouds": {
         "DisplayName": "Angelspawn",
         "LevelEnemyIndex": 0,
-        "IconName": "PieceDefault_clouds_icon",
-        "PreviewSpriteName": "PieceDefault_clouds_icon",
-        "MeshControllerName": "HG_01_Default"
-      },
-      "kMoon": {
-        "DisplayName": "Moon Soldier",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "PieceDefault_clouds_icon"
       },
       "kShroom": {
         "DisplayName": "Shroom Fighter",
         "LevelEnemyIndex": 0,
-        "IconName": "PieceDefault_shroom_icon",
-        "PreviewSpriteName": "PieceDefault_shroom_icon",
-        "MeshControllerName": "SF_Minion_01_BasicMelee"
+        "IconName": "PieceDefault_shroom_icon"
       },
       "kDesert": {
         "DisplayName": "Lizard",
         "LevelEnemyIndex": 0,
-        "IconName": "PieceDefault_desert_icon",
-        "PreviewSpriteName": "PieceDefault_desert_icon",
-        "MeshControllerName": "LD_Minion_01_BasicMelee"
+        "IconName": "PieceDefault_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kOcta",
     "Name": "Octa",
-    "DisplayName": "Octa",
     "Slug": "lvl_octa",
     "Description": "Has octagonal edges",
     "GameplayDescription": "",
@@ -84,24 +58,18 @@
     "GridHeight": 1,
     "HealthScale": 2,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Octa",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Bone Behemoth",
         "LevelEnemyIndex": 6,
-        "IconName": "PieceOcta_graveyard_icon",
-        "PreviewSpriteName": "PieceOcta_graveyard_icon",
-        "MeshControllerName": "GY_Minion_05_Octagon"
+        "IconName": "PieceOcta_graveyard_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.10, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kSmall",
     "Name": "Small",
-    "DisplayName": "Small",
     "Slug": "lvl_small",
     "Description": "",
     "GameplayDescription": "",
@@ -109,45 +77,23 @@
     "GridHeight": 0.5,
     "HealthScale": 0.5,
     "SpeedMultiplier": 1.25,
-    "IsInGame": false,
+    "DisplayName": "Small",
     "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "SD_Minion_06_Small"
-      },
-      "kSnowy": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
-      },
       "kSavanna": {
         "DisplayName": "Mouse",
         "LevelEnemyIndex": 3,
-        "IconName": "PieceSmall_savanna_icon",
-        "PreviewSpriteName": "PieceSmall_savanna_icon",
-        "MeshControllerName": "ES_Minion_07_Small"
+        "IconName": "PieceSmall_savanna_icon"
       },
       "kHell": {
         "DisplayName": "Grub",
         "LevelEnemyIndex": 6,
-        "IconName": "PieceSmall_hell_icon",
-        "PreviewSpriteName": "PieceSmall_hell_icon",
-        "MeshControllerName": "SD_Minion_06_Small"
+        "IconName": "PieceSmall_hell_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.12, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kArcher",
     "Name": "",
-    "DisplayName": "",
     "Slug": "lvl_archer",
     "Description": "",
     "GameplayDescription": "Shoots arrows at the player",
@@ -155,38 +101,23 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Skeleton Archer",
         "LevelEnemyIndex": 5,
-        "IconName": "PieceArcher_graveyard_icon",
-        "PreviewSpriteName": "PieceArcher_graveyard_icon",
-        "MeshControllerName": "GY_Minion_02_Archer"
-      },
-      "kSnowy": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "PieceArcher_graveyard_icon"
       },
       "kSavanna": {
         "DisplayName": "Warg Archer",
         "LevelEnemyIndex": 2,
-        "IconName": "PieceArcher_savanna_icon",
-        "PreviewSpriteName": "PieceArcher_savanna_icon",
-        "MeshControllerName": "ES_Minion_02_BasicArcher"
+        "IconName": "PieceArcher_savanna_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBig",
     "Name": "Basic Boss",
-    "DisplayName": "Basic Boss",
     "Slug": "lvl_big",
     "Description": "",
     "GameplayDescription": "",
@@ -194,38 +125,23 @@
     "GridHeight": 3,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Basic Boss",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Skeletal Brigade",
         "LevelEnemyIndex": 7,
-        "IconName": "PieceBig_graveyard_icon",
-        "PreviewSpriteName": "PieceBig_graveyard_icon",
-        "MeshControllerName": "GY_Minion_08_LargeMelee"
-      },
-      "kSnowy": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "PieceBig_graveyard_icon"
       },
       "kSavanna": {
         "DisplayName": "Goblin Warlord",
         "LevelEnemyIndex": 5,
-        "IconName": "PieceBig_savanna_icon",
-        "PreviewSpriteName": "PieceBig_savanna_icon",
-        "MeshControllerName": "ES_Minion_05_LargeMelee"
+        "IconName": "PieceBig_savanna_icon"
       }
-    },
-    "ShadowScale": "x: 0.50, y: 0.50, z: 0.50",
-    "ShadowPlacement": "x: 0.00, y: -0.40, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kShieldFront",
     "Name": "Shield Bearer (Front)",
-    "DisplayName": "Shield Bearer (Front)",
     "Slug": "lvl_shieldfront",
     "Description": "",
     "GameplayDescription": "Immune to ball damage from a shielded side",
@@ -233,74 +149,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Shield Bearer (Front)",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSnowy": {
         "DisplayName": "Icebound Shieldbearer",
         "LevelEnemyIndex": 5,
-        "IconName": "ShieldFront_snowy_icon",
-        "PreviewSpriteName": "ShieldFront_snowy_icon",
-        "MeshControllerName": "SS_Minion_07_FrontShielded"
+        "IconName": "ShieldFront_snowy_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.40, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.17, z: 0.00"
-  },
-  {
-    "Type": "kShieldLeft",
-    "Name": "Shield Bearer (Left)",
-    "DisplayName": "Shield Bearer (Left)",
-    "Slug": "lvl_shieldleft",
-    "Description": "",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 5,
-        "IconName": "",
-        "PreviewSpriteName": "piece_shield_left",
-        "MeshControllerName": "SS_Minion_08_LeftShielded"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kShieldRight",
-    "Name": "Shield Bearer (Right)",
-    "DisplayName": "Shield Bearer (Right)",
-    "Slug": "lvl_shieldright",
-    "Description": "",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 5,
-        "IconName": "",
-        "PreviewSpriteName": "piece_shield_right",
-        "MeshControllerName": "SS_Minion_09_RightShielded"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kCircle",
     "Name": "Circle-shaped",
-    "DisplayName": "Circle-shaped",
     "Slug": "lvl_circle",
     "Description": "",
     "GameplayDescription": "",
@@ -308,58 +168,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Circle-shaped",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Moonling",
         "LevelEnemyIndex": 0,
-        "IconName": "PieceCircle_moon_icon",
-        "PreviewSpriteName": "PieceCircle_moon_icon",
-        "MeshControllerName": "VV_Minion_01_Circular"
+        "IconName": "PieceCircle_moon_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kTriangleUp",
-    "Name": "TriangleUp",
-    "DisplayName": "TriangleUp",
-    "Slug": "lvl_triangleup",
-    "Description": "Triangle-shaped, pointing up",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {},
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kTriangleDown",
-    "Name": "Triangle Down",
-    "DisplayName": "Triangle Down",
-    "Slug": "lvl_triangledown",
-    "Description": "Triangle-shaped, pointing down",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {},
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigArcher",
     "Name": "Basic Boss Archer",
-    "DisplayName": "Basic Boss Archer",
     "Slug": "lvl_bigarcher",
     "Description": "",
     "GameplayDescription": "Shoots waves of arrows at the player",
@@ -367,38 +187,23 @@
     "GridHeight": 3,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Basic Boss Archer",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Bone Ballista",
         "LevelEnemyIndex": 8,
-        "IconName": "PieceBigArcher_graveyard_icon",
-        "PreviewSpriteName": "PieceBigArcher_graveyard_icon",
-        "MeshControllerName": "GY_Minion_09_LargeArcher"
-      },
-      "kSnowy": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "PieceBigArcher_graveyard_icon"
       },
       "kSavanna": {
         "DisplayName": "Goblin Sniper",
         "LevelEnemyIndex": 6,
-        "IconName": "PieceBigArcher_savanna_icon",
-        "PreviewSpriteName": "PieceBigArcher_savanna_icon",
-        "MeshControllerName": "ES_Minion_06_LargeArcher"
+        "IconName": "PieceBigArcher_savanna_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.60, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kTetrisL",
     "Name": "TetrisL",
-    "DisplayName": "TetrisL",
     "Slug": "lvl_tetrisl",
     "Description": "Tetris-shaped L block",
     "GameplayDescription": "",
@@ -406,73 +211,43 @@
     "GridHeight": 2,
     "HealthScale": 6,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "TetrisL",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Skeletal Bastion",
         "LevelEnemyIndex": 4,
-        "IconName": "TetrisL_graveyard_icon",
-        "PreviewSpriteName": "TetrisL_graveyard_icon",
-        "MeshControllerName": "GY_Minion_07_LShaped3x2"
+        "IconName": "TetrisL_graveyard_icon"
       },
       "kSnowy": {
         "DisplayName": "Icebound Bastion",
         "LevelEnemyIndex": 4,
-        "IconName": "TetrisL_snowy_icon",
-        "PreviewSpriteName": "TetrisL_snowy_icon",
-        "MeshControllerName": "SS_Minion_05_LMelee3x2"
-      },
-      "kSavanna": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "TetrisL_snowy_icon"
       },
       "kHell": {
         "DisplayName": "Dragonling Clan",
         "LevelEnemyIndex": 4,
-        "IconName": "TetrisL_hell_icon",
-        "PreviewSpriteName": "TetrisL_hell_icon",
-        "MeshControllerName": "SD_Minion_05_LShapedMeleeLong"
+        "IconName": "TetrisL_hell_icon"
       },
       "kClouds": {
         "DisplayName": "Angelspawn Choir",
         "LevelEnemyIndex": 4,
-        "IconName": "TetrisL_clouds_icon",
-        "PreviewSpriteName": "TetrisL_clouds_icon",
-        "MeshControllerName": "HG_05_TetrisL"
-      },
-      "kMoon": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "TetrisL_clouds_icon"
       },
       "kShroom": {
         "DisplayName": "Enoki Cluster",
         "LevelEnemyIndex": 4,
-        "IconName": "TetrisL_shroom_icon",
-        "PreviewSpriteName": "TetrisL_shroom_icon",
-        "MeshControllerName": "SF_Minion_11_LShaped3x2"
+        "IconName": "TetrisL_shroom_icon"
       },
       "kDesert": {
         "DisplayName": "Lizard Bastion",
         "LevelEnemyIndex": 4,
-        "IconName": "TetrisL_desert_icon",
-        "PreviewSpriteName": "TetrisL_desert_icon",
-        "MeshControllerName": "LD_Minion_06_LShapedMelee"
+        "IconName": "TetrisL_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.40, y: 1.40, z: 1.40",
-    "ShadowPlacement": "x: -0.26, y: -0.31, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kTripleL",
     "Name": "TripleL",
-    "DisplayName": "TripleL",
     "Slug": "lvl_triplel",
     "Description": "L-shaped block with 3 tiles",
     "GameplayDescription": "",
@@ -480,73 +255,43 @@
     "GridHeight": 2,
     "HealthScale": 4,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "TripleL",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Skeletal Bishop",
         "LevelEnemyIndex": 3,
-        "IconName": "TripleL_graveyard_icon",
-        "PreviewSpriteName": "TripleL_graveyard_icon",
-        "MeshControllerName": "GY_Minion_06_LShaped2x2"
+        "IconName": "TripleL_graveyard_icon"
       },
       "kSnowy": {
         "DisplayName": "Icebound Band",
         "LevelEnemyIndex": 3,
-        "IconName": "TripleL_snowy_icon",
-        "PreviewSpriteName": "TripleL_snowy_icon",
-        "MeshControllerName": "SS_Minion_04_LMelee2x2"
-      },
-      "kSavanna": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "TripleL_snowy_icon"
       },
       "kHell": {
         "DisplayName": "Dragonling Butcher",
         "LevelEnemyIndex": 3,
-        "IconName": "TripleL_hell_icon",
-        "PreviewSpriteName": "TripleL_hell_icon",
-        "MeshControllerName": "SD_Minion_04_LShapedMelee"
+        "IconName": "TripleL_hell_icon"
       },
       "kClouds": {
         "DisplayName": "Angelspawn Berserker",
         "LevelEnemyIndex": 3,
-        "IconName": "TripleL_clouds_icon",
-        "PreviewSpriteName": "TripleL_clouds_icon",
-        "MeshControllerName": "HG_04_TripleL"
-      },
-      "kMoon": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "TripleL_clouds_icon"
       },
       "kShroom": {
         "DisplayName": "Bracket Fungus",
         "LevelEnemyIndex": 3,
-        "IconName": "TripleL_shroom_icon",
-        "PreviewSpriteName": "TripleL_shroom_icon",
-        "MeshControllerName": "SF_Minion_10_LShaped2x2"
+        "IconName": "TripleL_shroom_icon"
       },
       "kDesert": {
         "DisplayName": "Lizard Strongman",
         "LevelEnemyIndex": 3,
-        "IconName": "TripleL_desert_icon",
-        "PreviewSpriteName": "TripleL_desert_icon",
-        "MeshControllerName": "LD_Minion_05_LShapedMelee"
+        "IconName": "TripleL_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: -0.15, z: 0.00"
+    }
   },
   {
     "Type": "kDoubleWide",
     "Name": "Wide",
-    "DisplayName": "Wide",
     "Slug": "lvl_doublewide",
     "Description": "2 tiles wide",
     "GameplayDescription": "",
@@ -554,73 +299,43 @@
     "GridHeight": 1,
     "HealthScale": 3,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Wide",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Skeletal Brute",
         "LevelEnemyIndex": 1,
-        "IconName": "DoubleWide_graveyard_icon",
-        "PreviewSpriteName": "DoubleWide_graveyard_icon",
-        "MeshControllerName": "GY_Minion_03_WideMelee"
+        "IconName": "DoubleWide_graveyard_icon"
       },
       "kSnowy": {
         "DisplayName": "Icebound Brute",
         "LevelEnemyIndex": 1,
-        "IconName": "DoubleWide_snowy_icon",
-        "PreviewSpriteName": "DoubleWide_snowy_icon",
-        "MeshControllerName": "SS_Minion_02_WideMelee"
-      },
-      "kSavanna": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "DoubleWide_snowy_icon"
       },
       "kHell": {
         "DisplayName": "Dragonling Brute",
         "LevelEnemyIndex": 1,
-        "IconName": "DoubleWide_hell_icon",
-        "PreviewSpriteName": "DoubleWide_hell_icon",
-        "MeshControllerName": "SD_Minion_02_WideMelee"
+        "IconName": "DoubleWide_hell_icon"
       },
       "kClouds": {
         "DisplayName": "Angelic Twinhead",
         "LevelEnemyIndex": 1,
-        "IconName": "DoubleWide_clouds_icon",
-        "PreviewSpriteName": "DoubleWide_clouds_icon",
-        "MeshControllerName": "HG_02_Wide"
-      },
-      "kMoon": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "DoubleWide_clouds_icon"
       },
       "kShroom": {
         "DisplayName": "Twin Shrooms",
         "LevelEnemyIndex": 1,
-        "IconName": "DoubleWide_shroom_icon",
-        "PreviewSpriteName": "DoubleWide_shroom_icon",
-        "MeshControllerName": "SF_Minion_05_WideMelee"
+        "IconName": "DoubleWide_shroom_icon"
       },
       "kDesert": {
         "DisplayName": "Lizard Brute",
         "LevelEnemyIndex": 1,
-        "IconName": "DoubleWide_desert_icon",
-        "PreviewSpriteName": "DoubleWide_desert_icon",
-        "MeshControllerName": "LD_Minion_02_WideMelee"
+        "IconName": "DoubleWide_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kDoubleLong",
     "Name": "Long",
-    "DisplayName": "Long",
     "Slug": "lvl_doublelong",
     "Description": "2 tiles long",
     "GameplayDescription": "",
@@ -628,98 +343,48 @@
     "GridHeight": 2,
     "HealthScale": 3,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Long",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Skeletal Beast",
         "LevelEnemyIndex": 2,
-        "IconName": "DoubleLong_graveyard_icon",
-        "PreviewSpriteName": "DoubleLong_graveyard_icon",
-        "MeshControllerName": "GY_Minion_04_LongMelee"
+        "IconName": "DoubleLong_graveyard_icon"
       },
       "kSnowy": {
         "DisplayName": "Icebound Beast",
         "LevelEnemyIndex": 2,
-        "IconName": "DoubleLong_snowy_icon",
-        "PreviewSpriteName": "DoubleLong_snowy_icon",
-        "MeshControllerName": "SS_Minion_03_LongMelee"
+        "IconName": "DoubleLong_snowy_icon"
       },
       "kSavanna": {
         "DisplayName": "Warg",
         "LevelEnemyIndex": 0,
-        "IconName": "DoubleLong_savanna_icon",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "ES_Minion_03_LongMelee"
+        "IconName": "DoubleLong_savanna_icon"
       },
       "kHell": {
         "DisplayName": "Dragonling Thrall",
         "LevelEnemyIndex": 2,
-        "IconName": "DoubleLong_hell_icon",
-        "PreviewSpriteName": "DoubleLong_hell_icon",
-        "MeshControllerName": "SD_Minion_03_LongMelee"
+        "IconName": "DoubleLong_hell_icon"
       },
       "kClouds": {
         "DisplayName": "Angelic Great Owl",
         "LevelEnemyIndex": 2,
-        "IconName": "DoubleLong_clouds_icon",
-        "PreviewSpriteName": "DoubleLong_clouds_icon",
-        "MeshControllerName": "HG_03_Long"
-      },
-      "kMoon": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
+        "IconName": "DoubleLong_clouds_icon"
       },
       "kShroom": {
         "DisplayName": "Shroom Stalker",
         "LevelEnemyIndex": 2,
-        "IconName": "DoubleLong_shroom_icon",
-        "PreviewSpriteName": "DoubleLong_shroom_icon",
-        "MeshControllerName": "SF_Minion_07_LongMelee"
+        "IconName": "DoubleLong_shroom_icon"
       },
       "kDesert": {
         "DisplayName": "Slizard",
         "LevelEnemyIndex": 2,
-        "IconName": "DoubleLong_desert_icon",
-        "PreviewSpriteName": "DoubleLong_desert_icon",
-        "MeshControllerName": "LD_Minion_03_LongMelee"
+        "IconName": "DoubleLong_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: -0.77, z: 0.00"
-  },
-  {
-    "Type": "kDynamiteVert",
-    "Name": "Vertical Dynamite",
-    "DisplayName": "Vertical Dynamite",
-    "Slug": "lvl_dynamitevert",
-    "Description": "Emits a vertical laser when destroyed",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "PA_Ally_03_DynamiteVertical"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigShieldFront",
     "Name": "Boss Shield Bearer (Front)",
-    "DisplayName": "Boss Shield Bearer (Front)",
     "Slug": "lvl_bigshieldfront",
     "Description": "",
     "GameplayDescription": "Immune to ball damage from the front",
@@ -727,88 +392,18 @@
     "GridHeight": 3,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boss Shield Bearer (Front)",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSnowy": {
         "DisplayName": "Icebound Champion",
         "LevelEnemyIndex": 7,
-        "IconName": "ShieldBigFront_snowy_icon",
-        "PreviewSpriteName": "ShieldBigFront_snowy_icon",
-        "MeshControllerName": "SS_Minion_10_LargeMelee"
+        "IconName": "ShieldBigFront_snowy_icon"
       }
-    },
-    "ShadowScale": "x: 1.50, y: 1.50, z: 1.50",
-    "ShadowPlacement": "x: 0.00, y: -0.36, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kBigShieldLeft",
-    "Name": "Boss Shield Bearer (Left)",
-    "DisplayName": "Boss Shield Bearer (Left)",
-    "Slug": "lvl_bigshieldleft",
-    "Description": "",
-    "GameplayDescription": "",
-    "GridWidth": 2,
-    "GridHeight": 2,
-    "HealthScale": 20,
-    "SpeedMultiplier": 0.7,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
-      },
-      "kSnowy": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "snowy_big_shield_left_0",
-        "MeshControllerName": ""
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kBigShieldRight",
-    "Name": "Boss Shield Bearer (Right)",
-    "DisplayName": "Boss Shield Bearer (Right)",
-    "Slug": "lvl_bigshieldright",
-    "Description": "",
-    "GameplayDescription": "",
-    "GridWidth": 2,
-    "GridHeight": 2,
-    "HealthScale": 20,
-    "SpeedMultiplier": 0.7,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
-      },
-      "kSnowy": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "snowy_big_shield_right_0",
-        "MeshControllerName": ""
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kRiderMelee",
     "Name": "Melee Rider",
-    "DisplayName": "Melee Rider",
     "Slug": "lvl_ridermelee",
     "Description": "Rides on long enemies",
     "GameplayDescription": "",
@@ -816,24 +411,18 @@
     "GridHeight": 2,
     "HealthScale": 3,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Melee Rider",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSavanna": {
         "DisplayName": "Warg Rider",
         "LevelEnemyIndex": 0,
-        "IconName": "RiderMelee_savanna_icon",
-        "PreviewSpriteName": "piece_double_long",
-        "MeshControllerName": "ES_Minion_03_LongMelee"
+        "IconName": "RiderMelee_savanna_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kRiderArcher",
     "Name": "Archer Rider",
-    "DisplayName": "Archer Rider",
     "Slug": "lvl_riderarcher",
     "Description": "Rides on long pieces and shoots arrows",
     "GameplayDescription": "",
@@ -841,24 +430,18 @@
     "GridHeight": 2,
     "HealthScale": 3,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Archer Rider",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSavanna": {
         "DisplayName": "Warg Archer",
         "LevelEnemyIndex": 0,
-        "IconName": "RiderArcher_savanna_icon",
-        "PreviewSpriteName": "piece_double_long",
-        "MeshControllerName": "ES_Minion_03_LongMelee"
+        "IconName": "RiderArcher_savanna_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kDoubleLongBig",
     "Name": "Long Boss",
-    "DisplayName": "Long Boss",
     "Slug": "lvl_doublelongbig",
     "Description": "4 tiles long and 2 tiles wide",
     "GameplayDescription": "",
@@ -866,74 +449,18 @@
     "GridHeight": 4,
     "HealthScale": 20,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Long Boss",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSavanna": {
         "DisplayName": "Ancient Warg",
         "LevelEnemyIndex": 4,
-        "IconName": "DoubleLongBig_savanna_icon",
-        "PreviewSpriteName": "DoubleLongBig_savanna_icon",
-        "MeshControllerName": "ES_Minion_04_LargeLong"
+        "IconName": "DoubleLongBig_savanna_icon"
       }
-    },
-    "ShadowScale": "x: 2.50, y: 2.50, z: 2.50",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kBigRiderMelee",
-    "Name": "Boss Rider",
-    "DisplayName": "Boss Rider",
-    "Slug": "lvl_bigridermelee",
-    "Description": "Rides on a long boss",
-    "GameplayDescription": "",
-    "GridWidth": 3,
-    "GridHeight": 4,
-    "HealthScale": 15,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "Goblin Warlord",
-        "LevelEnemyIndex": 0,
-        "IconName": "DoubleLongRiderMelee_savanna_icon",
-        "PreviewSpriteName": "DoubleLongRiderMelee_savanna_icon",
-        "MeshControllerName": "ES_Minion_04_LargeLong"
-      }
-    },
-    "ShadowScale": "x: 2.50, y: 2.50, z: 2.50",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kBigRiderArcher",
-    "Name": "Boss Rider Archer",
-    "DisplayName": "Boss Rider Archer",
-    "Slug": "lvl_bigriderarcher",
-    "Description": "Rides on a Long Boss enemy and shoots arrows",
-    "GameplayDescription": "",
-    "GridWidth": 3,
-    "GridHeight": 4,
-    "HealthScale": 15,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "Goblin Sniper",
-        "LevelEnemyIndex": 0,
-        "IconName": "DoubleLongRiderArcher_savanna_icon",
-        "PreviewSpriteName": "DoubleLongRiderArcher_savanna_icon",
-        "MeshControllerName": "ES_Minion_04_LargeLong"
-      }
-    },
-    "ShadowScale": "x: 2.50, y: 2.50, z: 2.50",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kEggSac",
     "Name": "Egg Sac",
-    "DisplayName": "Egg Sac",
     "Slug": "lvl_eggsac",
     "Description": "",
     "GameplayDescription": "Explodes into a bunch of Grubs when destroyed",
@@ -941,24 +468,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Egg Sac",
     "LevelVariants": {
-      "kGraveyard": {
+      "kHell": {
         "DisplayName": "Grub Cluster",
         "LevelEnemyIndex": 5,
-        "IconName": "EggSac_hell_icon",
-        "PreviewSpriteName": "EggSac_hell_icon",
-        "MeshControllerName": "SD_Minion_07_EggSac"
+        "IconName": "EggSac_hell_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kSpawner",
     "Name": "Spawner",
-    "DisplayName": "Spawner",
     "Slug": "lvl_spawner",
     "Description": "",
     "GameplayDescription": "Spawns Grubs over time",
@@ -966,24 +487,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Spawner",
     "LevelVariants": {
-      "kGraveyard": {
+      "kHell": {
         "DisplayName": "Grub Mother",
         "LevelEnemyIndex": 8,
-        "IconName": "Spawner_hell_icon",
-        "PreviewSpriteName": "Spawner_hell_icon",
-        "MeshControllerName": "SD_Minion_09_Spawner"
+        "IconName": "Spawner_hell_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBoulderThrower",
     "Name": "Boulder Thrower",
-    "DisplayName": "Boulder Thrower",
     "Slug": "lvl_boulderthrower",
     "Description": "",
     "GameplayDescription": "Spits fireballs at the player",
@@ -991,24 +506,18 @@
     "GridHeight": 1,
     "HealthScale": 1.5,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boulder Thrower",
     "LevelVariants": {
-      "kGraveyard": {
+      "kHell": {
         "DisplayName": "Firespitter",
         "LevelEnemyIndex": 7,
-        "IconName": "BoulderThrower_hell_icon",
-        "PreviewSpriteName": "BoulderThrower_hell_icon",
-        "MeshControllerName": "SD_Minion_08_FireballSpitter"
+        "IconName": "BoulderThrower_hell_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kEater",
     "Name": "Eater",
-    "DisplayName": "Eater",
     "Slug": "lvl_eater",
     "Description": "",
     "GameplayDescription": "Catches and holds onto one of your balls until you destroy it",
@@ -1016,24 +525,18 @@
     "GridHeight": 1,
     "HealthScale": 2,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Eater",
     "LevelVariants": {
-      "kGraveyard": {
+      "kClouds": {
         "DisplayName": "Angelspawn Snatcher",
         "LevelEnemyIndex": 8,
-        "IconName": "Eater_clouds_icon",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "HG_09_Eater"
+        "IconName": "Eater_clouds_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigEggSac",
     "Name": "Boss Egg Sac",
-    "DisplayName": "Boss Egg Sac",
     "Slug": "lvl_bigeggsac",
     "Description": "",
     "GameplayDescription": "Explodes into a bunch of Grub Clusters when destroyed",
@@ -1041,49 +544,18 @@
     "GridHeight": 2,
     "HealthScale": 16,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boss Egg Sac",
     "LevelVariants": {
-      "kGraveyard": {
+      "kHell": {
         "DisplayName": "Great Grub Cluster",
         "LevelEnemyIndex": 9,
-        "IconName": "EggSacBig_hell_icon",
-        "PreviewSpriteName": "EggSacBig_hell_icon",
-        "MeshControllerName": "SD_Minion_10_LargeEggSac"
+        "IconName": "EggSacBig_hell_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kBigSpawner",
-    "Name": "Boss Spawner",
-    "DisplayName": "Boss Spawner",
-    "Slug": "lvl_bigspawner",
-    "Description": "Spawns spawners over time",
-    "GameplayDescription": "",
-    "GridWidth": 2,
-    "GridHeight": 2,
-    "HealthScale": 20,
-    "SpeedMultiplier": 0.7,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "piece_spawner_big",
-        "MeshControllerName": ""
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigBoulderThrower",
     "Name": "Boss Boulder Thrower",
-    "DisplayName": "Boss Boulder Thrower",
     "Slug": "lvl_bigboulderthrower",
     "Description": "",
     "GameplayDescription": "Spits a long stream of fireballs at the player",
@@ -1091,24 +563,18 @@
     "GridHeight": 3,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boss Boulder Thrower",
     "LevelVariants": {
-      "kGraveyard": {
+      "kHell": {
         "DisplayName": "Flamespitter",
         "LevelEnemyIndex": 10,
-        "IconName": "BoulderThrowerBig_hell_icon",
-        "PreviewSpriteName": "BoulderThrowerBig_hell_icon",
-        "MeshControllerName": "SD_Minion_11_LargeFireballSpitter"
+        "IconName": "BoulderThrowerBig_hell_icon"
       }
-    },
-    "ShadowScale": "x: 2.50, y: 2.50, z: 2.50",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kHealer",
     "Name": "Healer",
-    "DisplayName": "Healer",
     "Slug": "lvl_healer",
     "Description": "",
     "GameplayDescription": "Heals nearby enemies every once in a while",
@@ -1116,74 +582,56 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Healer",
     "LevelVariants": {
-      "kGraveyard": {
+      "kClouds": {
         "DisplayName": "Angelspawn Priestess",
         "LevelEnemyIndex": 7,
-        "IconName": "Healer_clouds_icon",
-        "PreviewSpriteName": "Healer_clouds_icon",
-        "MeshControllerName": "HG_08_Healer"
+        "IconName": "Healer_clouds_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kFlyer",
     "Name": "Flyer",
-    "DisplayName": "Flyer",
     "Slug": "lvl_flyer",
     "Description": "",
-    "GameplayDescription": "Flies into the air every once in a while. Can\u0027t be hit by balls while in air.",
+    "GameplayDescription": "Flies into the air every once in a while. Can't be hit by balls while in air.",
     "GridWidth": 1,
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Flyer",
     "LevelVariants": {
-      "kGraveyard": {
+      "kClouds": {
         "DisplayName": "Winged Angelspawn",
         "LevelEnemyIndex": 5,
-        "IconName": "Flyer_clouds_icon",
-        "PreviewSpriteName": "Flyer_clouds_icon",
-        "MeshControllerName": "HG_06_Flyer"
+        "IconName": "Flyer_clouds_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kFlyerArcher",
     "Name": "Flying Archer",
-    "DisplayName": "Flying Archer",
     "Slug": "lvl_flyerarcher",
     "Description": "",
-    "GameplayDescription": "Flies into the air every once in a while and shoots arrows. Can\u0027t be hit by balls while in air.",
+    "GameplayDescription": "Flies into the air every once in a while and shoots arrows. Can't be hit by balls while in air.",
     "GridWidth": 1,
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Flying Archer",
     "LevelVariants": {
-      "kGraveyard": {
+      "kClouds": {
         "DisplayName": "Winged Angelspawn Scout",
         "LevelEnemyIndex": 6,
-        "IconName": "FlyerArcher_clouds_icon",
-        "PreviewSpriteName": "FlyerArcher_clouds_icon",
-        "MeshControllerName": "HG_07_FlyerArcher"
+        "IconName": "FlyerArcher_clouds_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kSpearThrower",
     "Name": "Spear Thrower",
-    "DisplayName": "Spear Thrower",
     "Slug": "lvl_spearthrower",
     "Description": "",
     "GameplayDescription": "Throws icicles at the player which freeze the player on hit",
@@ -1191,24 +639,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Spear Thrower",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSnowy": {
         "DisplayName": "Icebound Hurler",
         "LevelEnemyIndex": 6,
-        "IconName": "SpearThrower_graveyard_icon",
-        "PreviewSpriteName": "SpearThrower_graveyard_icon",
-        "MeshControllerName": "SS_Minion_06_SpearThrower"
+        "IconName": "SpearThrower_graveyard_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigEater",
     "Name": "Boss Eater",
-    "DisplayName": "Boss Eater",
     "Slug": "lvl_bigeater",
     "Description": "",
     "GameplayDescription": "Catches and holds onto 3 of your balls at a time.",
@@ -1216,24 +658,18 @@
     "GridHeight": 4,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boss Eater",
     "LevelVariants": {
-      "kGraveyard": {
+      "kClouds": {
         "DisplayName": "Wizened Snatcher",
         "LevelEnemyIndex": 11,
-        "IconName": "BigEater_clouds_icon",
-        "PreviewSpriteName": "BigEater_clouds_icon",
-        "MeshControllerName": "HG_12_EaterBig"
+        "IconName": "BigEater_clouds_icon"
       }
-    },
-    "ShadowScale": "x: 1.60, y: 1.60, z: 1.60",
-    "ShadowPlacement": "x: 0.00, y: -0.40, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigFlyer",
     "Name": "Boss Flyer",
-    "DisplayName": "Boss Flyer",
     "Slug": "lvl_bigflyer",
     "Description": "",
     "GameplayDescription": "Flies into the air every once in a while",
@@ -1241,49 +677,18 @@
     "GridHeight": 4,
     "HealthScale": 20,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Boss Flyer",
     "LevelVariants": {
-      "kGraveyard": {
+      "kClouds": {
         "DisplayName": "Restless One",
         "LevelEnemyIndex": 10,
-        "IconName": "BigFlyer_clouds_icon",
-        "PreviewSpriteName": "BigFlyer_clouds_icon",
-        "MeshControllerName": "HG_11_BigFlyer"
+        "IconName": "BigFlyer_clouds_icon"
       }
-    },
-    "ShadowScale": "x: 1.75, y: 1.75, z: 1.75",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kBigFlyerArcher",
-    "Name": "Boss Flying Archer",
-    "DisplayName": "Boss Flying Archer",
-    "Slug": "lvl_bigflyerarcher",
-    "Description": "",
-    "GameplayDescription": "",
-    "GridWidth": 2,
-    "GridHeight": 2,
-    "HealthScale": 20,
-    "SpeedMultiplier": 0.7,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "cloud_big_flying_archer_0",
-        "MeshControllerName": ""
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kMage",
     "Name": "Mage",
-    "DisplayName": "Mage",
     "Slug": "lvl_mage",
     "Description": "",
     "GameplayDescription": "Shoots homing arrows at the player",
@@ -1291,24 +696,18 @@
     "GridHeight": 2,
     "HealthScale": 2,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Mage",
     "LevelVariants": {
-      "kGraveyard": {
+      "kClouds": {
         "DisplayName": "Cupid",
         "LevelEnemyIndex": 9,
-        "IconName": "Mage_clouds_icon",
-        "PreviewSpriteName": "Mage_clouds_icon",
-        "MeshControllerName": "HG_10_Mage"
+        "IconName": "Mage_clouds_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kCircleArcher",
     "Name": "Circle-shaped Archer",
-    "DisplayName": "Circle-shaped Archer",
     "Slug": "lvl_circlearcher",
     "Description": "",
     "GameplayDescription": "Spits rocks at the player",
@@ -1316,24 +715,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Circle-shaped Archer",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Moonling Archer",
         "LevelEnemyIndex": 1,
-        "IconName": "CircleArcher_graveyard_icon",
-        "PreviewSpriteName": "CircleArcher_graveyard_icon",
-        "MeshControllerName": "VV_Minion_02_Archer"
+        "IconName": "CircleArcher_graveyard_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kCircleSmall",
     "Name": "Circle-shaped Small Enemy",
-    "DisplayName": "Circle-shaped Small Enemy",
     "Slug": "lvl_circlesmall",
     "Description": "",
     "GameplayDescription": "",
@@ -1341,24 +734,18 @@
     "GridHeight": 0.5,
     "HealthScale": 0.5,
     "SpeedMultiplier": 1.25,
-    "IsInGame": false,
+    "DisplayName": "Circle-shaped Small Enemy",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Moonrock",
         "LevelEnemyIndex": 3,
-        "IconName": "CircleSmall_moon_icon",
-        "PreviewSpriteName": "CircleSmall_moon_icon",
-        "MeshControllerName": "VV_Minion_04_Small"
+        "IconName": "CircleSmall_moon_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kCircleSac",
     "Name": "Circle-shaped Egg Sac",
-    "DisplayName": "Circle-shaped Egg Sac",
     "Slug": "lvl_circlesac",
     "Description": "",
     "GameplayDescription": "Explodes into a few Moonrocks when destroyed",
@@ -1366,24 +753,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Circle-shaped Egg Sac",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Moonling Geode",
         "LevelEnemyIndex": 2,
-        "IconName": "CircleSac_graveyard_icon",
-        "PreviewSpriteName": "CircleSac_graveyard_icon",
-        "MeshControllerName": "VV_Minion_03_EggSac"
+        "IconName": "CircleSac_graveyard_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigCircle",
     "Name": "Boss Circle",
-    "DisplayName": "Boss Circle",
     "Slug": "lvl_bigcircle",
     "Description": "",
     "GameplayDescription": "",
@@ -1391,24 +772,18 @@
     "GridHeight": 2,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boss Circle",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Moonkin",
         "LevelEnemyIndex": 7,
-        "IconName": "BigCircle_moon_icon",
-        "PreviewSpriteName": "BigCircle_moon_icon",
-        "MeshControllerName": "VV_Minion_08_BigCircular"
+        "IconName": "BigCircle_moon_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigCircleSac",
     "Name": "Boss Circle Egg Sac",
-    "DisplayName": "Boss Circle Egg Sac",
     "Slug": "lvl_bigcirclesac",
     "Description": "",
     "GameplayDescription": "Explodes into a few Moonling Geodes when destroyed",
@@ -1416,24 +791,18 @@
     "GridHeight": 2,
     "HealthScale": 16,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boss Circle Egg Sac",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Moonkin Geode",
         "LevelEnemyIndex": 8,
-        "IconName": "BigCircleSac_moon_icon",
-        "PreviewSpriteName": "BigCircleSac_moon_icon",
-        "MeshControllerName": "VV_Minion_09_BigEggSac"
+        "IconName": "BigCircleSac_moon_icon"
       }
-    },
-    "ShadowScale": "x: 1.25, y: 1.25, z: 1.25",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kMoon",
     "Name": "Moon",
-    "DisplayName": "Moon",
     "Slug": "lvl_moon",
     "Description": "The final boss",
     "GameplayDescription": "",
@@ -1441,99 +810,18 @@
     "GridHeight": 7,
     "HealthScale": 40,
     "SpeedMultiplier": 0,
-    "IsInGame": false,
+    "DisplayName": "Moon",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "The Moon",
         "LevelEnemyIndex": 9,
-        "IconName": "Moon_moon_icon",
-        "PreviewSpriteName": "Moon_moon_icon",
-        "MeshControllerName": ""
+        "IconName": "Moon_moon_icon"
       }
-    },
-    "ShadowScale": "x: 7.50, y: 7.50, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kDynamiteHorz",
-    "Name": "Horizontal Dynamite",
-    "DisplayName": "Horizontal Dynamite",
-    "Slug": "lvl_dynamitehorz",
-    "Description": "Emits a horizontal laser when destroyed",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "PA_Ally_04_DynamiteHorizontal"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kAllyGold",
-    "Name": "Golden Bull",
-    "DisplayName": "Golden Bull",
-    "Slug": "lvl_allygold",
-    "Description": "Ally that marches up the board and accrues gold",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "PA_Ally_02_GoldenBull"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kGemspring",
-    "Name": "XP",
-    "DisplayName": "XP",
-    "Slug": "lvl_gemspring",
-    "Description": "Increases in XP value as you deal more damage",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "PA_Ally_01_Gemspring"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigSpearThrower",
     "Name": "Boss Spear Thrower",
-    "DisplayName": "Boss Spear Thrower",
     "Slug": "lvl_bigspearthrower",
     "Description": "",
     "GameplayDescription": "Throws multiple icicles towards the player, which freeze them on hit",
@@ -1541,124 +829,18 @@
     "GridHeight": 3,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boss Spear Thrower",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSnowy": {
         "DisplayName": "Icebound Howler",
         "LevelEnemyIndex": 8,
-        "IconName": "BigSpearThrower_snowy_icon",
-        "PreviewSpriteName": "BigSpearThrower_snowy_icon",
-        "MeshControllerName": "SS_Minion_11_LargeSpearThrower"
+        "IconName": "BigSpearThrower_snowy_icon"
       }
-    },
-    "ShadowScale": "x: 1.25, y: 1.25, z: 1.25",
-    "ShadowPlacement": "x: 0.00, y: -0.35, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kAllyHealer",
-    "Name": "Stone Healer",
-    "DisplayName": "Stone Healer",
-    "Slug": "lvl_allyhealer",
-    "Description": "Ally that marches up the board and heals you",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "PA_Ally_05_Healer"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kAlly",
-    "Name": "Stone Soldier",
-    "DisplayName": "Stone Soldier",
-    "Slug": "lvl_ally",
-    "Description": "Ally that marches up the board",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "PA_Ally_06_Melee"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kAllyArcher",
-    "Name": "Stone Archer",
-    "DisplayName": "Stone Archer",
-    "Slug": "lvl_allyarcher",
-    "Description": "Ally that marches up the board and shoots arrows",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "PA_Ally_07_Archer"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kZombie",
-    "Name": "Zombie",
-    "DisplayName": "Zombie",
-    "Slug": "lvl_zombie",
-    "Description": "Ally that marches up the board",
-    "GameplayDescription": "",
-    "GridWidth": 1,
-    "GridHeight": 1,
-    "HealthScale": 1,
-    "SpeedMultiplier": 1,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "PA_Ally_08_Zombie"
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kCannon",
     "Name": "Cannon",
-    "DisplayName": "Cannon",
     "Slug": "lvl_cannon",
     "Description": "",
     "GameplayDescription": "Shoots a projectile into the air which lands in your vicinity after a delay.",
@@ -1666,24 +848,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Cannon",
     "LevelVariants": {
-      "kGraveyard": {
+      "kShroom": {
         "DisplayName": "Boomshroom",
         "LevelEnemyIndex": 5,
-        "IconName": "Cannon_shroom_icon",
-        "PreviewSpriteName": "Cannon_shroom_icon",
-        "MeshControllerName": "SF_Minion_02_Cannon"
+        "IconName": "Cannon_shroom_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kSpiky",
     "Name": "Default",
-    "DisplayName": "Default",
     "Slug": "lvl_spiky",
     "Description": "",
     "GameplayDescription": "Emits a small projectile into the air on hit, which falls near the player after a delay",
@@ -1691,24 +867,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Default",
     "LevelVariants": {
-      "kGraveyard": {
+      "kShroom": {
         "DisplayName": "Shroomboomer",
         "LevelEnemyIndex": 8,
-        "IconName": "Spiky_shroom_icon",
-        "PreviewSpriteName": "Spiky_shroom_icon",
-        "MeshControllerName": "SF_Minion_04_Reactor"
+        "IconName": "Spiky_shroom_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kSpeedy",
     "Name": "Default",
-    "DisplayName": "Default",
     "Slug": "lvl_speedy",
     "Description": "",
     "GameplayDescription": "Increases the move speed of nearby enemies",
@@ -1716,24 +886,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 2,
-    "IsInGame": false,
+    "DisplayName": "Default",
     "LevelVariants": {
-      "kGraveyard": {
+      "kShroom": {
         "DisplayName": "Rushroom",
         "LevelEnemyIndex": 7,
-        "IconName": "Speedy_shroom_icon",
-        "PreviewSpriteName": "Speedy_shroom_icon",
-        "MeshControllerName": "SF_Minion_03_Speedy"
+        "IconName": "Speedy_shroom_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kTar",
     "Name": "Default",
-    "DisplayName": "Default",
     "Slug": "lvl_tar",
     "Description": "",
     "GameplayDescription": "Spits tar at the player, which slows them down on hit",
@@ -1741,24 +905,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Default",
     "LevelVariants": {
-      "kGraveyard": {
+      "kShroom": {
         "DisplayName": "Cordyceps Spitter",
         "LevelEnemyIndex": 6,
-        "IconName": "Tar_shroom_icon",
-        "PreviewSpriteName": "Tar_shroom_icon",
-        "MeshControllerName": "SF_Minion_06_Tar"
+        "IconName": "Tar_shroom_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigCannon",
     "Name": "Basic Boss Archer",
-    "DisplayName": "Basic Boss Archer",
     "Slug": "lvl_bigcannon",
     "Description": "",
     "GameplayDescription": "Shoots a large projectile into the air which lands in your vicinity after a delay.",
@@ -1766,24 +924,18 @@
     "GridHeight": 3,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Basic Boss Archer",
     "LevelVariants": {
-      "kGraveyard": {
+      "kShroom": {
         "DisplayName": "Elder Boomshroom",
         "LevelEnemyIndex": 10,
-        "IconName": "BigCannon_shroom_icon",
-        "PreviewSpriteName": "BigCannon_shroom_icon",
-        "MeshControllerName": "SF_Minion_08_BigCannon"
+        "IconName": "BigCannon_shroom_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigTar",
     "Name": "Basic Boss Archer",
-    "DisplayName": "Basic Boss Archer",
     "Slug": "lvl_bigtar",
     "Description": "",
     "GameplayDescription": "Shoots multiple tar blobs towards the player, which slow them down on hit",
@@ -1791,49 +943,18 @@
     "GridHeight": 3,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Basic Boss Archer",
     "LevelVariants": {
-      "kGraveyard": {
+      "kShroom": {
         "DisplayName": "Cordyceps Queen",
         "LevelEnemyIndex": 9,
-        "IconName": "BigTar_shroom_icon",
-        "PreviewSpriteName": "BigTar_shroom_icon",
-        "MeshControllerName": "SF_Minion_09_BigTar"
+        "IconName": "BigTar_shroom_icon"
       }
-    },
-    "ShadowScale": "x: 1.50, y: 1.50, z: 1.50",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kBigSpiky",
-    "Name": "Basic Boss Archer",
-    "DisplayName": "Basic Boss Archer",
-    "Slug": "lvl_bigspiky",
-    "Description": "",
-    "GameplayDescription": "",
-    "GridWidth": 2,
-    "GridHeight": 2,
-    "HealthScale": 20,
-    "SpeedMultiplier": 0.7,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "shroom_spiky_big_0",
-        "MeshControllerName": ""
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kLaser",
     "Name": "Healer",
-    "DisplayName": "Healer",
     "Slug": "lvl_laser",
     "Description": "",
     "GameplayDescription": "Aims and shoots lasers at player",
@@ -1841,24 +962,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Healer",
     "LevelVariants": {
-      "kGraveyard": {
+      "kDesert": {
         "DisplayName": "Laser Locust",
         "LevelEnemyIndex": 5,
-        "IconName": "Laser_graveyard_icon",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "LD_Minion_04_LaserShooter"
+        "IconName": "Laser_graveyard_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBurrowerArcher",
     "Name": "",
-    "DisplayName": "",
     "Slug": "lvl_burrowerarcher",
     "Description": "",
     "GameplayDescription": "Burrows underground and spits venom at the player each time it emerges",
@@ -1866,24 +981,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "",
     "LevelVariants": {
-      "kGraveyard": {
+      "kDesert": {
         "DisplayName": "Worm",
         "LevelEnemyIndex": 6,
-        "IconName": "BurrowerArcher_desert_icon",
-        "PreviewSpriteName": "BurrowerArcher_desert_icon",
-        "MeshControllerName": "LD_Minion_07_BurrowerArcher"
+        "IconName": "BurrowerArcher_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kSideStepper",
     "Name": "Default",
-    "DisplayName": "Default",
     "Slug": "lvl_sidestepper",
     "Description": "",
     "GameplayDescription": "Moves from side to side",
@@ -1891,24 +1000,18 @@
     "GridHeight": 1,
     "HealthScale": 2,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Default",
     "LevelVariants": {
-      "kGraveyard": {
+      "kDesert": {
         "DisplayName": "Sandwalker",
         "LevelEnemyIndex": 7,
-        "IconName": "SideStepper_graveyard_icon",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "LD_Minion_08_SideStepper"
+        "IconName": "SideStepper_graveyard_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kShapeShifter",
     "Name": "Default",
-    "DisplayName": "Default",
     "Slug": "lvl_shapeshifter",
     "Description": "",
     "GameplayDescription": "Shifts between a square and diamond-shaped platform",
@@ -1916,24 +1019,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Default",
     "LevelVariants": {
-      "kGraveyard": {
+      "kDesert": {
         "DisplayName": "Shifting Cobra",
         "LevelEnemyIndex": 8,
-        "IconName": "ShapeShifter_graveyard_icon",
-        "PreviewSpriteName": "",
-        "MeshControllerName": "LD_Minion_10_ShapeShifter"
+        "IconName": "ShapeShifter_graveyard_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kRotator",
     "Name": "Default",
-    "DisplayName": "Default",
     "Slug": "lvl_rotator",
     "Description": "",
     "GameplayDescription": "Has a rotating platform",
@@ -1941,49 +1038,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Default",
     "LevelVariants": {
-      "kGraveyard": {
+      "kDesert": {
         "DisplayName": "Desert Sentinel",
         "LevelEnemyIndex": 9,
-        "IconName": "Rotator_desert_icon",
-        "PreviewSpriteName": "Rotator_desert_icon",
-        "MeshControllerName": ""
+        "IconName": "Rotator_desert_icon"
       }
-    },
-    "ShadowScale": "x: 0.90, y: 0.90, z: 0.90",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
-  },
-  {
-    "Type": "kBigShapeShifter",
-    "Name": "Boss Spear Thrower",
-    "DisplayName": "Boss Spear Thrower",
-    "Slug": "lvl_bigshapeshifter",
-    "Description": "",
-    "GameplayDescription": "",
-    "GridWidth": 2,
-    "GridHeight": 2,
-    "HealthScale": 20,
-    "SpeedMultiplier": 0.7,
-    "IsInGame": false,
-    "LevelVariants": {
-      "kGraveyard": {
-        "DisplayName": "",
-        "LevelEnemyIndex": 0,
-        "IconName": "",
-        "PreviewSpriteName": "",
-        "MeshControllerName": ""
-      }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kBigRotator",
     "Name": "Boss Spear Thrower",
-    "DisplayName": "Boss Spear Thrower",
     "Slug": "lvl_bigrotator",
     "Description": "",
     "GameplayDescription": "Has a large rotating platform",
@@ -1991,24 +1057,18 @@
     "GridHeight": 2.6,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "Boss Spear Thrower",
     "LevelVariants": {
-      "kGraveyard": {
+      "kDesert": {
         "DisplayName": "Great Sentinel",
         "LevelEnemyIndex": 11,
-        "IconName": "BigRotator_desert_icon",
-        "PreviewSpriteName": "BigRotator_desert_icon",
-        "MeshControllerName": ""
+        "IconName": "BigRotator_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.35, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.09, z: 0.00"
+    }
   },
   {
     "Type": "kBigLaser",
     "Name": "",
-    "DisplayName": "",
     "Slug": "lvl_biglaser",
     "Description": "",
     "GameplayDescription": "Shoots a large laser beam at the player",
@@ -2016,24 +1076,18 @@
     "GridHeight": 3,
     "HealthScale": 20,
     "SpeedMultiplier": 0.7,
-    "IsInGame": false,
+    "DisplayName": "",
     "LevelVariants": {
-      "kGraveyard": {
+      "kDesert": {
         "DisplayName": "Seething Locust",
         "LevelEnemyIndex": 10,
-        "IconName": "BigLaser_desert_icon",
-        "PreviewSpriteName": "BigLaser_desert_icon",
-        "MeshControllerName": "LD_Minion_11_LargeLaserShooter"
+        "IconName": "BigLaser_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.50, y: 1.50, z: 1.50",
-    "ShadowPlacement": "x: 0.00, y: -0.35, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kSkeletonKing",
     "Name": "Skeleton King",
-    "DisplayName": "Skeleton King",
     "Slug": "lvl_skeletonking",
     "Description": "The king of the graveyard",
     "GameplayDescription": "",
@@ -2041,24 +1095,18 @@
     "GridHeight": 7,
     "HealthScale": 30,
     "SpeedMultiplier": 0,
-    "IsInGame": false,
+    "DisplayName": "Skeleton King",
     "LevelVariants": {
       "kGraveyard": {
         "DisplayName": "Skeleton King",
         "LevelEnemyIndex": 9,
-        "IconName": "SkeletonKing_graveyard_icon",
-        "PreviewSpriteName": "SkeletonKing_graveyard_icon",
-        "MeshControllerName": ""
+        "IconName": "SkeletonKing_graveyard_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kYetiQueen",
     "Name": "Icebound Queen",
-    "DisplayName": "Icebound Queen",
     "Slug": "lvl_yetiqueen",
     "Description": "The queen of the mountain",
     "GameplayDescription": "",
@@ -2066,24 +1114,18 @@
     "GridHeight": 7,
     "HealthScale": 5,
     "SpeedMultiplier": 0,
-    "IsInGame": false,
+    "DisplayName": "Icebound Queen",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSnowy": {
         "DisplayName": "Icebound Queen",
         "LevelEnemyIndex": 9,
-        "IconName": "YetiQueen_snowy_icon",
-        "PreviewSpriteName": "YetiQueen_snowy_icon",
-        "MeshControllerName": ""
+        "IconName": "YetiQueen_snowy_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kPyramidTank",
     "Name": "The Twisted Serpent",
-    "DisplayName": "The Twisted Serpent",
     "Slug": "lvl_pyramidtank",
     "Description": "One of the wonders of the depths",
     "GameplayDescription": "",
@@ -2091,24 +1133,18 @@
     "GridHeight": 7,
     "HealthScale": 35,
     "SpeedMultiplier": 0,
-    "IsInGame": false,
+    "DisplayName": "The Twisted Serpent",
     "LevelVariants": {
-      "kGraveyard": {
+      "kDesert": {
         "DisplayName": "Twisted Serpent",
         "LevelEnemyIndex": 12,
-        "IconName": "PyramidTank_desert_icon",
-        "PreviewSpriteName": "PyramidTank_desert_icon",
-        "MeshControllerName": ""
+        "IconName": "PyramidTank_desert_icon"
       }
-    },
-    "ShadowScale": "x: 1.60, y: 1.60, z: 1.60",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 4.18, z: 3.97"
+    }
   },
   {
     "Type": "kSabertooth",
     "Name": "Ancient Sabertooth",
-    "DisplayName": "Ancient Sabertooth",
     "Slug": "lvl_sabertooth",
     "Description": "",
     "GameplayDescription": "",
@@ -2116,24 +1152,18 @@
     "GridHeight": 8,
     "HealthScale": 40,
     "SpeedMultiplier": 0,
-    "IsInGame": false,
+    "DisplayName": "Ancient Sabertooth",
     "LevelVariants": {
-      "kGraveyard": {
+      "kSavanna": {
         "DisplayName": "Sabertooth",
         "LevelEnemyIndex": 7,
-        "IconName": "Sabertooth_savanna_icon",
-        "PreviewSpriteName": "Sabertooth_savanna_icon",
-        "MeshControllerName": ""
+        "IconName": "Sabertooth_savanna_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kShroomSwarm",
     "Name": "Shroom Swarm",
-    "DisplayName": "Shroom Swarm",
     "Slug": "lvl_shroomswarm",
     "Description": "A swarm of shrooms",
     "GameplayDescription": "",
@@ -2141,24 +1171,18 @@
     "GridHeight": 7,
     "HealthScale": 8,
     "SpeedMultiplier": 0,
-    "IsInGame": false,
+    "DisplayName": "Shroom Swarm",
     "LevelVariants": {
-      "kGraveyard": {
+      "kShroom": {
         "DisplayName": "Shroom Swarm",
         "LevelEnemyIndex": 11,
-        "IconName": "ShroomSwarm_shroom_icon",
-        "PreviewSpriteName": "ShroomSwarm_shroom_icon",
-        "MeshControllerName": ""
+        "IconName": "ShroomSwarm_shroom_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: -0.25, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kDragonPrince",
     "Name": "Dragon Prince",
-    "DisplayName": "Dragon Prince",
     "Slug": "lvl_dragonprince",
     "Description": "Prince of the dragons",
     "GameplayDescription": "",
@@ -2166,24 +1190,18 @@
     "GridHeight": 7,
     "HealthScale": 40,
     "SpeedMultiplier": 0,
-    "IsInGame": false,
+    "DisplayName": "Dragon Prince",
     "LevelVariants": {
-      "kGraveyard": {
+      "kHell": {
         "DisplayName": "Dragon Prince",
         "LevelEnemyIndex": 11,
-        "IconName": "DragonPrince_hell_icon",
-        "PreviewSpriteName": "DragonPrince_hell_icon",
-        "MeshControllerName": ""
+        "IconName": "DragonPrince_hell_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kOwlLord",
     "Name": "Lord of Owls",
-    "DisplayName": "Lord of Owls",
     "Slug": "lvl_owllord",
     "Description": "Owls do have a lord",
     "GameplayDescription": "",
@@ -2191,24 +1209,18 @@
     "GridHeight": 7,
     "HealthScale": 40,
     "SpeedMultiplier": 0,
-    "IsInGame": false,
+    "DisplayName": "Lord of Owls",
     "LevelVariants": {
-      "kGraveyard": {
+      "kClouds": {
         "DisplayName": "Lord of Owls",
         "LevelEnemyIndex": 12,
-        "IconName": "OwlLord_clouds_icon",
-        "PreviewSpriteName": "OwlLord_clouds_icon",
-        "MeshControllerName": ""
+        "IconName": "OwlLord_clouds_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kVoidSoldier",
     "Name": "Void Soldier",
-    "DisplayName": "Void Soldier",
     "Slug": "lvl_voidsoldier",
     "Description": "",
     "GameplayDescription": "All balls pass through this enemy",
@@ -2216,24 +1228,18 @@
     "GridHeight": 1,
     "HealthScale": 1,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Void Soldier",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Voidling",
         "LevelEnemyIndex": 4,
-        "IconName": "VoidSoldier_moon_icon",
-        "PreviewSpriteName": "VoidSoldier_moon_icon",
-        "MeshControllerName": "VV_Minion_05_VoidSoldier"
+        "IconName": "VoidSoldier_moon_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kCrescent",
     "Name": "Crescent",
-    "DisplayName": "Crescent",
     "Slug": "lvl_crescent",
     "Description": "",
     "GameplayDescription": "",
@@ -2241,24 +1247,18 @@
     "GridHeight": 1,
     "HealthScale": 4,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "Crescent",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Crescent Moonling",
         "LevelEnemyIndex": 5,
-        "IconName": "Crescent_moon_icon",
-        "PreviewSpriteName": "Crescent_moon_icon",
-        "MeshControllerName": "VV_Minion_07_Crescent"
+        "IconName": "Crescent_moon_icon"
       }
-    },
-    "ShadowScale": "x: 0.95, y: 0.95, z: 0.95",
-    "ShadowPlacement": "x: 0.00, y: 0.15, z: 0.00",
-    "ShadowCreatePlacement": "x: 0.00, y: 0.00, z: 0.00"
+    }
   },
   {
     "Type": "kWaning",
     "Name": "TetrisL",
-    "DisplayName": "TetrisL",
     "Slug": "lvl_waning",
     "Description": "Tetris-shaped L block",
     "GameplayDescription": "",
@@ -2266,18 +1266,13 @@
     "GridHeight": 2,
     "HealthScale": 6,
     "SpeedMultiplier": 1,
-    "IsInGame": false,
+    "DisplayName": "TetrisL",
     "LevelVariants": {
-      "kGraveyard": {
+      "kMoon": {
         "DisplayName": "Waning Moonling",
         "LevelEnemyIndex": 6,
-        "IconName": "Waning_moon_icon",
-        "PreviewSpriteName": "Waning_moon_icon",
-        "MeshControllerName": "VV_Minion_06_Waning"
+        "IconName": "Waning_moon_icon"
       }
-    },
-    "ShadowScale": "x: 1.00, y: 1.00, z: 1.00",
-    "ShadowPlacement": "x: 0.00, y: 0.00, z: 0.00",
-    "ShadowCreatePlacement": "x: -0.09, y: -0.21, z: 0.00"
+    }
   }
 ]

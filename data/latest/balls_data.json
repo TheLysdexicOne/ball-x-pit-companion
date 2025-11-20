@@ -71,7 +71,9 @@
     "DamageType": "kFire",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kBurn"],
+    "HitEffects": [
+      "kBurn"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -161,7 +163,9 @@
     "RotationType": "kNone",
     "RotationSpeed": 3,
     "HitEffects": [],
-    "AOETypes": ["kLightning"],
+    "AOETypes": [
+      "kLightning"
+    ],
     "Specials": [],
     "IconPriority": 0,
     "IconColorList": [
@@ -196,7 +200,7 @@
       {
         "Level": 1,
         "Properties": {
-          "freeze_length": 50,
+          "freeze_length": 5,
           "freeze_pct": 4,
           "freeze_damage_pct": 25
         }
@@ -204,7 +208,7 @@
       {
         "Level": 2,
         "Properties": {
-          "freeze_length": 50,
+          "freeze_length": 5,
           "freeze_pct": 7,
           "freeze_damage_pct": 25
         }
@@ -212,7 +216,7 @@
       {
         "Level": 3,
         "Properties": {
-          "freeze_length": 80,
+          "freeze_length": 8,
           "freeze_pct": 7,
           "freeze_damage_pct": 25
         }
@@ -220,7 +224,7 @@
       {
         "Level": 4,
         "Properties": {
-          "freeze_length": 80,
+          "freeze_length": 8,
           "freeze_pct": 10,
           "freeze_damage_pct": 25
         }
@@ -228,7 +232,7 @@
       {
         "Level": 5,
         "Properties": {
-          "freeze_length": 110,
+          "freeze_length": 11,
           "freeze_pct": 10,
           "freeze_damage_pct": 25
         }
@@ -247,7 +251,9 @@
     "DamageType": "kIce",
     "RotationType": "kAlignToDirAndSpin",
     "RotationSpeed": 3,
-    "HitEffects": ["kFrozen"],
+    "HitEffects": [
+      "kFrozen"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -334,7 +340,9 @@
     "RotationType": "kNone",
     "RotationSpeed": 3,
     "HitEffects": [],
-    "AOETypes": ["kLaserHorz"],
+    "AOETypes": [
+      "kLaserHorz"
+    ],
     "Specials": [],
     "IconPriority": 2,
     "IconColorList": [
@@ -427,7 +435,9 @@
     "RotationType": "kNone",
     "RotationSpeed": 3,
     "HitEffects": [],
-    "AOETypes": ["kLaserVert"],
+    "AOETypes": [
+      "kLaserVert"
+    ],
     "Specials": [],
     "IconPriority": 2,
     "IconColorList": [
@@ -532,7 +542,9 @@
     "DamageType": "kPoison",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kPoison"],
+    "HitEffects": [
+      "kPoison"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -624,15 +636,24 @@
         }
       }
     ],
-    "EvolutionSlugs": ["hupg_nuke"],
-    "MergeComponents": [["hupg_burn", "hupg_heavy"]],
+    "EvolutionSlugs": [
+      "hupg_nuke"
+    ],
+    "MergeComponents": [
+      [
+        "hupg_burn",
+        "hupg_heavy"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.90, g: 0.26, b: 0.04, a: 1.00",
     "DamageType": "kFire",
     "RotationType": "kRollForward",
     "RotationSpeed": 3,
     "HitEffects": [],
-    "AOETypes": ["kBomb"],
+    "AOETypes": [
+      "kBomb"
+    ],
     "Specials": [],
     "IconPriority": 0,
     "IconColorList": [
@@ -721,7 +742,9 @@
     "DamageType": "kBleed",
     "RotationType": "kRoll",
     "RotationSpeed": 3,
-    "HitEffects": ["kBleed"],
+    "HitEffects": [
+      "kBleed"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -825,7 +848,9 @@
     "RotationType": "kRotate",
     "RotationSpeed": 3,
     "HitEffects": [],
-    "AOETypes": ["kEarthquake"],
+    "AOETypes": [
+      "kEarthquake"
+    ],
     "Specials": [],
     "IconPriority": 0,
     "IconColorList": [
@@ -892,7 +917,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kGhost"],
+    "Specials": [
+      "kGhost"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -970,14 +997,22 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_laserhorz", "hupg_laservert"]],
+    "MergeComponents": [
+      [
+        "hupg_laserhorz",
+        "hupg_laservert"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 1.00, g: 0.97, b: 0.69, a: 1.00",
     "DamageType": "kLightning",
     "RotationType": "kNone",
     "RotationSpeed": 3,
     "HitEffects": [],
-    "AOETypes": ["kLaserHorz", "kLaserVert"],
+    "AOETypes": [
+      "kLaserHorz",
+      "kLaserVert"
+    ],
     "Specials": [],
     "IconPriority": 2,
     "IconColorList": [
@@ -1070,7 +1105,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kVampire"],
+    "Specials": [
+      "kVampire"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -1158,7 +1195,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kBroodMother"],
+    "Specials": [
+      "kBroodMother"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -1201,35 +1240,35 @@
       {
         "Level": 1,
         "Properties": {
-          "damage_multiplier": 200,
+          "damage_multiplier": 2,
           "reduce_speed_pct": 40
         }
       },
       {
         "Level": 2,
         "Properties": {
-          "damage_multiplier": 200,
+          "damage_multiplier": 2,
           "reduce_speed_pct": 40
         }
       },
       {
         "Level": 3,
         "Properties": {
-          "damage_multiplier": 200,
+          "damage_multiplier": 2,
           "reduce_speed_pct": 30
         }
       },
       {
         "Level": 4,
         "Properties": {
-          "damage_multiplier": 200,
+          "damage_multiplier": 2,
           "reduce_speed_pct": 30
         }
       },
       {
         "Level": 5,
         "Properties": {
-          "damage_multiplier": 200,
+          "damage_multiplier": 2,
           "reduce_speed_pct": 20
         }
       }
@@ -1345,19 +1384,31 @@
         }
       }
     ],
-    "EvolutionSlugs": ["hupg_nosferatu"],
+    "EvolutionSlugs": [
+      "hupg_nosferatu"
+    ],
     "MergeComponents": [
-      ["hupg_vampire", "hupg_bleed"],
-      ["hupg_vampire", "hupg_dark"]
+      [
+        "hupg_vampire",
+        "hupg_bleed"
+      ],
+      [
+        "hupg_vampire",
+        "hupg_dark"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.62, g: 0.18, b: 0.18, a: 1.00",
     "DamageType": "kBleed",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kBleed"],
+    "HitEffects": [
+      "kBleed"
+    ],
     "AOETypes": [],
-    "Specials": ["kVampireLord"],
+    "Specials": [
+      "kVampireLord"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -1412,7 +1463,7 @@
         "Properties": {
           "bonus_damage_min": 36,
           "bonus_damage_max": 68,
-          "freeze_length": 8,
+          "freeze_length": 0.8,
           "freeze_pct": 100,
           "freeze_damage_pct": 25
         }
@@ -1422,7 +1473,7 @@
         "Properties": {
           "bonus_damage_min": 36,
           "bonus_damage_max": 68,
-          "freeze_length": 13,
+          "freeze_length": 1.3,
           "freeze_pct": 100,
           "freeze_damage_pct": 25
         }
@@ -1432,7 +1483,7 @@
         "Properties": {
           "bonus_damage_min": 36,
           "bonus_damage_max": 68,
-          "freeze_length": 18,
+          "freeze_length": 1.8,
           "freeze_pct": 100,
           "freeze_damage_pct": 25
         }
@@ -1442,7 +1493,7 @@
         "Properties": {
           "bonus_damage_min": 36,
           "bonus_damage_max": 68,
-          "freeze_length": 21,
+          "freeze_length": 2.1,
           "freeze_pct": 100,
           "freeze_damage_pct": 25
         }
@@ -1452,22 +1503,31 @@
         "Properties": {
           "bonus_damage_min": 36,
           "bonus_damage_max": 68,
-          "freeze_length": 24,
+          "freeze_length": 2.4,
           "freeze_pct": 100,
           "freeze_damage_pct": 25
         }
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_freeze", "hupg_ghost"]],
+    "MergeComponents": [
+      [
+        "hupg_freeze",
+        "hupg_ghost"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.34, g: 0.58, b: 0.59, a: 1.00",
     "DamageType": "kGhost",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kFrozen"],
+    "HitEffects": [
+      "kFrozen"
+    ],
     "AOETypes": [],
-    "Specials": ["kGhost"],
+    "Specials": [
+      "kGhost"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -1544,8 +1604,14 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_heavy", "hupg_ghost"],
-      ["hupg_heavy", "hupg_dark"]
+      [
+        "hupg_heavy",
+        "hupg_ghost"
+      ],
+      [
+        "hupg_heavy",
+        "hupg_dark"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.33, g: 0.04, b: 0.31, a: 1.00",
@@ -1554,7 +1620,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kAssassin"],
+    "Specials": [
+      "kAssassin"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -1685,15 +1753,26 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_burn", "hupg_earthquake"]],
+    "MergeComponents": [
+      [
+        "hupg_burn",
+        "hupg_earthquake"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 1.00, g: 0.34, b: 0.13, a: 1.00",
     "DamageType": "kFire",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kBurn"],
-    "AOETypes": ["kEarthquake"],
-    "Specials": ["kMagmaBlob"],
+    "HitEffects": [
+      "kBurn"
+    ],
+    "AOETypes": [
+      "kEarthquake"
+    ],
+    "Specials": [
+      "kMagmaBlob"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -1779,7 +1858,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kEggSac"],
+    "Specials": [
+      "kEggSac"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.26, g: 0.17, b: 0.24, a: 1.00",
@@ -1787,7 +1868,9 @@
       "r: 0.52, g: 0.47, b: 0.46, a: 1.00",
       "r: 0.67, g: 0.61, b: 0.56, a: 1.00"
     ],
-    "VFXColorList": ["r: 0.75, g: 0.75, b: 0.75, a: 1.00"],
+    "VFXColorList": [
+      "r: 0.75, g: 0.75, b: 0.75, a: 1.00"
+    ],
     "MatTextureColorList": [
       "r: 0.26, g: 0.17, b: 0.24, a: 1.00",
       "r: 0.34, g: 0.28, b: 0.32, a: 1.00",
@@ -1817,7 +1900,7 @@
           "lightning_limit": 8,
           "min_lightning_damage": 1,
           "max_lightning_damage": 30,
-          "lightning_rod_length": 30
+          "lightning_rod_length": 3
         }
       },
       {
@@ -1828,7 +1911,7 @@
           "lightning_limit": 8,
           "min_lightning_damage": 1,
           "max_lightning_damage": 40,
-          "lightning_rod_length": 30
+          "lightning_rod_length": 3
         }
       },
       {
@@ -1839,7 +1922,7 @@
           "lightning_limit": 8,
           "min_lightning_damage": 1,
           "max_lightning_damage": 40,
-          "lightning_rod_length": 25
+          "lightning_rod_length": 2.5
         }
       },
       {
@@ -1850,7 +1933,7 @@
           "lightning_limit": 8,
           "min_lightning_damage": 1,
           "max_lightning_damage": 50,
-          "lightning_rod_length": 25
+          "lightning_rod_length": 2.5
         }
       },
       {
@@ -1861,18 +1944,25 @@
           "lightning_limit": 8,
           "min_lightning_damage": 1,
           "max_lightning_damage": 50,
-          "lightning_rod_length": 20
+          "lightning_rod_length": 2
         }
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_lightning", "hupg_heavy"]],
+    "MergeComponents": [
+      [
+        "hupg_lightning",
+        "hupg_heavy"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.52, g: 0.47, b: 0.46, a: 1.00",
     "DamageType": "kLightning",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kLightningRod"],
+    "HitEffects": [
+      "kLightningRod"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -1946,8 +2036,15 @@
         }
       }
     ],
-    "EvolutionSlugs": ["hupg_nosferatu"],
-    "MergeComponents": [["hupg_broodmother", "hupg_eggsac"]],
+    "EvolutionSlugs": [
+      "hupg_nosferatu"
+    ],
+    "MergeComponents": [
+      [
+        "hupg_broodmother",
+        "hupg_eggsac"
+      ]
+    ],
     "IsSpawner": true,
     "BallColor": "r: 0.67, g: 0.61, b: 0.56, a: 1.00",
     "DamageType": "kNormal",
@@ -1955,7 +2052,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kSpiderQueen"],
+    "Specials": [
+      "kSpiderQueen"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -1966,7 +2065,9 @@
       "r: 0.78, g: 0.48, b: 0.35, a: 1.00",
       "r: 0.67, g: 0.61, b: 0.56, a: 1.00"
     ],
-    "VFXColorList": ["r: 0.75, g: 0.75, b: 0.75, a: 1.00"],
+    "VFXColorList": [
+      "r: 0.75, g: 0.75, b: 0.75, a: 1.00"
+    ],
     "MatTextureColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
       "r: 0.15, g: 0.11, b: 0.16, a: 1.00",
@@ -2096,15 +2197,26 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_poison", "hupg_earthquake"]],
+    "MergeComponents": [
+      [
+        "hupg_poison",
+        "hupg_earthquake"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.70, g: 0.65, b: 0.33, a: 1.00",
     "DamageType": "kPoison",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kPoison"],
-    "AOETypes": ["kEarthquake"],
-    "Specials": ["kTarBlob"],
+    "HitEffects": [
+      "kPoison"
+    ],
+    "AOETypes": [
+      "kEarthquake"
+    ],
+    "Specials": [
+      "kTarBlob"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2145,7 +2257,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 8,
+          "freeze_length": 0.8,
           "freeze_damage_pct": 25,
           "range": 2,
           "min_lightning_damage": 1,
@@ -2157,7 +2269,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 13,
+          "freeze_length": 1.3,
           "freeze_damage_pct": 25,
           "range": 2,
           "min_lightning_damage": 1,
@@ -2169,7 +2281,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 13,
+          "freeze_length": 1.3,
           "freeze_damage_pct": 25,
           "range": 2,
           "min_lightning_damage": 1,
@@ -2181,7 +2293,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 16,
+          "freeze_length": 1.6,
           "freeze_damage_pct": 25,
           "range": 2,
           "min_lightning_damage": 1,
@@ -2193,7 +2305,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 16,
+          "freeze_length": 1.6,
           "freeze_damage_pct": 25,
           "range": 2,
           "min_lightning_damage": 1,
@@ -2203,8 +2315,14 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_freeze", "hupg_lightning"],
-      ["hupg_freeze", "hupg_wind"]
+      [
+        "hupg_freeze",
+        "hupg_lightning"
+      ],
+      [
+        "hupg_freeze",
+        "hupg_wind"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.49, g: 0.73, b: 0.65, a: 1.00",
@@ -2213,7 +2331,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kBlizzard"],
+    "Specials": [
+      "kBlizzard"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.15, g: 0.22, b: 0.53, a: 1.00",
@@ -2253,7 +2373,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 100,
+          "freeze_length": 10,
           "freeze_pct": 10,
           "freeze_damage_pct": 25,
           "min_laser_damage": 20,
@@ -2265,7 +2385,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 100,
+          "freeze_length": 10,
           "freeze_pct": 10,
           "freeze_damage_pct": 25,
           "min_laser_damage": 25,
@@ -2277,7 +2397,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 130,
+          "freeze_length": 13,
           "freeze_pct": 10,
           "freeze_damage_pct": 25,
           "min_laser_damage": 25,
@@ -2289,7 +2409,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 130,
+          "freeze_length": 13,
           "freeze_pct": 10,
           "freeze_damage_pct": 25,
           "min_laser_damage": 30,
@@ -2301,7 +2421,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 130,
+          "freeze_length": 13,
           "freeze_pct": 15,
           "freeze_damage_pct": 25,
           "min_laser_damage": 30,
@@ -2311,16 +2431,26 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_freeze", "hupg_laserhorz"],
-      ["hupg_freeze", "hupg_laservert"]
+      [
+        "hupg_freeze",
+        "hupg_laserhorz"
+      ],
+      [
+        "hupg_freeze",
+        "hupg_laservert"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.09, g: 0.65, b: 0.59, a: 1.00",
     "DamageType": "kIce",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kFrozen"],
-    "AOETypes": ["kRay"],
+    "HitEffects": [
+      "kFrozen"
+    ],
+    "AOETypes": [
+      "kRay"
+    ],
     "Specials": [],
     "IconPriority": 0,
     "IconColorList": [
@@ -2416,13 +2546,21 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_broodmother", "hupg_bleed"]],
+    "MergeComponents": [
+      [
+        "hupg_broodmother",
+        "hupg_bleed"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.52, g: 0.47, b: 0.46, a: 1.00",
     "DamageType": "kBleed",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kBleed", "kLeech"],
+    "HitEffects": [
+      "kBleed",
+      "kLeech"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 3,
@@ -2542,7 +2680,12 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_vampire", "hupg_eggsac"]],
+    "MergeComponents": [
+      [
+        "hupg_vampire",
+        "hupg_eggsac"
+      ]
+    ],
     "IsSpawner": true,
     "BallColor": "r: 0.68, g: 0.36, b: 0.25, a: 1.00",
     "DamageType": "kBleed",
@@ -2550,7 +2693,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kMosquitoSwarm"],
+    "Specials": [
+      "kMosquitoSwarm"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2645,8 +2790,15 @@
         }
       }
     ],
-    "EvolutionSlugs": ["hupg_nosferatu"],
-    "MergeComponents": [["hupg_vampire", "hupg_broodmother"]],
+    "EvolutionSlugs": [
+      "hupg_nosferatu"
+    ],
+    "MergeComponents": [
+      [
+        "hupg_vampire",
+        "hupg_broodmother"
+      ]
+    ],
     "IsSpawner": true,
     "BallColor": "r: 0.68, g: 0.36, b: 0.25, a: 1.00",
     "DamageType": "kVampire",
@@ -2654,7 +2806,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kMosquitoKing"],
+    "Specials": [
+      "kMosquitoKing"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2667,7 +2821,9 @@
       "r: 0.67, g: 0.61, b: 0.56, a: 1.00",
       "r: 0.82, g: 0.79, b: 0.65, a: 1.00"
     ],
-    "VFXColorList": ["r: 0.75, g: 0.37, b: 0.16, a: 0.00"],
+    "VFXColorList": [
+      "r: 0.75, g: 0.37, b: 0.16, a: 0.00"
+    ],
     "MatTextureColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
       "r: 0.01, g: 0.00, b: 0.00, a: 1.00",
@@ -2750,7 +2906,11 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_vampirelord", "hupg_spiderqueen", "hupg_mosquitoking"]
+      [
+        "hupg_vampirelord",
+        "hupg_spiderqueen",
+        "hupg_mosquitoking"
+      ]
     ],
     "IsSpawner": true,
     "BallColor": "r: 0.82, g: 0.69, b: 0.53, a: 1.00",
@@ -2759,7 +2919,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kNosferatu"],
+    "Specials": [
+      "kNosferatu"
+    ],
     "IconPriority": 10,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -2883,14 +3045,24 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_bomb", "hupg_poison"]],
+    "MergeComponents": [
+      [
+        "hupg_bomb",
+        "hupg_poison"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.47, g: 0.45, b: 0.23, a: 1.00",
     "DamageType": "kBomb",
     "RotationType": "kAlignToDirAndSpin",
     "RotationSpeed": 3,
-    "HitEffects": ["kRadiation"],
-    "AOETypes": ["kBomb", "kNuke"],
+    "HitEffects": [
+      "kRadiation"
+    ],
+    "AOETypes": [
+      "kBomb",
+      "kNuke"
+    ],
     "Specials": [],
     "IconPriority": 0,
     "IconColorList": [
@@ -3005,16 +3177,27 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_ghost", "hupg_poison"],
-      ["hupg_cell", "hupg_poison"],
-      ["hupg_bleed", "hupg_poison"]
+      [
+        "hupg_ghost",
+        "hupg_poison"
+      ],
+      [
+        "hupg_cell",
+        "hupg_poison"
+      ],
+      [
+        "hupg_bleed",
+        "hupg_poison"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.70, g: 0.65, b: 0.33, a: 1.00",
     "DamageType": "kDisease",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kDisease"],
+    "HitEffects": [
+      "kDisease"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -3049,7 +3232,7 @@
       {
         "Level": 1,
         "Properties": {
-          "damage_multiplier": 75,
+          "damage_multiplier": 0.75,
           "slow_pct": 30,
           "slow_len": 5
         }
@@ -3057,7 +3240,7 @@
       {
         "Level": 2,
         "Properties": {
-          "damage_multiplier": 75,
+          "damage_multiplier": 0.75,
           "slow_pct": 30,
           "slow_len": 8
         }
@@ -3065,7 +3248,7 @@
       {
         "Level": 3,
         "Properties": {
-          "damage_multiplier": 75,
+          "damage_multiplier": 0.75,
           "slow_pct": 45,
           "slow_len": 8
         }
@@ -3073,7 +3256,7 @@
       {
         "Level": 4,
         "Properties": {
-          "damage_multiplier": 75,
+          "damage_multiplier": 0.75,
           "slow_pct": 45,
           "slow_len": 11
         }
@@ -3081,7 +3264,7 @@
       {
         "Level": 5,
         "Properties": {
-          "damage_multiplier": 75,
+          "damage_multiplier": 0.75,
           "slow_pct": 45,
           "slow_len": 14
         }
@@ -3100,9 +3283,13 @@
     "DamageType": "kWind",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kSlow"],
+    "HitEffects": [
+      "kSlow"
+    ],
     "AOETypes": [],
-    "Specials": ["kGhost"],
+    "Specials": [
+      "kGhost"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -3195,7 +3382,12 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_burn", "hupg_wind"]],
+    "MergeComponents": [
+      [
+        "hupg_burn",
+        "hupg_wind"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 1.00, g: 0.26, b: 0.00, a: 1.00",
     "DamageType": "kFire",
@@ -3203,7 +3395,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kInferno"],
+    "Specials": [
+      "kInferno"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -3285,7 +3479,9 @@
     "DamageType": "kCharm",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kCharm"],
+    "HitEffects": [
+      "kCharm"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 3,
@@ -3366,16 +3562,27 @@
         }
       }
     ],
-    "EvolutionSlugs": ["hupg_satan"],
-    "MergeComponents": [["hupg_charm", "hupg_vampire"]],
+    "EvolutionSlugs": [
+      "hupg_satan"
+    ],
+    "MergeComponents": [
+      [
+        "hupg_charm",
+        "hupg_vampire"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.84, g: 0.30, b: 0.55, a: 1.00",
     "DamageType": "kVampire",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kCharm"],
+    "HitEffects": [
+      "kCharm"
+    ],
     "AOETypes": [],
-    "Specials": ["kSuccubus"],
+    "Specials": [
+      "kSuccubus"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -3475,15 +3682,23 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_charm", "hupg_burn"],
-      ["hupg_charm", "hupg_bleed"]
+      [
+        "hupg_charm",
+        "hupg_burn"
+      ],
+      [
+        "hupg_charm",
+        "hupg_bleed"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.91, g: 0.29, b: 0.49, a: 1.00",
     "DamageType": "kFire",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kBerserk"],
+    "HitEffects": [
+      "kBerserk"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 3,
@@ -3589,7 +3804,12 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_heavy", "hupg_eggsac"]],
+    "MergeComponents": [
+      [
+        "hupg_heavy",
+        "hupg_eggsac"
+      ]
+    ],
     "IsSpawner": true,
     "BallColor": "r: 0.61, g: 0.50, b: 0.57, a: 1.00",
     "DamageType": "kNormal",
@@ -3597,7 +3817,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kShotgun"],
+    "Specials": [
+      "kShotgun"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -3687,7 +3909,9 @@
     "DamageType": "kFire",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kBlind"],
+    "HitEffects": [
+      "kBlind"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -3777,16 +4001,28 @@
         }
       }
     ],
-    "EvolutionSlugs": ["hupg_blackhole"],
-    "MergeComponents": [["hupg_burn", "hupg_light"]],
+    "EvolutionSlugs": [
+      "hupg_blackhole"
+    ],
+    "MergeComponents": [
+      [
+        "hupg_burn",
+        "hupg_light"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 1.00, g: 0.78, b: 0.10, a: 1.00",
     "DamageType": "kFire",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kBurn", "kBlind"],
+    "HitEffects": [
+      "kBurn",
+      "kBlind"
+    ],
     "AOETypes": [],
-    "Specials": ["kSun"],
+    "Specials": [
+      "kSun"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.59, g: 0.35, b: 0.08, a: 1.00",
@@ -3868,16 +4104,26 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_laserhorz", "hupg_light"],
-      ["hupg_laservert", "hupg_light"]
+      [
+        "hupg_laserhorz",
+        "hupg_light"
+      ],
+      [
+        "hupg_laservert",
+        "hupg_light"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 1.00, g: 0.08, b: 0.08, a: 1.00",
     "DamageType": "kLaserBeam",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kBlind"],
-    "AOETypes": ["kRay"],
+    "HitEffects": [
+      "kBlind"
+    ],
+    "AOETypes": [
+      "kRay"
+    ],
     "Specials": [],
     "IconPriority": 0,
     "IconColorList": [
@@ -3922,35 +4168,35 @@
       {
         "Level": 1,
         "Properties": {
-          "damage_multiplier": 300,
+          "damage_multiplier": 3,
           "cooldown_length": 3
         }
       },
       {
         "Level": 2,
         "Properties": {
-          "damage_multiplier": 400,
+          "damage_multiplier": 4,
           "cooldown_length": 3
         }
       },
       {
         "Level": 3,
         "Properties": {
-          "damage_multiplier": 500,
+          "damage_multiplier": 5,
           "cooldown_length": 3
         }
       },
       {
         "Level": 4,
         "Properties": {
-          "damage_multiplier": 600,
+          "damage_multiplier": 6,
           "cooldown_length": 3
         }
       },
       {
         "Level": 5,
         "Properties": {
-          "damage_multiplier": 700,
+          "damage_multiplier": 7,
           "cooldown_length": 3
         }
       }
@@ -3973,7 +4219,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kDark"],
+    "Specials": [
+      "kDark"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -4057,15 +4305,24 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_dark", "hupg_ghost"]],
+    "MergeComponents": [
+      [
+        "hupg_dark",
+        "hupg_ghost"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.47, g: 0.28, b: 0.51, a: 1.00",
     "DamageType": "kGhost",
     "RotationType": "kAlignToDirAndSpin",
     "RotationSpeed": 3,
-    "HitEffects": ["kCurse"],
+    "HitEffects": [
+      "kCurse"
+    ],
     "AOETypes": [],
-    "Specials": ["kGhost"],
+    "Specials": [
+      "kGhost"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.21, g: 0.07, b: 0.31, a: 1.00",
@@ -4160,13 +4417,21 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_bleed", "hupg_dark"]],
+    "MergeComponents": [
+      [
+        "hupg_bleed",
+        "hupg_dark"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.89, g: 0.31, b: 0.27, a: 1.00",
     "DamageType": "kBleed",
     "RotationType": "kAlignToDirAndSpin",
     "RotationSpeed": 3,
-    "HitEffects": ["kBleed", "kCurse"],
+    "HitEffects": [
+      "kBleed",
+      "kCurse"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -4278,16 +4543,27 @@
         }
       }
     ],
-    "EvolutionSlugs": ["hupg_satan"],
-    "MergeComponents": [["hupg_charm", "hupg_dark"]],
+    "EvolutionSlugs": [
+      "hupg_satan"
+    ],
+    "MergeComponents": [
+      [
+        "hupg_charm",
+        "hupg_dark"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.78, g: 0.25, b: 0.76, a: 1.00",
     "DamageType": "kVampire",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kCharm"],
+    "HitEffects": [
+      "kCharm"
+    ],
     "AOETypes": [],
-    "Specials": ["kIncubus"],
+    "Specials": [
+      "kIncubus"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -4412,7 +4688,12 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_incubus", "hupg_succubus"]],
+    "MergeComponents": [
+      [
+        "hupg_incubus",
+        "hupg_succubus"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.87, g: 0.25, b: 0.11, a: 1.00",
     "DamageType": "kVampire",
@@ -4420,7 +4701,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kSatan"],
+    "Specials": [
+      "kSatan"
+    ],
     "IconPriority": 9,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -4516,14 +4799,23 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_lightning", "hupg_light"]],
+    "MergeComponents": [
+      [
+        "hupg_lightning",
+        "hupg_light"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.87, g: 0.85, b: 0.92, a: 1.00",
     "DamageType": "kNormal",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kBlind"],
-    "AOETypes": ["kFlash"],
+    "HitEffects": [
+      "kBlind"
+    ],
+    "AOETypes": [
+      "kFlash"
+    ],
     "Specials": [],
     "IconPriority": 0,
     "IconColorList": [
@@ -4597,7 +4889,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kCell"],
+    "Specials": [
+      "kCell"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -4687,7 +4981,12 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_eggsac", "hupg_cell"]],
+    "MergeComponents": [
+      [
+        "hupg_eggsac",
+        "hupg_cell"
+      ]
+    ],
     "IsSpawner": true,
     "BallColor": "r: 0.79, g: 0.79, b: 0.79, a: 1.00",
     "DamageType": "kNormal",
@@ -4695,7 +4994,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kEggSacSac"],
+    "Specials": [
+      "kEggSacSac"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -4787,13 +5088,20 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_cell", "hupg_broodmother"]],
+    "MergeComponents": [
+      [
+        "hupg_cell",
+        "hupg_broodmother"
+      ]
+    ],
     "IsSpawner": true,
     "BallColor": "r: 0.67, g: 0.61, b: 0.56, a: 1.00",
     "DamageType": "kNormal",
     "RotationType": "kRotate",
     "RotationSpeed": 3,
-    "HitEffects": ["kMaggot"],
+    "HitEffects": [
+      "kMaggot"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -4840,7 +5148,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 20,
+          "freeze_length": 2,
           "freeze_pct": 100,
           "freeze_damage_pct": 25,
           "min_glacier_damage": 15,
@@ -4855,7 +5163,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 20,
+          "freeze_length": 2,
           "freeze_pct": 100,
           "freeze_damage_pct": 25,
           "min_glacier_damage": 25,
@@ -4870,7 +5178,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 30,
+          "freeze_length": 3,
           "freeze_pct": 100,
           "freeze_damage_pct": 25,
           "min_glacier_damage": 25,
@@ -4885,7 +5193,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 30,
+          "freeze_length": 3,
           "freeze_pct": 100,
           "freeze_damage_pct": 25,
           "min_glacier_damage": 35,
@@ -4900,7 +5208,7 @@
         "Properties": {
           "bonus_damage_min": 42,
           "bonus_damage_max": 80,
-          "freeze_length": 30,
+          "freeze_length": 3,
           "freeze_pct": 100,
           "freeze_damage_pct": 25,
           "min_glacier_damage": 45,
@@ -4912,15 +5220,24 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_freeze", "hupg_earthquake"]],
+    "MergeComponents": [
+      [
+        "hupg_freeze",
+        "hupg_earthquake"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.37, g: 0.67, b: 0.75, a: 1.00",
     "DamageType": "kIce",
     "RotationType": "kAlignToDirAndSpin",
     "RotationSpeed": 3,
     "HitEffects": [],
-    "AOETypes": ["kEarthquake"],
-    "Specials": ["kGlacier"],
+    "AOETypes": [
+      "kEarthquake"
+    ],
+    "Specials": [
+      "kGlacier"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.17, g: 0.29, b: 0.35, a: 1.00",
@@ -5008,7 +5325,12 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_lightning", "hupg_wind"]],
+    "MergeComponents": [
+      [
+        "hupg_lightning",
+        "hupg_wind"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.84, g: 0.75, b: 0.67, a: 1.00",
     "DamageType": "kLightning",
@@ -5016,7 +5338,10 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kStorm", "kGhost"],
+    "Specials": [
+      "kStorm",
+      "kGhost"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -5117,13 +5442,20 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_burn", "hupg_freeze"]],
+    "MergeComponents": [
+      [
+        "hupg_burn",
+        "hupg_freeze"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.24, g: 0.81, b: 0.69, a: 1.00",
     "DamageType": "kIce",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kFrostburn"],
+    "HitEffects": [
+      "kFrostburn"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -5160,7 +5492,7 @@
           "bonus_damage_min": 54,
           "bonus_damage_max": 104,
           "cooldown_length": 7,
-          "damage_multiplier": 600
+          "damage_multiplier": 6
         }
       },
       {
@@ -5169,7 +5501,7 @@
           "bonus_damage_min": 54,
           "bonus_damage_max": 104,
           "cooldown_length": 6,
-          "damage_multiplier": 600
+          "damage_multiplier": 6
         }
       },
       {
@@ -5178,7 +5510,7 @@
           "bonus_damage_min": 54,
           "bonus_damage_max": 104,
           "cooldown_length": 5,
-          "damage_multiplier": 600
+          "damage_multiplier": 6
         }
       },
       {
@@ -5187,7 +5519,7 @@
           "bonus_damage_min": 54,
           "bonus_damage_max": 104,
           "cooldown_length": 4,
-          "damage_multiplier": 600
+          "damage_multiplier": 6
         }
       },
       {
@@ -5196,12 +5528,17 @@
           "bonus_damage_min": 54,
           "bonus_damage_max": 104,
           "cooldown_length": 3,
-          "damage_multiplier": 600
+          "damage_multiplier": 6
         }
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_dark", "hupg_sun"]],
+    "MergeComponents": [
+      [
+        "hupg_dark",
+        "hupg_sun"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.36, g: 0.00, b: 0.31, a: 1.00",
     "DamageType": "kVampire",
@@ -5209,7 +5546,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kBlackHole"],
+    "Specials": [
+      "kBlackHole"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.17, g: 0.01, b: 0.15, a: 1.00",
@@ -5305,18 +5644,34 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_laserhorz", "hupg_poison"],
-      ["hupg_laserhorz", "hupg_cell"],
-      ["hupg_laservert", "hupg_cell"],
-      ["hupg_laservert", "hupg_poison"]
+      [
+        "hupg_laserhorz",
+        "hupg_poison"
+      ],
+      [
+        "hupg_laserhorz",
+        "hupg_cell"
+      ],
+      [
+        "hupg_laservert",
+        "hupg_cell"
+      ],
+      [
+        "hupg_laservert",
+        "hupg_poison"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.23, g: 0.84, b: 0.26, a: 1.00",
     "DamageType": "kLaser",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kRadiation"],
-    "AOETypes": ["kRay"],
+    "HitEffects": [
+      "kRadiation"
+    ],
+    "AOETypes": [
+      "kRay"
+    ],
     "Specials": [],
     "IconPriority": 0,
     "IconColorList": [
@@ -5429,17 +5784,28 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_poison", "hupg_wind"],
-      ["hupg_dark", "hupg_wind"]
+      [
+        "hupg_poison",
+        "hupg_wind"
+      ],
+      [
+        "hupg_dark",
+        "hupg_wind"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.32, g: 0.61, b: 0.24, a: 1.00",
     "DamageType": "kFire",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kPoison"],
+    "HitEffects": [
+      "kPoison"
+    ],
     "AOETypes": [],
-    "Specials": ["kNoxious", "kGhost"],
+    "Specials": [
+      "kNoxious",
+      "kGhost"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -5480,7 +5846,7 @@
           "bonus_damage_max": 68,
           "min_flicker_damage": 1,
           "max_flicker_damage": 7,
-          "flicker_cycle": 14
+          "flicker_cycle": 1.4
         }
       },
       {
@@ -5490,7 +5856,7 @@
           "bonus_damage_max": 68,
           "min_flicker_damage": 2,
           "max_flicker_damage": 10,
-          "flicker_cycle": 14
+          "flicker_cycle": 1.4
         }
       },
       {
@@ -5500,7 +5866,7 @@
           "bonus_damage_max": 68,
           "min_flicker_damage": 2,
           "max_flicker_damage": 10,
-          "flicker_cycle": 12
+          "flicker_cycle": 1.2
         }
       },
       {
@@ -5510,7 +5876,7 @@
           "bonus_damage_max": 68,
           "min_flicker_damage": 3,
           "max_flicker_damage": 13,
-          "flicker_cycle": 12
+          "flicker_cycle": 1.2
         }
       },
       {
@@ -5520,12 +5886,17 @@
           "bonus_damage_max": 68,
           "min_flicker_damage": 4,
           "max_flicker_damage": 16,
-          "flicker_cycle": 12
+          "flicker_cycle": 1.2
         }
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_light", "hupg_dark"]],
+    "MergeComponents": [
+      [
+        "hupg_light",
+        "hupg_dark"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 1.00, g: 0.95, b: 0.91, a: 1.00",
     "DamageType": "kNormal",
@@ -5533,7 +5904,9 @@
     "RotationSpeed": 3,
     "HitEffects": [],
     "AOETypes": [],
-    "Specials": ["kFlicker"],
+    "Specials": [
+      "kFlicker"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -5622,15 +5995,23 @@
     ],
     "EvolutionSlugs": [],
     "MergeComponents": [
-      ["hupg_charm", "hupg_light"],
-      ["hupg_charm", "hupg_lightning"]
+      [
+        "hupg_charm",
+        "hupg_light"
+      ],
+      [
+        "hupg_charm",
+        "hupg_lightning"
+      ]
     ],
     "IsSpawner": false,
     "BallColor": "r: 0.68, g: 0.41, b: 0.42, a: 1.00",
     "DamageType": "kVampire",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kLovestruck"],
+    "HitEffects": [
+      "kLovestruck"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -5715,15 +6096,24 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_bleed", "hupg_heavy"]],
+    "MergeComponents": [
+      [
+        "hupg_bleed",
+        "hupg_heavy"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.83, g: 0.14, b: 0.16, a: 1.00",
     "DamageType": "kBleed",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kBleed"],
+    "HitEffects": [
+      "kBleed"
+    ],
     "AOETypes": [],
-    "Specials": ["kHemorrhage"],
+    "Specials": [
+      "kHemorrhage"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
@@ -5732,7 +6122,9 @@
       "r: 0.77, g: 0.11, b: 0.21, a: 1.00",
       "r: 1.00, g: 0.75, b: 0.64, a: 1.00"
     ],
-    "VFXColorList": ["r: 0.57, g: 0.09, b: 0.16, a: 1.00"],
+    "VFXColorList": [
+      "r: 0.57, g: 0.09, b: 0.16, a: 1.00"
+    ],
     "MatTextureColorList": []
   },
   {
@@ -5806,22 +6198,34 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_earthquake", "hupg_wind"]],
+    "MergeComponents": [
+      [
+        "hupg_earthquake",
+        "hupg_wind"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.82, g: 0.69, b: 0.53, a: 1.00",
     "DamageType": "kEarthquake",
     "RotationType": "kNone",
     "RotationSpeed": 3,
-    "HitEffects": ["kBlind"],
+    "HitEffects": [
+      "kBlind"
+    ],
     "AOETypes": [],
-    "Specials": ["kSandstorm", "kGhost"],
+    "Specials": [
+      "kSandstorm",
+      "kGhost"
+    ],
     "IconPriority": 0,
     "IconColorList": [
       "r: 0.52, g: 0.37, b: 0.17, a: 1.00",
       "r: 0.73, g: 0.57, b: 0.35, a: 1.00",
       "r: 0.82, g: 0.69, b: 0.53, a: 1.00"
     ],
-    "VFXColorList": ["r: 0.73, g: 0.57, b: 0.35, a: 1.00"],
+    "VFXColorList": [
+      "r: 0.73, g: 0.57, b: 0.35, a: 1.00"
+    ],
     "MatTextureColorList": []
   },
   {
@@ -5895,13 +6299,20 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_earthquake", "hupg_cell"]],
+    "MergeComponents": [
+      [
+        "hupg_earthquake",
+        "hupg_cell"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.26, g: 0.77, b: 0.25, a: 1.00",
     "DamageType": "kPoison",
     "RotationType": "kRollForward",
     "RotationSpeed": 3,
-    "HitEffects": ["kOvergrowth"],
+    "HitEffects": [
+      "kOvergrowth"
+    ],
     "AOETypes": [],
     "Specials": [],
     "IconPriority": 0,
@@ -5990,15 +6401,24 @@
       }
     ],
     "EvolutionSlugs": [],
-    "MergeComponents": [["hupg_vampire", "hupg_ghost"]],
+    "MergeComponents": [
+      [
+        "hupg_vampire",
+        "hupg_ghost"
+      ]
+    ],
     "IsSpawner": false,
     "BallColor": "r: 0.23, g: 0.75, b: 0.60, a: 1.00",
     "DamageType": "kGhost",
     "RotationType": "kAlignToDir",
     "RotationSpeed": 3,
-    "HitEffects": ["kSap"],
+    "HitEffects": [
+      "kSap"
+    ],
     "AOETypes": [],
-    "Specials": ["kGhost"],
+    "Specials": [
+      "kGhost"
+    ],
     "IconPriority": 3,
     "IconColorList": [
       "r: 0.00, g: 0.00, b: 0.00, a: 1.00",
