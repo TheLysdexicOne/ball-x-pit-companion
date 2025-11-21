@@ -1,39 +1,19 @@
 'use client';
 
-import { useState } from 'react';
 import type { Level } from '@/types/level';
 import type { EnemyVariant } from '@/types/enemy';
 import EnemyIcon from './EnemyIcon';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 interface LevelCardProps {
   level: Level;
   enemies: EnemyVariant[];
-  disableMobileExpand?: boolean;
 }
 
-export default function LevelCard({
-  level,
-  enemies,
-  disableMobileExpand = false,
-}: LevelCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  // Filter enemies to only show preview enemies and boss
-  const displayedEnemies = enemies.filter(enemy => {
-    const isPreviewEnemy = level.previewEnemySlugs.includes(enemy.templateSlug);
-    const isBoss = enemy.templateSlug === level.bossSlug;
-    return isPreviewEnemy || isBoss;
-  });
-
+export default function LevelCard({ level, enemies }: LevelCardProps) {
   return (
     <div className="overflow-hidden rounded-lg border-2 border-primary bg-body shadow-md transition-all hover:border-highlight">
-      {/* Mobile: Click to expand */}
-      <button
-        onClick={() => !disableMobileExpand && setIsExpanded(!isExpanded)}
-        className={`w-full p-2 text-left sm:p-4 ${disableMobileExpand ? 'cursor-default bg-card-header sm:cursor-default' : isExpanded ? 'bg-card-header' : 'bg-secondary sm:cursor-default sm:bg-card-header'}`}
-      >
+      {/* Header */}
+      <div className="bg-card-header p-2 sm:p-4">
         <div className="flex items-center justify-between gap-3 sm:gap-4">
           {/* Level Name */}
           <div className="min-w-0">
@@ -41,23 +21,11 @@ export default function LevelCard({
               {level.name}
             </h3>
           </div>
-
-          {/* Expand Icon (mobile only) */}
-          {!disableMobileExpand && (
-            <div className="flex-shrink-0 sm:hidden">
-              <FontAwesomeIcon
-                icon={isExpanded ? faChevronUp : faChevronDown}
-                className="h-5 w-5 text-primary"
-              />
-            </div>
-          )}
         </div>
-      </button>
+      </div>
 
-      {/* Expanded Content */}
-      <div
-        className={`${disableMobileExpand ? 'block' : isExpanded ? 'block' : 'hidden'} border-t-2 border-primary p-3 sm:block sm:p-4`}
-      >
+      {/* Content */}
+      <div className="border-t-2 border-primary p-3 sm:p-4">
         {/* Description */}
         <div className="mb-4">
           <p className="font-pixel text-sm leading-relaxed text-primary">
@@ -92,7 +60,7 @@ export default function LevelCard({
                 Enemies
               </span>
               <span className="font-pixel text-sm font-bold text-secondary">
-                {displayedEnemies.length}
+                {enemies.length}
               </span>
             </div>
           </div>
@@ -104,7 +72,7 @@ export default function LevelCard({
             ENEMIES
           </h4>
           <div className="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8">
-            {displayedEnemies.map((enemy, index) => (
+            {enemies.map((enemy, index) => (
               <div
                 key={`${enemy.templateSlug}-${index}`}
                 className="group relative aspect-square rounded border-2 border-primary/30 bg-body/50 p-1 transition-all hover:border-highlight"

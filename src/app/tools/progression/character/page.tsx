@@ -197,7 +197,7 @@ export default function HeroProgressionPage() {
     FAST_TIERS.find(tier => tier.value === currentTier)?.label || 'Normal';
 
   return (
-    <main className="flex flex-col items-center justify-center p-8">
+    <div className="flex flex-col items-center justify-center p-8">
       <div className="flex w-full max-w-4xl flex-col">
         <div className="mb-4 grid gap-4 sm:grid-cols-2">
           <div className="btn-body-secondary relative flex min-h-[48px] items-center justify-center px-6 py-2 sm:px-10">
@@ -327,6 +327,6 @@ export default function HeroProgressionPage() {
           </button>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center p-8">
+    <div className="flex flex-col items-center justify-center p-8">
       <div className="flex w-full max-w-4xl flex-col">
         <div className="card-primary">
           <h1 className="mb-2 font-pixel text-4xl tracking-widest sm:text-6xl">
@@ -99,6 +99,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

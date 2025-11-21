@@ -35,7 +35,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <main className="min-h-screen p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="mx-auto max-w-2xl">
         <div className="mb-8 rounded-lg border-4 border-primary bg-body p-6 shadow-2xl sm:p-8">
           {/* Title */}
@@ -112,6 +112,6 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

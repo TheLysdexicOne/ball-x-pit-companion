@@ -201,7 +201,7 @@ export default function ReorderHeroesPage() {
   const activeHero = activeId ? heroes.find(h => h.id === activeId) : null;
 
   return (
-    <main className="flex flex-col items-center justify-center p-2 sm:p-8">
+    <div className="flex flex-col items-center justify-center p-2 sm:p-8">
       <div className="flex w-full max-w-4xl flex-col">
         <div className="card-primary">
           <div className="card-text-box m-0 font-pixel text-sm uppercase tracking-widest text-secondary sm:text-base">
@@ -236,6 +236,6 @@ export default function ReorderHeroesPage() {
           </DndContext>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
