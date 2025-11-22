@@ -10,7 +10,7 @@ export default function CharactersPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const { getSortedHeroes } = useProgressData();
+  const { getSortedCharacters } = useProgressData();
   const characters = getAllCharacters();
 
   // Prevent hydration mismatch
@@ -34,18 +34,18 @@ export default function CharactersPage() {
     }
 
     // Sort by custom order from progression data
-    const sortedHeroes = getSortedHeroes();
-    const heroOrderMap = new Map(
-      sortedHeroes.map((hero, index) => [hero.heroId, index])
+    const sortedCharacters = getSortedCharacters();
+    const characterOrderMap = new Map(
+      sortedCharacters.map((char, index) => [char.characterId, index])
     );
     filtered.sort((a, b) => {
-      const aIndex = heroOrderMap.get(a.id) ?? 999;
-      const bIndex = heroOrderMap.get(b.id) ?? 999;
+      const aIndex = characterOrderMap.get(a.id) ?? 999;
+      const bIndex = characterOrderMap.get(b.id) ?? 999;
       return aIndex - bIndex;
     });
 
     return filtered;
-  }, [characters, searchQuery, getSortedHeroes]);
+  }, [characters, searchQuery, getSortedCharacters]);
 
   if (!isLoaded) {
     return null;

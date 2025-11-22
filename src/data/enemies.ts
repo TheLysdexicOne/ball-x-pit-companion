@@ -7,7 +7,7 @@ import type {
   EnemyLevelVariant,
 } from '@/types/enemy';
 import type { Level } from '@/types/level';
-import enemiesDataJson from '../../data/latest/enemies_data.json';
+import enemiesDataJson from './json/enemies_data.json' assert { type: 'json' };
 import { getLevelByType } from './levels';
 
 const enemiesData = enemiesDataJson as unknown as EnemyData[];

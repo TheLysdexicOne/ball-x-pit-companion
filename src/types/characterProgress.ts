@@ -23,7 +23,19 @@ export type DifficultyTier =
  * ...
  * 11 = Fast+9
  */
-export type FastTierCompletion = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+export type FastTierCompletion =
+  | 0
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11;
 
 /**
  * Level completion data for a specific difficulty tier
@@ -38,14 +50,14 @@ export interface LevelCompletion {
 }
 
 /**
- * Progress data for a single hero
+ * Progress data for a single character
  */
-export interface HeroProgress {
-  /** Hero ID */
-  heroId: string;
+export interface CharacterProgress {
+  /** Character ID */
+  characterId: string;
   /** Custom display order (for reordering) */
   customIndex: number;
-  /** All level completions for this hero */
+  /** All level completions for this character */
   levelCompletions: LevelCompletion[];
 }
 
@@ -57,16 +69,16 @@ export interface ProgressData {
   version: number;
   /** Last updated timestamp */
   lastUpdated: string;
-  /** Progress data for all heroes */
-  heroes: HeroProgress[];
+  /** Progress data for all characters */
+  characters: CharacterProgress[];
 }
 
 /**
  * Save slot data structure
  */
 export interface SaveSlotData {
-  /** Hero progress data */
-  heroProgress: ProgressData;
+  /** Character progress data */
+  characterProgress: ProgressData;
   /** Last selected difficulty tier */
   lastDifficulty: DifficultyTier;
   /** Last selected tier completion level */

@@ -1,7 +1,7 @@
 // Ball data utilities using extracted game data
 
 import type { Ball, BallData, BallProperties } from '@/types/ball';
-import ballsDataJson from '../../data/latest/balls_data.json';
+import ballsDataJson from './json/balls_data.json' assert { type: 'json' };
 
 const ballsData = ballsDataJson as unknown as BallData[];
 

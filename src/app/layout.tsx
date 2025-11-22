@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Nav from '@/components/Nav';
 import { getImagePath } from '@/utils/basePath';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import Nav from '@/components/Nav';
+import ScrollToTop from '@/components/ScrollToTop';
 
 // Prevent Font Awesome from adding its CSS since we did it manually above
 config.autoAddCss = false;
@@ -39,6 +40,7 @@ export default function RootLayout({
       </head>
       <body className="bg-main">
         <Nav />
+        <ScrollToTop />
         <main className="pt-24 lg:pl-64">
           <div className="mx-auto min-h-screen max-w-6xl p-4 sm:p-8">
             {children}

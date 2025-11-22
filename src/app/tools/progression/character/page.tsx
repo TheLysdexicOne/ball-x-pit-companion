@@ -8,7 +8,10 @@ import { useProgressData } from '@/hooks/useProgressData';
 import { getImagePath } from '@/utils/basePath';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import type { DifficultyTier, FastTierCompletion } from '@/types/heroProgress';
+import type {
+  DifficultyTier,
+  FastTierCompletion,
+} from '@/types/characterProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -100,9 +103,9 @@ const FAST_TIERS: { value: FastTierCompletion; label: string }[] = [
 export default function HeroProgressionPage() {
   const router = useRouter();
   const {
-    getSortedHeroes,
+    getSortedCharacters,
     updateLevelCompletion,
-    getHeroProgress,
+    getCharacterProgress,
     currentDifficulty,
     currentTier,
     setCurrentDifficulty,
@@ -116,13 +119,13 @@ export default function HeroProgressionPage() {
   }, []);
 
   useEffect(() => {
-    const sortedProgress = getSortedHeroes();
+    const sortedProgress = getSortedCharacters();
     const allCharacters = getAllCharacters();
     const heroes = sortedProgress
-      .map(progress => allCharacters.find(c => c.id === progress.heroId))
+      .map(progress => allCharacters.find(c => c.id === progress.characterId))
       .filter((hero): hero is Character => hero !== undefined);
     setSortedHeroes(heroes);
-  }, [getSortedHeroes]);
+  }, [getSortedCharacters]);
 
   const navigateDifficulty = (direction: 'prev' | 'next') => {
     const currentIndex = DIFFICULTY_TIERS.findIndex(
@@ -165,7 +168,7 @@ export default function HeroProgressionPage() {
     // Return false during SSR to match initial client render
     if (!isClient) return false;
 
-    const progress = getHeroProgress(heroId);
+    const progress = getCharacterProgress(heroId);
     if (!progress) return false;
 
     const completion = progress.levelCompletions.find(
@@ -324,7 +327,6 @@ export default function HeroProgressionPage() {
         >
           REORDER CHARACTERS
         </button>
-        g
       </div>
     </div>
   );

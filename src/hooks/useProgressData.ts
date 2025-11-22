@@ -2,12 +2,12 @@ import { useEffect, useState, useCallback } from 'react';
 import { getAllCharacters } from '@/data/characters';
 import type {
   ProgressData,
-  HeroProgress,
+  CharacterProgress,
   LevelCompletion,
   FastTierCompletion,
   SaveSlotData,
   DifficultyTier,
-} from '@/types/heroProgress';
+} from '@/types/characterProgress';
 
 // Storage keys
 const LEGACY_STORAGE_KEY = 'ball-x-pit-progress';
@@ -35,8 +35,8 @@ function createInitialData(): ProgressData {
   return {
     version: CURRENT_VERSION,
     lastUpdated: new Date().toISOString(),
-    heroes: characters.map((char, index) => ({
-      heroId: char.id,
+    characters: characters.map((char, index) => ({
+      characterId: char.id,
       customIndex: index,
       levelCompletions: [],
     })),
@@ -59,20 +59,22 @@ function loadProgressData(): ProgressData {
 
     const data = JSON.parse(stored) as ProgressData;
 
-    // Validate and merge with current heroes (in case new heroes were added)
-    const existingHeroIds = new Set(data.heroes.map(h => h.heroId));
+    // Validate and merge with current characters (in case new characters were added)
+    const existingCharacterIds = new Set(
+      data.characters.map(c => c.characterId)
+    );
     const characters = getAllCharacters();
-    const newHeroes = characters
-      .filter(c => !existingHeroIds.has(c.id))
+    const newCharacters = characters
+      .filter(c => !existingCharacterIds.has(c.id))
       .map((char, index) => ({
-        heroId: char.id,
-        customIndex: data.heroes.length + index,
+        characterId: char.id,
+        customIndex: data.characters.length + index,
         levelCompletions: [],
       }));
 
     return {
       ...data,
-      heroes: [...data.heroes, ...newHeroes],
+      characters: [...data.characters, ...newCharacters],
     };
   } catch (error) {
     console.error('Failed to load progress data:', error);
@@ -95,7 +97,7 @@ function migrateLegacyData(): void {
     const legacyProgress = localStorage.getItem(LEGACY_STORAGE_KEY);
     if (!legacyProgress) return; // No legacy data to migrate
 
-    const progressData = JSON.parse(legacyProgress) as ProgressData;
+    const legacyData = JSON.parse(legacyProgress);
     const difficulty =
       (localStorage.getItem(LEGACY_DIFFICULTY_KEY) as DifficultyTier) || 'base';
     const tier = parseInt(
@@ -103,9 +105,27 @@ function migrateLegacyData(): void {
       10
     ) as FastTierCompletion;
 
+    // Migrate the progress data structure if needed
+    let progressData: ProgressData;
+    if (legacyData.heroes) {
+      // Old format with heroes array
+      progressData = {
+        version: legacyData.version || 1,
+        lastUpdated: legacyData.lastUpdated || new Date().toISOString(),
+        characters: (legacyData.heroes || []).map((hero: any) => ({
+          characterId: hero.heroId,
+          customIndex: hero.customIndex,
+          levelCompletions: hero.levelCompletions || [],
+        })),
+      };
+    } else {
+      // Already new format or empty
+      progressData = legacyData as ProgressData;
+    }
+
     // Create save slot 1 with legacy data
     const saveSlot: SaveSlotData = {
-      heroProgress: progressData,
+      characterProgress: progressData,
       lastDifficulty: difficulty,
       lastTier: tier,
       lastModified: Date.now(),
@@ -138,12 +158,42 @@ function getActiveSlot(): number {
 }
 
 /**
+ * Migrates old save slot data structure (heroProgress -> characterProgress)
+ */
+function migrateOldSaveData(data: any): SaveSlotData {
+  // Check if this is old format with heroProgress
+  if (data.heroProgress && !data.characterProgress) {
+    const oldProgress = data.heroProgress;
+    const newProgress: ProgressData = {
+      version: oldProgress.version || 1,
+      lastUpdated: oldProgress.lastUpdated || new Date().toISOString(),
+      characters: (oldProgress.heroes || []).map((hero: any) => ({
+        characterId: hero.heroId,
+        customIndex: hero.customIndex,
+        levelCompletions: hero.levelCompletions || [],
+      })),
+    };
+
+    return {
+      characterProgress: newProgress,
+      lastDifficulty: data.lastDifficulty || 'base',
+      lastTier: data.lastTier || 1,
+      lastModified: data.lastModified || Date.now(),
+      name: data.name || `Save ${1}`,
+    };
+  }
+
+  // Already new format
+  return data as SaveSlotData;
+}
+
+/**
  * Loads save slot data
  */
 function loadSaveSlot(slot: number): SaveSlotData {
   if (typeof window === 'undefined') {
     return {
-      heroProgress: createInitialData(),
+      characterProgress: createInitialData(),
       lastDifficulty: 'base',
       lastTier: 1, // Default to Normal (tier 1)
       lastModified: Date.now(),
@@ -156,7 +206,7 @@ function loadSaveSlot(slot: number): SaveSlotData {
     if (!stored) {
       // Create new empty slot
       return {
-        heroProgress: createInitialData(),
+        characterProgress: createInitialData(),
         lastDifficulty: 'base',
         lastTier: 1, // Default to Normal (tier 1)
         lastModified: Date.now(),
@@ -164,11 +214,22 @@ function loadSaveSlot(slot: number): SaveSlotData {
       };
     }
 
-    return JSON.parse(stored) as SaveSlotData;
+    const data = JSON.parse(stored);
+    const migrated = migrateOldSaveData(data);
+
+    // Save the migrated data back to localStorage
+    if (data.heroProgress && !data.characterProgress) {
+      saveSaveSlot(slot, migrated);
+      console.log(
+        `Migrated save slot ${slot} from heroProgress to characterProgress`
+      );
+    }
+
+    return migrated;
   } catch (error) {
     console.error(`Failed to load save slot ${slot}:`, error);
     return {
-      heroProgress: createInitialData(),
+      characterProgress: createInitialData(),
       lastDifficulty: 'base',
       lastTier: 1, // Default to Normal (tier 1)
       lastModified: Date.now(),
@@ -254,11 +315,11 @@ export function useProgressData() {
   /**
    * Gets all heroes sorted by custom index
    */
-  const getSortedHeroes = useCallback((): HeroProgress[] => {
-    return [...saveData.heroProgress.heroes].sort(
+  const getSortedCharacters = useCallback((): CharacterProgress[] => {
+    return [...saveData.characterProgress.characters].sort(
       (a, b) => a.customIndex - b.customIndex
     );
-  }, [saveData.heroProgress.heroes]);
+  }, [saveData.characterProgress.characters]);
 
   /**
    * Gets current difficulty tier
@@ -293,76 +354,78 @@ export function useProgressData() {
   };
 
   /**
-   * Updates the custom order index for a hero
+   * Updates the custom order index for a character
    */
-  const updateHeroOrder = (heroId: string, newIndex: number) => {
+  const updateCharacterOrder = (characterId: string, newIndex: number) => {
     const updatedProgress = {
-      ...saveData.heroProgress,
-      heroes: saveData.heroProgress.heroes.map(hero =>
-        hero.heroId === heroId ? { ...hero, customIndex: newIndex } : hero
+      ...saveData.characterProgress,
+      characters: saveData.characterProgress.characters.map(char =>
+        char.characterId === characterId
+          ? { ...char, customIndex: newIndex }
+          : char
       ),
     };
-    const updated = { ...saveData, heroProgress: updatedProgress };
+    const updated = { ...saveData, characterProgress: updatedProgress };
     setSaveData(updated);
     saveAndNotify(activeSlot, updated);
   };
 
   /**
-   * Updates hero order for multiple heroes at once (for drag-and-drop)
+   * Updates character order for multiple characters at once (for drag-and-drop)
    */
-  const updateHeroOrders = (
-    updates: Array<{ heroId: string; customIndex: number }>
+  const updateCharacterOrders = (
+    updates: Array<{ characterId: string; customIndex: number }>
   ) => {
-    const heroMap = new Map(
-      saveData.heroProgress.heroes.map(h => [h.heroId, h])
+    const characterMap = new Map(
+      saveData.characterProgress.characters.map(c => [c.characterId, c])
     );
-    updates.forEach(({ heroId, customIndex }) => {
-      const hero = heroMap.get(heroId);
-      if (hero) {
-        hero.customIndex = customIndex;
+    updates.forEach(({ characterId, customIndex }) => {
+      const character = characterMap.get(characterId);
+      if (character) {
+        character.customIndex = customIndex;
       }
     });
     const updatedProgress = {
-      ...saveData.heroProgress,
-      heroes: Array.from(heroMap.values()),
+      ...saveData.characterProgress,
+      characters: Array.from(characterMap.values()),
     };
-    const updated = { ...saveData, heroProgress: updatedProgress };
+    const updated = { ...saveData, characterProgress: updatedProgress };
     setSaveData(updated);
     saveAndNotify(activeSlot, updated);
   };
 
   /**
-   * Updates level completion for a hero
+   * Updates level completion for a character
    */
   const updateLevelCompletion = (
-    heroId: string,
+    characterId: string,
     levelId: number,
     completion: Partial<LevelCompletion>
   ) => {
     const updatedProgress = {
-      ...saveData.heroProgress,
-      heroes: saveData.heroProgress.heroes.map(hero => {
-        if (hero.heroId !== heroId) return hero;
+      ...saveData.characterProgress,
+      characters: saveData.characterProgress.characters.map(char => {
+        if (char.characterId !== characterId) return char;
 
-        const existingIndex = hero.levelCompletions.findIndex(
+        const existingIndex = char.levelCompletions.findIndex(
           lc =>
             lc.levelId === levelId && lc.difficulty === completion.difficulty
         );
 
         if (existingIndex >= 0) {
           // Update existing completion
-          const updatedCompletions = [...hero.levelCompletions];
+          const updatedCompletions = [...char.levelCompletions];
           updatedCompletions[existingIndex] = {
             ...updatedCompletions[existingIndex],
             ...completion,
           } as LevelCompletion;
-          return { ...hero, levelCompletions: updatedCompletions };
+          return { ...char, levelCompletions: updatedCompletions };
         } else {
           // Add new completion
           return {
-            ...hero,
+            ...char,
             levelCompletions: [
-              ...hero.levelCompletions,
+              ...char.levelCompletions,
               {
                 levelId,
                 difficulty: completion.difficulty || 'base',
@@ -373,7 +436,7 @@ export function useProgressData() {
         }
       }),
     };
-    const updated = { ...saveData, heroProgress: updatedProgress };
+    const updated = { ...saveData, characterProgress: updatedProgress };
     setSaveData(updated);
     saveAndNotify(activeSlot, updated);
   };
@@ -381,8 +444,12 @@ export function useProgressData() {
   /**
    * Gets progress for a specific hero
    */
-  const getHeroProgress = (heroId: string): HeroProgress | undefined => {
-    return saveData.heroProgress.heroes.find(h => h.heroId === heroId);
+  const getCharacterProgress = (
+    characterId: string
+  ): CharacterProgress | undefined => {
+    return saveData.characterProgress.characters.find(
+      c => c.characterId === characterId
+    );
   };
 
   /**
@@ -415,7 +482,7 @@ export function useProgressData() {
     if (slot < 1 || slot > 3) return;
 
     const emptySave: SaveSlotData = {
-      heroProgress: createInitialData(),
+      characterProgress: createInitialData(),
       lastDifficulty: 'base',
       lastTier: 1, // Default to Normal (tier 1)
       lastModified: Date.now(),
@@ -436,7 +503,7 @@ export function useProgressData() {
    */
   const resetAllProgress = () => {
     const initial: SaveSlotData = {
-      heroProgress: createInitialData(),
+      characterProgress: createInitialData(),
       lastDifficulty: 'base',
       lastTier: 1, // Default to Normal (tier 1)
       lastModified: Date.now(),
@@ -448,7 +515,7 @@ export function useProgressData() {
 
   return {
     // Progress data
-    progressData: saveData.heroProgress,
+    progressData: saveData.characterProgress,
 
     // Current state
     currentDifficulty: saveData.lastDifficulty,
@@ -459,12 +526,12 @@ export function useProgressData() {
     setCurrentDifficulty,
     setCurrentTier,
 
-    // Hero operations
-    updateHeroOrder,
-    updateHeroOrders,
+    // Character operations
+    updateCharacterOrder,
+    updateCharacterOrders,
     updateLevelCompletion,
-    getHeroProgress,
-    getSortedHeroes,
+    getCharacterProgress,
+    getSortedCharacters,
 
     // Save slot operations
     switchSaveSlot,

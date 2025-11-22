@@ -38,9 +38,9 @@ export interface Character {
   isUnlocked?: boolean; // For tracking unlock status
 }
 
-import charactersDataJson from '../../data/latest/characters_data.json';
+import charactersDataJson from './json/characters_data.json' assert { type: 'json' };
 
-const charactersData = charactersDataJson as unknown as CharacterData[];
+const charactersData = charactersDataJson as CharacterData[];
 
 /**
  * Converts raw character data from game database to normalized Character type

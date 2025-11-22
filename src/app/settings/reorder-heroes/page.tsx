@@ -131,7 +131,7 @@ function SortableHeroItem({ hero, index, isDragging }: SortableHeroItemProps) {
 }
 
 export default function ReorderHeroesPage() {
-  const { getSortedHeroes, updateHeroOrders } = useProgressData();
+  const { getSortedCharacters, updateCharacterOrders } = useProgressData();
   const [heroes, setHeroes] = useState<Character[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -158,13 +158,13 @@ export default function ReorderHeroesPage() {
       return;
     }
 
-    const sortedProgress = getSortedHeroes();
+    const sortedProgress = getSortedCharacters();
     const allCharacters = getAllCharacters();
     const sortedHeroes = sortedProgress
-      .map(progress => allCharacters.find(c => c.id === progress.heroId))
+      .map(progress => allCharacters.find(c => c.id === progress.characterId))
       .filter((h): h is Character => h !== undefined);
     setHeroes(sortedHeroes);
-  }, [getSortedHeroes, isUpdating]);
+  }, [getSortedCharacters, isUpdating]);
 
   const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.id as string);
@@ -188,10 +188,10 @@ export default function ReorderHeroesPage() {
       // Defer the save until after render completes
       setTimeout(() => {
         const updates = newHeroes.map((hero, index) => ({
-          heroId: hero.id,
+          characterId: hero.id,
           customIndex: index,
         }));
-        updateHeroOrders(updates);
+        updateCharacterOrders(updates);
       }, 0);
     }
 

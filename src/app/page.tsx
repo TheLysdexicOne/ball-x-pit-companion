@@ -84,10 +84,7 @@ export default function Home() {
           <Link href="/encyclopedia/buildings" className="btn-body-primary">
             Town <br /> Buildings
           </Link>
-          <Link
-            href="/encyclopedia/town/harvesting"
-            className="btn-body-primary"
-          >
+          <Link href="/encyclopedia/harvesting" className="btn-body-primary">
             Town <br /> Harvesting
           </Link>
         </div>

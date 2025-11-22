@@ -49,7 +49,7 @@ export default function Nav({ pageTitle }: NavProps) {
       '/encyclopedia/levels': 'Encyclopedia | Pit Levels',
       '/encyclopedia/enemies': 'Encyclopedia | Pit Enemies',
       '/encyclopedia/buildings': 'Encyclopedia | Town Buildings',
-      '/encyclopedia/town/harvesting': 'Encyclopedia | Town Harvesting',
+      '/encyclopedia/harvesting': 'Encyclopedia | Town Harvesting',
     };
 
     return titleMap[pathname] || 'BALL X PIT';
@@ -93,7 +93,7 @@ export default function Nav({ pageTitle }: NavProps) {
           isSubHeader: true,
           children: [
             { label: 'Buildings', href: '/encyclopedia/buildings' },
-            { label: 'Harvesting', href: '/encyclopedia/town/harvesting' },
+            { label: 'Harvesting', href: '/encyclopedia/harvesting' },
           ],
         },
       ],

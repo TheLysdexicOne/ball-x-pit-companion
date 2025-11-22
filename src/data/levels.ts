@@ -1,7 +1,7 @@
 // Level data utilities using extracted game data
 
 import type { Level, LevelData } from '@/types/level';
-import levelsDataJson from '../../data/latest/levels_data.json';
+import levelsDataJson from './json/levels_data.json' assert { type: 'json' };
 
 const levelsData = levelsDataJson as unknown as LevelData[];
 

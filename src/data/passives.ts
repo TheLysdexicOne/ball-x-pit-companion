@@ -42,7 +42,7 @@ export interface Passive {
   iconColorList?: string[];
 }
 
-import passivesDataJson from '../../data/latest/passives_data.json';
+import passivesDataJson from './json/passives_data.json' assert { type: 'json' };
 
 const passivesData = passivesDataJson as unknown as PassiveData[];
 

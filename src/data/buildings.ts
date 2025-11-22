@@ -68,7 +68,7 @@ export interface Building {
   numTiles: number;
 }
 
-import buildingsDataJson from '../../data/latest/buildings_data.json';
+import buildingsDataJson from './json/buildings_data.json' assert { type: 'json' };
 
 const buildingsData = buildingsDataJson as unknown as BuildingData[];
 
