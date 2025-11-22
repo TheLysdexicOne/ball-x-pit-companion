@@ -39,7 +39,11 @@ export default function RootLayout({
       </head>
       <body className="bg-main">
         <Nav />
-        <main className="pt-20 lg:ml-64">{children}</main>
+        <main className="pt-24 lg:pl-64">
+          <div className="mx-auto min-h-screen max-w-6xl p-4 sm:p-8">
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );

@@ -48,7 +48,7 @@
       {
         "Name": "Dark",
         "Slug": "hupg_dark",
-        "UnlockType": "Hero",
+        "UnlockType": "Ball",
         "TypeId": "kDark"
       },
       {
@@ -184,12 +184,6 @@
     ],
     "Unlocks": [
       {
-        "Name": "???",
-        "Slug": "hupg_h73",
-        "UnlockType": "Hero",
-        "TypeId": "kH73"
-      },
-      {
         "Name": "Golden Bull",
         "Slug": "pass_goldenbull",
         "UnlockType": "Passive",
@@ -311,12 +305,6 @@
       "pet_tortoise"
     ],
     "Unlocks": [
-      {
-        "Name": "???",
-        "Slug": "hupg_h65",
-        "UnlockType": "Hero",
-        "TypeId": "kH65"
-      },
       {
         "Name": "Hand Mirror",
         "Slug": "pass_handmirror",
@@ -445,12 +433,6 @@
     ],
     "Unlocks": [
       {
-        "Name": "???",
-        "Slug": "hupg_h80",
-        "UnlockType": "Hero",
-        "TypeId": "kH80"
-      },
-      {
         "Name": "Gemspring",
         "Slug": "pass_gemspring",
         "UnlockType": "Passive",
@@ -573,7 +555,7 @@
       {
         "Name": "Charm",
         "Slug": "hupg_charm",
-        "UnlockType": "Hero",
+        "UnlockType": "Ball",
         "TypeId": "kCharm"
       },
       {
@@ -778,7 +760,7 @@
       {
         "Name": "Cell",
         "Slug": "hupg_cell",
-        "UnlockType": "Hero",
+        "UnlockType": "Ball",
         "TypeId": "kCell"
       },
       {
@@ -894,7 +876,7 @@
       {
         "Name": "Light",
         "Slug": "hupg_light",
-        "UnlockType": "Hero",
+        "UnlockType": "Ball",
         "TypeId": "kLight"
       },
       {

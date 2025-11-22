@@ -11,6 +11,7 @@ export interface BuildingData {
   Name: string;
   Slug: string;
   Description: string;
+  ShortDescription: string;
   Category: string;
   Cost: BuildingCost;
   Stats: { [key: string]: number | string };
@@ -24,6 +25,7 @@ export interface Building {
   name: string;
   slug: string;
   description: string;
+  shortDescription: string;
   category: string;
   cost: BuildingCost;
   stats: { [key: string]: number | string };
@@ -45,6 +47,7 @@ function normalizeBuilding(data: BuildingData): Building {
     name: data.Name,
     slug: data.Slug,
     description: data.Description,
+    shortDescription: data.ShortDescription,
     category: data.Category,
     cost: data.Cost,
     stats: data.Stats,

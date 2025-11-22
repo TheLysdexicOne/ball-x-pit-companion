@@ -201,40 +201,38 @@ export default function ReorderHeroesPage() {
   const activeHero = activeId ? heroes.find(h => h.id === activeId) : null;
 
   return (
-    <div className="flex flex-col items-center justify-center p-2 sm:p-8">
-      <div className="flex w-full max-w-4xl flex-col">
-        <div className="card-primary">
-          <div className="card-text-box m-0 font-pixel text-sm uppercase tracking-widest text-secondary sm:text-base">
-            Drag characters up or down to change the order they appear.
-          </div>
+    <div className="flex w-full max-w-4xl flex-col items-center justify-center">
+      <div className="card-primary w-full">
+        <div className="card-text-box m-0 font-pixel text-sm uppercase tracking-widest text-secondary sm:text-base">
+          Drag characters up or down to change the order they appear.
         </div>
-        <div className="card-primary">
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
+      </div>
+      <div className="card-primary w-full">
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext
+            items={heroes.map(h => h.id)}
+            strategy={verticalListSortingStrategy}
           >
-            <SortableContext
-              items={heroes.map(h => h.id)}
-              strategy={verticalListSortingStrategy}
-            >
-              <ul className="flex flex-col gap-2">
-                {heroes.map((hero, index) => (
-                  <SortableHeroItem
-                    key={hero.id}
-                    hero={hero}
-                    index={index}
-                    isDragging={activeId === hero.id}
-                  />
-                ))}
-              </ul>
-            </SortableContext>
-            <DragOverlay>
-              {activeHero ? <HeroItem hero={activeHero} /> : null}
-            </DragOverlay>
-          </DndContext>
-        </div>
+            <ul className="flex flex-col gap-2">
+              {heroes.map((hero, index) => (
+                <SortableHeroItem
+                  key={hero.id}
+                  hero={hero}
+                  index={index}
+                  isDragging={activeId === hero.id}
+                />
+              ))}
+            </ul>
+          </SortableContext>
+          <DragOverlay>
+            {activeHero ? <HeroItem hero={activeHero} /> : null}
+          </DragOverlay>
+        </DndContext>
       </div>
     </div>
   );

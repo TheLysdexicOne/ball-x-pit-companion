@@ -133,7 +133,7 @@ export default function Passives() {
   }
 
   return (
-    <div className="mx-auto min-h-screen max-w-6xl p-4 pt-0 sm:p-8">
+    <>
       {/* Controls Section */}
       <div className="card-primary my-4 space-y-3">
         {/* View Toggle */}
@@ -333,6 +333,6 @@ export default function Passives() {
           No passives found matching your criteria.
         </div>
       )}
-    </div>
+    </>
   );
 }

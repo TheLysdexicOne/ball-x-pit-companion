@@ -6,6 +6,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
     "Description": "Increase {[stat_icon]} Speed scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Speed gets higher, related stats like Move Speed will improve faster)",
+    "ShortDescription": "Speed Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -77,6 +78,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
     "Description": "Increase {[stat_icon]} Strength scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Strength gets higher, related stats like Base Damage will improve faster)",
+    "ShortDescription": "Strength Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -146,6 +148,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
     "Description": "Increase {[stat_icon]} Endurance scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Endurance gets higher, related stats like HP will improve faster)",
+    "ShortDescription": "Endurance Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -217,6 +220,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "All characters gain +{[bonus]} bonus {[icon]} Leadership. Affects how many baby balls you have and how much damage they do.",
+    "ShortDescription": "Leadership Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -290,6 +294,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Increase XP gained by {[bonus]}%",
+    "ShortDescription": "XP Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "Increase XP bonus to {[bonus]}%",
     "BuildCost": {
@@ -342,6 +347,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
     "Description": "Increase {[stat_icon]} Intelligence scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Intelligence gets higher, related stats like AOE Power will improve faster)",
+    "ShortDescription": "Intelligence Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -413,6 +419,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
     "Description": "Increase {[stat_icon]} Dexterity scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Dexterity gets higher, related stats like Reload Length will improve faster)",
+    "ShortDescription": "Dexterity Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -483,6 +490,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatBonus",
     "Description": "Harvest to gain <sprite name=wheat> Wheat\n(Max: {[total]})",
+    "ShortDescription": "Wheat",
     "BuildDescription": "A field to harvest <sprite name=wheat> wheat. ",
     "UpgradeDescription": "Increase regrowth rate and <sprite name=wheat> Wheat capacity to {[total]}",
     "BuildCost": {
@@ -533,6 +541,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatBonus",
     "Description": "Harvest to gain <sprite name=wood> Wood\n(Max: {[total]})",
+    "ShortDescription": "Wood",
     "BuildDescription": "A field to harvest <sprite name=wood> wood.",
     "UpgradeDescription": "Increase regrowth rate and <sprite name=wood> Wood capacity to {[total]}",
     "BuildCost": {
@@ -585,6 +594,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "All characters gain +{[bonus]} bonus {[icon]} Intelligence. Affects area of effect (AOE) and passive ability damage.",
+    "ShortDescription": "Intelligence Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -660,6 +670,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
     "Description": "Increase {[stat_icon]} Leadership scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Leadership gets higher, related stats like Baby Ball Damage will improve faster)",
+    "ShortDescription": "Leadership Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -731,6 +742,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "All characters gain +{[bonus]} bonus {[icon]} Speed. Affects your move speed and ball speed.",
+    "ShortDescription": "Speed Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -806,6 +818,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "All characters gain +{[bonus]} bonus {[icon]} Dexterity. Affects fire rate, reload time, and critical hit chance.",
+    "ShortDescription": "Dexterity Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -881,6 +894,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "All characters gain +{[bonus]} bonus {[icon]} Strength. Affects the damage that special balls deal.",
+    "ShortDescription": "Strength Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -956,6 +970,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "All characters gain +{[bonus]} bonus {[icon]} Endurance. Affects your max health.",
+    "ShortDescription": "Endurance Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1031,6 +1046,7 @@
     "Category": "kEconomy",
     "SubCategory": "kNum",
     "Description": "Unlocks the ability to exchange gold for other resources",
+    "ShortDescription": "Resource Exchange",
     "BuildDescription": "",
     "UpgradeDescription": "Improve exchange rates",
     "BuildCost": {
@@ -1075,6 +1091,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Increase starter ball level to {[bonus]}",
+    "ShortDescription": "Starter Ball Level",
     "BuildDescription": "",
     "UpgradeDescription": "Increase starter ball level to {[bonus]}",
     "BuildCost": {
@@ -1121,6 +1138,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Once per battle when you die, revive with {[bonus]}% health and kill all nearby enemies",
+    "ShortDescription": "Revive on Death",
     "BuildDescription": "",
     "UpgradeDescription": "Increase revived health to {[bonus]}%",
     "BuildCost": {
@@ -1175,6 +1193,7 @@
     "Category": "kEconomy",
     "SubCategory": "kNum",
     "Description": "Spend gold to harvest more than once immediately",
+    "ShortDescription": "Multiple Harvest",
     "BuildDescription": "",
     "UpgradeDescription": "Reduce spa cost",
     "BuildCost": {
@@ -1222,6 +1241,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Add 1 ball slot",
+    "ShortDescription": "Add Ball Slot",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1261,6 +1281,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Add 1 passive slot",
+    "ShortDescription": "Add Passive Slot",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1299,6 +1320,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatScaling",
     "Description": "Assign a worker here to mine <sprite name=gold>. When this building is bounced on, they mine 1-{[bonus]} <sprite name=gold>  (Up to {[limit]} times per harvest).",
+    "ShortDescription": "Gold Mining",
     "BuildDescription": "",
     "UpgradeDescription": "Increase <sprite name=gold> mined per bounce to 1-{[bonus]}.",
     "BuildCost": {
@@ -1354,6 +1376,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Increase gold found in battles by {[bonus]}%",
+    "ShortDescription": "Gold Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "Increase gold bonus",
     "BuildCost": {
@@ -1406,6 +1429,7 @@
     "Category": "kEconomy",
     "SubCategory": "kNum",
     "Description": "Lets workers gather up to 24 hours worth of resources while the game is closed. Resources are gathered {[bonus]}% slower this way.",
+    "ShortDescription": "Offline Resource Gathering",
     "BuildDescription": "",
     "UpgradeDescription": "Improve offline gathering speed.",
     "BuildCost": {
@@ -1456,6 +1480,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "Gain +{[bonus]} bonus {[icon]} Endurance. Can be upgraded infinitely.",
+    "ShortDescription": "Endurance Bonus (Infinite)",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1497,6 +1522,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "Gain +{[bonus]} bonus {[icon]} Strength. Can be upgraded infinitely.",
+    "ShortDescription": "Strength Bonus (Infinite)",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1538,6 +1564,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "Gain +{[bonus]} bonus {[icon]} Leadership. Can be upgraded infinitely.",
+    "ShortDescription": "Leadership Bonus (Infinite)",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1579,6 +1606,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "Gain +{[bonus]} bonus {[icon]} Speed. Can be upgraded infinitely.",
+    "ShortDescription": "Speed Bonus (Infinite)",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1620,6 +1648,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "Gain +{[bonus]} bonus {[icon]} Dexterity. Can be upgraded infinitely.",
+    "ShortDescription": "Dexterity Bonus (Infinite)",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1661,6 +1690,7 @@
     "Category": "kWarfare",
     "SubCategory": "kStatBonus",
     "Description": "Gain +{[bonus]} bonus {[icon]} Intelligence. Can be upgraded infinitely.",
+    "ShortDescription": "Intelligence Bonus (Infinite)",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1702,6 +1732,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatBonus",
     "Description": "Harvest to gain <sprite name=stone> stone\n(Max: {[total]})",
+    "ShortDescription": "Stone",
     "BuildDescription": "A big boulder to harvest <sprite name=stone> stone.",
     "UpgradeDescription": "Increase regrowth rate and <sprite name=stone> stone capacity to {[total]}",
     "BuildCost": {
@@ -1754,6 +1785,7 @@
     "Category": "kWarfare",
     "SubCategory": "kLevelCompletion",
     "Description": "Gain +{[each]} Status Effect Power for each character you've completed the BONExYARD with. Each Fast tier (or New Game + level) completed on top of that adds a +{[fasteach]} bonus per character.",
+    "ShortDescription": "Status Effect Power Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1795,6 +1827,7 @@
     "Category": "kWarfare",
     "SubCategory": "kLevelCompletion",
     "Description": "Gain +{[each]} AOE Power for each character you've completed the SNOWYxSHORES with. Each Fast tier (or New Game + level) completed on top of that adds a +{[fasteach]} bonus per character.",
+    "ShortDescription": "AOE Power Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1836,6 +1869,7 @@
     "Category": "kWarfare",
     "SubCategory": "kLevelCompletion",
     "Description": "Gain +{[each]} Ball Speed for each character you've completed the GORYxGRASSLANDS with. Each Fast tier (or New Game + level) completed on top of that adds a +{[fasteach]} bonus per character.",
+    "ShortDescription": "Ball Speed Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1877,6 +1911,7 @@
     "Category": "kWarfare",
     "SubCategory": "kLevelCompletion",
     "Description": "Gain +{[each]} Baby Ball Damage for each character you've completed the SMOLDERINGxDEPTHS with. Each Fast tier  (or New Game + level) completed on top of that adds a +{[fasteach]} bonus per character.",
+    "ShortDescription": "Baby Ball Damage Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1918,6 +1953,7 @@
     "Category": "kWarfare",
     "SubCategory": "kLevelCompletion",
     "Description": "Gain +{[each]} Passive Power for each character you've completed the HEAVENLYxGATES with. Each Fast tier (or New Game + level) completed on top of that adds a +{[fasteach]} bonus per character.",
+    "ShortDescription": "Passive Power Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -1959,6 +1995,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatScaling",
     "Description": "Assign a character here to automatically send them out to harvest in a preset direction every {[time]} minutes. Worker can harvest for {[harvest_length]} seconds before returning.",
+    "ShortDescription": "Automatic Harvesting",
     "BuildDescription": "",
     "UpgradeDescription": "Reduce cooldown to {[time]} minutes and increase harvest length to {[harvest_length]}.",
     "BuildCost": {
@@ -2016,6 +2053,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Begin each battle with a choice of an extra ball",
+    "ShortDescription": "Starter Ball Choice",
     "BuildDescription": "",
     "UpgradeDescription": "Bonus ball starts at level {[bonus]}",
     "BuildCost": {
@@ -2062,6 +2100,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Begin each battle with the choice of a passive",
+    "ShortDescription": "Starter Passive Choice",
     "BuildDescription": "",
     "UpgradeDescription": "Bonus passive starts at level {[bonus]}",
     "BuildCost": {
@@ -2108,6 +2147,7 @@
     "Category": "kEconomy",
     "SubCategory": "kMisc",
     "Description": "Increase the harvest clock by {[bonus]} seconds",
+    "ShortDescription": "Harvest Clock Increase",
     "BuildDescription": "",
     "UpgradeDescription": "Increase the harvest clock by {[bonus]} seconds",
     "BuildCost": {
@@ -2160,6 +2200,7 @@
     "Category": "kEconomy",
     "SubCategory": "kMisc",
     "Description": "Increase the movement speed during harvests by {[bonus]}%",
+    "ShortDescription": "Harvest Movement Speed Increase",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2212,6 +2253,7 @@
     "Category": "kWarfare",
     "SubCategory": "kLevelCompletion",
     "Description": "Gain +{[each]} HP for each character you've completed the SHROOMxFOREST with. Each Fast tier (or New Game + level) completed on top of that adds a +{[fasteach]} bonus per character.",
+    "ShortDescription": "HP Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2253,6 +2295,7 @@
     "Category": "kWarfare",
     "SubCategory": "kLevelCompletion",
     "Description": "Gain +{[each]}% critical hit chance for each character you've completed the LIMINALxDESERT with. Each Fast tier (or New Game + level) completed on top of that adds a +{[fasteach]} bonus per character.",
+    "ShortDescription": "Critical Hit Chance Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2294,6 +2337,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Allows you to bring two characters into a run, combining their abilities.",
+    "ShortDescription": "Character Combination",
     "BuildDescription": "",
     "UpgradeDescription": "Secondary character's ball starts at level {[bonus]}",
     "BuildCost": {
@@ -2340,6 +2384,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Increase pickup range by {[bonus]} tiles.",
+    "ShortDescription": "Pickup Range Increase",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2392,6 +2437,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Fusion reactors contain a minimum of {[bonus]} free upgrades.",
+    "ShortDescription": "Extra Upgrades in Fusion Reactors",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2440,6 +2486,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Gain {[bonus]} free level up re-rolls per battle.",
+    "ShortDescription": "Free Level Up Re-rolls",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2492,6 +2539,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Reduce level up reroll cost by {[bonus]}%.",
+    "ShortDescription": "Level Up Re-roll Cost Reduction",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2542,6 +2590,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Add a {[bonus]}% chance to get an extra upgrade point when leveling up.",
+    "ShortDescription": "Extra Upgrade Point Chance",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2594,6 +2643,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "New balls all start at level 2",
+    "ShortDescription": "New Balls Start at Level 2",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2631,6 +2681,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "New passives all start at level 2",
+    "ShortDescription": "New Passives Start at Level 2",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2667,6 +2718,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Increase the number of upgrade choices when leveling up to 4.",
+    "ShortDescription": "Upgrade Choices Increase",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2705,6 +2757,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatScaling",
     "Description": "Assign a character here to harvest up to {[num]} <sprite name=wheat> from each adjacent wheat field every {[time]} minutes.",
+    "ShortDescription": "Wheat Harvesting",
     "BuildDescription": "",
     "UpgradeDescription": "Reduce cooldown to {[time]} minutes and gather up to {[num]} wheat from each nearby wheat field each harvest.",
     "BuildCost": {
@@ -2759,6 +2812,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatScaling",
     "Description": "Assign a character here to harvest up to {[num]} <sprite name=wood> from each adjacent forest every {[time]} minutes. ",
+    "ShortDescription": "Wood Harvesting",
     "BuildDescription": "",
     "UpgradeDescription": "Reduce cooldown to {[time]} minutes and gather up to {[num]} wood from each nearby forest each harvest.",
     "BuildCost": {
@@ -2814,6 +2868,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatScaling",
     "Description": "Assign a character here to harvest up to {[num]} <sprite name=stone> from each adjacent boulder every {[time]} minutes.",
+    "ShortDescription": "Stone Harvesting",
     "BuildDescription": "",
     "UpgradeDescription": "Reduce cooldown to {[time]} minutes and gather up to {[num]} stone from each nearby boulder each harvest.",
     "BuildCost": {
@@ -2869,6 +2924,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Send characters to complete levels on their own.",
+    "ShortDescription": "Auto Battle (Passive)",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -2907,6 +2963,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Repentant.",
+    "ShortDescription": "House for The Repentant",
     "BuildDescription": "",
     "UpgradeDescription": "Each harvest, the first {[num]} workers that bounce on this building gain {[bonus]}% movement speed.",
     "BuildCost": {
@@ -2941,6 +2998,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Itchy Finger.",
+    "ShortDescription": "House for The Itchy Finger",
     "BuildDescription": "",
     "UpgradeDescription": "Drop 1 bonus <sprite name=gold> for every {[bonus]} enemies killed in a level.",
     "BuildCost": {
@@ -2973,6 +3031,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Embedded.",
+    "ShortDescription": "House for The Embedded",
     "BuildDescription": "",
     "UpgradeDescription": "Residents of nearby houses gain {[bonus]}% bonus experience.",
     "BuildCost": {
@@ -3007,6 +3066,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Spendthrift",
+    "ShortDescription": "House for The Spendthrift",
     "BuildDescription": "",
     "UpgradeDescription": "For each nearby building, passively gain 1 <sprite name=gold> every minute.",
     "BuildCost": {
@@ -3043,6 +3103,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Juggler.",
+    "ShortDescription": "House for The Juggler",
     "BuildDescription": "",
     "UpgradeDescription": "Harvest <sprite name=stone> from adjacent boulders every {[time]} minutes.",
     "BuildCost": {
@@ -3078,6 +3139,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Cohabitants.",
+    "ShortDescription": "House for The Cohabitants",
     "BuildDescription": "",
     "UpgradeDescription": "Harvest <sprite name=wood> from adjacent forests every {[time]} minutes.",
     "BuildCost": {
@@ -3113,6 +3175,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Cogitator.",
+    "ShortDescription": "House for The Cogitator",
     "BuildDescription": "",
     "UpgradeDescription": "Nearby wheat fields regrow {[bonus]}% faster.",
     "BuildCost": {
@@ -3147,6 +3210,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Shade.",
+    "ShortDescription": "House for The Shade",
     "BuildDescription": "",
     "UpgradeDescription": "Gain {[bonus]} <sprite name=gold> whenever a character dies in a level.",
     "BuildCost": {
@@ -3181,6 +3245,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Shieldbearer.",
+    "ShortDescription": "House for The Shieldbearer",
     "BuildDescription": "",
     "UpgradeDescription": "Bouncing on this building applies +{[bonus]} build points to all nearby scaffolds.",
     "BuildCost": {
@@ -3215,6 +3280,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Tactician.",
+    "ShortDescription": "House for The Tactician",
     "BuildDescription": "",
     "UpgradeDescription": "Nearby Stat Bonus buildings provide an additional +1 bonus \n(<sprite name=stat_str> <sprite name=stat_dex> <sprite name=stat_int> <sprite name=stat_spd> <sprite name=stat_end> <sprite name=stat_ldr>).",
     "BuildCost": {
@@ -3250,6 +3316,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Radical.",
+    "ShortDescription": "House for The Radical",
     "BuildDescription": "",
     "UpgradeDescription": "Nearby forests regrow {[bonus]}% faster.",
     "BuildCost": {
@@ -3285,6 +3352,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Empty Nester.",
+    "ShortDescription": "House for The Empty Nester",
     "BuildDescription": "",
     "UpgradeDescription": "Harvest <sprite name=wheat> from adjacent wheat fields every {[time]} minutes.",
     "BuildCost": {
@@ -3320,6 +3388,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Makeshift Sisyphus.",
+    "ShortDescription": "House for The Makeshift Sisyphus",
     "BuildDescription": "",
     "UpgradeDescription": "Nearby boulders regrow {[bonus]}% faster.",
     "BuildCost": {
@@ -3354,6 +3423,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Flagellant.",
+    "ShortDescription": "House for The Flagellant",
     "BuildDescription": "",
     "UpgradeDescription": "Bouncing off this building increases the harvest clock by {[bonus]} seconds (Up to 100 times per harvest).",
     "BuildCost": {
@@ -3390,6 +3460,7 @@
     "Category": "kHousing",
     "SubCategory": "kStatBonus",
     "Description": "A house for The Physicist.",
+    "ShortDescription": "House for The Physicist",
     "BuildDescription": "",
     "UpgradeDescription": "Gain {[bonus]} extra <sprite name=gold> when completing a level.",
     "BuildCost": {
@@ -3426,6 +3497,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatBonus",
     "Description": "Harvest to gain <sprite name=wheat> Wheat\n(Max: {[total]})",
+    "ShortDescription": "Wheat",
     "BuildDescription": "A dense field of <sprite name=wheat> wheat with higher regrowth rate and capacity.",
     "UpgradeDescription": "Increase regrowth rate and <sprite name=wheat> Wheat capacity to {[total]}",
     "BuildCost": {
@@ -3478,6 +3550,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatBonus",
     "Description": "Harvest to gain <sprite name=wood> Wood\n(Max: {[total]})",
+    "ShortDescription": "Wood",
     "BuildDescription": "A huge tree from which you can gather <sprite name=wood> wood with a high regrowth rate and capacity.",
     "UpgradeDescription": "Increase regrowth rate and<sprite name=wood> Wood capacity to {[total]}",
     "BuildCost": {
@@ -3530,6 +3603,7 @@
     "Category": "kEconomy",
     "SubCategory": "kStatBonus",
     "Description": "Harvest to gain <sprite name=stone> stone\n(Max: {[total]})",
+    "ShortDescription": "Stone",
     "BuildDescription": "A big slab of granite from which you can gather <sprite name=stone> stone with a high regrowth rate and capacity.",
     "UpgradeDescription": "Increase regrowth rate and <sprite name=stone> stone capacity to {[total]}",
     "BuildCost": {
@@ -3582,6 +3656,7 @@
     "Category": "kWarfare",
     "SubCategory": "kLevelCompletion",
     "Description": "Gain +{[each]} Base Damage for each character you've completed the VASTxVOID with. Each Fast tier (or New Game + level) completed on top of that adds a +{[fasteach]} bonus per character.",
+    "ShortDescription": "Base Damage Bonus",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {
@@ -3623,6 +3698,7 @@
     "Category": "kWarfare",
     "SubCategory": "kMisc",
     "Description": "Add the ability to banish upgrades when leveling up, up to {[bonus]} times",
+    "ShortDescription": "Banish Upgrades Ability",
     "BuildDescription": "",
     "UpgradeDescription": "",
     "BuildCost": {

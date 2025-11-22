@@ -3,6 +3,8 @@
 import CompletableIcon from '@/components/CompletableIcon';
 import CharacterIcon from '@/components/CharacterIcon';
 import { getAllCharacters, type Character } from '@/data/characters';
+import { getAllLevels } from '@/data/levels';
+import type { Level } from '@/types/level';
 import { useProgressData } from '@/hooks/useProgressData';
 import { getImagePath } from '@/utils/basePath';
 import { useState, useEffect } from 'react';
@@ -11,48 +13,20 @@ import type { DifficultyTier, FastTierCompletion } from '@/types/heroProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
-const LEVELS: { id: number; label: string; backgroundSrc?: string }[] = [
-  {
-    id: 1,
-    label: 'The Bone Yard',
-    backgroundSrc: '/images/levels/01-bone-yard.png',
-  },
-  {
-    id: 2,
-    label: 'The Snowy Shores',
-    backgroundSrc: '/images/levels/02-snowy-shores.png',
-  },
-  {
-    id: 3,
-    label: 'The Liminal Desert',
-    backgroundSrc: '/images/levels/03-liminal-desert.png',
-  },
-  {
-    id: 4,
-    label: 'The Fungal Forest',
-    backgroundSrc: '/images/levels/04-fungal-forest.png',
-  },
-  {
-    id: 5,
-    label: 'The Gory Grasslands',
-    backgroundSrc: '/images/levels/05-gory-grasslands.png',
-  },
-  {
-    id: 6,
-    label: 'The Smoldering Depths',
-    backgroundSrc: '/images/levels/06-smoldering-depths.png',
-  },
-  {
-    id: 7,
-    label: 'The Heavenly Gates',
-    backgroundSrc: '/images/levels/07-heavenly-gates.png',
-  },
-  {
-    id: 8,
-    label: 'The Vast Void',
-    backgroundSrc: '/images/levels/08-vast-void.png',
-  },
-];
+// Map level IDs to background images
+const getBackgroundForLevel = (levelId: number): string | null => {
+  const backgrounds: { [key: number]: string } = {
+    1: '/images/levels/01-bone-yard.png',
+    2: '/images/levels/02-snowy-shores.png',
+    3: '/images/levels/03-liminal-desert.png',
+    4: '/images/levels/04-fungal-forest.png',
+    5: '/images/levels/05-gory-grasslands.png',
+    6: '/images/levels/06-smoldering-depths.png',
+    7: '/images/levels/07-heavenly-gates.png',
+    8: '/images/levels/08-vast-void.png',
+  };
+  return backgrounds[levelId] || null;
+};
 
 // Difficulty tier options
 const DIFFICULTY_TIERS: { value: DifficultyTier; label: string }[] = [
@@ -95,10 +69,12 @@ export default function Home() {
     setCurrentTier,
   } = useProgressData();
   const [sortedCharacters, setSortedCharacters] = useState<Character[]>([]);
+  const [levels, setLevels] = useState<Level[]>([]);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+    setLevels(getAllLevels());
   }, []);
 
   useEffect(() => {
@@ -183,131 +159,129 @@ export default function Home() {
     FAST_TIERS.find(tier => tier.value === currentTier)?.label || 'Normal';
 
   return (
-    <div className="flex flex-col items-center justify-center p-8">
-      <div className="flex w-full max-w-4xl flex-col">
-        <div className="mb-4 grid gap-4 sm:grid-cols-2">
-          <div className="btn-body-secondary relative flex min-h-[48px] items-center justify-center px-6 py-2 sm:px-10">
-            {isClient && currentDifficulty !== DIFFICULTY_TIERS[0].value && (
+    <div className="flex w-full flex-col items-center justify-center">
+      <div className="mb-4 grid w-full gap-4 sm:grid-cols-2">
+        <div className="btn-body-secondary relative flex min-h-[48px] items-center justify-center px-6 py-2 sm:px-10">
+          {isClient && currentDifficulty !== DIFFICULTY_TIERS[0].value && (
+            <button
+              className="absolute left-4 text-3xl text-secondary transition-colors sm:left-6 sm:text-4xl"
+              onClick={() => navigateDifficulty('prev')}
+              aria-label="Previous difficulty tier"
+            >
+              <FontAwesomeIcon icon={faCaretLeft} />
+            </button>
+          )}
+          <h1 className="select-none text-center font-pixel text-2xl tracking-widest text-secondary sm:text-3xl lg:text-4xl">
+            {isClient ? currentDifficultyLabel : 'Base Level'}
+          </h1>
+          {isClient &&
+            currentDifficulty !==
+              DIFFICULTY_TIERS[DIFFICULTY_TIERS.length - 1].value && (
               <button
-                className="absolute left-4 text-3xl text-secondary transition-colors sm:left-6 sm:text-4xl"
-                onClick={() => navigateDifficulty('prev')}
-                aria-label="Previous difficulty tier"
+                className="absolute right-4 text-3xl text-secondary transition-colors sm:right-6 sm:text-4xl"
+                onClick={() => navigateDifficulty('next')}
+                aria-label="Next difficulty tier"
               >
-                <FontAwesomeIcon icon={faCaretLeft} />
+                <FontAwesomeIcon icon={faCaretRight} />
               </button>
             )}
-            <h1 className="select-none text-center font-pixel text-2xl tracking-widest text-secondary sm:text-3xl lg:text-4xl">
-              {isClient ? currentDifficultyLabel : 'Base Level'}
-            </h1>
-            {isClient &&
-              currentDifficulty !==
-                DIFFICULTY_TIERS[DIFFICULTY_TIERS.length - 1].value && (
-                <button
-                  className="absolute right-4 text-3xl text-secondary transition-colors sm:right-6 sm:text-4xl"
-                  onClick={() => navigateDifficulty('next')}
-                  aria-label="Next difficulty tier"
-                >
-                  <FontAwesomeIcon icon={faCaretRight} />
-                </button>
-              )}
-          </div>
-          <div className="btn-body-secondary relative flex min-h-[48px] items-center justify-center px-6 py-2 sm:px-10">
-            {isClient && currentTier !== FAST_TIERS[0].value && (
-              <button
-                className="absolute left-4 text-3xl text-secondary transition-colors sm:left-6 sm:text-4xl"
-                onClick={() => navigateFastTier('prev')}
-                aria-label="Previous fast tier"
-              >
-                <FontAwesomeIcon icon={faCaretLeft} />
-              </button>
-            )}
-            <h1 className="select-none text-center font-pixel text-2xl tracking-widest text-secondary sm:text-3xl lg:text-4xl">
-              {isClient ? currentFastTierLabel : 'Normal'}
-            </h1>
-            {isClient &&
-              currentTier !== FAST_TIERS[FAST_TIERS.length - 1].value && (
-                <button
-                  className="absolute right-4 text-3xl text-secondary transition-colors sm:right-6 sm:text-4xl"
-                  onClick={() => navigateFastTier('next')}
-                  aria-label="Next fast tier"
-                >
-                  <FontAwesomeIcon icon={faCaretRight} />
-                </button>
-              )}
-          </div>
         </div>
-        <div className="space-y-4">
-          {LEVELS.map(level => {
-            const backgroundUrl = level.backgroundSrc
-              ? getImagePath(level.backgroundSrc)
-              : null;
-
-            return (
-              <section
-                key={level.id}
-                className="relative overflow-hidden rounded-xl border-2 border-primary shadow-lg backdrop-blur"
+        <div className="btn-body-secondary relative flex min-h-[48px] items-center justify-center px-6 py-2 sm:px-10">
+          {isClient && currentTier !== FAST_TIERS[0].value && (
+            <button
+              className="absolute left-4 text-3xl text-secondary transition-colors sm:left-6 sm:text-4xl"
+              onClick={() => navigateFastTier('prev')}
+              aria-label="Previous fast tier"
+            >
+              <FontAwesomeIcon icon={faCaretLeft} />
+            </button>
+          )}
+          <h1 className="select-none text-center font-pixel text-2xl tracking-widest text-secondary sm:text-3xl lg:text-4xl">
+            {isClient ? currentFastTierLabel : 'Normal'}
+          </h1>
+          {isClient &&
+            currentTier !== FAST_TIERS[FAST_TIERS.length - 1].value && (
+              <button
+                className="absolute right-4 text-3xl text-secondary transition-colors sm:right-6 sm:text-4xl"
+                onClick={() => navigateFastTier('next')}
+                aria-label="Next fast tier"
               >
-                {backgroundUrl && (
-                  <>
-                    <div
-                      className="absolute inset-0 -z-20 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${backgroundUrl})` }}
-                      aria-hidden="true"
-                    />
-                    <div
-                      className="absolute inset-0 -z-10 bg-body/80"
-                      aria-hidden="true"
-                    />
-                  </>
-                )}
+                <FontAwesomeIcon icon={faCaretRight} />
+              </button>
+            )}
+        </div>
+      </div>
+      <div className="w-full space-y-4">
+        {levels.map(level => {
+          const backgroundUrl = getBackgroundForLevel(level.levelId)
+            ? getImagePath(getBackgroundForLevel(level.levelId)!)
+            : null;
 
-                <header className="relative z-10 flex flex-wrap items-center justify-between gap-3 rounded-t-xl bg-primary px-4 py-2 sm:px-6">
-                  <h2 className="font-pixel text-2xl tracking-widest text-secondary sm:text-3xl">
-                    {level.label}
-                  </h2>
-                  <span className="text-xs uppercase tracking-[0.45em] text-secondary/70 md:text-sm">
-                    Level {level.id.toString().padStart(2, '0')}
-                  </span>
-                </header>
-                <div className="relative z-10 px-2 py-2 sm:px-4 sm:py-4">
-                  <div className="grid grid-cols-4 justify-items-center gap-2 sm:grid-cols-8">
-                    {sortedCharacters.map(character => (
-                      <CharacterIcon
-                        key={`${level.id}-${character.id}`}
-                        slug={character.id}
-                        name={character.name}
-                        type="sprite"
-                        className="h-16 w-16 sm:h-16 sm:w-16"
-                      >
-                        <CompletableIcon
-                          isComplete={isCharacterLevelComplete(
-                            character.id,
-                            level.id
-                          )}
-                          onToggle={() =>
-                            toggleCharacterCompletion(character.id, level.id)
-                          }
-                          isClient={isClient}
-                          label={`${character.name} - ${isCharacterLevelComplete(character.id, level.id) ? 'Complete' : 'Incomplete'}`}
-                          checkmarkClassName="absolute top-0 right-0 h-2/3 w-2/3"
-                        />
-                      </CharacterIcon>
-                    ))}
-                  </div>
+          return (
+            <section
+              key={level.levelId}
+              className="relative overflow-hidden rounded-xl border-2 border-primary shadow-lg backdrop-blur"
+            >
+              {backgroundUrl && (
+                <>
+                  <div
+                    className="absolute inset-0 -z-20 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${backgroundUrl})` }}
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="absolute inset-0 -z-10 bg-body/80"
+                    aria-hidden="true"
+                  />
+                </>
+              )}
+
+              <header className="relative z-10 flex flex-wrap items-center justify-between gap-3 rounded-t-xl bg-primary px-4 py-2 sm:px-6">
+                <h2 className="font-pixel text-2xl tracking-widest text-secondary sm:text-3xl">
+                  {level.name}
+                </h2>
+                <span className="text-xs uppercase tracking-[0.45em] text-secondary/70 md:text-sm">
+                  LEVEL {level.levelId.toString().padStart(2, '0')}
+                </span>
+              </header>
+              <div className="relative z-10 border-t-2 border-primary px-2 py-2 sm:px-4 sm:py-4">
+                <div className="grid grid-cols-4 justify-items-center gap-2 sm:grid-cols-8">
+                  {sortedCharacters.map(character => (
+                    <CharacterIcon
+                      key={`${level.levelId}-${character.id}`}
+                      slug={character.id}
+                      name={character.name}
+                      type="sprite"
+                      className="h-16 w-16 sm:h-16 sm:w-16"
+                    >
+                      <CompletableIcon
+                        isComplete={isCharacterLevelComplete(
+                          character.id,
+                          level.levelId
+                        )}
+                        onToggle={() =>
+                          toggleCharacterCompletion(character.id, level.levelId)
+                        }
+                        isClient={isClient}
+                        label={`${character.name} - ${isCharacterLevelComplete(character.id, level.levelId) ? 'Complete' : 'Incomplete'}`}
+                        checkmarkClassName="absolute top-0 right-0 h-2/3 w-2/3"
+                      />
+                    </CharacterIcon>
+                  ))}
                 </div>
-              </section>
-            );
-          })}
-        </div>
-        <div className="mt-8 flex justify-center">
-          <button
-            className="btn-body-primary font-pixel text-xl tracking-widest"
-            onClick={() => router.push('/settings/reorder-heroes')}
-            type="button"
-          >
-            REORDER CHARACTERS
-          </button>
-        </div>
+              </div>
+            </section>
+          );
+        })}
+      </div>
+      <div className="mt-8 flex justify-center">
+        <button
+          className="btn-body-primary font-pixel text-xl tracking-widest"
+          onClick={() => router.push('/settings/reorder-heroes')}
+          type="button"
+        >
+          REORDER CHARACTERS
+        </button>
       </div>
     </div>
   );

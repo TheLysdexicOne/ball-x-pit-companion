@@ -52,49 +52,47 @@ export default function CharactersPage() {
   }
 
   return (
-    <div className="mx-auto min-h-screen max-w-6xl p-4 pt-0 sm:p-8">
-      <div className="space-y-6">
-        {/* Search and Filters */}
-        <div className="rounded-lg border-2 border-primary bg-body p-4">
-          {/* Filters content */}
-          <div className="space-y-4">
-            {/* Search */}
-            <div>
-              <input
-                type="text"
-                placeholder="Search characters..."
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                className="w-full rounded-lg border-2 border-primary bg-primary px-4 py-2 text-base text-primary placeholder:text-primary/50 focus:border-highlight focus:ring-0 sm:text-lg"
-              />
-            </div>
-            {/* Reorder Button */}
-            <Link
-              href="/settings/reorder-heroes"
-              className="block rounded-lg bg-btn-primary px-4 py-2 text-center text-base text-secondary transition-colors hover:bg-highlight hover:text-primary sm:text-lg"
-            >
-              Reorder Characters
-            </Link>
-          </div>
-        </div>
-        {/* Character list */}
+    <div className="space-y-6">
+      {/* Search and Filters */}
+      <div className="rounded-lg border-2 border-primary bg-body p-4">
+        {/* Filters content */}
         <div className="space-y-4">
-          {filteredCharacters.map(character => (
-            <CharacterCard key={character.id} character={character} />
-          ))}
-        </div>
-        {/* No results message */}
-        {filteredCharacters.length === 0 && (
-          <div className="rounded-lg border-2 border-primary bg-body p-8 text-center">
-            <p className="font-pixel text-lg tracking-wider text-primary">
-              No characters found
-            </p>
-            <p className="mt-2 font-pixel text-sm text-primary/70">
-              Try adjusting your search or filters
-            </p>
+          {/* Search */}
+          <div>
+            <input
+              type="text"
+              placeholder="Search characters..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              className="w-full rounded-lg border-2 border-primary bg-primary px-4 py-2 text-base text-primary placeholder:text-primary/50 focus:border-highlight focus:ring-0 sm:text-lg"
+            />
           </div>
-        )}
+          {/* Reorder Button */}
+          <Link
+            href="/settings/reorder-heroes"
+            className="block rounded-lg bg-btn-primary px-4 py-2 text-center text-base text-secondary transition-colors hover:bg-highlight hover:text-primary sm:text-lg"
+          >
+            Reorder Characters
+          </Link>
+        </div>
       </div>
+      {/* Character list */}
+      <div className="space-y-4">
+        {filteredCharacters.map(character => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
+      </div>
+      {/* No results message */}
+      {filteredCharacters.length === 0 && (
+        <div className="rounded-lg border-2 border-primary bg-body p-8 text-center">
+          <p className="font-pixel text-lg tracking-wider text-primary">
+            No characters found
+          </p>
+          <p className="mt-2 font-pixel text-sm text-primary/70">
+            Try adjusting your search or filters
+          </p>
+        </div>
+      )}
     </div>
   );
 }

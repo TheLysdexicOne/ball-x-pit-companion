@@ -20,15 +20,13 @@ export default function LevelsPage() {
   }
 
   return (
-    <div className="mx-auto min-h-screen max-w-6xl p-4 pt-0 sm:p-8">
-      <div className="space-y-6">
-        {/* Level list */}
-        <div className="space-y-4">
-          {levels.map(level => {
-            const enemies = getEnemyVariantsForLevel(level);
-            return <LevelCard key={level.id} level={level} enemies={enemies} />;
-          })}
-        </div>
+    <div className="space-y-6">
+      {/* Level list */}
+      <div className="space-y-4">
+        {levels.map(level => {
+          const enemies = getEnemyVariantsForLevel(level);
+          return <LevelCard key={level.id} level={level} enemies={enemies} />;
+        })}
       </div>
     </div>
   );

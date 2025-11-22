@@ -12,7 +12,6 @@ export interface EnemyData {
   Name: string;
   Slug: string;
   Description: string;
-  GameplayDescription: string;
   GridWidth: number;
   GridHeight: number;
   HealthScale: number;
@@ -33,7 +32,6 @@ export interface EnemyTemplate {
   name: string;
   slug: string;
   description: string;
-  gameplayDescription: string;
   gridWidth: number;
   gridHeight: number;
   healthScale: number;
@@ -56,5 +54,5 @@ export interface EnemyVariant {
   gridHeight: number;
   healthScale: number;
   speedMultiplier: number;
-  gameplayDescription: string;
+  description: string;
 }

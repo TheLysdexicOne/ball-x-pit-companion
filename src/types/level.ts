@@ -1,5 +1,19 @@
 // Level data types from game database extraction
 
+export interface Unlock {
+  Name: string;
+  Slug: string;
+  UnlockType: string;
+  TypeId: string;
+}
+
+export interface Blueprint {
+  Name: string;
+  Slug: string;
+  Type: string;
+  Category: string;
+}
+
 export interface LevelData {
   Type: string;
   Id: number;
@@ -13,6 +27,8 @@ export interface LevelData {
   BossInfo: string;
   PreviewEnemies: string[];
   EnemyList: string[];
+  Unlocks: Unlock[];
+  Blueprints: Blueprint[];
   UIColor: string;
   UIColorDark: string;
   DarkColor: string;
@@ -33,4 +49,6 @@ export interface Level {
   bossSlug: string;
   previewEnemySlugs: string[];
   enemySlugs: string[]; // Template slugs that appear in this level
+  unlocks: Unlock[];
+  blueprints: Blueprint[];
 }

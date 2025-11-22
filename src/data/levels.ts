@@ -23,6 +23,8 @@ function normalizeLevel(data: LevelData): Level {
     bossSlug: data.BossInfo,
     previewEnemySlugs: data.PreviewEnemies,
     enemySlugs: data.EnemyList,
+    unlocks: data.Unlocks || [],
+    blueprints: data.Blueprints || [],
   };
 }
 

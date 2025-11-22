@@ -22,7 +22,6 @@ function normalizeEnemyTemplate(data: EnemyData): EnemyTemplate {
     name: data.Name,
     slug: data.Slug,
     description: data.Description,
-    gameplayDescription: data.GameplayDescription,
     gridWidth: data.GridWidth,
     gridHeight: data.GridHeight,
     healthScale: data.HealthScale,
@@ -75,7 +74,7 @@ export function resolveEnemyVariant(
     gridHeight: template.gridHeight,
     healthScale: template.healthScale,
     speedMultiplier: template.speedMultiplier,
-    gameplayDescription: template.gameplayDescription,
+    description: template.description,
   };
 }
 
