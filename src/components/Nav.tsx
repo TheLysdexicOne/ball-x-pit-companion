@@ -48,7 +48,7 @@ export default function Nav({ pageTitle }: NavProps) {
       '/encyclopedia/passives': 'Encyclopedia | Passives',
       '/encyclopedia/levels': 'Encyclopedia | Pit Levels',
       '/encyclopedia/enemies': 'Encyclopedia | Pit Enemies',
-      '/encyclopedia/town/buildings': 'Encyclopedia | Town Buildings',
+      '/encyclopedia/buildings': 'Encyclopedia | Town Buildings',
       '/encyclopedia/town/harvesting': 'Encyclopedia | Town Harvesting',
     };
 
@@ -92,7 +92,7 @@ export default function Nav({ pageTitle }: NavProps) {
           label: 'Town',
           isSubHeader: true,
           children: [
-            { label: 'Buildings', href: '/encyclopedia/town/buildings' },
+            { label: 'Buildings', href: '/encyclopedia/buildings' },
             { label: 'Harvesting', href: '/encyclopedia/town/harvesting' },
           ],
         },

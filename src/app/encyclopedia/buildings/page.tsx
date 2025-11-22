@@ -1,33 +1,52 @@
 'use client';
 
 import { useState, useMemo, useEffect, useRef } from 'react';
-import type { Ball } from '@/types/ball';
-import { getAllBalls, getBasicBalls, getFusionBalls } from '@/data/balls';
-import BallsCard from '@/components/BallsCard';
-import BallIcon from '@/components/BallIcon';
+import type { Building } from '@/data/buildings';
+import { getAllBuildings } from '@/data/buildings';
+import BuildingCard from '@/components/BuildingCard';
+import BuildingIcon from '@/components/BuildingIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-type FilterType = 'all' | 'basic' | 'fusion';
-type SortType = 'name' | 'encyclopedia';
 type ViewType = 'list' | 'grid';
+type SortType = 'name' | 'category';
 
-export default function Balls() {
+export default function Buildings() {
   // Load saved view type from localStorage, default to 'list'
   const [viewType, setViewType] = useState<ViewType>('list');
-  const [filter, setFilter] = useState<FilterType>('all');
-  const [sort, setSort] = useState<SortType>('encyclopedia');
+  const [filterCategory, setFilterCategory] = useState<string>('all');
+  const [filterSubCategory, setFilterSubCategory] = useState<string>('all');
+  const [sort, setSort] = useState<SortType>('name');
   const [searchQuery, setSearchQuery] = useState('');
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false);
-  const [expandedBallId, setExpandedBallId] = useState<string | null>(null);
+  const [expandedBuildingId, setExpandedBuildingId] = useState<string | null>(
+    null
+  );
   const [isLoaded, setIsLoaded] = useState(false);
   const [gridColumns, setGridColumns] = useState(2);
   const gridItemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
+  const allBuildings = getAllBuildings();
+
+  // Get unique categories and subcategories
+  const categories = useMemo(() => {
+    const cats = new Set(allBuildings.map(b => b.category));
+    return Array.from(cats).sort();
+  }, [allBuildings]);
+
+  const subCategories = useMemo(() => {
+    const subCats = new Set(
+      allBuildings
+        .filter(b => filterCategory === 'all' || b.category === filterCategory)
+        .map(b => b.subCategory)
+    );
+    return Array.from(subCats).sort();
+  }, [allBuildings, filterCategory]);
+
   // Load saved view type after mount to avoid hydration mismatch
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('balls-view-type');
+      const saved = localStorage.getItem('buildings-view-type');
       if (saved === 'list' || saved === 'grid') {
         setViewType(saved);
       }
@@ -38,42 +57,37 @@ export default function Balls() {
   // Save view type to localStorage whenever it changes
   useEffect(() => {
     if (typeof window !== 'undefined' && isLoaded) {
-      localStorage.setItem('balls-view-type', viewType);
+      localStorage.setItem('buildings-view-type', viewType);
     }
   }, [viewType, isLoaded]);
 
-  // Auto-scroll to expanded ball on mobile
+  // Auto-scroll to expanded building on mobile
   useEffect(() => {
-    if (expandedBallId && typeof window !== 'undefined') {
-      const element = gridItemRefs.current[expandedBallId];
+    if (expandedBuildingId && typeof window !== 'undefined') {
+      const element = gridItemRefs.current[expandedBuildingId];
       if (element && window.innerWidth < 1024) {
-        // Only scroll on mobile/tablet (< lg breakpoint)
         setTimeout(() => {
-          const headerHeight = 88; // pt-20 = 5rem = 80px
+          const headerHeight = 88;
           const y =
             element.getBoundingClientRect().top +
             window.pageYOffset -
             headerHeight;
           window.scrollTo({ top: y, behavior: 'smooth' });
-        }, 100); // Small delay to allow content to render
+        }, 100);
       }
     }
-  }, [expandedBallId]);
+  }, [expandedBuildingId]);
 
   // Track grid columns for responsive layout
   useEffect(() => {
     const updateColumns = () => {
       if (typeof window !== 'undefined') {
         const width = window.innerWidth;
-        if (width >= 1280)
-          setGridColumns(8); // xl
-        else if (width >= 1024)
-          setGridColumns(6); // lg
-        else if (width >= 768)
-          setGridColumns(6); // md
-        else if (width >= 640)
-          setGridColumns(5); // sm
-        else setGridColumns(4); // mobile
+        if (width >= 1280) setGridColumns(10);
+        else if (width >= 1024) setGridColumns(8);
+        else if (width >= 768) setGridColumns(6);
+        else if (width >= 640) setGridColumns(5);
+        else setGridColumns(4);
       }
     };
 
@@ -82,60 +96,61 @@ export default function Balls() {
     return () => window.removeEventListener('resize', updateColumns);
   }, []);
 
-  const filteredBalls = useMemo(() => {
-    let balls: Ball[];
+  const filteredBuildings = useMemo(() => {
+    let buildings = allBuildings;
 
-    switch (filter) {
-      case 'basic':
-        balls = getBasicBalls();
-        break;
-      case 'fusion':
-        balls = getFusionBalls();
-        break;
-      default:
-        balls = getAllBalls();
+    // Apply category filter
+    if (filterCategory !== 'all') {
+      buildings = buildings.filter(b => b.category === filterCategory);
     }
 
-    // Apply search filter (fuzzy search: removes spaces and checks name, slug, description)
+    // Apply subcategory filter
+    if (filterSubCategory !== 'all') {
+      buildings = buildings.filter(b => b.subCategory === filterSubCategory);
+    }
+
+    // Apply search filter
     if (searchQuery) {
       const normalizedQuery = searchQuery.toLowerCase().replace(/\s+/g, '');
-      balls = balls.filter(ball => {
-        const normalizedName = ball.name.toLowerCase().replace(/\s+/g, '');
-        const normalizedSlug = ball.slug.toLowerCase().replace(/\s+/g, '');
-        const normalizedDesc = ball.description
-          .toLowerCase()
-          .replace(/\s+/g, '');
-
-        return (
-          normalizedName.includes(normalizedQuery) ||
-          normalizedSlug.includes(normalizedQuery) ||
-          normalizedDesc.includes(normalizedQuery)
-        );
-      });
+      buildings = buildings.filter(
+        b =>
+          b.name.toLowerCase().replace(/\s+/g, '').includes(normalizedQuery) ||
+          b.slug.toLowerCase().replace(/\s+/g, '').includes(normalizedQuery) ||
+          b.description
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(normalizedQuery) ||
+          b.shortDescription
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(normalizedQuery)
+      );
     }
 
     // Apply sorting
-    if (sort === 'encyclopedia') {
-      // Sort by recipe length (0 = base, 1 = 2-ball fusion, 2+ = 3+ ball fusion), then alphabetically
-      balls = [...balls].sort((a, b) => {
-        const aRecipeLength =
-          a.fusionRecipe.length > 0 ? a.fusionRecipe[0].length : 0;
-        const bRecipeLength =
-          b.fusionRecipe.length > 0 ? b.fusionRecipe[0].length : 0;
-
-        if (aRecipeLength !== bRecipeLength) {
-          return aRecipeLength - bRecipeLength;
+    if (sort === 'category') {
+      buildings = [...buildings].sort((a, b) => {
+        if (a.category !== b.category) {
+          return a.category.localeCompare(b.category);
         }
-
+        if (a.subCategory !== b.subCategory) {
+          return a.subCategory.localeCompare(b.subCategory);
+        }
         return a.name.localeCompare(b.name);
       });
     } else {
-      // Sort by name only
-      balls = [...balls].sort((a, b) => a.name.localeCompare(b.name));
+      buildings = [...buildings].sort((a, b) => a.name.localeCompare(b.name));
     }
 
-    return balls;
-  }, [filter, sort, searchQuery]);
+    return buildings;
+  }, [allBuildings, filterCategory, filterSubCategory, sort, searchQuery]);
+
+  // Format category/subcategory names
+  const formatCategory = (cat: string) => cat.replace(/^k/, '');
+  const formatSubCategory = (subCat: string) => {
+    const cleaned = subCat.replace(/^k/, '');
+    return cleaned.replace(/([A-Z])/g, ' $1').trim();
+  };
 
   // Don't render until we've loaded the saved state
   if (!isLoaded) {
@@ -195,23 +210,43 @@ export default function Balls() {
           {/* Search Bar */}
           <input
             type="text"
-            placeholder="Search balls..."
+            placeholder="Search buildings..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             className="w-full rounded-lg border-2 border-primary bg-primary px-4 py-2 text-base text-primary placeholder:text-primary/50 focus:border-highlight focus:ring-0 sm:text-lg"
           />
 
           {/* Filters Row */}
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {/* Filter Dropdown */}
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Category Filter */}
             <select
-              value={filter}
-              onChange={e => setFilter(e.target.value as FilterType)}
+              value={filterCategory}
+              onChange={e => {
+                setFilterCategory(e.target.value);
+                setFilterSubCategory('all'); // Reset subcategory when category changes
+              }}
               className="w-full cursor-pointer rounded-lg border-2 border-primary bg-primary px-4 py-2 text-base tracking-wider text-primary focus:border-highlight focus:ring-0 sm:text-lg"
             >
-              <option value="all">All Balls ({getAllBalls().length})</option>
-              <option value="basic">Basic ({getBasicBalls().length})</option>
-              <option value="fusion">Fusion ({getFusionBalls().length})</option>
+              <option value="all">All Categories</option>
+              {categories.map(cat => (
+                <option key={cat} value={cat}>
+                  {formatCategory(cat)}
+                </option>
+              ))}
+            </select>
+
+            {/* SubCategory Filter */}
+            <select
+              value={filterSubCategory}
+              onChange={e => setFilterSubCategory(e.target.value)}
+              className="w-full cursor-pointer rounded-lg border-2 border-primary bg-primary px-4 py-2 text-base tracking-wider text-primary focus:border-highlight focus:ring-0 sm:text-lg"
+            >
+              <option value="all">All Types</option>
+              {subCategories.map(subCat => (
+                <option key={subCat} value={subCat}>
+                  {formatSubCategory(subCat)}
+                </option>
+              ))}
             </select>
 
             {/* Sort Dropdown */}
@@ -220,8 +255,8 @@ export default function Balls() {
               onChange={e => setSort(e.target.value as SortType)}
               className="w-full cursor-pointer rounded-lg border-2 border-primary bg-primary px-4 py-2 text-base tracking-wider text-primary focus:border-highlight focus:ring-0 sm:text-lg"
             >
-              <option value="encyclopedia">Sort: Encyclopedia</option>
               <option value="name">Sort: Alphabetical</option>
+              <option value="category">Sort: Category</option>
             </select>
           </div>
         </div>
@@ -230,23 +265,23 @@ export default function Balls() {
       {/* Results Count */}
       {searchQuery && (
         <div className="mb-3 text-center font-pixel text-sm tracking-wider text-secondary sm:text-base">
-          Found {filteredBalls.length} ball
-          {filteredBalls.length !== 1 ? 's' : ''}
+          Found {filteredBuildings.length} building
+          {filteredBuildings.length !== 1 ? 's' : ''}
         </div>
       )}
 
       {/* View Rendering */}
       {viewType === 'list' ? (
         <div className="space-y-4 px-2 py-2">
-          {filteredBalls.map(ball => (
-            <BallsCard key={ball.id} ball={ball} />
+          {filteredBuildings.map(building => (
+            <BuildingCard key={building.id} building={building} />
           ))}
         </div>
       ) : (
         <div className="space-y-3 overflow-visible">
           {(() => {
-            const expandedIndex = expandedBallId
-              ? filteredBalls.findIndex(b => b.id === expandedBallId)
+            const expandedIndex = expandedBuildingId
+              ? filteredBuildings.findIndex(b => b.id === expandedBuildingId)
               : -1;
             const expandedRowEnd =
               expandedIndex >= 0
@@ -256,26 +291,26 @@ export default function Balls() {
 
             const items: JSX.Element[] = [];
 
-            filteredBalls.forEach((ball, index) => {
-              const isExpanded = expandedBallId === ball.id;
+            filteredBuildings.forEach((building, index) => {
+              const isExpanded = expandedBuildingId === building.id;
 
               // Determine position in row (left, middle, right)
               const positionInRow = index % gridColumns;
               const isLeftEdge = positionInRow === 0;
               const isRightEdge = positionInRow === gridColumns - 1;
 
-              // Add the ball icon button
+              // Add the building icon button
               items.push(
                 <div
-                  key={ball.id}
+                  key={building.id}
                   ref={el => {
-                    gridItemRefs.current[ball.id] = el;
+                    gridItemRefs.current[building.id] = el;
                   }}
                   className={isExpanded ? 'relative' : ''}
                 >
                   <button
                     onClick={() =>
-                      setExpandedBallId(isExpanded ? null : ball.id)
+                      setExpandedBuildingId(isExpanded ? null : building.id)
                     }
                     className={`z-50 flex aspect-square h-full w-full items-center justify-center rounded-lg border-2 p-1 ${
                       isExpanded
@@ -283,9 +318,9 @@ export default function Balls() {
                         : 'border-primary bg-body hover:border-highlight hover:bg-card-header'
                     }`}
                   >
-                    <BallIcon
-                      slug={ball.slug}
-                      name={ball.name}
+                    <BuildingIcon
+                      slug={building.slug}
+                      name={building.name}
                       className="h-full w-full"
                     />
                   </button>
@@ -308,16 +343,16 @@ export default function Balls() {
                 </div>
               );
 
-              // If this is the end of the row containing the expanded ball, insert the details
+              // If this is the end of the row containing the expanded building, insert the details
               if (expandedRowEnd >= 0 && index === expandedRowEnd - 1) {
-                const expandedBall = filteredBalls[expandedIndex];
+                const expandedBuilding = filteredBuildings[expandedIndex];
                 items.push(
                   <div
-                    key={`expanded-${expandedBall.id}`}
+                    key={`expanded-${expandedBuilding.id}`}
                     className="col-span-full"
                   >
-                    <BallsCard
-                      ball={expandedBall}
+                    <BuildingCard
+                      building={expandedBuilding}
                       disableMobileExpand={true}
                       isGridExpanded={true}
                     />
@@ -327,15 +362,18 @@ export default function Balls() {
             });
 
             // If expanded item is on the last row and wasn't inserted yet, add it now
-            if (expandedIndex >= 0 && expandedRowEnd > filteredBalls.length) {
-              const expandedBall = filteredBalls[expandedIndex];
+            if (
+              expandedIndex >= 0 &&
+              expandedRowEnd > filteredBuildings.length
+            ) {
+              const expandedBuilding = filteredBuildings[expandedIndex];
               items.push(
                 <div
-                  key={`expanded-${expandedBall.id}`}
+                  key={`expanded-${expandedBuilding.id}`}
                   className="col-span-full"
                 >
-                  <BallsCard
-                    ball={expandedBall}
+                  <BuildingCard
+                    building={expandedBuilding}
                     disableMobileExpand={true}
                     isGridExpanded={true}
                   />
@@ -358,9 +396,9 @@ export default function Balls() {
         </div>
       )}
 
-      {filteredBalls.length === 0 && (
+      {filteredBuildings.length === 0 && (
         <div className="card-text-box py-8">
-          No balls found matching your criteria.
+          No buildings found matching your criteria.
         </div>
       )}
     </>

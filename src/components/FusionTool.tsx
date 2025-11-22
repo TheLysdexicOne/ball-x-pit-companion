@@ -27,20 +27,14 @@ export default function FusionTool() {
 
   const allBalls = getAllBalls();
 
-  // Helper function to check if a ball has AOE damage properties
+  // Helper function to check if a ball has AOE damage
   const hasAOEDamage = (ball: Ball): boolean => {
-    const propertyKeys = Object.keys(ball.level1);
-    return propertyKeys.some(
-      key => propertyCategorization[key]?.IsAOEDamageProp === true
-    );
+    return ball.isAOE === true;
   };
 
-  // Helper function to check if a ball has status effect (hit effect) properties
+  // Helper function to check if a ball has status effects
   const hasStatusEffects = (ball: Ball): boolean => {
-    const propertyKeys = Object.keys(ball.level1);
-    return propertyKeys.some(
-      key => propertyCategorization[key]?.IsStatusEffectDamageProp === true
-    );
+    return ball.isStatusEffect === true;
   };
 
   // Get damage type color from BallColor property
@@ -268,46 +262,9 @@ export default function FusionTool() {
 
     // Priority order for special effects (can be reordered if needed)
     const effectChecks = [
-      // 1. Glacier combo - glacial spikes apply hit effects
+      // 1. Mosquito combo - mosquitoes inflict hit effects
       () => {
-        const glacierSlug = 'hupg_glacier';
-        if (ballA.slug === glacierSlug && hasStatusEffects(ballB)) {
-          effects.push({
-            type: 'glacier_combo',
-            description: (
-              <>
-                Glacial Spikes apply the hit effects from{' '}
-                <span className="font-pixel text-2xl tracking-wider">
-                  {ballB.name}
-                </span>{' '}
-                when touching an enemy
-              </>
-            ),
-          });
-          return true;
-        }
-        if (ballB.slug === glacierSlug && hasStatusEffects(ballA)) {
-          effects.push({
-            type: 'glacier_combo',
-            description: (
-              <>
-                Glacial Spikes apply the hit effects from{' '}
-                <span className="font-pixel text-2xl tracking-wider">
-                  {ballA.name}
-                </span>{' '}
-                when touching an enemy
-              </>
-            ),
-          });
-          return true;
-        }
-        return false;
-      },
-
-      // 2. Mosquito combo - mosquitoes inflict hit effects
-      () => {
-        const mosquitoSlug = 'hupg_mosquito';
-        if (ballA.slug === mosquitoSlug) {
+        if (ballA.isMosquitoSpawner) {
           effects.push({
             type: 'mosquito_combo',
             description: (
@@ -322,7 +279,7 @@ export default function FusionTool() {
           });
           return true;
         }
-        if (ballB.slug === mosquitoSlug) {
+        if (ballB.isMosquitoSpawner) {
           effects.push({
             type: 'mosquito_combo',
             description: (
@@ -340,7 +297,7 @@ export default function FusionTool() {
         return false;
       },
 
-      // 3. Spawner combo - spawned balls inherit properties
+      // 2. Spawner combo - spawned balls inherit properties
       () => {
         if (ballA.isSpawner && !ballB.isSpawner) {
           effects.push({
@@ -381,7 +338,7 @@ export default function FusionTool() {
         return false;
       },
 
-      // 4. AOE + HitEffect combo - AOE inflicts status effects
+      // 3. AOE + HitEffect combo - AOE inflicts status effects
       () => {
         if (hasAOEDamage(ballA) && hasStatusEffects(ballB)) {
           effects.push({
@@ -414,6 +371,26 @@ export default function FusionTool() {
                 <span className="font-pixel text-2xl tracking-wider">
                   {ballA.name}
                 </span>
+              </>
+            ),
+          });
+          return true;
+        }
+        return false;
+      },
+
+      // 4. Glacier combo - glacial spikes apply hit effects (only when Glacier is first ball)
+      () => {
+        if (ballA.isGlacier && hasStatusEffects(ballB)) {
+          effects.push({
+            type: 'glacier_combo',
+            description: (
+              <>
+                Glacial Spikes apply the hit effects from{' '}
+                <span className="font-pixel text-2xl tracking-wider">
+                  {ballB.name}
+                </span>{' '}
+                when touching an enemy
               </>
             ),
           });
@@ -498,18 +475,6 @@ export default function FusionTool() {
             )}
           </button>
         </div>
-
-        {/* Clear Button */}
-        {(slotA || slotB) && (
-          <div className="text-center">
-            <button
-              onClick={handleClear}
-              className="rounded-lg border-2 border-primary bg-primary px-6 py-2 font-pixel text-base tracking-wider text-primary transition-colors hover:border-highlight sm:text-lg"
-            >
-              Clear Selection
-            </button>
-          </div>
-        )}
       </div>
 
       {/* Ball Selection Grid (shown when a slot is active) */}

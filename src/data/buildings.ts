@@ -2,21 +2,49 @@
 
 export interface BuildingCost {
   gold?: number;
+  wheat?: number;
   wood?: number;
   stone?: number;
+}
+
+export interface BuildingLevelProperties {
+  Level: number;
+  Properties: { [key: string]: number | string };
 }
 
 export interface BuildingData {
   Type: string;
   Name: string;
   Slug: string;
+  Category: string;
+  SubCategory: string;
   Description: string;
   ShortDescription: string;
-  Category: string;
-  Cost: BuildingCost;
-  Stats: { [key: string]: number | string };
-  Requirements: string[];
-  Tags: string[];
+  BuildDescription: string;
+  UpgradeDescription: string;
+  BuildCost: {
+    Resources: {
+      kGold?: number;
+      kWheat?: number;
+      kWood?: number;
+      kStone?: number;
+    };
+  };
+  BaseUpgradeCost: {
+    Resources: {
+      kGold?: number;
+      kWheat?: number;
+      kWood?: number;
+      kStone?: number;
+    };
+  };
+  NumLevels: number;
+  PropertiesByLevel: BuildingLevelProperties[];
+  StatBonusType: string | null;
+  StatBonusAmountByLevel: number[];
+  StatScalingType: string | null;
+  TileSize: string;
+  NumTiles: number;
 }
 
 export interface Building {
@@ -26,11 +54,18 @@ export interface Building {
   slug: string;
   description: string;
   shortDescription: string;
+  buildDescription: string;
+  upgradeDescription: string;
   category: string;
-  cost: BuildingCost;
-  stats: { [key: string]: number | string };
-  requirements: string[];
-  tags: string[];
+  subCategory: string;
+  buildCost: BuildingCost;
+  baseUpgradeCost: BuildingCost;
+  numLevels: number;
+  propertiesByLevel: BuildingLevelProperties[];
+  statBonusType: string | null;
+  statScalingType: string | null;
+  tileSize: string;
+  numTiles: number;
 }
 
 import buildingsDataJson from '../../data/latest/buildings_data.json';
@@ -48,11 +83,28 @@ function normalizeBuilding(data: BuildingData): Building {
     slug: data.Slug,
     description: data.Description,
     shortDescription: data.ShortDescription,
+    buildDescription: data.BuildDescription,
+    upgradeDescription: data.UpgradeDescription,
     category: data.Category,
-    cost: data.Cost,
-    stats: data.Stats,
-    requirements: data.Requirements,
-    tags: data.Tags,
+    subCategory: data.SubCategory,
+    buildCost: {
+      gold: data.BuildCost.Resources.kGold,
+      wheat: data.BuildCost.Resources.kWheat,
+      wood: data.BuildCost.Resources.kWood,
+      stone: data.BuildCost.Resources.kStone,
+    },
+    baseUpgradeCost: {
+      gold: data.BaseUpgradeCost.Resources.kGold,
+      wheat: data.BaseUpgradeCost.Resources.kWheat,
+      wood: data.BaseUpgradeCost.Resources.kWood,
+      stone: data.BaseUpgradeCost.Resources.kStone,
+    },
+    numLevels: data.NumLevels,
+    propertiesByLevel: data.PropertiesByLevel,
+    statBonusType: data.StatBonusType,
+    statScalingType: data.StatScalingType,
+    tileSize: data.TileSize,
+    numTiles: data.NumTiles,
   };
 }
 
@@ -94,11 +146,11 @@ export function getBuildingsByCategory(category: string): Building[] {
 }
 
 /**
- * Get buildings by tag
+ * Get buildings by subcategory
  */
-export function getBuildingsByTag(tag: string): Building[] {
+export function getBuildingsBySubCategory(subCategory: string): Building[] {
   return buildingsData
-    .filter(b => b.Tags.includes(tag) && b.Name !== '???')
+    .filter(b => b.SubCategory === subCategory && b.Name !== '???')
     .map(normalizeBuilding)
     .sort((a, b) => a.name.localeCompare(b.name));
 }
@@ -109,6 +161,7 @@ export function getBuildingsByTag(tag: string): Building[] {
 export function formatBuildingCost(cost: BuildingCost): string {
   const parts: string[] = [];
   if (cost.gold) parts.push(`${cost.gold} Gold`);
+  if (cost.wheat) parts.push(`${cost.wheat} Wheat`);
   if (cost.wood) parts.push(`${cost.wood} Wood`);
   if (cost.stone) parts.push(`${cost.stone} Stone`);
   return parts.join(', ');

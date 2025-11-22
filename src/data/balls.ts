@@ -31,6 +31,10 @@ function normalizeBall(data: BallData): Ball {
     aoeTypes: data.AOETypes || [],
     specials: data.Specials || [],
     isSpawner: data.IsSpawner,
+    isMosquitoSpawner: data.IsMosquitoSpawner,
+    isGlacier: data.IsGlacier,
+    isAOE: data.IsAOE,
+    isStatusEffect: data.IsStatusEffect,
     iconColorList: data.IconColorList || [],
   };
 }

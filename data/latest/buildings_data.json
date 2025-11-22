@@ -5,7 +5,7 @@
     "Slug": "bld_wheelwright",
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
-    "Description": "Increase {[stat_icon]} Speed scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Speed gets higher, related stats like Move Speed will improve faster)",
+    "Description": "Increase {[icon]} Speed scaling to <color=#FFFF00>{[scaling]}</color> (As your {[icon]} Speed gets higher, related stats like Move Speed will improve faster)",
     "ShortDescription": "Speed Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
@@ -29,35 +29,35 @@
       {
         "Level": 1,
         "Properties": {
-          "stat_icon": "speed_icon",
+          "icon": "speed_icon",
           "scaling": "D"
         }
       },
       {
         "Level": 2,
         "Properties": {
-          "stat_icon": "speed_icon",
+          "icon": "speed_icon",
           "scaling": "C"
         }
       },
       {
         "Level": 3,
         "Properties": {
-          "stat_icon": "speed_icon",
+          "icon": "speed_icon",
           "scaling": "B"
         }
       },
       {
         "Level": 4,
         "Properties": {
-          "stat_icon": "speed_icon",
+          "icon": "speed_icon",
           "scaling": "A"
         }
       },
       {
         "Level": 5,
         "Properties": {
-          "stat_icon": "speed_icon",
+          "icon": "speed_icon",
           "scaling": "S"
         }
       }
@@ -77,7 +77,7 @@
     "Slug": "bld_militaryacademy",
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
-    "Description": "Increase {[stat_icon]} Strength scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Strength gets higher, related stats like Base Damage will improve faster)",
+    "Description": "Increase {[icon]} Strength scaling to <color=#FFFF00>{[scaling]}</color> (As your {[icon]} Strength gets higher, related stats like Base Damage will improve faster)",
     "ShortDescription": "Strength Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
@@ -99,35 +99,35 @@
       {
         "Level": 1,
         "Properties": {
-          "stat_icon": "strength_icon",
+          "icon": "strength_icon",
           "scaling": "D"
         }
       },
       {
         "Level": 2,
         "Properties": {
-          "stat_icon": "strength_icon",
+          "icon": "strength_icon",
           "scaling": "C"
         }
       },
       {
         "Level": 3,
         "Properties": {
-          "stat_icon": "strength_icon",
+          "icon": "strength_icon",
           "scaling": "B"
         }
       },
       {
         "Level": 4,
         "Properties": {
-          "stat_icon": "strength_icon",
+          "icon": "strength_icon",
           "scaling": "A"
         }
       },
       {
         "Level": 5,
         "Properties": {
-          "stat_icon": "strength_icon",
+          "icon": "strength_icon",
           "scaling": "S"
         }
       }
@@ -147,7 +147,7 @@
     "Slug": "bld_alchemist",
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
-    "Description": "Increase {[stat_icon]} Endurance scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Endurance gets higher, related stats like HP will improve faster)",
+    "Description": "Increase {[icon]} Endurance scaling to <color=#FFFF00>{[scaling]}</color> (As your {[icon]} Endurance gets higher, related stats like HP will improve faster)",
     "ShortDescription": "Endurance Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
@@ -171,35 +171,35 @@
       {
         "Level": 1,
         "Properties": {
-          "stat_icon": "endurance_icon",
+          "icon": "endurance_icon",
           "scaling": "D"
         }
       },
       {
         "Level": 2,
         "Properties": {
-          "stat_icon": "endurance_icon",
+          "icon": "endurance_icon",
           "scaling": "C"
         }
       },
       {
         "Level": 3,
         "Properties": {
-          "stat_icon": "endurance_icon",
+          "icon": "endurance_icon",
           "scaling": "B"
         }
       },
       {
         "Level": 4,
         "Properties": {
-          "stat_icon": "endurance_icon",
+          "icon": "endurance_icon",
           "scaling": "A"
         }
       },
       {
         "Level": 5,
         "Properties": {
-          "stat_icon": "endurance_icon",
+          "icon": "endurance_icon",
           "scaling": "S"
         }
       }
@@ -346,7 +346,7 @@
     "Slug": "bld_university",
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
-    "Description": "Increase {[stat_icon]} Intelligence scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Intelligence gets higher, related stats like AOE Power will improve faster)",
+    "Description": "Increase {[icon]} Intelligence scaling to <color=#FFFF00>{[scaling]}</color> (As your {[icon]} Intelligence gets higher, related stats like AOE Power will improve faster)",
     "ShortDescription": "Intelligence Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
@@ -370,35 +370,35 @@
       {
         "Level": 1,
         "Properties": {
-          "stat_icon": "intelligence_icon",
+          "icon": "intelligence_icon",
           "scaling": "D"
         }
       },
       {
         "Level": 2,
         "Properties": {
-          "stat_icon": "intelligence_icon",
+          "icon": "intelligence_icon",
           "scaling": "C"
         }
       },
       {
         "Level": 3,
         "Properties": {
-          "stat_icon": "intelligence_icon",
+          "icon": "intelligence_icon",
           "scaling": "B"
         }
       },
       {
         "Level": 4,
         "Properties": {
-          "stat_icon": "intelligence_icon",
+          "icon": "intelligence_icon",
           "scaling": "A"
         }
       },
       {
         "Level": 5,
         "Properties": {
-          "stat_icon": "intelligence_icon",
+          "icon": "intelligence_icon",
           "scaling": "S"
         }
       }
@@ -418,7 +418,7 @@
     "Slug": "bld_archeryrange",
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
-    "Description": "Increase {[stat_icon]} Dexterity scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Dexterity gets higher, related stats like Reload Length will improve faster)",
+    "Description": "Increase {[icon]} Dexterity scaling to <color=#FFFF00>{[scaling]}</color> (As your {[icon]} Dexterity gets higher, related stats like Reload Length will improve faster)",
     "ShortDescription": "Dexterity Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
@@ -441,35 +441,35 @@
       {
         "Level": 1,
         "Properties": {
-          "stat_icon": "dexterity_icon",
+          "icon": "dexterity_icon",
           "scaling": "D"
         }
       },
       {
         "Level": 2,
         "Properties": {
-          "stat_icon": "dexterity_icon",
+          "icon": "dexterity_icon",
           "scaling": "C"
         }
       },
       {
         "Level": 3,
         "Properties": {
-          "stat_icon": "dexterity_icon",
+          "icon": "dexterity_icon",
           "scaling": "B"
         }
       },
       {
         "Level": 4,
         "Properties": {
-          "stat_icon": "dexterity_icon",
+          "icon": "dexterity_icon",
           "scaling": "A"
         }
       },
       {
         "Level": 5,
         "Properties": {
-          "stat_icon": "dexterity_icon",
+          "icon": "dexterity_icon",
           "scaling": "S"
         }
       }
@@ -669,7 +669,7 @@
     "Slug": "bld_diplomacyhall",
     "Category": "kWarfare",
     "SubCategory": "kStatScaling",
-    "Description": "Increase {[stat_icon]} Leadership scaling to <color=#FFFF00>{[scaling]}</color> (As your {[stat_icon]} Leadership gets higher, related stats like Baby Ball Damage will improve faster)",
+    "Description": "Increase {[icon]} Leadership scaling to <color=#FFFF00>{[scaling]}</color> (As your {[icon]} Leadership gets higher, related stats like Baby Ball Damage will improve faster)",
     "ShortDescription": "Leadership Scaling",
     "BuildDescription": "",
     "UpgradeDescription": "",
@@ -693,35 +693,35 @@
       {
         "Level": 1,
         "Properties": {
-          "stat_icon": "leadership_icon",
+          "icon": "leadership_icon",
           "scaling": "D"
         }
       },
       {
         "Level": 2,
         "Properties": {
-          "stat_icon": "leadership_icon",
+          "icon": "leadership_icon",
           "scaling": "C"
         }
       },
       {
         "Level": 3,
         "Properties": {
-          "stat_icon": "leadership_icon",
+          "icon": "leadership_icon",
           "scaling": "B"
         }
       },
       {
         "Level": 4,
         "Properties": {
-          "stat_icon": "leadership_icon",
+          "icon": "leadership_icon",
           "scaling": "A"
         }
       },
       {
         "Level": 5,
         "Properties": {
-          "stat_icon": "leadership_icon",
+          "icon": "leadership_icon",
           "scaling": "S"
         }
       }

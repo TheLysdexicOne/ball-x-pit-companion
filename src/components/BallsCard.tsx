@@ -20,6 +20,7 @@ export default function BallsCard({
 }: BallsCardProps) {
   const [selectedLevel, setSelectedLevel] = useState<1 | 2 | 3>(1);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [evolutionsExpanded, setEvolutionsExpanded] = useState(false);
 
   const currentLevelProps =
     ball[`level${selectedLevel}` as 'level1' | 'level2' | 'level3'];
@@ -262,10 +263,90 @@ export default function BallsCard({
           )}
           {ball.evolvesInto.length > 0 && (
             <div className="rounded-lg bg-primary p-2 sm:p-3">
-              <strong className="text-primary">Evolves into:</strong>{' '}
-              {ball.evolvesInto
-                .map(slug => getBallBySlug(slug)?.name || slug)
-                .join(', ')}
+              <button
+                onClick={() => setEvolutionsExpanded(!evolutionsExpanded)}
+                className="hover:text-highlight flex w-full items-center justify-between text-left transition-colors"
+              >
+                <span>
+                  <strong className="text-primary">Evolves into:</strong>{' '}
+                  {ball.evolvesInto
+                    .map(slug => getBallBySlug(slug)?.name || slug)
+                    .join(', ')}
+                </span>
+                <FontAwesomeIcon
+                  icon={evolutionsExpanded ? faChevronUp : faChevronDown}
+                  className="ml-2 h-4 w-4 flex-shrink-0 text-secondary"
+                />
+              </button>
+              {evolutionsExpanded && (
+                <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {ball.evolvesInto.map(evolutionSlug => {
+                    const evolutionBall = getBallBySlug(evolutionSlug);
+                    if (!evolutionBall) return null;
+
+                    // Find the recipe for this evolution
+                    const recipe = evolutionBall.fusionRecipe.find(r =>
+                      r.includes(ball.slug)
+                    );
+                    const partnerSlug = recipe?.find(
+                      slug => slug !== ball.slug
+                    );
+                    const partnerBall = partnerSlug
+                      ? getBallBySlug(partnerSlug)
+                      : null;
+
+                    return (
+                      <div
+                        key={evolutionSlug}
+                        className="flex items-center justify-center gap-2 rounded border-2 border-primary/30 bg-body p-2"
+                      >
+                        {/* Current Ball Icon */}
+                        <div className="flex flex-col items-center">
+                          <BallIcon
+                            slug={ball.slug}
+                            name={ball.name}
+                            className="h-16 w-16"
+                          />
+                        </div>
+
+                        {/* Plus Sign */}
+                        <span className="text-2xl font-bold text-secondary">
+                          +
+                        </span>
+
+                        {/* Partner Ball Icon */}
+                        {partnerBall ? (
+                          <div className="flex flex-col items-center">
+                            <BallIcon
+                              slug={partnerBall.slug}
+                              name={partnerBall.name}
+                              className="h-16 w-16"
+                            />
+                          </div>
+                        ) : (
+                          <div className="flex h-12 w-12 items-center justify-center rounded border-2 border-dashed border-primary/30">
+                            <span className="text-xs text-primary/50">?</span>
+                          </div>
+                        )}
+
+                        {/* Equals Sign */}
+                        <span className="text-2xl font-bold text-secondary">
+                          =
+                        </span>
+
+                        {/* Evolution Ball Icon */}
+                        <div className="flex flex-col items-center">
+                          <BallIcon
+                            slug={evolutionBall.slug}
+                            name={evolutionBall.name}
+                            className="h-16 w-16"
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           )}
         </div>

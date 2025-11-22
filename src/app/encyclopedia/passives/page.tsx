@@ -231,7 +231,7 @@ export default function Passives() {
           ))}
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-3 overflow-visible">
           {(() => {
             const expandedIndex = expandedPassiveId
               ? filteredPassives.findIndex(p => p.id === expandedPassiveId)
@@ -314,11 +314,32 @@ export default function Passives() {
               }
             });
 
+            // If expanded item is on the last row and wasn't inserted yet, add it now
+            if (
+              expandedIndex >= 0 &&
+              expandedRowEnd > filteredPassives.length
+            ) {
+              const expandedPassive = filteredPassives[expandedIndex];
+              items.push(
+                <div
+                  key={`expanded-${expandedPassive.id}`}
+                  className="col-span-full"
+                >
+                  <PassiveCard
+                    passive={expandedPassive}
+                    disableMobileExpand={true}
+                    isGridExpanded={true}
+                  />
+                </div>
+              );
+            }
+
             return (
               <div
-                className="grid gap-2"
+                className="grid gap-2 overflow-visible"
                 style={{
                   gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))`,
+                  gridAutoRows: 'auto',
                 }}
               >
                 {items}

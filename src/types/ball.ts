@@ -21,6 +21,10 @@ export interface BallData {
   EvolutionSlugs: string[];
   MergeComponents: string[][];
   IsSpawner?: boolean;
+  IsMosquitoSpawner?: boolean;
+  IsGlacier?: boolean;
+  IsAOE?: boolean;
+  IsStatusEffect?: boolean;
   BallColor: string;
   DamageType: string;
   RotationType: string;
@@ -59,6 +63,10 @@ export interface Ball {
   aoeTypes: string[];
   specials: string[];
   isSpawner?: boolean;
+  isMosquitoSpawner?: boolean;
+  isGlacier?: boolean;
+  isAOE?: boolean;
+  isStatusEffect?: boolean;
   iconColorList: string[];
 }
 
